@@ -37,13 +37,7 @@
 	        <span class="icon-bar"></span>
 	      </a>
 	      <a class="brand" href="<?php bloginfo('url'); ?>"><?php bloginfo('title'); ?></a>
-	      <div class="nav-collapse">
-	        <ul class="nav">
-	          <li class="active"><a href="#">Home</a></li>
-	          <li><a href="#about">About</a></li>
-	          <li><a href="#contact">Contact</a></li>
-	        </ul>
-	      </div><!--/.nav-collapse -->
+	      <?php wp_nav_menu( array( 'walker' => new bootstrapwp_walker_nav_menu(), 'menu' => 'main-menu', 'container_class' => 'nav-collapse', 'menu_class' => 'nav', 'menu_id' => 'main-menu')); ?>
 	    </div>
 	  </div>
 	</div>

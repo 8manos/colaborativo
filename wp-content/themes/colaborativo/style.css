@@ -26,3 +26,9 @@ body {
     color: #000;
     padding: 0.2em 0;
 }
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+}
