@@ -12,6 +12,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- base styles -->
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/bootstrap.css">
+
+    <!-- app styles -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
     <!--[if lt IE 9]>
@@ -20,5 +24,28 @@
 
     <?php wp_head(); ?>
 </head>
-<body>
-    <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+<body <?php body_class(); ?>>
+<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </a>
+	      <a class="brand" href="<?php bloginfo('url'); ?>"><?php bloginfo('title'); ?></a>
+	      <div class="nav-collapse">
+	        <ul class="nav">
+	          <li class="active"><a href="#">Home</a></li>
+	          <li><a href="#about">About</a></li>
+	          <li><a href="#contact">Contact</a></li>
+	        </ul>
+	      </div><!--/.nav-collapse -->
+	    </div>
+	  </div>
+	</div>
+
+	<div class="container">
