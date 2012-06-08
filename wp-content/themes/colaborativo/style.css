@@ -7,3 +7,10 @@ Description: Tema desarrollado para el cubrimiento de eventos de forma colaborat
 Version: 0.8
 License: GNU General Public License
 */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
