@@ -9,10 +9,6 @@ License: GNU General Public License
 */
 
 
-article footer span {
-  display: block;
-}
-
 body {
 	padding-top:40px;
 }
@@ -67,6 +63,10 @@ body {
   background-position: -169px -24px;
   height: 21px;
   width: 20px;
+}
+
+#timeline article footer span {
+  display: block;
 }
 
 .admin-bar body {
