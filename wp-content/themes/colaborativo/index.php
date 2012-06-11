@@ -35,49 +35,25 @@
 
 <section class="row" id="timeline">
 
-	<article class="span3">
-		<a class="thumbnail" href="#">
-			<img src="http://placehold.it/250x250" />
-		</a>
-		<h2>un post</h2>
-		<footer class="post-meta">
-			<span class="autor">Autor</span>
-			<span class="categoria">Categoria</span>
-		</footer>
-	</article>
+<?php 
 
-	<article class="span3">
-		<a class="thumbnail" href="#">
-			<img src="http://placehold.it/250x250" />
-		</a>
-		<h2>un post</h2>
-		<footer class="post-meta">
-			<span class="autor">Autor</span>
-			<span class="categoria">Categoria</span>
-		</footer>
-	</article>
+$params = array( 
+	'post_type' => array( 'post', 'imagen', 'video', 'sonido', 'tweet', 'descarga'),
+	'posts_per_page' => "20",
+	// 'cat' => "-6",
+	'paged' => $paged
+);
 
-	<article class="span3">
-		<a class="thumbnail" href="#">
-			<img src="http://placehold.it/250x250" />
-		</a>
-		<h2>un post</h2>
-		<footer class="post-meta">
-			<span class="autor">Autor</span>
-			<span class="categoria">Categoria</span>
-		</footer>
-	</article>
+$items = new WP_Query($params); ?>
 
-	<article class="span3">
-		<a class="thumbnail" href="#">
-			<img src="http://placehold.it/250x250" />
-		</a>
-		<h2>un post</h2>
-		<footer class="post-meta">
-			<span class="autor">Autor</span>
-			<span class="categoria">Categoria</span>
-		</footer>
-	</article>
+
+<?php 
+	$i = 1;
+	while ($items->have_posts()) : $items->the_post(); 
+		display_article();
+		$i++;
+	endwhile; 
+?>
 
 </section>
 

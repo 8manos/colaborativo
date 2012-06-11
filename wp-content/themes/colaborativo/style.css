@@ -65,6 +65,18 @@ body {
   width: 20px;
 }
 
+#timeline article {
+  margin-bottom:1.8em;
+}
+
+#timeline article:nth-child(4n+1) {
+  clear:left;
+}
+
+#timeline article h2 {
+
+}
+
 #timeline article footer span {
   display: block;
 }

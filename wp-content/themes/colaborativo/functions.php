@@ -2,6 +2,14 @@
 
 remove_action('wp_head', 'wp_generator');
 
+/**
+ * Setup the theme 
+ */
+function setup_colaborativo(){
+	add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'setup_colaborativo' );
+
 /*
 | -------------------------------------------------------------------
 | Registering Top Navigation Bar
@@ -127,7 +135,7 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 7,
-    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'author', 'comments', 'custom-fields' )
   ); 
 
   $labels_sonido = array(
@@ -205,3 +213,20 @@ function colaborativo_rewrite_flush() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
+
+function display_article() {
+?>
+	<article <?php post_class('span3'); ?> data-timestamp="<?php the_time('U'); ?>">
+		<?php if(has_post_thumbnail()){ ?>
+			<a class="thumbnail" href="#">
+				<img src="http://placehold.it/250x250" />
+			</a>
+		<?php } ?>
+		<h2><?php the_title(); ?></h2>
+		<footer class="post-meta">
+			<span class="autor"><?php _e('Por:', 'colaborativo'); the_author(); ?></span>
+			<span class="categoria"><?php the_category(); ?></span>
+		</footer>
+	</article>
+<?php
+}
