@@ -13,14 +13,47 @@ body {
 }
 
 #branding {
-  width: 110px;
   background-position: 0 -15px;
+  width: 110px;
 }
 
 #footer {
   background-color:#19171A;
   margin-top:5em;
   padding:1.5em 0 2em;
+}
+
+#footer p {
+  line-height:11px;
+}
+
+#footer #activa {
+  background-position: -16px -148px;
+  height: 11px;
+  margin-right: 10px;
+  vertical-align:bottom;
+  width: 69px;
+}
+
+#footer #manos {
+  background-position: -216px -148px;
+  height: 11px;
+  margin-right: 20px;
+  vertical-align:bottom;
+  width: 61px;
+}
+
+#footer #rey {
+  background-position: -108px -148px;
+  height: 11px;
+  vertical-align: bottom;
+  width: 93px;
+}
+
+#footer-brand {
+  background-position: -169px -24px;
+  height: 21px;
+  width: 20px;
 }
 
 .admin-bar body {
@@ -44,21 +77,21 @@ body {
 }
 
 .chromeframe {
-  margin: 0.2em 0;
   background: #ccc;
   color: #000;
+  margin: 0.2em 0;
   padding: 0.2em 0;
 }
 
 .ir {
-  border: 0;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
   background-color: transparent;
+  border: 0;
+  color: transparent;
   display:inline-block;
+  font: 0/0 a;
   overflow: hidden;
   text-indent:-9999em;
+  text-shadow: none;
 }
 
 .navbar {

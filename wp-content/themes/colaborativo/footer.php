@@ -2,7 +2,27 @@
 
  	<footer id="footer">
  		<div class="container" id="footer-inner">
- 			Footer
+ 			<div class="row">
+ 				<div class="span8">
+ 					<a class="ir sprite" href="<?php bloginfo('url'); ?>" id="footer-brand" title="<?php bloginfo('title'); ?>"><?php bloginfo('title'); ?></a>
+ 				</div>
+ 				<div class="span4 aright">
+ 					menu social
+ 				</div>
+ 			</div>
+ 			<div class="row">
+ 				<div class="span5">
+ 					<p class="copyright">
+ 						<?php bloginfo('title'); ?> &copy; <?php echo date('Y'); ?> | <?php _e('TODOS LOS DERECHOS RESERVADOS', 'colaborativo'); ?>
+ 					</p>
+ 				</div>
+ 				<div class="span7 aright">
+ 					<p>
+ 						<?php bloginfo('title'); ?> fue creado por: <a class="ir sprite" id="activa" href="http://activamc.com" target="_blank">Activa MC</a> <a class="ir sprite" id="manos" href="http://8manos.com" target="_blank">&infin;manos</a>
+ 						Cubrimiento: <a class="ir sprite" id="rey" href="#">Contenidos El rey</a>
+ 					</p>
+ 				</div>
+ 			</div>
  		</div>
  	</footer>
 
