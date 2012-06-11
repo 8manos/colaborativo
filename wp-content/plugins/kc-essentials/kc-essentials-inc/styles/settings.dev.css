@@ -1,0 +1,12 @@
+.kcsse-cwa {margin-top:0}
+.kcsse-cwa ul {
+	padding-left:120px;
+	position:relative;
+}
+.kcsse-cwa label {
+	position:absolute;
+	left:0;
+	width:120px;
+}
+.kcsse-cwa input, .kcsse-cwa textarea {display:block}
+.kcsse-cwa .actions { padding-left:0; }
