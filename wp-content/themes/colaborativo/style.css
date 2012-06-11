@@ -8,6 +8,11 @@ Version: 0.8
 License: GNU General Public License
 */
 
+
+article footer span {
+  display: block;
+}
+
 body {
 	padding-top:40px;
 }
@@ -15,6 +20,14 @@ body {
 #branding {
   background-position: 0 -15px;
   width: 110px;
+}
+
+#filters-buttons {
+  text-align:center;
+}
+
+#filters-buttons button {
+  float:none;
 }
 
 #footer {
@@ -110,6 +123,10 @@ body {
 
 .navbar li:last-child a:after {
   content:"";
+}
+
+.paging {
+  margin-top:3em;
 }
 
 .sprite {

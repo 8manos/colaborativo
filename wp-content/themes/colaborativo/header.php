@@ -31,22 +31,17 @@
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
-		    <div class="row">	      
+		    <div class="row-fluid">	      
 		      <div class="span3">
 			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
 			  </div>
 			  
 			  <div class="span6">
-			      <?php wp_nav_menu( array( 'walker' => new bootstrapwp_walker_nav_menu(), 'menu' => 'main-menu', 'container_class' => 'nav-collapse acenter', 'menu_class' => 'nav', 'menu_id' => 'main-menu')); ?>
+			      <?php wp_nav_menu( array( 'walker' => new bootstrapwp_walker_nav_menu(), 'menu' => 'main-menu', 'container_class' => 'acenter', 'menu_class' => 'nav', 'menu_id' => 'main-menu')); ?>
 			  </div>
 
 		      <div class="aright span3">
 		      	right menu
-		      	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			    	<span class="icon-bar"></span>
-			    	<span class="icon-bar"></span>
-			    	<span class="icon-bar"></span>
-			    </a>
 		      </div>
 		    </div>
 	    </div>
