@@ -19,9 +19,18 @@
 		
 		<div class="span6">
 			<div class="btn-group" id="filters-buttons">
-			  <button class="btn">1</button>
-			  <button class="btn">2</button>
-			  <button class="btn">3</button>
+			<?php 
+			$args=array(
+			  'public'   => true,
+			  '_builtin' => false
+			); 
+			$output = 'names'; // names or objects, note names is the default
+			$operator = 'and'; // 'and' or 'or'
+			$post_types=get_post_types($args,$output,$operator); 
+				  foreach ($post_types  as $post_type ) {
+				    echo '<button href="#" class="btn'. $post_type .'">'. $post_type. '</button>';
+				  }
+			?>
 			</div>
 		</div>
 
