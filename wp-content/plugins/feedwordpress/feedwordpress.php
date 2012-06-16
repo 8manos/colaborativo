@@ -1175,7 +1175,7 @@ class FeedWordPress {
 			wp_enqueue_style('feedwordpress-elements');
 		
 			if (function_exists('wp_admin_css')) :
-				wp_admin_css('css/dashboard');
+				// wp_admin_css('css/dashboard');
 			endif;
 		endif;
 
