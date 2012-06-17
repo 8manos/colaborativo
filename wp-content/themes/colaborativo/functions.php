@@ -73,7 +73,8 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 5,
-    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
   ); 
 
   $labels_video = array(
@@ -104,7 +105,8 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 6,
-    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
   ); 
 
   $labels_tweet = array(
@@ -135,7 +137,8 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 7,
-    'supports' => array( 'title', 'author', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'author', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
   ); 
 
   $labels_sonido = array(
@@ -166,7 +169,8 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 8,
-    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
   ); 
 
   $labels_descarga = array(
@@ -197,7 +201,8 @@ function colaborativo_post_types() {
     'has_archive' => true, 
     'hierarchical' => false,
     'menu_position' => 8,
-    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' )
+    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
   ); 
 
   register_post_type('imagen',$args_img);
@@ -233,4 +238,46 @@ function display_article() {
 		</footer>
 	</article>
 <?php
+}
+
+function toRGB($Hex){
+
+    if (substr($Hex,0,1) == "#")
+
+            $Hex = substr($Hex,1);
+
+    $R = substr($Hex,0,2);
+    $G = substr($Hex,2,2);
+    $B = substr($Hex,4,2);
+
+
+    $R = hexdec($R);
+    $G = hexdec($G);
+    $B = hexdec($B);
+
+
+    $RGB['R'] = $R;
+    $RGB['G'] = $G;
+    $RGB['B'] = $B;
+
+    return $RGB;
+}
+
+function colores_cats() {
+    $categorias = get_terms('category', array(
+        'orderby'    => 'count',
+        'hide_empty' => 0
+     ));
+
+    $colores = "<style>";
+
+    foreach ($categorias as $categoria) {
+        $color = get_metadata( 'term', $categoria->term_id, 'categoria-color', true );
+        $color_rgb = toRGB($color);
+        $colores .= "article.category-".$categoria->slug." .overlay { background-color:rgba(".$color_rgb['R']." ,".$color_rgb['G']." ,".$color_rgb['B']." , 0.75) !important; } ";
+        $colores .= "article.category-".$categoria->slug." .categoria { background-color: ".$color." !important; } ";
+    }
+    
+    $colores .= "</style>";
+    echo $colores;
 }
