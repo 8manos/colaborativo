@@ -226,7 +226,8 @@ function display_article() {
             <?php 
                 if(get_post_type() == "imagen"){ 
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
-                $enclosure_array = explode(' ', $enclosure)
+                $enclosure = apply_filters( 'the_title', $enclosure);
+                $enclosure_array = explode(' ', $enclosure);
             ?>
 
 
