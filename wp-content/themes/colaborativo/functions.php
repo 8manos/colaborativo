@@ -227,11 +227,12 @@ function display_article() {
                 if(get_post_type() == "imagen"){ 
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
-                $enclosure_array = explode(' ', $enclosure);
+                $enclosure_array = explode('
+', $enclosurephp
             ?>
 
 
-        		<?php if(has_post_thumbnail() || $enclosure){ ?>
+        		<?); if(has_post_thumbnail() || $enclosure){ ?>
         			<a class="thumbnail" href="<?php the_permalink(); ?>">
                         <?php 
                             if(has_post_thumbnail()) { 
