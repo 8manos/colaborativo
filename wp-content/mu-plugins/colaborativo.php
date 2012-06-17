@@ -11,7 +11,7 @@ class Colaborativo {
 	public static function init() {
 
 		#Taxonomies meta
-		add_filter( 'kc_term_settings', array(__CLASS__, 'metadata_taxonomies') );
+		// add_filter( 'kc_term_settings', array(__CLASS__, 'metadata_taxonomies') );
 
 	}
 
@@ -22,11 +22,11 @@ class Colaborativo {
 			'category' => array(
 				array(
 					'id'	=> 'categoria-colors',
-					'title'	=> __('Metadata', 'colaborativo'),
+					'title'	=> 'Metadata',
 					'fields'=> array(
-						'id'	=> 'color-cat',
-						'title'	=> __('Color', 'colaborativo'),
-						'type'	=> 'Color'
+						'id'	=> 'color-categoria',
+						'title'	=> 'Colores',
+						'type'	=> 'color'
 					)
 				)
 			)
