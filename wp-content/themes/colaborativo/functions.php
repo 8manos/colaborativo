@@ -283,17 +283,32 @@ function colores_cats() {
     $colores .= "</style>";
     echo $colores;
 
-function colaborativo_vistas_query( $query ) {
-    global $wp_the_query;
-    if( $wp_the_query===$query ) {
+if ( ! function_exists( 'ucc_pre_get_posts_filter' ) ) {
+function ucc_pre_get_posts_filter( $query ) {
+    if ( ! is_preview() && ! is_admin() && ! is_singular() && ! is_404() ) {
+        if ( $query->is_feed ) {
+            // As always, handle your feed post types here.
+        } else {
+            $my_post_type = get_query_var( 'post_type' );
+            if ( empty( $my_post_type ) ) {
+                $args = array(
+                    'public' => true ,
+                    '_builtin' => false
+                );
+                $output = 'names';
+                $operator = 'and';
 
-        $query->set('post_type' ,  'tweet');
-        $query->set('post_status', 'public');
-        // $query->set('orderby', 'meta_value_num');
-        //$query->set('order', 'DESC'); 
+                // Get all custom post types automatically.
+                $post_types = get_post_types( $args, $output, $operator );
+                // Or uncomment and edit to explicitly state which post types you want. */
+                // $post_types = array( 'event', 'location' );
 
+                // Add 'link' and/or 'page' to array() if you want these included.
+                // array( 'post' , 'link' , 'page' ), etc.
+                $post_types = array_merge( $post_types, array( 'post' ,'tweet' ) );
+                $query->set( 'post_type', $post_types );
+            }
+        }
     }
-}
-add_action( 'pre_get_posts', 'colaborativo_vistas_query' );
-
-}
+} }
+add_action( 'pre_get_posts' , 'ucc_pre_get_posts_filter' );

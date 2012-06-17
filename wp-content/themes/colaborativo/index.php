@@ -45,18 +45,6 @@
 <section class="row" id="timeline">
 
 <?php 
-
-$params = array( 
-	'post_type' => array( 'post', 'imagen', 'video', 'sonido', 'tweet', 'descarga'),
-	'posts_per_page' => "20",
-	// 'cat' => "-6",
-	'paged' => $paged
-);
-
-$items = new WP_Query($params); ?>
-
-
-<?php 
 	$i = 1;
 	while (have_posts()) : the_post(); 
 		display_article();
