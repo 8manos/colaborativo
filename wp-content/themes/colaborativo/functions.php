@@ -276,6 +276,8 @@ function colores_cats() {
         $color_rgb = toRGB($color);
         $colores .= "article.category-".$categoria->slug." .overlay { background-color:rgba(".$color_rgb['R']." ,".$color_rgb['G']." ,".$color_rgb['B']." , 0.75) !important; } ";
         $colores .= "article.category-".$categoria->slug." .categoria { background-color: ".$color." !important; } ";
+        $colores .= "li.cat-item-".$categoria->term_id." a:hover { color: ".$color." !important; } ";
+        $colores .= "li.cat-item-".$categoria->term_id.".current-cat a { color: ".$color." !important; } ";
     }
     
     $colores .= "</style>";

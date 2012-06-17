@@ -39,8 +39,10 @@
 			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
 			  </div>
 			  
-			  <div class="span6">
-			      <?php wp_nav_menu( array( 'walker' => new bootstrapwp_walker_nav_menu(), 'menu' => 'main-menu', 'container_class' => 'acenter', 'menu_class' => 'nav', 'menu_id' => 'main-menu')); ?>
+			  <div class="span6" id="cat-menu">
+			  	<ul>
+					<?php wp_list_categories('title_li='); ?>
+				</ul>
 			  </div>
 
 		      <div class="aright span3">
