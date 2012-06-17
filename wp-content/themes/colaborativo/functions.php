@@ -223,11 +223,24 @@ function display_article() {
 ?>
 	<article <?php post_class('span3'); ?> data-timestamp="<?php the_time('U'); ?>">
         <div class="article-content">
-    		<?php if(has_post_thumbnail()){ ?>
-    			<a class="thumbnail" href="<?php the_permalink(); ?>">
-    				<img src="http://placehold.it/250x250" />
-    			</a>
-    		<?php } ?>
+            <?php 
+                if(get_post_type() == "imagen"){ 
+                $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
+            ?>
+
+
+        		<?php if(has_post_thumbnail() || $enclosure){ ?>
+        			<a class="thumbnail" href="<?php the_permalink(); ?>">
+                        <?php 
+                            if(has_post_thumbnail() { 
+                                the_post_thumbnail();
+                            }else{
+                        ?>
+        				    <img src="<?php echo($enclosure); ?>" />
+                        <?php } ?>
+        			</a>
+        		<?php } ?>
+            <?php } ?>
             <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
@@ -250,11 +263,9 @@ function toRGB($Hex){
     $G = substr($Hex,2,2);
     $B = substr($Hex,4,2);
 
-
     $R = hexdec($R);
     $G = hexdec($G);
     $B = hexdec($B);
-
 
     $RGB['R'] = $R;
     $RGB['G'] = $G;
