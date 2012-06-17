@@ -41,7 +41,7 @@
 			  
 			  <div class="span6" id="cat-menu">
 			  	<ul class="acenter nav">
-					<?php wp_list_categories('title_li='); ?>
+					<?php wp_list_categories('title_li=&hide_empty=0'); ?>
 				</ul>
 			  </div>
 
