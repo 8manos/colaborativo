@@ -282,6 +282,7 @@ function colores_cats() {
     
     $colores .= "</style>";
     echo $colores;
+}
 
 if ( ! function_exists( 'ucc_pre_get_posts_filter' ) ) {
 function ucc_pre_get_posts_filter( $query ) {
