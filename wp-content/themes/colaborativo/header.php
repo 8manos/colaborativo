@@ -40,7 +40,7 @@
 			  </div>
 			  
 			  <div class="span6" id="cat-menu">
-			  	<ul>
+			  	<ul class="acenter nav">
 					<?php wp_list_categories('title_li='); ?>
 				</ul>
 			  </div>
