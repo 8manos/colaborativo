@@ -17,7 +17,7 @@ License: GPL v2
 
 
 class kcEssentials {
-	protected static $pdata = array(
+	protected static $data = array(
 		'version'	=> '0.1'
 	);
 
@@ -27,10 +27,10 @@ class kcEssentials {
 		if ( !is_array($paths) )
 			return false;
 
-		self::$pdata['paths'] = $paths;
+		self::$data['paths'] = $paths;
 
 		$settings = kc_get_option( 'kc_essentials' );
-		self::$pdata['settings'] = $settings;
+		self::$data['settings'] = $settings;
 
 		# Settings
 		require_once "{$paths['inc']}/_options.php";
@@ -41,7 +41,7 @@ class kcEssentials {
 		//self::check_update();
 
 		# Scripts n styles
-		add_action( 'init', array(__CLASS__, '_sns_register') );
+		add_action( 'init', array(__CLASS__, '_sns_register'), 100 );
 
 		require_once "{$paths['inc']}/widget_widgets.php";
 		add_action( 'widgets_init', array('kcEssentials_widgets', 'init') );
@@ -52,28 +52,33 @@ class kcEssentials {
 		if ( !isset($settings['components']) || empty($settings['components']) )
 			return false;
 
-		foreach ( $settings['components'] as $group )
-			foreach ( $group as $component )
-				if ( file_exists("{$paths['inc']}/{$component}.php") )
-					require_once "{$paths['inc']}/{$component}.php";
+		add_action( 'init', array(__CLASS__, '_component_activation'), 100 );
 	}
 
 
 	public static function _sns_register() {
-		wp_register_script( 'kc-essentials', self::$pdata['paths']['scripts'].'/settings.js', array('kc-settings-base'), self::$pdata['version'], true );
-		wp_register_script( 'kc-widgets-admin', self::$pdata['paths']['scripts'].'/widgets.js', array('kc-settings-base', 'media', 'wp-ajax-response'), self::$pdata['version'], true );
+		wp_register_script( 'kc-essentials', self::$data['paths']['scripts'].'/settings.js', array('kc-settings-base'), self::$data['version'], true );
+		wp_register_script( 'kc-widgets-admin', self::$data['paths']['scripts'].'/widgets.js', array('kc-settings-base', 'media', 'wp-ajax-response'), self::$data['version'], true );
 
-		wp_register_style(  'kc-widgets-admin', self::$pdata['paths']['styles'].'/widgets.css', false, self::$pdata['version'] );
-		wp_register_style(  'kc-essentials', self::$pdata['paths']['styles'].'/settings.css', false, self::$pdata['version'] );
+		wp_register_style(  'kc-widgets-admin', self::$data['paths']['styles'].'/widgets.css', false, self::$data['version'] );
+		wp_register_style(  'kc-essentials', self::$data['paths']['styles'].'/settings.css', false, self::$data['version'] );
+	}
+
+
+	public static function _component_activation() {
+		foreach ( self::$data['settings']['components'] as $group )
+			foreach ( $group as $component )
+				if ( file_exists( self::$data['paths']['inc'] . "/{$component}.php") )
+					require_once self::$data['paths']['inc'] . "/{$component}.php";
 	}
 
 
 	public static function get_data() {
 		if ( !func_num_args() )
-			return self::$pdata;
+			return self::$data;
 
 		$args = func_get_args();
-		return kc_array_multi_get_value( self::$pdata, $args );
+		return kc_array_multi_get_value( self::$data, $args );
 	}
 
 
@@ -105,8 +110,8 @@ class kcEssentials {
 
 	public static function check_update() {
 		if ( !class_exists('kcUpdate') )
-			require_once self::$pdata['paths']['inc'] . '/_update.php';
-		new kcUpdate( '0.1', 'http://repo.kucrut.org/api.php', self::$pdata['paths']['p_file'] );
+			require_once self::$data['paths']['inc'] . '/_update.php';
+		new kcUpdate( '0.1', 'http://repo.kucrut.org/api.php', self::$data['paths']['p_file'] );
 	}
 }
 add_action( 'plugins_loaded', array('kcEssentials', 'init') );

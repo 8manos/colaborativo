@@ -147,41 +147,34 @@ class kc_widget_twitter extends WP_Widget {
 			return;
 
 		$list = get_transient( "kcw_twitter_{$instance['username']}" );
-		if ( !$list || count($list) < $instance['count'] ) {
-			$json = wp_remote_get("http://api.twitter.com/1/statuses/user_timeline.json?screen_name={$instance['username']}&count={$instance['count']}");
+		if ( !$list || count($list) < $instance['count'] || !is_object($list[0]) ) {
+			$json = wp_remote_get(
+				"http://api.twitter.com/1/statuses/user_timeline.json?include_entities=1&screen_name={$instance['username']}&count={$instance['count']}",
+				array(
+					'timeout' => 25,
+					'user-agent' => 'Mozilla Firefox'
+				)
+			);
+
 			if ( is_wp_error($json) || $json['response']['code'] == '400' ) {
 				return;
 			}
 			else {
-				$list = json_decode( $json['body'], true );
+				$list = json_decode( wp_remote_retrieve_body( $json ) );
 				set_transient( "kcw_twitter_{$instance['username']}", $list, $instance['expiration'] * 60 );
 			}
 		}
 
 		$out = "<ul>\n";
 		$now = time();
-		if ( $instance['count'] < count($list) )
-			$list = array_slice( $list, 0, $instance['count'] );
-
 		foreach ( $list as $idx => $item ) {
-			$text = $item['text'];
-			$text = apply_filters(
-				'kcw_twitter_status_text',
-				"<p>".preg_replace(
-					array('/(^|\s)#(\w*[a-zA-Z_]+\w*)/', '/(^|\s)@(\w*[a-zA-Z_]+\w*)/'),
-					array('\1#<a href="http://search.twitter.com/search?q=%23\2">\2</a>',
-					'\1<a href="http://twitter.com/\2">@\2</a>'),
-					$text
-				)."</p>",
-				$text,
-				$item,
-				$this,
-				$instance
-			);
+			if ( $idx == $instance['count'] )
+				break;
+
 			$out .= "<li class='item'>";
-			$out .= $text;
+			$out .= $this->process_tweet( $item );
 			if ( $instance['show_date'] ) {
-				$date = strtotime( $item['created_at'] );
+				$date = strtotime( $item->created_at );
 				$diff = (int) abs( $now - $date );
 				if ( $instance['date_format'] == 'relative' || ($instance['date_format'] == 'relative_m' && $diff <= 2592000) )
 					$date = sprintf( __('%s ago', 'kc-essentials'), human_time_diff($date) );
@@ -189,7 +182,7 @@ class kc_widget_twitter extends WP_Widget {
 					$date = sprintf( __('%1$s at %2$s', 'kc-essentials'), date(get_option('date_format'), $date), date(get_option('time_format'), $date) );
 				else
 					$date = date( $instance['date_custom'], $date );
-				$out .= apply_filters( 'kcw_twitter_date', "<abbr class='datetime' title='{$item['created_at']}'>{$date}</abbr>", $date, $item['created_at'], $this, $instance );
+				$out .= apply_filters( 'kcw_twitter_date', "<abbr class='datetime' title='{$item->created_at}'>{$date}</abbr>", $date, $item->created_at, $this, $instance );
 			}
 			$out .= "</li>\n";
 		}
@@ -206,6 +199,45 @@ class kc_widget_twitter extends WP_Widget {
 <?php do_action( 'kcw_twitter_after_list', $this, $instance ); ?>
 <?php echo $args['after_widget']; ?>
 	<?php }
+
+
+	# Credit: http://wp.tutsplus.com/tutorials/plugins/how-to-create-a-recent-tweets-widget/
+	function process_tweet( $tweet ) {
+		$entities = $tweet->entities;
+		$content = $tweet->text;
+
+		# Links
+		if ( !empty($entities->urls) ) {
+			foreach ( $entities->urls as $url ) {
+				$content = str_ireplace($url->url,  '<a href="'.esc_url($url->expanded_url).'">'.$url->display_url.'</a>', $content);
+			}
+		}
+
+		# Hashtags
+		if ( !empty($entities->hashtags) ) {
+			foreach ( $entities->hashtags as $hashtag ) {
+				$url = 'http://search.twitter.com/search?q=' . urlencode($hashtag->text);
+				$content = str_ireplace('#'.$hashtag->text,  '<a href="'.esc_url($url).'">#'.$hashtag->text.'</a>', $content);
+			}
+		}
+
+		# Usernames
+		if ( !empty($entities->user_mentions) ) {
+			foreach ( $entities->user_mentions as $user ) {
+				$url = 'http://twitter.com/'.urlencode($user->screen_name);
+				$content = str_ireplace('@'.$user->screen_name,  '<a href="'.esc_url($url).'">@'.$user->screen_name.'</a>', $content);
+			}
+		}
+
+		# Media URLs
+		if ( !empty($entities->media) ) {
+			foreach ( $entities->media as $media ) {
+				$content = str_ireplace($media->url,  '<a href="'.esc_url($media->expanded_url).'">'.$media->display_url.'</a>', $content);
+			}
+		}
+
+		return $content;
+	}
 
 
 	public static function kcml_fields( $widgets ) {

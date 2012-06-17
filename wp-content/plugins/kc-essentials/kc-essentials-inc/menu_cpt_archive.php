@@ -7,7 +7,7 @@
 
 
 class kcEssentials_menu_cpt_archive {
-	private static $pdata = array(
+	private static $data = array(
 		'items' => array()
 	);
 
@@ -21,7 +21,7 @@ class kcEssentials_menu_cpt_archive {
 		if ( empty($post_types) )
 			return false;
 
-		self::$pdata['post_types'] = $post_types;
+		self::$data['post_types'] = $post_types;
 		foreach ( $post_types as $post_type )
 			add_filter( 'nav_menu_items_' . $post_type->name, array(__CLASS__, '_add' ), 10, 3 );
 
@@ -60,20 +60,20 @@ class kcEssentials_menu_cpt_archive {
 		if ( is_singular($matches[1]) )
 			$classes[] = 'current-menu-ancestor';
 
-		self::$pdata['items'][$item->ID] = array( 'post_type' => $matches[1] );
+		self::$data['items'][$item->ID] = array( 'post_type' => $matches[1] );
 		return $classes;
 	}
 
 
 	public static function _set_path( $item_output, $item, $depth, $args ) {
-		if ( !isset(self::$pdata['items'][$item->ID]) )
+		if ( !isset(self::$data['items'][$item->ID]) )
 			return $item_output;
 
-		$post_type_object = get_post_type_object( self::$pdata['items'][$item->ID]['post_type'] );
-		$url = get_post_type_archive_link(self::$pdata['items'][$item->ID]['post_type']);
+		$post_type_object = get_post_type_object( self::$data['items'][$item->ID]['post_type'] );
+		$url = get_post_type_archive_link(self::$data['items'][$item->ID]['post_type']);
 
 		$item_output = preg_replace('/href=".*?"/', 'href="'.$url.'"', $item_output );
-		self::$pdata['items'][$item->ID]['path'] = $url;
+		self::$data['items'][$item->ID]['path'] = $url;
 		return $item_output;
 	}
 }

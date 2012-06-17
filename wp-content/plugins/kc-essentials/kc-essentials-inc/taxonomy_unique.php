@@ -7,7 +7,7 @@
 
 
 class kcEssentials_uniquetax {
-	private static $pdata;
+	private static $data;
 
 
 	# Create metabox
@@ -16,7 +16,7 @@ class kcEssentials_uniquetax {
 		if ( !$taxonomies )
 			return $post_type;
 
-		self::$pdata['taxonomies'] = array();
+		self::$data['taxonomies'] = array();
 		foreach ( $taxonomies as $tax_name ) {
 			if ( !taxonomy_exists( $tax_name ) )
 				continue;
@@ -25,7 +25,7 @@ class kcEssentials_uniquetax {
 			if ( !$tax_object->hierarchical || !$tax_object->show_ui || !in_array($post_type, $tax_object->object_type) )
 				continue;
 
-			self::$pdata['taxonomies'][$tax_name] = $tax_object;
+			self::$data['taxonomies'][$tax_name] = $tax_object;
 			remove_meta_box( "{$tax_name}div", $post_type, 'side' );
 			add_meta_box( "unique-{$tax_name}-div", $tax_object->label, array(__CLASS__, '_fill_meta_box'), $post_type, 'side', 'low', $tax_name );
 		}
@@ -34,7 +34,7 @@ class kcEssentials_uniquetax {
 
 	# Fill em
 	public static function _fill_meta_box( $post, $box ) {
-		$tax_object = self::$pdata['taxonomies'][$box['args']]; ?>
+		$tax_object = self::$data['taxonomies'][$box['args']]; ?>
 		<div id="taxonomy-<?php echo $tax_object->name; ?>" class="categorydiv">
 			<?php
 				$i_name = ( $tax_object->name == 'category' ) ? 'post_category' : 'tax_input[' . $tax_object->name . ']';
