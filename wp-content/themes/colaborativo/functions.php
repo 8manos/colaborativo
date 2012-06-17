@@ -223,6 +223,7 @@ function display_article() {
 			</a>
 		<?php } ?>
 		<h2><?php the_title(); ?></h2>
+        <a class="overlay" href="#"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
 		<footer class="post-meta">
 			<span class="autor"><?php _e('Por:', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria"><?php the_category(); ?></span>

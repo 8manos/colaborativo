@@ -67,6 +67,7 @@ body {
 
 #timeline article {
   margin-bottom:1.8em;
+  position:relative;
 }
 
 #timeline article:nth-child(4n+1) {
@@ -77,8 +78,60 @@ body {
 
 }
 
+#timeline article footer {
+  background-color:#fff;
+  z-index:5;
+}
+
 #timeline article footer span {
   display: block;
+}
+
+#timeline article .overlay {
+  background-image:url('img/icon7.png');
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  display: none;
+}
+
+#timeline article:hover .overlay {
+  background-color:rgba(0, 0, 0, 0.5);
+  display:block;
+  height:100%;
+  left:0;
+  position:absolute;
+  text-align:center;
+  top:0;
+  width:100%;
+  z-index:2;
+}
+
+#timeline article.descarga .overlay {
+  background-image:url('img/icon5.png');
+}
+
+#timeline article.imagen .overlay {
+  background-image:url('img/icon1.png');
+}
+
+#timeline article.imagen.flickr .overlay {
+  background-image:url('img/icon8.png');
+}
+
+#timeline article.post .overlay {
+  background-image:url('img/icon7.png');
+}
+
+#timeline article.sonido .overlay {
+  background-image:url('img/icon4.png');
+}
+
+#timeline article.tweet .overlay {
+  background-image:url('img/icon2.png');
+}
+
+#timeline article.video .overlay {
+  background-image:url('img/icon3.png');
 }
 
 .admin-bar body {
