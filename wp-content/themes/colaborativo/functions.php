@@ -226,7 +226,7 @@ function display_article() {
             <?php 
                 if(get_post_type() == "imagen"){ 
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
-                $enclosure =explode(' ', $enclosure)
+                $enclosure_array = explode(' ', $enclosure)
             ?>
 
 
@@ -237,7 +237,7 @@ function display_article() {
                                 the_post_thumbnail();
                             }else{
                         ?>
-        				    <img src="<?php echo($enclosure[0]); ?>" />
+        				    <img src="<?php echo($enclosure_array[0]); ?>" />
                         <?php } ?>
         			</a>
         		<?php } ?>
