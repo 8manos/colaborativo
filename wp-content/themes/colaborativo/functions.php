@@ -232,7 +232,7 @@ function display_article() {
         		<?php if(has_post_thumbnail() || $enclosure){ ?>
         			<a class="thumbnail" href="<?php the_permalink(); ?>">
                         <?php 
-                            if(has_post_thumbnail() { 
+                            if(has_post_thumbnail()) { 
                                 the_post_thumbnail();
                             }else{
                         ?>
