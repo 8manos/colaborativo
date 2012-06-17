@@ -67,7 +67,6 @@ body {
 
 #timeline article {
   margin-bottom:1.8em;
-  position:relative;
 }
 
 #timeline article:nth-child(4n+1) {
@@ -87,20 +86,26 @@ body {
   display: block;
 }
 
-#timeline article .overlay {
-  background-image:url('img/icon7.png');
-  background-position:50% 50%;
-  background-repeat:no-repeat;
+#timeline article .article-content {
+  position:relative;
+}
+
+#timeline article .article-content .overlay {
   display: none;
 }
 
-#timeline article:hover .overlay {
+#timeline article:hover .article-content .overlay {
+  background-position:50% 50%;
+  background-repeat:no-repeat;
   background-color:rgba(0, 0, 0, 0.5);
   display:block;
   height:100%;
   left:0;
+  overflow:hidden;
   position:absolute;
   text-align:center;
+  text-indent:-9999em;
+  font:0/0;
   top:0;
   width:100%;
   z-index:2;

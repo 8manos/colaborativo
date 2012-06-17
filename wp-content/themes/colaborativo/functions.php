@@ -217,13 +217,16 @@ add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 function display_article() {
 ?>
 	<article <?php post_class('span3'); ?> data-timestamp="<?php the_time('U'); ?>">
-		<?php if(has_post_thumbnail()){ ?>
-			<a class="thumbnail" href="#">
-				<img src="http://placehold.it/250x250" />
-			</a>
-		<?php } ?>
-		<h2><?php the_title(); ?></h2>
-        <a class="overlay" href="#"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+        <div class="article-content">
+    		<?php if(has_post_thumbnail()){ ?>
+    			<a class="thumbnail" href="<?php the_permalink(); ?>">
+    				<img src="http://placehold.it/250x250" />
+    			</a>
+    		<?php } ?>
+            <h2><?php the_title(); ?></h2>
+            <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+        </div>
+		
 		<footer class="post-meta">
 			<span class="autor"><?php _e('Por:', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria"><?php the_category(); ?></span>
