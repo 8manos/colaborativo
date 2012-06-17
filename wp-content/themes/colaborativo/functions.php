@@ -282,4 +282,18 @@ function colores_cats() {
     
     $colores .= "</style>";
     echo $colores;
+
+function colaborativo_vistas_query( $query ) {
+
+    if( $query->is_main_query() && !is_admin() && is_category()) ) {
+
+        $query->set('post_type' ,  'tweet');
+        // $query->set('orderby', 'meta_value_num');
+        //$query->set('order', 'DESC'); 
+
+    }
+}
+
+add_action( 'pre_get_posts', 'colaborativo_vistas_query' );
+
 }

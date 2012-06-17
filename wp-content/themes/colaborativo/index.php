@@ -58,7 +58,7 @@ $items = new WP_Query($params); ?>
 
 <?php 
 	$i = 1;
-	while ($items->have_posts()) : $items->the_post(); 
+	while (have_posts()) : the_post(); 
 		display_article();
 		$i++;
 	endwhile; 
