@@ -10,6 +10,21 @@ function setup_colaborativo(){
 }
 add_action( 'after_setup_theme', 'setup_colaborativo' );
 
+// enqueue scripts
+function colaborativo_scripts_method() {
+
+    wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','','',true);
+    wp_enqueue_script( 'colaborativo_plugins' );
+
+    wp_register_script('colaborativo_app',get_template_directory_uri() . '/js/app.js','','',true);
+    wp_enqueue_script( 'colaborativo_app' );
+
+    wp_enqueue_script( 'jquery' );
+
+}    
+ 
+add_action('wp_enqueue_scripts', 'colaborativo_scripts_method');
+
 /*
 | -------------------------------------------------------------------
 | Registering Top Navigation Bar
