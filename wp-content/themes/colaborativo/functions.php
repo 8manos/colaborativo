@@ -346,7 +346,7 @@ add_action( 'pre_get_posts' , 'ucc_pre_get_posts_filter' );
 /**
  * Display navigation to next/previous pages when applicable
  */
-function twentyeleven_content_nav( $nav_id ) {
+function colaborativo_content_nav( $nav_id ) {
     global $wp_query;
 
     if ( $wp_query->max_num_pages > 1 ) : ?>
