@@ -1,5 +1,13 @@
 jQuery(document).ready(function ($) {
-	$('#timeline').isotope({
-		itemSelector : 'article'
+
+	// document ready
+
+	$(window).load(function(){
+
+		// window ready 
+		
+		$('#timeline').isotope({
+			itemSelector : 'article'
+		});
 	});
 });
