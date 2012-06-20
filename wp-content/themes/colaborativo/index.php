@@ -56,8 +56,6 @@
 </section>
 
 <div class="paging acenter">
-	<a href="#" class="btn btn-primary btn-large">
-		<?php _e('Cargar más contenidos','colaborativo'); ?>
-	</a>
+	<?php colaborativo_content_nav(); ?>
 </div>
 <?php get_footer(); ?>

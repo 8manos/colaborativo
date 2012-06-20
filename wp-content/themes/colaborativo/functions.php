@@ -342,3 +342,17 @@ function ucc_pre_get_posts_filter( $query ) {
     }
 } }
 add_action( 'pre_get_posts' , 'ucc_pre_get_posts_filter' );
+
+/**
+ * Display navigation to next/previous pages when applicable
+ */
+function colaborativo_content_nav( $nav_id ) {
+    global $wp_query;
+
+    if ( $wp_query->max_num_pages > 1 ) : ?>
+        <nav id="<?php echo $nav_id; ?>">
+            <div class="nav-next"><?php previous_posts_link( __( 'Cargar más contenidos', 'colaborativo' ) ); ?></div>
+        </nav><!-- #nav-above -->
+    <?php endif;
+}
+endif;
