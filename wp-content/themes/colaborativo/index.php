@@ -29,7 +29,7 @@
 			$post_types=get_post_types($args,$output,$operator); 
 				  foreach ($post_types  as $post_type ) {
 				  	$link = add_query_arg( 'post_type', $post_type );
-				    echo '<a href="'.$link.'" class="btn'. $post_type .'">'. $post_type. '</a>';
+				    echo '<a class="ir sprite tipo-'. $post_type .'" href="'.$link.'" class="btn'. $post_type .'">'. $post_type. '</a>';
 				  }
 			?>
 			</div>

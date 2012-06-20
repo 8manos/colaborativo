@@ -22,12 +22,64 @@ body {
   
 }
 
+#filters {
+  margin:0 0 1.4em;
+}
+
+#filters h3 {
+  line-height:50px;
+}
+
 #filters-buttons {
   text-align:center;
 }
 
-#filters-buttons button {
-  float:none;
+#filters-buttons a {
+  background-position: -225px -190px;
+  height: 50px;
+  margin: 0 8px;
+  vertical-align:middle;
+  width: 50px;
+}
+
+#filters-buttons a.tipo-descarga {
+    background-position:-535px -190px;
+}
+
+#filters-buttons a.tipo-imagen {
+  background-position:-285px -190px;
+}
+
+#filters-buttons a.tipo-sonido {
+    background-position:-470px -190px;
+}
+
+#filters-buttons a.tipo-tweet {
+    background-position:-410px -190px;
+}
+
+#filters-buttons a.tipo-video {
+    background-position:-345px -190px;
+}
+
+#filters-buttons a:hover.tipo-descarga {
+    background-position:-535px -243px;
+}
+
+#filters-buttons a:hover.tipo-imagen {
+  background-position:-285px -243px;
+}
+
+#filters-buttons a:hover.tipo-sonido {
+    background-position:-470px -243px;
+}
+
+#filters-buttons a:hover.tipo-tweet {
+    background-position:-410px -243px;
+}
+
+#filters-buttons a:hover.tipo-video {
+    background-position:-345px -243px;
 }
 
 #footer {
