@@ -150,6 +150,24 @@ body {
   display: none;
 }
 
+#timeline article .categoria {
+  text-transform:uppercase;
+}
+
+#timeline article .categoria ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+#timeline article .categoria ul li {
+  display:inline;
+}
+
+#timeline article .categoria ul li a {
+  color:#fff;
+}
+
 #timeline article:hover .article-content .overlay {
   background-position:50% 50%;
   background-repeat:no-repeat;
