@@ -264,7 +264,7 @@ function display_article() {
         </div>
 		
 		<footer class="post-meta">
-			<span class="autor"><?php _e('Por:', 'colaborativo'); the_author(); ?></span>
+			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria"><?php the_category(); ?></span>
 		</footer>
 	</article>
