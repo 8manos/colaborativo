@@ -324,6 +324,23 @@ body {
   margin-top:3em;
 }
 
+.paging #load-more {
+  display:none;
+}
+
+  .js .paging #load-more {
+    display: inline-block;
+  }
+
+.paging .nav {
+
+}
+
+  .js .paging #prev-next {
+    display:none;
+  }
+
+
 .sprite {
   background-image:url('img/sprite.png');
   background-position:0px 0px;

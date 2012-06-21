@@ -13,6 +13,9 @@ add_action( 'after_setup_theme', 'setup_colaborativo' );
 // enqueue scripts
 function colaborativo_scripts_method() {
 
+    wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','','',false);
+    wp_enqueue_script( 'colaborativo_modernizr' );
+
     wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','','',true);
     wp_enqueue_script( 'colaborativo_plugins' );
 
@@ -350,9 +353,49 @@ function colaborativo_content_nav( ) {
     global $wp_query;
 
     if ( $wp_query->max_num_pages > 1 ) : ?>
-        <nav id="<?php echo $nav_id; ?>">
+        <nav id="prev-next">
             <div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyeleven' ) ); ?></div>
             <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
         </nav><!-- #nav-above -->
     <?php endif;
 }
+
+/*
+ * MAGIA AJAX
+ */
+
+function agregador_cajas(){
+
+            if(isset($_POST['pagina'])){
+                    $cat = $_POST['cat'];       /* El hashtag */
+                    $operacion = $_POST['op'];  /* Append o prepend, modifica mayor que o menor que el tiempo */
+                    $time = $_POST['time'];     /* El tiempo de el primer o ultimo item en el view del usuario */ 
+                    $type = $_POST['type'];     /* Tipos de post */
+            } 
+
+            $params = array( 
+                'post_type' => array( 'post', 'imagen', 'video', 'descarga', 'sonido', 'tweet'),
+                'posts_per_page' => "20",
+                'cat' => $cat,
+                'paged' => $pagina
+            );
+
+            $q = new WP_Query($params);
+
+            $i = 1;
+
+            if($q->have_posts()){
+
+                while ($q->have_posts()) : $q->the_post(); 
+            
+                 display_article();
+
+                endwhile; 
+
+            }else{
+                echo "0";
+            } exit;
+}
+
+add_action('wp_ajax_agregarboxes', 'agregador_cajas');
+add_action('wp_ajax_nopriv_agregarboxes', 'agregador_cajas');
