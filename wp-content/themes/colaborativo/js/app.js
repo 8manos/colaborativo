@@ -37,7 +37,7 @@ jQuery(document).ready(function ($) {
 					$('#load-more').html("no more for now");
 				}else{
 					$('#timeline').isotope( 'insert',$(results));
-					$('#load-more').attr('data-page', parseInt(tid)+1)
+					//$('#load-more').attr('data-page', parseInt(tid)+1)
 					$('#load-more').html("Cargar más contenidos");
 				}
 			}

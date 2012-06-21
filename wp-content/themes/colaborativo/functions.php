@@ -366,44 +366,58 @@ function colaborativo_content_nav( ) {
 
 function agregador_cajas(){
 
-            if(isset($_POST['id'])){
-                    $cat = $_POST['cat'];       /* El hashtag */
-                    $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
-                    $id = $_POST['id'];         /* El id del primer o ultimo item en el view del usuario */
-                    $type = $_POST['type'];     /* Tipos de post */
-            }
+    if(isset($_POST['id'])){
+            $cat = $_POST['cat'];       /* El hashtag */
+            $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
+            $id = $_POST['id'];         /* El id del primer o ultimo item en el view del usuario */
+            $type = $_POST['type'];     /* Tipos de post */
+    }
 
-            if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
-                $post_types = array( $type );
-            }else{
-                $post_types = get_post_types( array('public' => true, '_builtin' => false), 'names' );
-                $post_types = array_merge( $post_types, array('post') );
-            }
+    if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
+        $post_types = array( $type );
+    }else{
+        $post_types = get_post_types( array('public' => true, '_builtin' => false), 'names' );
+        $post_types = array_merge( $post_types, array('post') );
+    }
 
-            $params = array(
-                'post_type' => $post_types,
-                'posts_per_page' => "10",
-                'cat' => $cat,
-                'paged' => $pagina
-            );
-            $params['posts_per_page'] = ($operacion == 'append') ? 10 : -1;
+    $params = array(
+        'post_type' => $post_types,
+    );
+    if($cat){
+        $params['cat'] = $cat;
+    }
+    $params['posts_per_page'] = $operacion=='append' ? 10 : -1;
 
-            $q = new WP_Query($params);
+    //para poder filtrar por el id se usa un filtro
+    //el filtro necesita que le digamos el id y si queremos mas o menos
+    global $id_for_filter, $op_for_filter;
+    $id_for_filter = $id;
+    $op_for_filter = $operacion;
 
-            $i = 1;
+    add_filter( 'posts_where', 'filter_where' );
+    $q = new WP_Query($params);
+    remove_filter( 'posts_where', 'filter_where' );
 
-            if($q->have_posts()){
+    $i = 1;
 
-                while ($q->have_posts()) : $q->the_post();
+    if($q->have_posts()){
 
-                 display_article();
+        while ($q->have_posts()) : $q->the_post();
+            display_article();
+        endwhile;
 
-                endwhile;
-
-            }else{
-                echo "0";
-            } exit;
+    }else{
+        echo "0";
+    } exit;
 }
 
 add_action('wp_ajax_agregarboxes', 'agregador_cajas');
 add_action('wp_ajax_nopriv_agregarboxes', 'agregador_cajas');
+
+function filter_where($where='')
+{
+    global $id_for_filter, $op_for_filter;
+    $where .= " AND wp_posts.ID ";
+    $where .= $op_for_filter=='append' ? "< $id_for_filter" : "> $id_for_filter";
+    return $where;
+}
