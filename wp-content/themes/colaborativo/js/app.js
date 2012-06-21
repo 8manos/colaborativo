@@ -1,28 +1,32 @@
 jQuery(document).ready(function ($) {
 
-	// document ready
-	$('body').removeClass('no-js').addClass('js');
-
-
 	// Async load more
-	$('#load-more').click(function(e){
+	$('#load-more').click(function(e)
+	{
+		e.preventDefault();
 
 		$('#load-more').html("Cargando ...");
 
 		var cid = $(this).attr('data-cat');
 		var dop = $(this).attr('data-op');
-		var lastid = $('#timeline article:last-child').attr('data-timestamp');
+		if (dop == 'append'){
+			var classes = $('#timeline article:last-child').attr('class');
+			var lastid = classes.slice(5, classes.indexOf(" "));
+		}else{
+			var classes = $('#timeline article:first-child').attr('data-timestamp');
+			var lastid = classes.slice(5, classes.indexOf(" "));
+		}
 		var posttype = $(this).attr('data-type');
 
 		$.ajax({
 			url : '/wp-admin/admin-ajax.php',
 			type : 'POST',
 			async : true,
-			data : 
-			{ 
-				action : 'agregarboxes', 
-				time : lastid, 
-				cat : cid, 
+			data :
+			{
+				action : 'agregarboxes',
+				id : lastid,
+				cat : cid,
 				op : dop,
 				type : posttype
 			},
@@ -38,13 +42,12 @@ jQuery(document).ready(function ($) {
 				}
 			}
 		});
-		e.preventDefault();
 	});
 
 	$(window).load(function(){
 
-		// window ready 
-		
+		// window ready
+
 		$('#timeline').isotope({
 			itemSelector : 'article'
 		});

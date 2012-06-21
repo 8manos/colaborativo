@@ -3,7 +3,7 @@
 remove_action('wp_head', 'wp_generator');
 
 /**
- * Setup the theme 
+ * Setup the theme
  */
 function setup_colaborativo(){
 	add_theme_support( 'post-thumbnails' );
@@ -24,8 +24,8 @@ function colaborativo_scripts_method() {
 
     wp_enqueue_script( 'jquery' );
 
-}    
- 
+}
+
 add_action('wp_enqueue_scripts', 'colaborativo_scripts_method');
 
 /*
@@ -74,7 +74,7 @@ function colaborativo_post_types() {
     'view_item' => __('Ver imagen'),
     'search_items' => __('Buscar imagenes'),
     'not_found' =>  __('No se encontraron imagenes'),
-    'not_found_in_trash' => __('No hay imagenes en la basura'), 
+    'not_found_in_trash' => __('No hay imagenes en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Imagenes'
 
@@ -83,17 +83,17 @@ function colaborativo_post_types() {
     'labels' => $labels_img,
     'public' => true,
     'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
+    'show_ui' => true,
+    'show_in_menu' => true,
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'has_archive' => true, 
+    'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 5,
     'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
     'taxonomies' => array( 'category' )
-  ); 
+  );
 
   $labels_video = array(
     'name' => _x('Videos', 'post type general name'),
@@ -106,7 +106,7 @@ function colaborativo_post_types() {
     'view_item' => __('Ver video'),
     'search_items' => __('Buscar Videos'),
     'not_found' =>  __('No se encontraron Videos'),
-    'not_found_in_trash' => __('No hay Videos en la basura'), 
+    'not_found_in_trash' => __('No hay Videos en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Videos'
 
@@ -115,17 +115,17 @@ function colaborativo_post_types() {
     'labels' => $labels_video,
     'public' => true,
     'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
+    'show_ui' => true,
+    'show_in_menu' => true,
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'has_archive' => true, 
+    'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 6,
     'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
     'taxonomies' => array( 'category' )
-  ); 
+  );
 
   $labels_tweet = array(
     'name' => _x('Tweets', 'post type general name'),
@@ -138,7 +138,7 @@ function colaborativo_post_types() {
     'view_item' => __('Ver tweet'),
     'search_items' => __('Buscar Tweets'),
     'not_found' =>  __('No se encontraron Tweets'),
-    'not_found_in_trash' => __('No hay Tweets en la basura'), 
+    'not_found_in_trash' => __('No hay Tweets en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Tweets'
 
@@ -147,17 +147,17 @@ function colaborativo_post_types() {
     'labels' => $labels_tweet,
     'public' => true,
     'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
+    'show_ui' => true,
+    'show_in_menu' => true,
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'has_archive' => true, 
+    'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 7,
     'supports' => array( 'title', 'author', 'comments', 'custom-fields' ),
     'taxonomies' => array( 'category' )
-  ); 
+  );
 
   $labels_sonido = array(
     'name' => _x('Sonidos', 'post type general name'),
@@ -170,7 +170,7 @@ function colaborativo_post_types() {
     'view_item' => __('Ver sonido'),
     'search_items' => __('Buscar Sonidos'),
     'not_found' =>  __('No se encontraron Sonidos'),
-    'not_found_in_trash' => __('No hay Sonidos en la basura'), 
+    'not_found_in_trash' => __('No hay Sonidos en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Sonidos'
 
@@ -179,17 +179,17 @@ function colaborativo_post_types() {
     'labels' => $labels_sonido,
     'public' => true,
     'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
+    'show_ui' => true,
+    'show_in_menu' => true,
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'has_archive' => true, 
+    'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 8,
     'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' ),
     'taxonomies' => array( 'category' )
-  ); 
+  );
 
   $labels_descarga = array(
     'name' => _x('Descargas', 'post type general name'),
@@ -202,7 +202,7 @@ function colaborativo_post_types() {
     'view_item' => __('Ver descarga'),
     'search_items' => __('Buscar Descargas'),
     'not_found' =>  __('No se encontraron Descargas'),
-    'not_found_in_trash' => __('No hay Descargas en la basura'), 
+    'not_found_in_trash' => __('No hay Descargas en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Descargas'
 
@@ -211,17 +211,17 @@ function colaborativo_post_types() {
     'labels' => $labels_descarga,
     'public' => true,
     'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
+    'show_ui' => true,
+    'show_in_menu' => true,
     'query_var' => true,
     'rewrite' => true,
     'capability_type' => 'post',
-    'has_archive' => true, 
+    'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 8,
     'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' ),
     'taxonomies' => array( 'category' )
-  ); 
+  );
 
   register_post_type('imagen',$args_img);
   register_post_type('video',$args_video);
@@ -241,8 +241,8 @@ function display_article() {
 ?>
 	<article <?php post_class('span3'); ?> data-timestamp="<?php the_time('U'); ?>">
         <div class="article-content">
-            <?php 
-                if(get_post_type() == "imagen"){ 
+            <?php
+                if(get_post_type() == "imagen"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
                 $enclosure_array = explode('
@@ -252,8 +252,8 @@ function display_article() {
 
         		<?php if(has_post_thumbnail() || $enclosure){ ?>
         			<a class="thumbnail" href="<?php the_permalink(); ?>">
-                        <?php 
-                            if(has_post_thumbnail()) { 
+                        <?php
+                            if(has_post_thumbnail()) {
                                 the_post_thumbnail();
                             }else{
                         ?>
@@ -265,7 +265,7 @@ function display_article() {
             <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
-		
+
 		<footer class="post-meta">
 			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria"><?php the_category(); ?></span>
@@ -311,7 +311,7 @@ function colores_cats() {
         $colores .= "li.cat-item-".$categoria->term_id." a:hover { color: ".$color." !important; } ";
         $colores .= "li.cat-item-".$categoria->term_id.".current-cat a { color: ".$color." !important; } ";
     }
-    
+
     $colores .= "</style>";
     echo $colores;
 }
@@ -366,40 +366,27 @@ function colaborativo_content_nav( ) {
 
 function agregador_cajas(){
 
-            if(isset($_POST['time'])){
+            if(isset($_POST['id'])){
                     $cat = $_POST['cat'];       /* El hashtag */
-                    $operacion = $_POST['op'];  /* Append o prepend, modifica mayor que o menor que el tiempo */
-                    $time = $_POST['time'];     /* El tiempo de el primer o ultimo item en el view del usuario */ 
+                    $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
+                    $id = $_POST['id'];         /* El id del primer o ultimo item en el view del usuario */
                     $type = $_POST['type'];     /* Tipos de post */
-            } 
+            }
 
             if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
                 $post_types = array( $type );
             }else{
-                $post_types = array( 'post', 'imagen', 'video', 'descarga', 'sonido', 'tweet');
+                $post_types = get_post_types( array('public' => true, '_builtin' => false), 'names' );
+                $post_types = array_merge( $post_types, array('post') );
             }
 
-            $pub_time = date($time);
-
-            // $query = new WP_Query( 'year=' . $today["year"] . '&monthnum=' . $today["mon"] . '&day=' . $today["mday"] );
-
-            $time_params = array( 
-                'year'      => $pub_time['year'],
-                'monthnum'  => $pub_time['mon'],
-                'day'       => $pub_time['mday'],
-                // 'hour'      => $pub_time[''],
-                // 'minute'    => $pub_time[''],
-                // 'second'    => $pub_time['']
-            );
-
-            array_merge($time_params);
-
-            $params = array( 
+            $params = array(
                 'post_type' => $post_types,
-                'posts_per_page' => "25",
+                'posts_per_page' => "10",
                 'cat' => $cat,
                 'paged' => $pagina
             );
+            $params['posts_per_page'] = ($operacion == 'append') ? 10 : -1;
 
             $q = new WP_Query($params);
 
@@ -407,11 +394,11 @@ function agregador_cajas(){
 
             if($q->have_posts()){
 
-                while ($q->have_posts()) : $q->the_post(); 
-            
+                while ($q->have_posts()) : $q->the_post();
+
                  display_article();
 
-                endwhile; 
+                endwhile;
 
             }else{
                 echo "0";
