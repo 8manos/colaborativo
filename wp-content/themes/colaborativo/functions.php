@@ -366,16 +366,37 @@ function colaborativo_content_nav( ) {
 
 function agregador_cajas(){
 
-            if(isset($_POST['pagina'])){
+            if(isset($_POST['time'])){
                     $cat = $_POST['cat'];       /* El hashtag */
                     $operacion = $_POST['op'];  /* Append o prepend, modifica mayor que o menor que el tiempo */
                     $time = $_POST['time'];     /* El tiempo de el primer o ultimo item en el view del usuario */ 
                     $type = $_POST['type'];     /* Tipos de post */
             } 
 
+            if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
+                $post_types = array( $type );
+            }else{
+                $post_types = array( 'post', 'imagen', 'video', 'descarga', 'sonido', 'tweet');
+            }
+
+            $pub_time = date($time);
+
+            // $query = new WP_Query( 'year=' . $today["year"] . '&monthnum=' . $today["mon"] . '&day=' . $today["mday"] );
+
+            $time_params = array( 
+                'year'      => $pub_time['year'],
+                'monthnum'  => $pub_time['mon'],
+                'day'       => $pub_time['mday'],
+                // 'hour'      => $pub_time[''],
+                // 'minute'    => $pub_time[''],
+                // 'second'    => $pub_time['']
+            );
+
+            array_merge($time_params);
+
             $params = array( 
-                'post_type' => array( 'post', 'imagen', 'video', 'descarga', 'sonido', 'tweet'),
-                'posts_per_page' => "20",
+                'post_type' => $post_types,
+                'posts_per_page' => "25",
                 'cat' => $cat,
                 'paged' => $pagina
             );
