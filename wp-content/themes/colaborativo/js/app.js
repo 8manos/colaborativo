@@ -9,19 +9,33 @@
 			t = setTimeout(getNewer, 30000);
 		}
 
+		function removeDuplicates($results)
+		{
+			$articles = $results.filter('article');
+			$articles.each(function(index) {
+				var id = $(this).attr('id');
+				if ( $('#'+id).length > 0 ){
+					$articles = $articles.not( $(this) );
+
+				}
+			});
+			return $articles;
+		}
+
 		function insertResults(results, op)
 		{
-			if (op == 'append'){
-				if(results == 0){
+			if(results == 0){
+				if (op == 'append'){
 					$('#load-more').html("no more for now");
-				}else{
-					$('#timeline').isotope( 'insert',$(results));
-					//$('#load-more').attr('data-page', parseInt(tid)+1)
-					$('#load-more').html("Cargar más contenidos");
 				}
 			}else{
-				if(results !== 0){
-					$('#timeline').prepend( $(results) ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+				$articles = removeDuplicates( $(results) );
+				if (op == 'append'){
+					$('#timeline').isotope( 'insert', $articles );
+					//$('#load-more').attr('data-page', parseInt(tid)+1)
+					$('#load-more').html("Cargar más contenidos");
+				}else{
+					$('#timeline').prepend( $articles ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 				}
 			}
 		}
