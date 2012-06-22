@@ -8,6 +8,16 @@ Version: 0.8
 License: GNU General Public License
 */
 
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('font/BEBAS___-webfont.eot');
+    src: url('font/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/BEBAS___-webfont.woff') format('woff'),
+         url('font/BEBAS___-webfont.ttf') format('truetype'),
+         url('font/BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
 	padding-top:40px;
@@ -19,7 +29,7 @@ body {
 }
 
 #cat-menu {
-  
+  font-family: 'BebasRegular';
 }
 
 #filters {
@@ -36,6 +46,7 @@ body {
 
 #filters-buttons a {
   background-position: -225px -190px;
+  font-family: 'BebasRegular';
   height: 50px;
   margin: 0 8px;
   vertical-align:middle;
@@ -311,9 +322,10 @@ body {
 }
 
 .navbar li a:after {
-  content:" | ";
+  content:"|";
   color:#777;
-  display:inline;
+  display:inline-block;
+  margin:0 4px;
 }
 
 .navbar li:last-child a:after {
