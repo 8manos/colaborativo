@@ -114,6 +114,8 @@
 			});
 
 			ajax_t = setTimeout(getNewer, 180000);
+
+			prependArticles( $('#hidden_articles article') );
 		});
 	});
 })(jQuery);

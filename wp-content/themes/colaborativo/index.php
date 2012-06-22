@@ -43,12 +43,28 @@
 	</div>
 </div>
 
-<section class="row" id="timeline">
-
 <?php
+	global $wp_query;
+	$args = array_merge( $wp_query->query, array( 'posts_per_page' => 40 ) );//esondemos 30 y mostramos 10
+	query_posts( $args );
+
+	$hidden_num = $wp_query->post_count - 10;
+	if ($hidden_num){//deben existir mas de 10 para que se muestre el div de los escondidos
+		echo '<div id="hidden_articles">';
+	}else{
+		echo '<section class="row" id="timeline">';
+	}
+
 	$i = 1;
 	while (have_posts()) : the_post();
+
 		display_article();
+
+		if ($i == $hidden_num){//cuando llega al ultimo articulo escondido
+			echo '</div>';
+			echo '<section class="row" id="timeline">';
+		}
+
 		$i++;
 	endwhile;
 ?>

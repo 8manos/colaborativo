@@ -137,6 +137,8 @@ body {
   width: 20px;
 }
 
+#hidden_articles { display: none; }
+
 #timeline article {
   margin-bottom:1.8em;
 }
