@@ -366,7 +366,7 @@ function colaborativo_content_nav( ) {
 
 function agregador_cajas(){
 
-    if(isset($_POST['id'])){
+    if(isset($_POST['time'])){
             $cat = $_POST['cat'];       /* El hashtag */
             $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
             $time = $_POST['time'];         /* El id del primer o ultimo item en el view del usuario */
