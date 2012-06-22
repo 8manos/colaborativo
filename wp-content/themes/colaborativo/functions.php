@@ -240,7 +240,7 @@ function colaborativo_post_types() {
 
   );
   $args_galeria = array(
-    'labels' => $labels_descarga,
+    'labels' => $labels_galeria,
     'public' => true,
     'publicly_queryable' => true,
     'show_ui' => true,
@@ -260,6 +260,7 @@ function colaborativo_post_types() {
   register_post_type('tweet',$args_tweet);
   register_post_type('sonido',$args_sonido);
   register_post_type('descarga',$args_descarga);
+  register_post_type('galeria',$args_galeria);
 
 }
 add_action( 'init', 'colaborativo_post_types' );
