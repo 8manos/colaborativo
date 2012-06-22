@@ -223,6 +223,38 @@ function colaborativo_post_types() {
     'taxonomies' => array( 'category' )
   );
 
+  $labels_galeria = array(
+    'name' => _x('Galerias', 'post type general name'),
+    'singular_name' => _x('galeria', 'post type singular name'),
+    'add_new' => _x('Agregar nuevo', 'book'),
+    'add_new_item' => __('Agregar nuevo galeria'),
+    'edit_item' => __('Editar galeria'),
+    'new_item' => __('Nuevo galeria'),
+    'all_items' => __('Todos los Galerias'),
+    'view_item' => __('Ver galeria'),
+    'search_items' => __('Buscar Galerias'),
+    'not_found' =>  __('No se encontraron Galerias'),
+    'not_found_in_trash' => __('No hay Galerias en la basura'),
+    'parent_item_colon' => '',
+    'menu_name' => 'Galerias'
+
+  );
+  $args_galeria = array(
+    'labels' => $labels_descarga,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'hierarchical' => false,
+    'menu_position' => 8,
+    'supports' => array( 'title', 'author', 'excerpt', 'comments', 'custom-fields' ),
+    'taxonomies' => array( 'category' )
+  );
+
   register_post_type('imagen',$args_img);
   register_post_type('video',$args_video);
   register_post_type('tweet',$args_tweet);
