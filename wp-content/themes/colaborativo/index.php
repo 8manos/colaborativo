@@ -43,6 +43,10 @@
 	</div>
 </div>
 
+<div id="counter_wrapper">
+	<span  id="counter_label">Actualización en</span>
+	<span  id="ajax_counter">3:00</span>
+</div>
 <?php
 	global $wp_query;
 	$args = array_merge( $wp_query->query, array( 'posts_per_page' => 40 ) );//esondemos 30 y mostramos 10
