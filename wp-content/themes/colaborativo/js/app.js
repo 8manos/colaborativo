@@ -6,7 +6,7 @@
 		{
 			getAjax( $('#load-more'), 'prepend' );
 
-			t = setTimeout(getNewer, 30000);
+			ajax_t = setTimeout(getNewer, 180000);
 		}
 
 		function removeDuplicates($results)
@@ -22,6 +22,29 @@
 			return $articles;
 		}
 
+		function displayBatch($articles, start, length)
+		{
+			if (start <= 0){
+				length = length + start;//muestra los que hagan falta
+				start = 0;
+			}else{
+				batch_t = setTimeout( function(){ displayBatch($articles, start-length, length) }, 5000 );
+			}
+
+			var $batch = $articles.slice(start, start+length);
+
+			$('#timeline').prepend( $batch ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+		}
+
+		function prependArticles($articles)
+		{
+			//maximo se tiene 30 tandas cada 5 segundos, lo cual duraría en total 2:30
+			var batch_number = Math.ceil($articles.length / 30);
+			var start = $articles.length - batch_number;
+
+			displayBatch($articles, start, batch_number)
+		}
+
 		function insertResults(results, op)
 		{
 			if(results == 0){
@@ -30,12 +53,15 @@
 				}
 			}else{
 				$articles = removeDuplicates( $(results) );
-				if (op == 'append'){
-					$('#timeline').isotope( 'insert', $articles );
-					//$('#load-more').attr('data-page', parseInt(tid)+1)
-					$('#load-more').html("Cargar más contenidos");
-				}else{
-					$('#timeline').prepend( $articles ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+
+				if ($articles.length > 0){//puede que todos fueran duplicados
+					if (op == 'append'){
+						$('#timeline').isotope( 'insert', $articles );
+						//$('#load-more').attr('data-page', parseInt(tid)+1)
+						$('#load-more').html("Cargar más contenidos");
+					}else{
+						prependArticles($articles);
+					}
 				}
 			}
 		}
@@ -87,7 +113,7 @@
 				itemSelector : 'article'
 			});
 
-			//t = setTimeout(getNewer, 3000);
+			ajax_t = setTimeout(getNewer, 180000);
 		});
 	});
 })(jQuery);
