@@ -239,7 +239,7 @@ add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
 function display_article() {
 ?>
-	<article <?php post_class('span3'); ?> data-timestamp="<?php the_time('U'); ?>">
+	<article <?php post_class('span3'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
         <div class="article-content">
             <?php
                 if(get_post_type() == "imagen"){
@@ -369,7 +369,7 @@ function agregador_cajas(){
     if(isset($_POST['id'])){
             $cat = $_POST['cat'];       /* El hashtag */
             $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
-            $id = $_POST['id'];         /* El id del primer o ultimo item en el view del usuario */
+            $time = $_POST['time'];         /* El id del primer o ultimo item en el view del usuario */
             $type = $_POST['type'];     /* Tipos de post */
     }
 
@@ -380,6 +380,7 @@ function agregador_cajas(){
         $post_types = array_merge( $post_types, array('post') );
     }
 
+    //parametros para wp_query
     $params = array(
         'post_type' => $post_types,
     );
@@ -390,8 +391,8 @@ function agregador_cajas(){
 
     //para poder filtrar por el id se usa un filtro
     //el filtro necesita que le digamos el id y si queremos mas o menos
-    global $id_for_filter, $op_for_filter;
-    $id_for_filter = $id;
+    global $time_for_filter, $op_for_filter;
+    $time_for_filter = $time;
     $op_for_filter = $operacion;
 
     add_filter( 'posts_where', 'filter_where' );
@@ -416,8 +417,9 @@ add_action('wp_ajax_nopriv_agregarboxes', 'agregador_cajas');
 
 function filter_where($where='')
 {
-    global $id_for_filter, $op_for_filter;
-    $where .= " AND wp_posts.ID ";
-    $where .= $op_for_filter=='append' ? "< $id_for_filter" : "> $id_for_filter";
+    global $time_for_filter, $op_for_filter;
+    $where .= " AND wp_posts.post_date ";
+    $where .= $op_for_filter=='append' ? "<= " : ">= ";
+    $where .= "'$time_for_filter'";
     return $where;
 }

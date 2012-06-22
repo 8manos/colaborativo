@@ -30,11 +30,9 @@
 		{
 			var cid = $button.attr('data-cat');
 			if (dop == 'append'){
-				var classes = $('#timeline article:last-child').attr('class');
-				var lastid = classes.slice(5, classes.indexOf(" "));
+				var date_time = $('#timeline article:last-child').attr('data-date');
 			}else{
-				var classes = $('#timeline article:first-child').attr('class');
-				var lastid = classes.slice(5, classes.indexOf(" "));
+				var date_time = $('#timeline article:first-child').attr('data-date');
 			}
 			var posttype = $button.attr('data-type');
 
@@ -45,7 +43,7 @@
 				data :
 				{
 					action : 'agregarboxes',
-					id : lastid,
+					time : date_time,
 					cat : cid,
 					op : dop,
 					type : posttype
@@ -75,7 +73,7 @@
 				itemSelector : 'article'
 			});
 
-			t = setTimeout(getNewer, 3000);
+			//t = setTimeout(getNewer, 3000);
 		});
 	});
 })(jQuery);
