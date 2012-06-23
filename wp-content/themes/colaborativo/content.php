@@ -1,0 +1,1 @@
+<?php display_article(); ?>
