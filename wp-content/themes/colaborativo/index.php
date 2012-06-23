@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 <div class="hero-unit">
 	<div class="row">
-		<div class="span6">
-			<h1>Bienvenidos al cubrimiento del cpco05<br />
+		<div class="span4">
+			<h2>Bienvenidos al cubrimiento del cpco05<br />
 				agrupamos los #Hashtagas mas populares del campus</h2>
 		</div>
-		<div class="span4 aright">
+		<div class="span6 aright right">
 			<p>Event icon</p>
 			<p class="hashtags">
 				<strong>Aporta contenidos usando los #HASHTAGS</strong><br />

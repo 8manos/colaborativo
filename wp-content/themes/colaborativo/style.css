@@ -37,7 +37,12 @@ body {
 }
 
 #filters h3 {
+  font-family: 'BebasRegular';
+  font-size:14px;
+  font-weight:normal;
   line-height:50px;
+  text-transform:uppercase;
+  word-spacing:0.1em;
 }
 
 #filters-buttons {
@@ -156,7 +161,10 @@ body {
 }
 
 #timeline article h2 {
-
+  font-family: 'BebasRegular';
+  font-size:20px;
+  font-weight:normal;
+  word-spacing:0.1em;
 }
 
 #timeline article footer {
@@ -262,6 +270,11 @@ body {
   background-image:url('img/icon2.png');
 }
 
+#timeline article.tweet h2 {
+  font-family:'Open Sans';
+  text-transform:none;
+}
+
 #timeline article.tweet .autor:before {
   background-position: -53px -109px;
 }
@@ -310,6 +323,13 @@ body {
   height:22px;
   width:25px;
   vertical-align:middle;
+}
+
+.hero-unit h2 {
+  font-family:'BebasRegular';
+  font-size:33px;
+  font-weight:normal;
+  text-transform:uppercase;
 }
 
 .ir {
