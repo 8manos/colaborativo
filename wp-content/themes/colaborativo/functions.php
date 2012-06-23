@@ -290,7 +290,7 @@ function display_article() {
                                 the_post_thumbnail();
                             }else{
                         ?>
-        				    <img src="<?php echo($enclosure_array[0]); ?>" />
+        				    <img width="255" height="255" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=255&h=255" />
                         <?php } ?>
         			</a>
         		<?php } ?>

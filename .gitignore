@@ -1,4 +1,5 @@
 github_update.php
+wp-content/themes/colaborativo/img/cache/*
 
 .htaccess
 wp-*.php
