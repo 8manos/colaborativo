@@ -2,11 +2,15 @@
 <div class="hero-unit">
 	<div class="row">
 		<div class="span6">
-			<h1>Hello, world!</h1>
-			<h2>This is a template for event covering and real-time social network agregation with a cool style.</h2>
+			<h1>Bienvenidos al cubrimiento del cpco05<br />
+				agrupamos los #Hashtagas mas populares del campus</h2>
 		</div>
 		<div class="span4 aright">
-			Event icon
+			<p>Event icon</p>
+			<p class="hashtags">
+				<strong>Aporta contenidos usando los #HASHTAGS</strong><br />
+				#CPCO5 | #SOMETHINGBETTER | #CPCO5BLOG | #CPCO5CREA | #CPCO5MOD | #CPCO5DEV | #CPCO5OCIO
+			</p>
 		</div>
 	</div>
 </div>
