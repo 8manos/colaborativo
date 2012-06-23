@@ -2,12 +2,42 @@
 {
 	$(function(){
 
-		function getNewer()
+		function formatSeconds(time)
+		{
+			var minutes = Math.floor(time / 60);
+			var seconds = time % 60;
+			var output = minutes + ':';
+			if (seconds < 10){
+				output = output + '0';
+			}
+			output = output + seconds;
+			return output;
+		}
+
+		function countdownTrigger()
+		{
+			count_t = setTimeout(countdownTrigger, 1000);
+
+			if(countdown_number > 1) {
+				countdown_number--;
+				if ( $('#ajax_counter').text() ){//cuando no hay nada, lo deja vacio
+					$('#ajax_counter').text( formatSeconds(countdown_number) );
+				}
+			}else{
+				$('#counter_label').text( 'Actualizando...' );
+				$('#ajax_counter').text( '' );
+				countdown_number = 180;//reinicia el contador
+
+				getAjax( $('#load-more'), 'prepend' );//hace la petición ajax
+			}
+		}
+
+		/*function getNewer()
 		{
 			getAjax( $('#load-more'), 'prepend' );
 
 			ajax_t = setTimeout(getNewer, 180000);
-		}
+		}*/
 
 		function removeDuplicates($results)
 		{
@@ -28,7 +58,7 @@
 				length = length + start;//muestra los que hagan falta
 				start = 0;
 			}else{
-				batch_t = setTimeout( function(){ displayBatch($articles, start-length, length) }, 5000 );
+				batch_t = setTimeout( function(){ displayBatch($articles, start-length, length) }, 10000 );
 			}
 
 			var $batch = $articles.slice(start, start+length);
@@ -38,8 +68,8 @@
 
 		function prependArticles($articles)
 		{
-			//maximo se tiene 30 tandas cada 5 segundos, lo cual duraría en total 2:30
-			var batch_number = Math.ceil($articles.length / 30);
+			//maximo se tiene 15 tandas cada 10 segundos, lo cual duraría en total 2:30
+			var batch_number = Math.ceil($articles.length / 15);
 			var start = $articles.length - batch_number;
 
 			displayBatch($articles, start, batch_number)
@@ -63,6 +93,12 @@
 						prependArticles($articles);
 					}
 				}
+			}
+
+			//relojito
+			if (op == 'prepend'){
+				$('#counter_label').html( 'Actualización en' );
+				$('#ajax_counter').text( formatSeconds(countdown_number)  );
 			}
 		}
 
@@ -113,7 +149,10 @@
 				itemSelector : 'article'
 			});
 
-			ajax_t = setTimeout(getNewer, 180000);
+			//ajax_t = setTimeout(getNewer, 180000);
+
+			countdown_number = 180;
+			count_t = setTimeout(countdownTrigger, 1000);
 
 			prependArticles( $('#hidden_articles article') );
 		});

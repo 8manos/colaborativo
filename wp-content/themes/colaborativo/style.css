@@ -137,6 +137,14 @@ body {
   width: 20px;
 }
 
+
+#counter_wrapper {
+  border: 1px solid #000000;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
 #hidden_articles { display: none; }
 
 #timeline article {
