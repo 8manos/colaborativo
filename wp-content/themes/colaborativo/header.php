@@ -36,17 +36,17 @@
 	  <div class="navbar-inner">
 	    <div class="container">
 		    <div class="row-fluid">	      
-		      <div class="span3">
+		      <div class="span2">
 			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
 			  </div>
 			  
-			  <div class="span6" id="cat-menu">
+			  <div class="span9" id="cat-menu">
 			  	<ul class="acenter nav">
 					<?php wp_list_categories('title_li=&hide_empty=0'); ?>
 				</ul>
 			  </div>
 
-		      <div class="aright span3">
+		      <div class="aright span1">
 		      	right menu
 		      </div>
 		    </div>
