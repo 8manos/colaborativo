@@ -319,7 +319,7 @@ function display_article() {
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <?php } ?>
 
-            <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto[<?php echo get_post_type() ?>]"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
 
 		<footer class="post-meta">
