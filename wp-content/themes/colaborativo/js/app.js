@@ -131,10 +131,8 @@
 						$("a[rel^='prettyPhoto']").prettyPhoto({
 								social_tools: '',
 								changepicturecallback: function(){
-									if (window.addthis){
-										window.addthis.ost = 0;
-										window.addthis.ready();
-									}
+									addthis.toolbox('.addthis_toolbox');
+									addthis.counter('.addthis_counter');
 								}
 						});
 					});
@@ -155,10 +153,8 @@
 		$("a[rel^='prettyPhoto']").prettyPhoto({
 			social_tools: '',
 			changepicturecallback: function(){
-				if (window.addthis){
-					window.addthis.ost = 0;
-					window.addthis.ready();
-				}
+				addthis.toolbox('.addthis_toolbox');
+				addthis.counter('.addthis_counter');
 			}
 		});
 
