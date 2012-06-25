@@ -141,6 +141,8 @@
 			getAjax( $(this), 'append' );
 		});
 
+		$("a[rel^='prettyPhoto']").prettyPhoto();
+
 		$(window).load(function(){
 
 			// window ready
