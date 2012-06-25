@@ -272,7 +272,7 @@ add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
 function display_article() {
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class('span3'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
+	<article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
         <div class="article-content">
             <?php
                 if(get_post_type() == "imagen"){
