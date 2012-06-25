@@ -547,6 +547,11 @@ body {
   width:65.8%;
 }
 
+.single .entry-content .video-embed {
+  margin-top:30px;
+  text-align:center;
+}
+
 .single .entry-aside {
   float:left;
   margin-left:15px;

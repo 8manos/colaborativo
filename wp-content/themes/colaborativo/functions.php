@@ -365,6 +365,15 @@ function display_article_content() {
                     </a>
                 <?php } ?>
             <?php 
+                }elseif(get_post_type() == "video"){
+                    $video_link = get_post_meta(get_the_ID(), $key = 'syndication_permalink', $single = true);
+                    parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
+                    $video_id = $video_vars['v'];
+            ?>
+                <div class="video-embed">
+                    <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>" frameborder="0" allowfullscreen></iframe>
+                </div>
+            <?php
                 }
             ?>
         </div>
