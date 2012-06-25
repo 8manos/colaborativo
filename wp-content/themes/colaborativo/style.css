@@ -181,6 +181,7 @@ body {
 
 #counter_wrapper {
   border: 1px solid #000000;
+  display:none;
   margin: 10px auto;
   padding: 10px;
   text-align: center;
