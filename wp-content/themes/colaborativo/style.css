@@ -21,6 +21,7 @@ License: GNU General Public License
 
 body {
   background-color:#f6f6f6;
+  font-family:'Open Sans';
 	padding-top:40px;
 }
 
@@ -335,13 +336,46 @@ body {
   background-color:#fff;
   border-radius:0;
   margin-top:30px;
+  overflow: visible;
+  padding:20px;
+  position:relative;
 }
 
 .hero-unit h2 {
   font-family:'BebasRegular';
-  font-size:33px;
+  font-size:28px;
   font-weight:normal;
   text-transform:uppercase;
+}
+
+.hero-unit p.hashtags {
+  font-size:13px;
+  margin-bottom:0;
+}
+
+.hero-unit p.hashtags strong {
+  font-family:'BebasRegular';
+  font-size:17px;
+  text-transform:uppercase;
+}
+
+.hero-unit #event-logo {
+  background-color:#D1D200;
+  color:#fff;
+  display: inline-block;
+  font-family:'BebasRegular';
+  margin-bottom:8px;
+  margin-right:-30px;
+  padding:4px 6px 4px 14px;
+}
+
+.hero-unit #event-logo p {
+  font-size:28px;
+  margin-bottom:0;
+}
+
+.hero-unit #event-logo p img {
+  margin-left:10px;
 }
 
 .ir {
@@ -436,6 +470,9 @@ body {
     display:none;
   }
 
+.right {
+  float:right;
+}
 
 .sprite {
   background-image:url('img/sprite.png');

@@ -3,12 +3,14 @@
 <?php if( is_home() || is_front_page() ){ ?>
 <div class="hero-unit">
 	<div class="row">
-		<div class="span4">
-			<h2>Bienvenidos al cubrimiento del cpco05<br />
-				agrupamos los #Hashtagas mas populares del campus</h2>
+		<div class="span5">
+			<h2>Bienvenidos al cubrimiento del CPCO5<br />
+				agrupamos los #Hashtags mas populares del campus</h2>
 		</div>
 		<div class="span6 aright right">
-			<p>Event icon</p>
+			<div id="event-logo">
+				<p>EL FEED DEL CAMPUS <a href="http://www.campus-party.com.co/" target="_blank"><img src="<?php bloginfo('stylesheet_directory') ?>/img/campus-party-feed.png" /></a></p>
+			</div>
 			<p class="hashtags">
 				<strong>Aporta contenidos usando los #HASHTAGS</strong><br />
 				#CPCO5 | #SOMETHINGBETTER | #CPCO5BLOG | #CPCO5CREA | #CPCO5MOD | #CPCO5DEV | #CPCO5OCIO
