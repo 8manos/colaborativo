@@ -92,7 +92,7 @@
 	$current_cat = $wp_query->queried_object_id;
 	$current_type = $wp_query->query['post_type'];
 	?>
-	<a href="#" class="btn btn-primary btn-large" id="load-more" data-type="<? echo $current_type; ?>" data-cat="<? echo $current_cat; ?>">
+	<a href="#" class="" id="load-more" data-type="<? echo $current_type; ?>" data-cat="<? echo $current_cat; ?>">
 		<?php _e('Cargar más contenidos','colaborativo'); ?>
 	</a>
 </div>
