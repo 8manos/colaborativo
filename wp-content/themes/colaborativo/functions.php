@@ -288,7 +288,7 @@ function display_article() {
 
 
         		<?php if(has_post_thumbnail() || $enclosure){ ?>
-        			<a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto">
+        			<a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                         <?php
                             if(has_post_thumbnail()) {
                                 the_post_thumbnail();
@@ -304,15 +304,15 @@ function display_article() {
                     parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
                     $video_id = $video_vars['v'];
             ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                         <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=http://img.youtube.com/vi/<?php echo $video_id ?>/hqdefault.jpg&w=280&h=280" />
                     </a>
             <?php }elseif(get_post_type() == "sonido"){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-audio.png" />
                     </a>
             <?php }elseif(get_post_type() == "descarga"){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=80%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-descarga.png" />
                     </a>
             <?php }elseif(get_post_type() == "tweet"){ ?>
@@ -432,6 +432,7 @@ function colores_cats() {
         $colores .= "article.category-".$categoria->slug." .overlay { background-color:rgba(".$color_rgb['R']." ,".$color_rgb['G']." ,".$color_rgb['B']." , 0.75) !important; } ";
         $colores .= "article.category-".$categoria->slug." .categoria { background-color: ".$color." !important; } ";
         $colores .= ".single article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
+        $colores .= ".pp_inline article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
         $colores .= "li.cat-item-".$categoria->term_id." a:hover { color: ".$color." !important; } ";
         $colores .= "li.cat-item-".$categoria->term_id.".current-cat a { color: ".$color." !important; } ";
     }
