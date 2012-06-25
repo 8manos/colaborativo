@@ -341,8 +341,7 @@ function display_article_content() {
 ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
         <span class="categoria"><?php the_category(); ?></span>
-        <h2 class="has-icon"><?php the_title(); ?></h2>
-
+        <h2 class="has-icon"><?php if(get_post_type() != "tweet"){ the_title(); } ?></h2>
         <div class="entry-content">
             <?php
                 if(get_post_type() == "imagen"){
@@ -373,9 +372,9 @@ function display_article_content() {
                 <div class="video-embed">
                     <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
                 </div>
-            <?php
-                }
-            ?>
+            <?php }elseif(get_post_type() == "tweet"){ ?>
+                <h2><?php echo(make_clickable(get_the_title())); ?></h2>
+            <?php } ?>
         </div>
 
         <div class="entry-aside">
