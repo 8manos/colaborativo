@@ -393,6 +393,10 @@ body {
 
 }
 
+.navbar li a {
+  color:#d1d1d1 !important;
+}
+
 .navbar li a:after {
   content:"|";
   color:#687172;

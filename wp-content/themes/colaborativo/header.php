@@ -40,15 +40,11 @@
 			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
 			  </div>
 			  
-			  <div class="span9" id="cat-menu">
+			  <div class="span10" id="cat-menu">
 			  	<ul class="acenter nav">
 					<?php wp_list_categories('title_li=&hide_empty=0'); ?>
 				</ul>
 			  </div>
-
-		      <div class="aright span1">
-		      	right menu
-		      </div>
 		    </div>
 	    </div>
 	  </div>
