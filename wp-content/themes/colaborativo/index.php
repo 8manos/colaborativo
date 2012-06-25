@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+
+<?php if( is_home() || is_front_page() ){ ?>
 <div class="hero-unit">
 	<div class="row">
 		<div class="span4">
@@ -14,6 +16,7 @@
 		</div>
 	</div>
 </div>
+<?php } ?>
 
 <div class="subnav" id="filters">
 	<div class="row">
