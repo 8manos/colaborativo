@@ -39,12 +39,24 @@ body {
 }
 
 #filters h3 {
+  display:inline-block;
   font-family: 'BebasRegular';
   font-size:14px;
   font-weight:normal;
   line-height:50px;
   text-transform:uppercase;
   word-spacing:0.1em;
+}
+
+#filters h3:after {
+  background-image: url('img/sprite.png');
+  background-position: -155px -190px;
+  background-repeat: no-repeat;
+  content: "";
+  display: inline-block;
+  height: 38px;
+  vertical-align: middle;
+  width: 58px;
 }
 
 #filters-buttons {
