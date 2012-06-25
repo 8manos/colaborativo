@@ -141,7 +141,9 @@
 			getAjax( $(this), 'append' );
 		});
 
-		$("a[rel^='prettyPhoto']").prettyPhoto();
+		$("a[rel^='prettyPhoto']").prettyPhoto({
+			social_tools: ''
+		});
 
 		$(window).load(function(){
 
