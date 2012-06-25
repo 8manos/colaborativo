@@ -127,6 +127,17 @@
 
 				success : function(results){
 					insertResults(results, dop);
+					$(document).ready(function(){
+						$("a[rel^='prettyPhoto']").prettyPhoto({
+								social_tools: '',
+								changepicturecallback: function(){
+									if (window.addthis){
+										window.addthis.ost = 0;
+										window.addthis.ready();
+									}
+								}
+						});
+					});
 				}
 			});
 		}
@@ -142,7 +153,13 @@
 		});
 
 		$("a[rel^='prettyPhoto']").prettyPhoto({
-			social_tools: ''
+			social_tools: '',
+			changepicturecallback: function(){
+				if (window.addthis){
+					window.addthis.ost = 0;
+					window.addthis.ready();
+				}
+			}
 		});
 
 		$(window).load(function(){
