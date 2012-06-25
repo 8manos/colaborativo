@@ -294,6 +294,10 @@ body {
   text-transform:none;
 }
 
+#timeline article.tweet .article-content {
+  background-color: #f6f6f6;
+}
+
 #timeline article.tweet .autor:before {
   background-position: -53px -109px;
 }
