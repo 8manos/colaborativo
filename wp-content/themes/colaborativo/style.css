@@ -20,6 +20,7 @@ License: GNU General Public License
 }
 
 body {
+  background-color:#f6f6f6;
 	padding-top:40px;
 }
 
@@ -153,6 +154,7 @@ body {
 #hidden_articles { display: none; }
 
 #timeline article {
+  background-color:#fff;
   margin-bottom:1.8em;
 }
 
