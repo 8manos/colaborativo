@@ -315,13 +315,17 @@ function display_article() {
                     <a class="thumbnail" href="<?php the_permalink(); ?>">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-descarga.png" />
                     </a>
+            <?php }elseif(get_post_type() == "tweet"){ ?>
+                <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <?php } ?>
-            
-            <h2><?php echo(make_clickable(get_the_title())); ?></h2>
+
             <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
 
 		<footer class="post-meta">
+            <?php if(get_post_type() != "tweet"){ ?>
+               <h2><?php the_title(); ?></h2> 
+            <?php } ?>
 			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria"><?php the_category(); ?></span>
 		</footer>

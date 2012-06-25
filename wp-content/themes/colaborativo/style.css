@@ -172,6 +172,10 @@ body {
   z-index:5;
 }
 
+#timeline article footer h2 {
+  padding:0 8px;
+}
+
 #timeline article footer span {
   display: block;
 }
