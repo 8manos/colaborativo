@@ -339,8 +339,11 @@ function display_article() {
  */
 function display_article_content() {
 ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
-        <div class="article-content">
+    <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
+        <span class="categoria"><?php the_category(); ?></span>
+        <h2 class="has-icon"><?php the_title(); ?></h2>
+
+        <div class="entry-content">
             <?php
                 if(get_post_type() == "imagen"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
@@ -351,28 +354,30 @@ function display_article_content() {
 
 
                 <?php if(has_post_thumbnail() || $enclosure){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>">
+                    <a href="<?php the_syndication_permalink(); ?>" target="_blank">
                         <?php
                             if(has_post_thumbnail()) {
                                 the_post_thumbnail();
                             }else{
                         ?>
-                            <img width="255" height="255" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=255&h=255" />
+                            <img width="600" height="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=600&h=600" />
                         <?php } ?>
                     </a>
                 <?php } ?>
-            <?php } ?>
-            <h2><?php echo(make_clickable(get_the_title())); ?></h2>
-            <div class="article-content">
-                <?php the_content(); ?>
-            </div>
-            <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <?php 
+                }
+            ?>
         </div>
 
-        <footer class="post-meta">
-            <span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
-            <span class="categoria"><?php the_category(); ?></span>
-        </footer>
+        <div class="entry-aside">
+            <div class="autor">
+                <small>POR</small><br />
+                <?php the_author(); ?>
+            </div>
+            <div class="social">
+                social
+            </div>
+        </div>
     </article>
 <?php
 }
@@ -411,6 +416,7 @@ function colores_cats() {
         $color_rgb = toRGB($color);
         $colores .= "article.category-".$categoria->slug." .overlay { background-color:rgba(".$color_rgb['R']." ,".$color_rgb['G']." ,".$color_rgb['B']." , 0.75) !important; } ";
         $colores .= "article.category-".$categoria->slug." .categoria { background-color: ".$color." !important; } ";
+        $colores .= ".single article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
         $colores .= "li.cat-item-".$categoria->term_id." a:hover { color: ".$color." !important; } ";
         $colores .= "li.cat-item-".$categoria->term_id.".current-cat a { color: ".$color." !important; } ";
     }

@@ -19,6 +19,28 @@ License: GNU General Public License
     font-style: normal;
 }
 
+article.descarga h2:before {
+  background-position: -224px -109px;
+}
+article.imagen h2:before {
+  background-position: -16px -109px;
+}
+article.imagen.flickr h2:before {
+  background-position: -299px -109px;
+}
+article.post h2:before {
+  background-position: -53px -109px;
+}
+article.sonido h2:before {
+  background-position: -270px -109px;
+}
+article.tweet h2:before {
+  background-position: -53px -109px;
+}
+article.video h2:before {
+  background-position: -94px -109px;
+}
+
 body {
   background-color:#f6f6f6;
   font-family:'Open Sans';
@@ -500,6 +522,46 @@ body {
 
 .right {
   float:right;
+}
+
+.single article {padding-top:30px;}
+
+.single .categoria {
+  display:inline-block;
+  margin-left:25px;
+  text-transform:uppercase;
+}
+
+.single .categoria a {
+  color:#fff;
+}
+
+.single .categoria ul {
+  list-style-type:none;
+  margin:0;
+  padding:4px 60px 4px 8px;
+}
+
+.single .entry-content {
+  float:left;
+  width:65.8%;
+}
+
+.single .entry-aside {
+  float:left;
+  margin-left:15px;
+  width:28%;
+}
+
+.single .entry-aside .autor {
+  color:#fff;
+  font-size:18px;
+  padding:8px 6px;
+  text-align:right;
+}
+
+.single .entry-aside .autor small {
+  font-size:12px;
 }
 
 .sprite {
