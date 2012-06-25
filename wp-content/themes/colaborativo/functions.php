@@ -270,6 +270,10 @@ function colaborativo_rewrite_flush() {
 }
 add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
+
+/*
+ * Mostrar cada publicacion 
+ */
 function display_article() {
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
@@ -290,10 +294,19 @@ function display_article() {
                                 the_post_thumbnail();
                             }else{
                         ?>
-        				    <img width="255" height="255" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=255&h=255" />
+        				    <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=280&h=280" />
                         <?php } ?>
         			</a>
         		<?php } ?>
+            <?php 
+                }elseif(get_post_type() == "video"){ 
+                    $video_link = get_post_meta(get_the_ID(), $key = 'syndication_permalink', $single = true);   
+                    parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
+                    $video_id = $video_vars['v'];
+            ?>
+                    <a class="thumbnail" href="<?php the_permalink(); ?>">
+                        <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=http://img.youtube.com/vi/<?php echo $video_id ?>/hqdefault.jpg&w=280&h=280" />
+                    </a>
             <?php } ?>
             <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
@@ -304,6 +317,50 @@ function display_article() {
 			<span class="categoria"><?php the_category(); ?></span>
 		</footer>
 	</article>
+<?php
+}
+
+
+/*
+ * Mostrar cada publicacion sola
+ */
+function display_article_content() {
+?>
+    <article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
+        <div class="article-content">
+            <?php
+                if(get_post_type() == "imagen"){
+                $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
+                $enclosure = apply_filters( 'the_title', $enclosure);
+                $enclosure_array = explode('
+', $enclosure);
+            ?>
+
+
+                <?php if(has_post_thumbnail() || $enclosure){ ?>
+                    <a class="thumbnail" href="<?php the_permalink(); ?>">
+                        <?php
+                            if(has_post_thumbnail()) {
+                                the_post_thumbnail();
+                            }else{
+                        ?>
+                            <img width="255" height="255" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=255&h=255" />
+                        <?php } ?>
+                    </a>
+                <?php } ?>
+            <?php } ?>
+            <h2><?php echo(make_clickable(get_the_title())); ?></h2>
+            <div class="article-content">
+                <?php the_content(); ?>
+            </div>
+            <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+        </div>
+
+        <footer class="post-meta">
+            <span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
+            <span class="categoria"><?php the_category(); ?></span>
+        </footer>
+    </article>
 <?php
 }
 

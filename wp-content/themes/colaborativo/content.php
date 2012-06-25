@@ -1,1 +1,1 @@
-<?php display_article(); ?>
+<?php display_article_content(); ?>

@@ -391,7 +391,7 @@ body {
 
 .navbar li a:after {
   content:"|";
-  color:#777;
+  color:#687172;
   display:inline-block;
   margin:0 4px;
 }
