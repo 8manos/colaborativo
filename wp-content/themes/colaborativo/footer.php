@@ -3,13 +3,13 @@
  	<footer id="footer">
  		<div class="container" id="footer-inner">
  			<div class="row">
- 				<div class="span8">
+ 				<div class="span11">
  					<a class="ir sprite" href="<?php bloginfo('url'); ?>" id="footer-brand" title="<?php bloginfo('title'); ?>"><?php bloginfo('title'); ?></a>
  					<ul class="nav">
 						<?php wp_list_categories('title_li=&hide_empty=0'); ?>
 					</ul>
  				</div>
- 				<div class="span4 aright">
+ 				<div class="span1 aright">
  					<!-- menu social -->
  				</div>
  			</div>
