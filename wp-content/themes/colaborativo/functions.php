@@ -371,7 +371,7 @@ function display_article_content() {
                     $video_id = $video_vars['v'];
             ?>
                 <div class="video-embed">
-                    <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
                 </div>
             <?php
                 }
@@ -384,7 +384,14 @@ function display_article_content() {
                 <?php the_author(); ?>
             </div>
             <div class="social">
-                social
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><br />
+                    <a class="addthis_button_tweet"></a><br />
+                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a><br />
+                    <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+                <!-- AddThis Button END -->
             </div>
         </div>
     </article>

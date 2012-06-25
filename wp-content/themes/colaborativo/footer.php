@@ -33,5 +33,7 @@
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
     <?php wp_footer(); ?>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e5a7cc445b73dea"></script>
 </body>
 </html>

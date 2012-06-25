@@ -569,6 +569,16 @@ body {
   font-size:12px;
 }
 
+.single .entry-aside .social {
+  text-align:left;
+}
+
+.single .entry-aside .social a {
+  clear:both;
+  display: block;
+  margin:1px 0;
+}
+
 .sprite {
   background-image:url('img/sprite.png');
   background-position:0px 0px;
