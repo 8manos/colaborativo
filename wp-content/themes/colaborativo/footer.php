@@ -5,9 +5,12 @@
  			<div class="row">
  				<div class="span8">
  					<a class="ir sprite" href="<?php bloginfo('url'); ?>" id="footer-brand" title="<?php bloginfo('title'); ?>"><?php bloginfo('title'); ?></a>
+ 					<ul class="nav">
+						<?php wp_list_categories('title_li=&hide_empty=0'); ?>
+					</ul>
  				</div>
  				<div class="span4 aright">
- 					menu social
+ 					<!-- menu social -->
  				</div>
  			</div>
  			<div class="row">

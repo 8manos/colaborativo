@@ -47,6 +47,25 @@ body {
 	padding-top:40px;
 }
 
+footer .nav ,
+footer .nav li {
+  color:#D1D1D1;
+  display:inline;
+  font-family: 'BebasRegular';
+  text-transform:uppercase;
+  vertical-align:middle;
+}
+
+footer .nav li a {
+  color:#D1D1D1;
+  display: inline-block;
+  padding:3px 6px;
+}
+
+footer .nav li a:hover {
+  background-color:transparent;
+}
+
 #branding {
   background-position: 0 -15px;
   width: 110px;
@@ -141,6 +160,7 @@ body {
 
 #footer {
   background-color:#19171A;
+  color:#999;
   margin-top:5em;
   padding:1.5em 0 2em;
 }
@@ -175,9 +195,18 @@ body {
 #footer-brand {
   background-position: -169px -24px;
   height: 21px;
+  margin:-4px 8px 0;
   width: 20px;
+  vertical-align:middle;
 }
 
+#footer-inner .row:first-child {
+  margin-bottom:30px;
+}
+
+#footer-inner .row:last-child {
+  font-size:10px;
+}
 
 #counter_wrapper {
   border: 1px solid #000000;
