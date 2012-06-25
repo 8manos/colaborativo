@@ -311,7 +311,12 @@ function display_article() {
                     <a class="thumbnail" href="<?php the_permalink(); ?>">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-audio.png" />
                     </a>
+            <?php }elseif(get_post_type() == "descarga"){ ?>
+                    <a class="thumbnail" href="<?php the_permalink(); ?>">
+                        <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-descarga.png" />
+                    </a>
             <?php } ?>
+            
             <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <a class="overlay" href="<?php the_permalink(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
