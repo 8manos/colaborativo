@@ -147,6 +147,11 @@ footer .nav li a:hover {
     background-position:-285px -243px;
 }
 
+#filters-buttons a:hover.tipo-post ,
+  .post-type-archive-post #filters-buttons a.tipo-descarga {
+      background-position:-225px -243px;
+}
+
 #filters-buttons a:hover.tipo-sonido ,
   .post-type-archive-sonido #filters-buttons a.tipo-sonido {
       background-position:-470px -243px;
