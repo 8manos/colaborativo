@@ -8,6 +8,7 @@ remove_action('wp_head', 'wp_generator');
 function setup_colaborativo(){
 	add_theme_support( 'post-thumbnails' );
     add_image_size( 'article-thumb', 280, 280, true);
+    add_image_size( 'article-large', 600, 8000, true);
 }
 add_action( 'after_setup_theme', 'setup_colaborativo' );
 
@@ -252,7 +253,7 @@ function colaborativo_post_types() {
     'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 8,
-    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'comments', 'custom-fields', 'post-thumbnail' ),
+    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'comments', 'custom-fields', 'thumbnail' ),
     'taxonomies' => array( 'category' )
   );
 
@@ -270,6 +271,45 @@ function colaborativo_rewrite_flush() {
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
+
+
+// get all of the images attached to the current post
+function cl_get_images($size = 'thumbnail') {
+    global $post;
+    $thumb_ID = get_post_thumbnail_id( $post->ID );
+
+    $photos = get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID', 'exclude' => $thumb_ID) );
+
+    $results = array();
+
+    if ($photos) {
+        foreach ($photos as $photo) {
+            // get the correct image html for the selected size
+            $results[] = wp_get_attachment_image($photo->ID, $size);
+        }
+    }
+
+    return $results;
+}
+
+// get all of the images urls attached to the current post
+function cl_get_images_src($size = 'thumbnail') {
+    global $post;
+    $thumb_ID = get_post_thumbnail_id( $post->ID );
+
+    $photos = get_children( array('post_parent' => $post->ID, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID', 'exclude' => $thumb_ID) );
+
+    $results = array();
+
+    if ($photos) {
+        foreach ($photos as $photo) {
+            // get the correct image html for the selected size
+            $results[] = wp_get_attachment_image_src($photo->ID, $size);
+        }
+    }
+
+    return $results;
+}
 
 
 /*
@@ -318,7 +358,7 @@ function display_article() {
                     </a>
             <?php }elseif(get_post_type() == "tweet"){ ?>
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
-            <?php }elseif(get_post_type() == "post"){
+            <?php }elseif(get_post_type() == "post" || get_post_type() == "galeria"){
                 if(has_post_thumbnail()){ ?>
                     <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                     <?php
@@ -385,6 +425,28 @@ function display_article_content() {
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <?php }elseif(get_post_type() == "post"){
                 the_content();
+            }elseif(get_post_type() == "galeria"){ ?>
+                <div class="flexslider-container row">
+                    <div class="flexslider">
+                        <ul class="slides">
+                        <?php 
+                                $photos = cl_get_images_src('article-large');
+                                $photos_urls = cl_get_images_src('full');
+                                //print_r($photos);
+                                for ($i = 0; $i < count($photos); $i++) {
+                        ?>
+                                    <li>
+                                        <img src="<?php echo($photos[$i][0]); ?>" />
+                                    </li>
+
+                        <?
+                                }
+                        ?>
+                        </ul>
+                    </div>
+                </div> 
+            <?php
+               the_content();
             } ?>
         </div>
 
@@ -475,6 +537,9 @@ function ucc_pre_get_posts_filter( $query ) {
                 // Add 'link' and/or 'page' to array() if you want these included.
                 // array( 'post' , 'link' , 'page' ), etc.
                 $post_types = array_merge( $post_types, array( 'post' ,'tweet' ) );
+                $query->set( 'post_type', $post_types );
+            }elseif($my_post_type == 'imagen'){
+                $post_types = array('imagen', 'galeria');
                 $query->set( 'post_type', $post_types );
             }
         }
