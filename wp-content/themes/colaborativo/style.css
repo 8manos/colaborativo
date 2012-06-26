@@ -517,6 +517,7 @@ footer .nav li a:hover {
 
 .navbar li a {
   color:#d1d1d1 !important;
+  font-size:12px;
 }
 
 .navbar li a:after {
