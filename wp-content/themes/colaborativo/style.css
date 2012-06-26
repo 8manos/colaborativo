@@ -563,7 +563,7 @@ footer .nav li a:hover {
 
 .pp_content {
   overflow-x:hidden;
-  overflow-y:scroll;
+  overflow-y:auto;
 }
 
 .pp_inline {
