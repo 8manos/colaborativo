@@ -17,7 +17,7 @@
 
     <!-- app styles -->
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:400,600' rel='stylesheet' type='text/css'>    
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
