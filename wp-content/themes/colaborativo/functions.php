@@ -7,6 +7,7 @@ remove_action('wp_head', 'wp_generator');
  */
 function setup_colaborativo(){
 	add_theme_support( 'post-thumbnails' );
+    add_image_size( 'article-thumb', 280, 280, true);
 }
 add_action( 'after_setup_theme', 'setup_colaborativo' );
 
@@ -291,7 +292,7 @@ function display_article() {
         			<a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
                         <?php
                             if(has_post_thumbnail()) {
-                                the_post_thumbnail();
+                                the_post_thumbnail('article-thumb');
                             }else{
                         ?>
         				    <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=280&h=280" />
@@ -317,7 +318,15 @@ function display_article() {
                     </a>
             <?php }elseif(get_post_type() == "tweet"){ ?>
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
-            <?php } ?>
+            <?php }elseif(get_post_type() == "post"){
+                if(has_post_thumbnail()){ ?>
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+                    <?php
+                        the_post_thumbnail('article-thumb');
+                    ?>
+                    </a>
+                <?php }
+            } ?>
 
             <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
