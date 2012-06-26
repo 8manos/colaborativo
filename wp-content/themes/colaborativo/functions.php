@@ -252,7 +252,7 @@ function colaborativo_post_types() {
     'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 8,
-    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'comments', 'custom-fields' ),
+    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'comments', 'custom-fields', 'post-thumbnail' ),
     'taxonomies' => array( 'category' )
   );
 
