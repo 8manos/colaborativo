@@ -36,6 +36,7 @@
 			$output = 'names'; // names or objects, note names is the default
 			$operator = 'and'; // 'and' or 'or'
 			$post_types=get_post_types($args,$output,$operator);
+			array_push($post_types, 'post');
 				  foreach ($post_types  as $post_type ) {
 				  	$link = add_query_arg( 'post_type', $post_type );
 				    echo '<a class="ir sprite tipo-'. $post_type .'" href="'.$link.'" class="btn'. $post_type .'">'. $post_type. '</a>';
