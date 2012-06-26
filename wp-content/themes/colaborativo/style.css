@@ -8,17 +8,6 @@ Version: 0.8
 License: GNU General Public License
 */
 
-@font-face {
-    font-family: 'BebasRegular';
-    src: url('font/BEBAS___-webfont.eot');
-    src: url('font/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/BEBAS___-webfont.woff') format('woff'),
-         url('font/BEBAS___-webfont.ttf') format('truetype'),
-         url('font/BEBAS___-webfont.svg#BebasRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 article.descarga h2:before {
   background-position: -224px -109px;
 }
@@ -51,7 +40,7 @@ footer .nav ,
 footer .nav li {
   color:#D1D1D1;
   display:inline;
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
   text-transform:uppercase;
   vertical-align:middle;
 }
@@ -72,7 +61,7 @@ footer .nav li a:hover {
 }
 
 #cat-menu {
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
 }
 
 #filters {
@@ -81,7 +70,7 @@ footer .nav li a:hover {
 
 #filters h3 {
   display:inline-block;
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
   font-size:14px;
   font-weight:normal;
   line-height:50px;
@@ -106,7 +95,7 @@ footer .nav li a:hover {
 
 #filters-buttons a {
   background-position: -225px -190px;
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
   height: 50px;
   margin: 0 8px;
   vertical-align:middle;
@@ -232,7 +221,7 @@ footer .nav li a:hover {
   background-color:#333333;
   border-radius:none;
   color:#d1d1d1;
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
   font-size:18px;
   padding:14px 105px;
   text-transform:uppercase;
@@ -249,7 +238,7 @@ footer .nav li a:hover {
 }
 
 #timeline article h2 {
-  font-family: 'BebasRegular';
+  font-family: 'Oswald';
   font-size:20px;
   font-weight:normal;
   line-height:27px;
@@ -433,7 +422,7 @@ footer .nav li a:hover {
 }
 
 .hero-unit h2 {
-  font-family:'BebasRegular';
+  font-family:'Oswald';
   font-size:28px;
   font-weight:normal;
   text-transform:uppercase;
@@ -445,7 +434,7 @@ footer .nav li a:hover {
 }
 
 .hero-unit p.hashtags strong {
-  font-family:'BebasRegular';
+  font-family:'Oswald';
   font-size:17px;
   text-transform:uppercase;
 }
@@ -454,7 +443,7 @@ footer .nav li a:hover {
   background-color:#D1D200;
   color:#fff;
   display: inline-block;
-  font-family:'BebasRegular';
+  font-family:'Oswald';
   margin-bottom:8px;
   margin-right:-30px;
   padding:4px 6px 4px 14px;
