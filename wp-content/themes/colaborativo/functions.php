@@ -374,7 +374,9 @@ function display_article_content() {
                 </div>
             <?php }elseif(get_post_type() == "tweet"){ ?>
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
-            <?php } ?>
+            <?php }elseif(get_post_type() == "post"){
+                the_content();
+            } ?>
         </div>
 
         <div class="entry-aside">
