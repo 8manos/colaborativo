@@ -62,7 +62,7 @@
 	query_posts( $args );
 
 	$hidden_num = $wp_query->post_count - 10;
-	if ($hidden_num){//deben existir mas de 10 para que se muestre el div de los escondidos
+	if ($hidden_num > 0){//deben existir mas de 10 para que se muestre el div de los escondidos
 		echo '<div id="hidden_articles">';
 	}else{
 		echo '<section class="row" id="timeline">';
