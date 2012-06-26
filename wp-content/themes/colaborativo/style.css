@@ -561,6 +561,10 @@ footer .nav li a:hover {
     display:none;
   }
 
+.pp_content {
+  overflow:scroll;
+}
+
 .pp_inline {
   padding:10px;
 }
