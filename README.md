@@ -38,6 +38,7 @@ Please submit your pull requests to make this script better.
 * WordPress: GNU  GENERAL PUBLIC LICENSE
 * jQuery: MIT/GPL license
 * Twitter Bootstrap: Apache License v2.0
+* prettyPhoto: GPLV2 license
 * Modernizr: MIT/BSD license
 * Isotope: http://metafizzy.co/#licenses
 * FeedWordPress: GPL License
