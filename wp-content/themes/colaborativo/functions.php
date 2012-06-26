@@ -447,6 +447,20 @@ function display_article_content() {
                 </div> 
             <?php
                the_content();
+            }elseif(get_post_type() == 'sonido'){
+                  $txt= $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
+
+                  $re1='.*?';   # Non-greedy match on filler
+                  $re2='(\\d+)';    # Integer Number 1
+
+                  if ($c=preg_match_all ("/".$re1.$re2."/is", $txt, $matches))
+                  {
+                      $int1=$matches[1][0];
+                      //print "$int1 \n";
+            ?>
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F<?php echo $int1; ?>&amp;auto_play=false&amp;show_artwork=true&amp;color=ff7700"></iframe>
+            <?php
+                  }
             } ?>
         </div>
 
