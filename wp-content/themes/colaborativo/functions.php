@@ -8,7 +8,7 @@ remove_action('wp_head', 'wp_generator');
 function setup_colaborativo(){
 	add_theme_support( 'post-thumbnails' );
     add_image_size( 'article-thumb', 280, 280, true);
-    add_image_size( 'article-large', 600, 8000, true);
+    add_image_size( 'article-large', 600, 8000, false);
 }
 add_action( 'after_setup_theme', 'setup_colaborativo' );
 
