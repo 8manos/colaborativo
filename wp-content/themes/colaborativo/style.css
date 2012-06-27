@@ -357,6 +357,7 @@ footer .nav li a:hover {
   font-family:'Open Sans';
   text-transform:none;
   line-height:27px;
+  padding:9px;
 }
 
 #timeline article.tweet .article-content {
@@ -641,7 +642,7 @@ footer .nav li a:hover {
 
 .thumbnail {
   border:none;
-  padding:0;
+  padding:9px 0;
 }
 
 @media (max-width: 979px) {
