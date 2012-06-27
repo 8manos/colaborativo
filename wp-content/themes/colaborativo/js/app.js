@@ -57,10 +57,10 @@
 			var $articles = $('#hidden_articles article');
 			if ($articles.length > 0){
 				$('#notify_new').text('Nuevo contenido ( '+$articles.length+' )');
-				$('#notify_new').css('cursor', 'pointer');
+				$('#notify_new').addClass('has-new');
 			}else{
 				$('#notify_new').text('-');
-				$('#notify_new').css('cursor', 'default');
+				$('#notify_new').removeClass('has-new');
 			}
 		}
 

@@ -62,7 +62,7 @@
 <div id="notify_new">-</div>
 <?php
 	global $wp_query;
-	$args = array_merge( $wp_query->query, array( 'posts_per_page' => 16 ) );//esondemos 6 y mostramos 10
+	$args = array_merge( $wp_query->query, array( 'posts_per_page' => 20 ) );//esondemos 6 y mostramos 10
 	query_posts( $args );
 
 	$hidden_num = $wp_query->post_count - 10;
