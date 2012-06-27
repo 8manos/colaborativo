@@ -1,7 +1,7 @@
 <?php 
 /*
-	Template name: Page form
-*/
+ *	Template Name: Page-form
+ */
 ?>
 <?php get_header(); ?>
 <?php
