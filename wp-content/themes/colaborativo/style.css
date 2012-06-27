@@ -90,6 +90,7 @@ footer .nav li a:hover {
 }
 
 #filters form {
+  display: inline-block;
   margin:11px 0 0 0;
 }
 
