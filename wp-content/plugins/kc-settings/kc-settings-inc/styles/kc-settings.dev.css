@@ -4,6 +4,7 @@
 	min-height:0;
 }
 #kc-settings-form #postbox-container-1 .meta-box-sortables {margin-left:0}
+#kc-settings-form .mceIframeContainer {background:#fff;}
 
 .section-desc {
 	margin:1.5em 0;
@@ -11,14 +12,17 @@
 
 .actions p, p.actions {
   font-style:italic;
-  display:inline-block}
+  display:inline-block;
+	text-transform:lowercase;
+	color:#555;
+}
 p.actions {padding-left:4.5em}
 .actions a {cursor:pointer}
 .actions a:before {
   content:' | ';
   color:#333}
 .actions a:first-child:before {content:''}
-
+.actions p {margin:0}
 
 input.kcs-input {
 	width:25em;
@@ -158,7 +162,7 @@ input.kcs-files {margin-right:.5em}
 
 
 /*** HTML5 inputs ***/
-input[type="number"],
+input[type="number"], input[type="color"],
 input[type="date"], input[type="month"],
 input[type="week"], input[type="time"],
 input[type="datetime"], input[type="datetime-local"] {
@@ -211,9 +215,9 @@ label input.kcsb-mi {width:auto}
 .kcsb h4 {
   font-size:1.2em;
   display:block;
-  margin-bottom:0}
+  margin-bottom:.5em;
+}
 .kcsb h4 + .sections {margin-top:0;}
-div.actions {cursor:move}
 .actions h5 {
   display:inline-block;
   font-size:1em;
@@ -273,3 +277,25 @@ div.actions {cursor:move}
   visibility: visible !important;
   margin-top:1em 0;
   padding:0}
+
+/* <details /> */
+.no-details details > * {display: none;}
+.no-details details > summary:before {
+	content:'▸\00a0';
+	display:inline-block;
+	vertical-align:middle;
+}
+.no-details details.open > summary:before {content: '▾\00a0';}
+.no-details details summary {display:block;}
+.no-details details summary .actions {display:inline-block;}
+summary {cursor:default;}
+summary:focus {outline:0}
+
+.row details summary {
+	margin:0 30px 10px 0;
+	position:relative;
+}
+.row details summary > *{
+	display:inline-block;
+	vertical-align:middle;
+}

@@ -1,5 +1,6 @@
 github_update.php
 wp-content/themes/colaborativo/img/cache/*
+error_log
 
 .htaccess
 wp-*.php

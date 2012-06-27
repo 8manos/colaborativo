@@ -1,4 +1,5 @@
-var win = window.dialogArguments || opener || parent || top;
+var win = window.dialogArguments || opener || parent || top,
+    h5_details = false;
 
 (function($) {
 	// File (multiple)
@@ -75,6 +76,67 @@ jQuery(document).ready(function($) {
 	    $kcsbForm = $('form.kcsb'),
 	    $kcForm   = $('#kc-settings-form');
 
+	var args = {
+		sortable : {
+			axis: 'y',
+			start: function(ev, ui) {
+				ui.placeholder.height( ui.item.outerHeight() );
+			},
+			stop: function(ev, ui) {
+				// Reassign input names
+				ui.item
+					.parent().kcReorder( ui.item.data('mode'), true )
+					.children().each(function() {
+						$('> details > summary > .actions .count', this).text( $(this).index() + 1);
+					});
+			}
+		},
+		colorpicker : {
+			onBeforeShow: function () {
+				$(this).ColorPickerSetColor(this.value);
+			},
+			onSubmit: function(hsb, hex, rgb, el) {
+				var clr = '#'+hex;
+				$(el).css({
+					backgroundColor: clr,
+					color: invertColor( clr )
+				})
+					.val( clr )
+					.ColorPickerHide();
+			}
+		},
+		datepicker : {
+			date : {
+				dateFormat: 'yy-mm-dd',
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true
+			},
+			month : {
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true,
+				dateFormat: 'yy-mm',
+				onClose: function(dateText, inst) {
+					var $div  = $(inst.dpDiv),
+					    month = $div.find('.ui-datepicker-month :selected').val(),
+					    year  = $div.find('.ui-datepicker-year :selected').val();
+
+					$(this).datepicker('setDate', new Date(year, month, 1));
+				}
+			}
+		}
+	};
+
+	/* <details /> polyfill */
+	if ( $.fn.details.support ) {
+		$('html').addClass( 'details' );
+		h5_details = true;
+	}
+	else {
+		$('html').addClass( 'no-details' );
+		$('details').details();
+	}
 
 	/*** Plugin/theme settings ***/
 	if ( $kcForm.length ) {
@@ -121,21 +183,7 @@ jQuery(document).ready(function($) {
 
 
 	// Sort
-	$('ul.kc-rows').sortable({
-		axis: 'y',
-		start: function(ev, ui) {
-			ui.placeholder.height( ui.item.outerHeight() );
-		},
-		stop: function(ev, ui) {
-			// Reassign input names
-			ui.item
-				.parent().kcReorder( ui.item.data('mode'), true )
-				.children().each(function() {
-					$('> .actions .count', this).text( $(this).index() + 1);
-				});
-		}
-	});
-
+	$('ul.kc-rows').sortable( args.sortable );
 
 	// Remove row
 	$body.on('click', '.row a.del', function(e) {
@@ -143,7 +191,7 @@ jQuery(document).ready(function($) {
 
 		var $item = $(this).closest('.row');
 		if ( !$item.siblings('.row').length )
-			return false;
+			return;
 
 		var $block = $item.parent(),
 		    mode   = $item.data('mode'),
@@ -158,7 +206,7 @@ jQuery(document).ready(function($) {
 
 				if ( $kcsbForm.length ) {
 					$block.children().each(function() {
-						$('> .actions .count', this).text( $(this).index() + 1);
+						$('> details > summary > .actions .count', this).text( $(this).index() + 1);
 					});
 				}
 			}
@@ -215,7 +263,16 @@ jQuery(document).ready(function($) {
 			});
 		}
 
+		$('ul.kc-rows').sortable( args.sortable );
 		$('.hasdep', $nu).kcFormDep();
+		$('.hasDatepicker', $nu).each(function() {
+			$(this).removeClass('hasDatepicker').removeAttr('id').datepicker(args.datepicker[$(this).attr('type')]);
+		})
+		$('.hasColorpicker', $nu).removeAttr('style').ColorPicker(args.colorpicker);
+
+		var $details = $('details', $nu).details();
+		if ( !h5_details )
+			$details.children().not('summary').hide();
 
 		$item.after( $nu );
 
@@ -229,16 +286,20 @@ jQuery(document).ready(function($) {
 		}, speed);
 
 		$block.kcReorder( mode, true );
+
 		if ( $kcsbForm.length ) {
 			if ( isLast ) {
-				$('> .actions .count', $nu).text( $nu.index() + 1);
+				$('> details > summary > .actions .count', $nu).text( $nu.index() + 1);
 			}
 			else {
 				$block.children().each(function() {
-					$('> .actions .count', this).text( $(this).index() + 1);
+					$('> details > summary > .actions .count', this).text( $(this).index() + 1);
 				});
 			}
 		}
+
+		if ( !h5_details )
+			$details.first().not('.open').stop().children('summary').trigger('click');
 	});
 
 
@@ -250,19 +311,18 @@ jQuery(document).ready(function($) {
 
 
 	// Datepicker
-	var $dateInputs = $('input[type=date]');
+	var $dateInputs = $('input[type=date], input[type=month]');
 	if ( $dateInputs.length && Modernizr.inputtypes.date === false ) {
 		var jquiTheme = $('body').is('.admin-color-classic') ? 'cupertino' : 'flick';
 		Modernizr.load([{
 			load: win.kcSettings.paths.styles+'/jquery-ui/'+jquiTheme+'/style.css',
 			complete: function() {
-				$dateInputs.datepicker({
-					dateFormat: 'yy-mm-dd'
+				$dateInputs.each(function() {
+					$(this).datepicker( args.datepicker[$(this).attr('type')] );
 				});
 			}
 		}]);
 	}
-
 
 	// Color
 	var $colorInputs = $('input[type=color]');
@@ -274,21 +334,9 @@ jQuery(document).ready(function($) {
 				win.kcSettings.paths.scripts+'/rgbcolor.js'
 			],
 			complete: function () {
-				$colorInputs.ColorPicker({
-					onBeforeShow: function () {
-						$(this).ColorPickerSetColor(this.value);
-					},
-					onSubmit: function(hsb, hex, rgb, el) {
-						var clr = '#'+hex;
-						$(el).css({
-							backgroundColor: clr,
-							color: invertColor( clr )
-						})
-							.val( clr )
-							.ColorPickerHide();
-					}
-				}).each(function() {
-					var $el = $(this);
+				$colorInputs.ColorPicker(args.colorpicker)
+				.each(function() {
+					var $el = $(this).addClass('hasColorpicker');
 					if ( $el.val() !== '' )
 						$el.css({
 							backgroundColor: this.value,
@@ -373,14 +421,6 @@ jQuery(document).ready(function($) {
 		tb_show( '', $el.attr('href') );
 	});
 
-	// Sortables
-	$('ul.kc-sortable').sortable({
-		axis: 'y',
-		start: function(ev, ui) {
-			ui.placeholder.height( ui.item.outerHeight() );
-		}
-	});
-
 
 	// Help trigger
 	$('a.kc-help-trigger').on('click', function(e) {
@@ -456,7 +496,9 @@ jQuery(document).ready(function($) {
 		// Setting clone
 		$('a.clone-open').on('click', function(e) {
 			e.preventDefault();
-			$(this).parent().children().hide().filter('div.kcsb-clone').fadeIn();
+			$(this).parent().children().hide().filter('div.kcsb-clone').fadeIn(function() {
+				$(this).find('input.clone-id').focus();
+			});
 		});
 
 

@@ -45,7 +45,7 @@ class kcForm {
 
 		$output  = "<input type='{$args['type']}'";
 		$output .= self::_build_attr( $args['attr'] );
-		$output .= "value='".esc_attr($args['current'])."' ";
+		$output .= " value='".esc_attr($args['current'])."'";
 		$output .= " />";
 
 		return $output;
@@ -116,6 +116,20 @@ class kcForm {
 		$output .= "</select>";
 
 		return $output;
+	}
+
+
+	public static function editor( $args ) {
+		if ( !isset($args['attr']['id']) )
+			$args['attr']['id'] = 'wpeditor';
+
+		ob_start();
+		wp_editor(
+			$args['current'],
+			strtolower( str_replace(array('-', '_'), '', $args['attr']['id']) ),
+			array( 'textarea_name' => $args['attr']['name'] )
+		);
+		return ob_get_clean();
 	}
 
 
@@ -192,7 +206,7 @@ function _kc_field( $args ) {
 	$field_types = array_merge( $i_text, array(
 		'checkbox', 'radio', 'select', 'multiselect',
 		'multiinput', 'special', 'file',
-		'textarea'
+		'textarea', 'editor'
 	) );
 	$type = ( isset($field['type']) && in_array($field['type'], $field_types) ) ? $field['type'] : 'input';
 

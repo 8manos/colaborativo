@@ -2,7 +2,7 @@
 
 /**
  * @package KC_Settings
- * @version 2.6.8
+ * @version 2.7
  */
 
 
@@ -10,7 +10,7 @@
 Plugin name: KC Settings
 Plugin URI: http://kucrut.org/kc-settings/
 Description: Easily create plugin/theme settings page, custom fields metaboxes, term meta and user meta settings.
-Version: 2.6.8
+Version: 2.7
 Author: Dzikri Aziz
 Author URI: http://kucrut.org/
 License: GPL v2
@@ -23,6 +23,7 @@ class kcSettings {
 		'pages'    => array('media-upload-popup'),
 		'help'     => array(),
 		'messages' => array(),
+		'notices'  => array( 'updated' => array(), 'error' => array() ),
 		'settings' => array(),
 		'defaults' => array(),
 		'kcsb'     => array()
@@ -45,6 +46,7 @@ class kcSettings {
 		if ( is_readable($mo_file) )
 			load_textdomain( 'kc-settings', $mo_file );
 
+		add_action( 'admin_notices', array(__CLASS__, '_admin_notices') );
 		add_action( 'init', array(__CLASS__, 'init'), 99 );
 
 		# Debug bar extension
@@ -197,6 +199,7 @@ class kcSettings {
 				$kcsb['_ids']['settings'][] = $sID;
 				$type = $setting['type'];
 				$sections = array();
+				$pre_options = get_class_vars( 'kcSettings_options' );
 
 				foreach ( $setting['sections'] as $section ) {
 					$kcsb['_ids']['sections'][] = $section['id'];
@@ -204,11 +207,21 @@ class kcSettings {
 					foreach ( $section['fields'] as $field ) {
 						$kcsb['_ids']['fields'][] = $field['id'];
 						if ( in_array($field['type'], array('checkbox', 'radio', 'select', 'multiselect')) ) {
-							$options = array();
-							foreach ( $field['options'] as $option ) {
-								$options[$option['key']] = $option['label'];
+							# Predefined options
+							if ( isset($field['option_type']) && $field['option_type'] == 'predefined' ) {
+								$field['options'] = $pre_options[$field['option_predefined']];
+								unset( $field['option_type'] );
+								unset( $field['option_predefined'] );
 							}
-							$field['options'] = $options;
+
+							# Custom options
+							else {
+								$options = array();
+								foreach ( $field['options'] as $option ) {
+									$options[$option['key']] = $option['label'];
+								}
+								$field['options'] = $options;
+							}
 						}
 						$fields[$field['id']] = $field;
 					}
@@ -254,6 +267,9 @@ class kcSettings {
 			}
 
 			foreach ( $groups as $g_idx => $group ) {
+				if ( isset($group['status']) && !$group['status'] )
+					continue;
+
 				if ( !is_array($group) || empty($group) ) {
 					trigger_error( self::$data['messages']['bootstrap']['no_options'] );
 					unset( $groups[$g_idx] );
@@ -482,8 +498,9 @@ class kcSettings {
 
 		# Common
 		wp_register_script( 'kc-settings-base', "{$path['scripts']}/kc-settings-base{$suffix}.js", array('jquery'), $version, true );
-		wp_register_script( 'modernizr',        "{$path['scripts']}/modernizr-2.5.3{$suffix}.js", false, '2.5.3', true );
-		wp_register_script( 'kc-settings',      "{$path['scripts']}/kc-settings{$suffix}.js", array('modernizr', 'kc-settings-base', 'jquery-ui-sortable', 'jquery-ui-datepicker', 'media-upload', 'thickbox'), $version, true );
+		wp_register_script( 'modernizr',        "{$path['scripts']}/modernizr-2.5.3-20120617{$suffix}.js", false, '2.5.3', true );
+		wp_register_script( 'jquery-details',   "{$path['scripts']}/jquery.details-0.0.6{$suffix}.js", array('modernizr', 'jquery'), '0.0.6', true );
+		wp_register_script( 'kc-settings',      "{$path['scripts']}/kc-settings{$suffix}.js", array('modernizr', 'kc-settings-base', 'jquery-ui-sortable', 'jquery-ui-datepicker', 'jquery-details', 'media-upload', 'thickbox'), $version, true );
 		wp_register_style(  'kc-settings',      "{$path['styles']}/kc-settings{$suffix}.css", array('thickbox'), $version );
 
 		# Uploader
@@ -586,6 +603,22 @@ class kcSettings {
 	}
 
 
+	public static function _admin_notices() {
+		$notices = kc_array_remove_empty( self::$data['notices'] );
+		if ( empty($notices) )
+			return;
+
+		foreach ( $notices as $type => $messages ) {
+			foreach ( $messages as $message ) {
+				if ( empty($message) )
+					continue;
+
+				echo "<div class='{$type}'>".wpautop( $message )."</div>\n";
+			}
+		}
+	}
+
+
 	public static function get_data() {
 		$data = self::$data;
 		if ( !func_num_args() )
@@ -624,6 +657,14 @@ class kcSettings {
 	}
 
 
+	public static function add_notice( $type, $message ) {
+		if ( !in_array($type, array('updated', 'error')) )
+			$type = 'updated';
+
+		self::$data['notices'][$type][] = $message;
+	}
+
+
 	# Plugin activation tasks
 	public static function _activate() {
 		if ( version_compare(get_bloginfo('version'), '3.3', '<') )
@@ -637,7 +678,7 @@ class kcSettings {
 			$status['kids'] = array();
 
 		$old_version = ( isset($status['version']) ) ? $status['version'] : '2.2';
-		$status['version'] = '2.6.8';
+		$status['version'] = '2.7';
 
 		update_option( 'kc_settings', $status );
 
