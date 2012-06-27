@@ -1,3 +1,8 @@
+<?php 
+/*
+	Template name: Page form
+*/
+?>
 <?php get_header(); ?>
 <?php
 
