@@ -51,3 +51,9 @@
 	</div>
 
 	<div class="container">
+
+		<div class="row" id="meta-colaborativo">
+			<span id="beta">
+				Estamos en beta
+			</span>
+		</div>
