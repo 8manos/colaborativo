@@ -64,4 +64,12 @@
 			<a href="#" class="ir sprite" id="colabora">
 				Colabora con nosotros
 			</a>
+
+			<div class="aright right" id="menu-social">
+				<label><?php _e('Síguenos', 'colaborativo'); ?></label>
+				<a target="_blank" class="sprite ir" href="https://www.facebook.com/pages/Colaborativoco/385044858220704">Facebook</a>
+				<a target="_blank" class="sprite ir" href="http://twitter.com/colaborativo_co">Twitter</a>
+				<a target="_blank" class="sprite ir" href="https://plus.google.com/u/0/103569849344851752659/">Google+</a>
+				<a target="_blank" class="sprite ir" href="http://youtube.com/colaborativo">YouTube</a>				
+			</div>
 		</div>

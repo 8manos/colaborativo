@@ -253,6 +253,12 @@ footer .nav li a:hover {
   word-spacing:0.15em;
 }
 
+#menu-social a {
+  background-color:red;
+  height:25px;
+  width:25px;
+}
+
 #timeline article {
   background-color:#fff;
   margin-bottom:1.8em;
