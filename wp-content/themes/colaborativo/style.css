@@ -56,10 +56,10 @@ footer .nav li a:hover {
 }
 
 #beta {
-  background-color:red;
-  background-position:0px 0px;
-  height:20px;
-  width:100px;
+  background-position: -507px -112px;
+  height: 20px;
+  margin: 0 0 0 19px;
+  width: 100px;
 }
 
 #branding {
