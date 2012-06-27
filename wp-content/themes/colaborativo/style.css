@@ -96,7 +96,7 @@ footer .nav li a:hover {
 
 #filters form:before {
   background-image: url('img/sprite.png');
-  background-position: -155px -193px;
+  background-position: -595px -193px;
   background-repeat: no-repeat;
   content: "";
   display: inline-block;
