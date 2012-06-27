@@ -8,9 +8,69 @@
 
 class kc_widget_post extends WP_Widget {
 
+	var $defaults;
+
 	function __construct() {
 		$widget_ops = array( 'classname' => 'kcw_post', 'description' => __('Query posts as you wish', 'kc-essentials') );
 		$control_ops = array( 'width' => 200, 'height' => 350 );
+		$this->defaults = array(
+			'title'             => '',
+			'post_type'         => array(),
+			'post_status'       => array('publish'),
+			'posts_per_page'    => get_option('posts_per_page'),
+			'post_parent'       => '',
+			'include'           => '',
+			'exclude'           => '',
+			'offset'            => '',
+			'posts_order'       => 'DESC',
+			'posts_orderby'     => 'date',
+			'meta_key'          => '',
+			'tax_query'         => array(
+				'relation' => '',
+				array(
+					'taxonomy' => '',
+					'terms'    => '',
+					'field'    => 'slug',
+					'operator' => ''
+				)
+			),
+			'meta_query'        => array(
+				array(
+					'key'     => '',
+					'value'   => '',
+					'type'    => 'CHAR',
+					'compare' => '='
+				)
+			),
+			'posts_wrapper'     => '',
+			'posts_class'       => '',
+			'entry_wrapper'     => 'div',
+			'entry_class'       => '',
+			'title_src'         => 'default',
+			'title_meta'        => '',
+			'title_tag'         => 'h4',
+			'title_link'        => 'default',
+			'title_link_meta'   => '',
+			'title_class'       => 'title',
+			'content_src'       => 'excerpt',
+			'content_wrapper'   => '',
+			'content_class'     => '',
+			'content_meta'      => '',
+			'thumb_size'        => '',
+			'thumb_src'         => '',
+			'thumb_meta'        => '',
+			'thumb_link'        => 'post',
+			'thumb_link_meta'   => '',
+			'thumb_link_custom' => '',
+			'more_link'         => '',
+			'index_link'        => '',
+			'action_id'         => '',
+			'debug'             => false,
+			'txt_before_loop'   => '',
+			'txt_after_loop'    => '',
+			'txt_autop'         => 0
+		);
+
 		parent::__construct( 'kcw_post', 'KC Posts', $widget_ops, $control_ops );
 	}
 
@@ -102,64 +162,7 @@ class kc_widget_post extends WP_Widget {
 
 
 	function form( $instance ) {
-		$defaults = array(
-			'title'             => '',
-			'post_type'         => array(),
-			'post_status'       => array('publish'),
-			'posts_per_page'    => get_option('posts_per_page'),
-			'post_parent'       => '',
-			'include'           => '',
-			'exclude'           => '',
-			'offset'            => '',
-			'posts_order'       => 'DESC',
-			'posts_orderby'     => 'date',
-			'meta_key'          => '',
-			'tax_query'         => array(
-				'relation' => '',
-				array(
-					'taxonomy' => '',
-					'terms'    => '',
-					'field'    => 'slug',
-					'operator' => ''
-				)
-			),
-			'meta_query'        => array(
-				array(
-					'key'     => '',
-					'value'   => '',
-					'type'    => 'CHAR',
-					'compare' => '='
-				)
-			),
-			'posts_wrapper'     => '',
-			'posts_class'       => '',
-			'entry_wrapper'     => 'div',
-			'entry_class'       => '',
-			'title_src'         => 'default',
-			'title_meta'        => '',
-			'title_tag'         => 'h4',
-			'title_link'        => 'default',
-			'title_link_meta'   => '',
-			'title_class'       => 'title',
-			'content_src'       => 'excerpt',
-			'content_wrapper'   => '',
-			'content_class'     => '',
-			'content_meta'      => '',
-			'thumb_size'        => '',
-			'thumb_src'         => '',
-			'thumb_meta'        => '',
-			'thumb_link'        => 'post',
-			'thumb_link_meta'   => '',
-			'thumb_link_custom' => '',
-			'more_link'         => '',
-			'index_link'        => '',
-			'action_id'         => '',
-			'debug'             => false,
-			'txt_before_loop'   => '',
-			'txt_after_loop'    => '',
-			'txt_autop'         => 0
-		);
-		$instance = wp_parse_args( (array) $instance, $defaults );
+		$instance = wp_parse_args( (array) $instance, $this->defaults );
 		$title = strip_tags( $instance['title'] );
 
 		# Options
@@ -275,134 +278,133 @@ class kc_widget_post extends WP_Widget {
 		);
 		?>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Widget title', 'kc-essentials') ?></label></h5>
-		<ul class="kcw-control-block">
-			<li>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('title'), 'name' => $this->get_field_name('title'), 'class' => 'widefat'),
-					'current' => $title
-				)) ?>
-			</li>
-		</ul>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>" value="<?php echo $title ?>" />
+		</p>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Basic', 'kc-essentials') ?></h5>
-		<ul class="kcw-control-block">
-			<li>
-				<label for="<?php echo $this->get_field_id('posts_per_page'); ?>" title="<?php _e("Use -1 to show all posts") ?>"><?php _e('Count', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('posts_per_page'), 'name' => $this->get_field_name('posts_per_page')),
-					'current' => $instance['posts_per_page']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('post_parent'); ?>" title="<?php _e("Parent post, use %current% to get currently viewed post ID, or double click to search.") ?>"><?php _e('Parent', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array(
-						'id'    => $this->get_field_id('post_parent'),
-						'name'  => $this->get_field_name('post_parent'),
-						'class' => 'kc-find-post unique'
-					),
-					'current' => $instance['post_parent']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('include'); ?>" title="<?php _e('Separate post IDs with commas, double click to search.') ?>"><?php _e('Incl. IDs', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array(
-						'id'    => $this->get_field_id('include'),
-						'name'  => $this->get_field_name('include'),
-						'class' => 'kc-find-post'
-					),
-					'current' => $instance['include']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('exclude'); ?>" title="<?php _e('Separate post IDs with commas, double click to search.') ?>"><?php _e('Excl. IDs', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array(
-						'id'    => $this->get_field_id('exclude'),
-						'name'  => $this->get_field_name('exclude'),
-						'class' => 'kc-find-post'
-					),
-					'current' => $instance['exclude']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('offset'); ?>"><?php _e('Offset', 'kc-essentials') ?></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('offset'), 'name' => $this->get_field_name('offset')),
-					'current' => $instance['offset']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('posts_order'); ?>"><?php _e('Order', 'kc-essentials') ?></label>
-				<?php echo kcForm::select(array(
-					'attr'    => array('id' => $this->get_field_id('posts_order'), 'name' => $this->get_field_name('posts_order')),
-					'current' => $instance['posts_order'],
-					'options' => array(
-						array( 'value' => 'DESC', 'label' => __('Descending', 'kc-essentials') ),
-						array( 'value' => 'ASC',  'label' => __('Ascending', 'kc-essentials') )
-					),
-					'none'		=> false
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('posts_orderby'); ?>"><?php _e('Order by', 'kc-essentials') ?></label>
-				<?php echo kcForm::select(array(
-					'attr' => array(
-						'id'         => $this->get_field_id('posts_orderby'),
-						'name'       => $this->get_field_name('posts_orderby'),
-						'class'      => 'hasdep',
-						'data-child' => '#p-'.$this->get_field_id('meta_key')
-					),
-					'current' => $instance['posts_orderby'],
-					'options' => array(
-						array( 'value' => 'date',           'label' => __('Publish date', 'kc-essentials') ),
-						array( 'value' => 'ID',             'label' => __('ID', 'kc-essentials') ),
-						array( 'value' => 'title',          'label' => __('Title', 'kc-essentials') ),
-						array( 'value' => 'author',         'label' => __('Author', 'kc-essentials') ),
-						array( 'value' => 'modified',       'label' => __('Modification date', 'kc-essentials') ),
-						array( 'value' => 'menu_order',     'label' => __('Menu order', 'kc-essentials') ),
-						array( 'value' => 'parent',         'label' => __('Parent', 'kc-essentials') ),
-						array( 'value' => 'comment_count',  'label' => __('Comment count', 'kc-essentials') ),
-						array( 'value' => 'rand',           'label' => __('Random', 'kc-essentials') ),
-						array( 'value' => 'post__in',       'label' => __('Included IDs', 'kc-essentials') ),
-						array( 'value' => 'meta_value',     'label' => __('Meta value', 'kc-essentials') ),
-						array( 'value' => 'meta_value_num', 'label'	=> __('Meta value num', 'kc-essentials') )
-					),
-					'none'    => false
-				)) ?>
-			</li>
-			<li id="<?php echo 'p-'.$this->get_field_id('meta_key') ?>" data-dep='["meta_value", "meta_value_num"]'>
-				<label for="<?php echo $this->get_field_id('meta_key') ?>" title="<?php _e("Fill this if you select 'Meta value' or 'Meta value num' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('meta_key'), 'name' => $this->get_field_name('meta_key') ),
-					'current' => $instance['meta_key']
-				)) ?>
-			</li>
-		</ul>
+		<details open="true">
+			<summary><?php _e('Basic', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('posts_per_page'); ?>" title="<?php _e("Use -1 to show all posts") ?>"><?php _e('Count', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('posts_per_page'), 'name' => $this->get_field_name('posts_per_page')),
+						'current' => $instance['posts_per_page']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('post_parent'); ?>" title="<?php _e("Parent post, use %current% to get currently viewed post ID, or double click to search.") ?>"><?php _e('Parent', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array(
+							'id'    => $this->get_field_id('post_parent'),
+							'name'  => $this->get_field_name('post_parent'),
+							'class' => 'kc-find-post unique'
+						),
+						'current' => $instance['post_parent']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('include'); ?>" title="<?php _e('Separate post IDs with commas, double click to search.') ?>"><?php _e('Incl. IDs', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array(
+							'id'    => $this->get_field_id('include'),
+							'name'  => $this->get_field_name('include'),
+							'class' => 'kc-find-post'
+						),
+						'current' => $instance['include']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('exclude'); ?>" title="<?php _e('Separate post IDs with commas, double click to search.') ?>"><?php _e('Excl. IDs', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array(
+							'id'    => $this->get_field_id('exclude'),
+							'name'  => $this->get_field_name('exclude'),
+							'class' => 'kc-find-post'
+						),
+						'current' => $instance['exclude']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('offset'); ?>"><?php _e('Offset', 'kc-essentials') ?></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('offset'), 'name' => $this->get_field_name('offset')),
+						'current' => $instance['offset']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('posts_order'); ?>"><?php _e('Order', 'kc-essentials') ?></label>
+					<?php echo kcForm::select(array(
+						'attr'    => array('id' => $this->get_field_id('posts_order'), 'name' => $this->get_field_name('posts_order')),
+						'current' => $instance['posts_order'],
+						'options' => array(
+							array( 'value' => 'DESC', 'label' => __('Descending', 'kc-essentials') ),
+							array( 'value' => 'ASC',  'label' => __('Ascending', 'kc-essentials') )
+						),
+						'none'		=> false
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('posts_orderby'); ?>"><?php _e('Order by', 'kc-essentials') ?></label>
+					<?php echo kcForm::select(array(
+						'attr' => array(
+							'id'         => $this->get_field_id('posts_orderby'),
+							'name'       => $this->get_field_name('posts_orderby'),
+							'class'      => 'hasdep',
+							'data-child' => '#p-'.$this->get_field_id('meta_key')
+						),
+						'current' => $instance['posts_orderby'],
+						'options' => array(
+							array( 'value' => 'date',           'label' => __('Publish date', 'kc-essentials') ),
+							array( 'value' => 'ID',             'label' => __('ID', 'kc-essentials') ),
+							array( 'value' => 'title',          'label' => __('Title', 'kc-essentials') ),
+							array( 'value' => 'author',         'label' => __('Author', 'kc-essentials') ),
+							array( 'value' => 'modified',       'label' => __('Modification date', 'kc-essentials') ),
+							array( 'value' => 'menu_order',     'label' => __('Menu order', 'kc-essentials') ),
+							array( 'value' => 'parent',         'label' => __('Parent', 'kc-essentials') ),
+							array( 'value' => 'comment_count',  'label' => __('Comment count', 'kc-essentials') ),
+							array( 'value' => 'rand',           'label' => __('Random', 'kc-essentials') ),
+							array( 'value' => 'post__in',       'label' => __('Included IDs', 'kc-essentials') ),
+							array( 'value' => 'meta_value',     'label' => __('Meta value', 'kc-essentials') ),
+							array( 'value' => 'meta_value_num', 'label'	=> __('Meta value num', 'kc-essentials') )
+						),
+						'none'    => false
+					)) ?>
+				</li>
+				<li id="<?php echo 'p-'.$this->get_field_id('meta_key') ?>" data-dep='["meta_value", "meta_value_num"]'>
+					<label for="<?php echo $this->get_field_id('meta_key') ?>" title="<?php _e("Fill this if you select 'Meta value' or 'Meta value num' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('meta_key'), 'name' => $this->get_field_name('meta_key') ),
+						'current' => $instance['meta_key']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Post types', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( !$instance['post_type'] ) ? ' hide-if-js': ''; ?>
-		<div class="checks kcw-control-block post-types<?php echo $hide_class ?>">
-			<?php echo kcForm::field(array(
-				'type'    => 'checkbox',
-				'attr'    => array('id' => $this->get_field_id('post_type'), 'name' => $this->get_field_name('post_type').'[]'),
-				'current' => $instance['post_type'],
-				'options' => $post_types
-			)) ?>
-		</div>
+		<details<?php if ( !empty($instance['post_type']) ) echo ' open="true"' ?>>
+			<summary><?php _e('Post types', 'kc-essentials') ?></summary>
+			<div class="checks kcw-control-block post-types">
+				<?php echo kcForm::field(array(
+					'type'    => 'checkbox',
+					'attr'    => array('id' => $this->get_field_id('post_type'), 'name' => $this->get_field_name('post_type').'[]'),
+					'current' => $instance['post_type'],
+					'options' => $post_types
+				)) ?>
+			</div>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Post status', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( count($instance['post_status'] === 1) && $instance['post_status'][0] == 'publish' ) ? ' hide-if-js': ''; ?>
-		<div class="checks kcw-control-block post-status<?php echo $hide_class ?>">
-			<?php echo kcForm::field(array(
-				'type'    => 'checkbox',
-				'attr'    => array('id' => $this->get_field_id('post_status'), 'name' => $this->get_field_name('post_status').'[]'),
-				'current' => $instance['post_status'],
-				'options' => $post_statuses
-			)) ?>
-		</div>
+		<details<?php if ( $instance['post_status'] !== $this->defaults['post_status'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Post status', 'kc-essentials') ?></summary>
+			<div class="checks kcw-control-block post-status">
+				<?php echo kcForm::field(array(
+					'type'    => 'checkbox',
+					'attr'    => array('id' => $this->get_field_id('post_status'), 'name' => $this->get_field_name('post_status').'[]'),
+					'current' => $instance['post_status'],
+					'options' => $post_statuses
+				)) ?>
+			</div>
+		</details>
 
 		<?php
 			$tq_id = $this->get_field_id('tax_query');
@@ -412,426 +414,422 @@ class kc_widget_post extends WP_Widget {
 			$tq_rel = $tq_values['relation'];
 			unset( $tq_values['relation'] );
 		?>
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Taxonomies', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( count($tq_values) == 1 && empty($tq_values[0]['taxonomy']) ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block taxonomies<?php echo $hide_class ?>">
-			<li class="relation">
-				<label for="<?php echo "{$tq_id}-relation" ?>"><?php _e('Relation', 'kc-essentials') ?></label>
-				<?php echo kcForm::select(array(
-					'attr'    => array('id' => "{$tq_id}-relation", 'name' => "{$tq_name}[relation]"),
-					'current' => $tq_rel,
-					'options' => $relations,
-					'none'    => false
-				)) ?>
-			</li>
-			<li>
-				<ul class="tax-queries">
-					<?php foreach ( $tq_values as $idx => $query ) { ?>
-					<li class="row">
-						<label for="<?php echo "{$tq_id}-{$idx}-taxonomy" ?>"><?php _e('Taxonomy', 'kc-essentials') ?></label>
-						<?php echo kcForm::select(array(
-							'attr'    => array(
-								'id'         => "{$tq_id}-{$idx}-taxonomy",
-								'name'       => "{$tq_name}[{$idx}][taxonomy]",
-								'class'      => 'hasdep',
-								'data-scope' => 'li.row',
-								'data-child' => '.terms'
-							),
-							'current' => $query['taxonomy'],
-							'options' => $taxonomies
-						)) ?>
-						<label for="<?php echo "{$tq_id}-{$idx}-operator" ?>"><?php _e('Operator', 'kc-essentials') ?></label>
-						<?php echo kcForm::select(array(
-							'attr'    => array('id' => "{$tq_id}-{$idx}-operator", 'name' => "{$tq_name}[{$idx}][operator]"),
-							'current' => $query['operator'],
-							'options' => $operators,
-							'none'    => false
-						)) ?>
-						<label><?php _e('Terms', 'kc-essentials') ?></label>
-						<p class='checks terms hide-if-js info' data-dep=''><?php _e('Please select a taxonomy above to see its terms.', 'kc-essentials') ?>
-						<?php if ( !empty($terms) ) { foreach ( $terms as $tax_name => $tax_terms ) { ?>
-						<h6 class='hide-if-js'><?php echo $taxonomies[$tax_name]['label'] ?></h6>
-						<div class='checks terms hide-if-js' data-dep='<?php echo $tax_name ?>'>
-						<?php  if ( !empty($terms[$tax_name]) ) {
-							echo kcForm::checkbox(array(
-								'attr'    => array('name' => "{$tq_name}[{$idx}][terms][]", 'class' => 'term'),
-								'current' => $query['terms'],
-								'options' => $tax_terms
-							));
-						} else {
-							echo "\t<p>".__("This taxonomy doesn't have any term with posts.", 'kc-essentials')."</p>\n\n";
-						} ?>
-						</div>
-						<?php } } ?>
-						<a class="hide-if-no-js del action" rel="tax_query" title="<?php _e('Remove this taxonomy query', 'kc-essentials') ?>"><?php _e('Remove', 'kc-essentials') ?></a>
-						<input type='hidden' name="<?php echo "{$tq_name}[{$idx}][field]" ?>" value="slug"/>
-					</li>
-					<?php } ?>
-					<li><a class="hide-if-no-js add action" rel="tax_query" title="<?php _e('Add new taxonomy query', 'kc-essentials') ?>"><?php _e('Add', 'kc-essentials') ?></a></li>
-				</ul>
-			</li>
-		</ul>
+		<details<?php if ( $instance['tax_query'] !== $this->defaults['tax_query'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Taxonomies', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block taxonomies">
+				<li class="relation">
+					<label for="<?php echo "{$tq_id}-relation" ?>"><?php _e('Relation', 'kc-essentials') ?></label>
+					<?php echo kcForm::select(array(
+						'attr'    => array('id' => "{$tq_id}-relation", 'name' => "{$tq_name}[relation]"),
+						'current' => $tq_rel,
+						'options' => $relations,
+						'none'    => false
+					)) ?>
+				</li>
+				<li>
+					<ul class="tax-queries">
+						<?php foreach ( $tq_values as $idx => $query ) { ?>
+						<li class="row">
+							<label for="<?php echo "{$tq_id}-{$idx}-taxonomy" ?>"><?php _e('Taxonomy', 'kc-essentials') ?></label>
+							<?php echo kcForm::select(array(
+								'attr'    => array(
+									'id'         => "{$tq_id}-{$idx}-taxonomy",
+									'name'       => "{$tq_name}[{$idx}][taxonomy]",
+									'class'      => 'hasdep',
+									'data-scope' => 'li.row',
+									'data-child' => '.terms'
+								),
+								'current' => $query['taxonomy'],
+								'options' => $taxonomies
+							)) ?>
+							<label for="<?php echo "{$tq_id}-{$idx}-operator" ?>"><?php _e('Operator', 'kc-essentials') ?></label>
+							<?php echo kcForm::select(array(
+								'attr'    => array('id' => "{$tq_id}-{$idx}-operator", 'name' => "{$tq_name}[{$idx}][operator]"),
+								'current' => $query['operator'],
+								'options' => $operators,
+								'none'    => false
+							)) ?>
+							<label><?php _e('Terms', 'kc-essentials') ?></label>
+							<p class='checks terms hide-if-js info' data-dep=''><?php _e('Please select a taxonomy above to see its terms.', 'kc-essentials') ?>
+							<?php if ( !empty($terms) ) { foreach ( $terms as $tax_name => $tax_terms ) { ?>
+							<h6 class='hide-if-js'><?php echo $taxonomies[$tax_name]['label'] ?></h6>
+							<div class='checks terms hide-if-js' data-dep='<?php echo $tax_name ?>'>
+							<?php  if ( !empty($terms[$tax_name]) ) {
+								echo kcForm::checkbox(array(
+									'attr'    => array('name' => "{$tq_name}[{$idx}][terms][]", 'class' => 'term'),
+									'current' => $query['terms'],
+									'options' => $tax_terms
+								));
+							} else {
+								echo "\t<p>".__("This taxonomy doesn't have any term with posts.", 'kc-essentials')."</p>\n\n";
+							} ?>
+							</div>
+							<?php } } ?>
+							<a class="hide-if-no-js rm action" rel="tax_query" title="<?php _e('Remove this taxonomy query', 'kc-essentials') ?>"><?php _e('Remove', 'kc-essentials') ?></a>
+							<input type='hidden' name="<?php echo "{$tq_name}[{$idx}][field]" ?>" value="slug"/>
+						</li>
+						<?php } ?>
+						<li><a class="hide-if-no-js add action" rel="tax_query" title="<?php _e('Add new taxonomy query', 'kc-essentials') ?>"><?php _e('Add', 'kc-essentials') ?></a></li>
+					</ul>
+				</li>
+			</ul>
+		</details>
 
 		<?php
 			$mq_name = $this->get_field_name('meta_query');
 			$mq_id = $this->get_field_id('meta_query');
 		?>
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Metadata', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( count($instance['meta_query']) == 1 && empty($instance['meta_query'][0]['key']) ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block metadata<?php echo $hide_class ?>">
-			<li>
-				<ul class="meta-queries">
-					<?php foreach ( $instance['meta_query'] as $mq_idx => $mq ) { ?>
-					<li class="row">
-						<label for="<?php echo "{$mq_id}-{$mq_idx}-key" ?>"><?php _e('Key', 'kc-essentials') ?></label>
-						<?php echo kcForm::input(array(
-							'attr'    => array('id' => "{$mq_id}-{$mq_idx}-key", 'name' => "{$mq_name}[{$mq_idx}][key]"),
-							'current' => $mq['key']
-						)) ?>
-						<label for="<?php echo "{$mq_id}-{$mq_idx}-value" ?>"><?php _e('Value', 'kc-essentials') ?></label>
-						<?php echo kcForm::input(array(
-							'attr'    => array('id' => "{$mq_id}-{$mq_idx}-value", 'name' => "{$mq_name}[{$mq_idx}][value]"),
-							'current' => $mq['value']
-						)) ?>
-						<label for="<?php echo "{$mq_id}-{$mq_idx}-compare" ?>"><?php _e('Compare', 'kc-essentials') ?></label>
-						<?php echo kcForm::select(array(
-							'attr'    => array('id' => "{$mq_id}-{$idx}-compare", 'name' => "{$mq_name}[{$mq_idx}][compare]"),
-							'current' => $mq['compare'],
-							'options' => array_merge($meta_compare, $operators),
-							'none'    => false
-						)) ?>
-						<label for="<?php echo "{$mq_id}-{$mq_idx}-type" ?>"><?php _e('Type', 'kc-essentials') ?></label>
-						<?php echo kcForm::select(array(
-							'attr'    => array('id' => "{$mq_id}-{$mq_idx}-type", 'name' => "{$mq_name}[{$mq_idx}][type]"),
-							'current' => $mq['type'],
-							'options' => $meta_type,
-							'none'    => false
-						)) ?>
-					<a class="hide-if-no-js del action" rel="meta_query" title="<?php _e('Remove this taxonomy query', 'kc-essentials') ?>"><?php _e('Remove', 'kc-essentials') ?></a>
-					</li>
-					<?php } ?>
-					<li><a class="hide-if-no-js add action" rel="meta_query" title="<?php _e('Add new meta query', 'kc-essentials') ?>"><?php _e('Add', 'kc-essentials') ?></a></li>
-				</ul>
-			</li>
-		</ul>
+		<details<?php if ( $instance['meta_query'] !== $this->defaults['meta_query'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Metadata', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block metadata">
+				<li>
+					<ul class="meta-queries">
+						<?php foreach ( $instance['meta_query'] as $mq_idx => $mq ) { ?>
+						<li class="row">
+							<label for="<?php echo "{$mq_id}-{$mq_idx}-key" ?>"><?php _e('Key', 'kc-essentials') ?></label>
+							<?php echo kcForm::input(array(
+								'attr'    => array('id' => "{$mq_id}-{$mq_idx}-key", 'name' => "{$mq_name}[{$mq_idx}][key]"),
+								'current' => $mq['key']
+							)) ?>
+							<label for="<?php echo "{$mq_id}-{$mq_idx}-value" ?>"><?php _e('Value', 'kc-essentials') ?></label>
+							<?php echo kcForm::input(array(
+								'attr'    => array('id' => "{$mq_id}-{$mq_idx}-value", 'name' => "{$mq_name}[{$mq_idx}][value]"),
+								'current' => $mq['value']
+							)) ?>
+							<label for="<?php echo "{$mq_id}-{$mq_idx}-compare" ?>"><?php _e('Compare', 'kc-essentials') ?></label>
+							<?php echo kcForm::select(array(
+								'attr'    => array('id' => "{$mq_id}-{$idx}-compare", 'name' => "{$mq_name}[{$mq_idx}][compare]"),
+								'current' => $mq['compare'],
+								'options' => array_merge($meta_compare, $operators),
+								'none'    => false
+							)) ?>
+							<label for="<?php echo "{$mq_id}-{$mq_idx}-type" ?>"><?php _e('Type', 'kc-essentials') ?></label>
+							<?php echo kcForm::select(array(
+								'attr'    => array('id' => "{$mq_id}-{$mq_idx}-type", 'name' => "{$mq_name}[{$mq_idx}][type]"),
+								'current' => $mq['type'],
+								'options' => $meta_type,
+								'none'    => false
+							)) ?>
+						<a class="hide-if-no-js rm action" rel="meta_query" title="<?php _e('Remove this taxonomy query', 'kc-essentials') ?>"><?php _e('Remove', 'kc-essentials') ?></a>
+						</li>
+						<?php } ?>
+						<li><a class="hide-if-no-js add action" rel="meta_query" title="<?php _e('Add new meta query', 'kc-essentials') ?>"><?php _e('Add', 'kc-essentials') ?></a></li>
+					</ul>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Posts wrapper', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( $instance['posts_wrapper'] == '' ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('posts_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('posts_wrapper'),
-						'name'       => $this->get_field_name('posts_wrapper'),
-						'class'      => 'hasdep',
-						'data-child' => '.chPosts',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['posts_wrapper'],
-					'options' => $tags_posts
-				)) ?>
-			</li>
-			<li class="chPosts" data-dep='<?php echo json_encode(array_keys($tags_posts)) ?>'>
-				<label for="<?php echo $this->get_field_id('posts_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('posts_class'), 'name' => $this->get_field_name('posts_class')),
-					'current' => $instance['posts_class']
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( $instance['posts_wrapper'] != '' ) echo ' open="true"' ?>>
+			<summary><?php _e('Posts wrapper', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('posts_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('posts_wrapper'),
+							'name'       => $this->get_field_name('posts_wrapper'),
+							'class'      => 'hasdep',
+							'data-child' => '.chPosts',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['posts_wrapper'],
+						'options' => $tags_posts
+					)) ?>
+				</li>
+				<li class="chPosts" data-dep='<?php echo json_encode(array_keys($tags_posts)) ?>'>
+					<label for="<?php echo $this->get_field_id('posts_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('posts_class'), 'name' => $this->get_field_name('posts_class')),
+						'current' => $instance['posts_class']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Entry wrapper', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( $instance['entry_wrapper'] == 'div' && $instance['entry_class'] == '' ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('entry_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('entry_wrapper'),
-						'name'       => $this->get_field_name('entry_wrapper'),
-						'class'      => 'hasdep',
-						'data-child' => '.chEntry',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['entry_wrapper'],
-					'options' => $tags_entry
-				)) ?>
-			</li>
-			<li class="chEntry" data-dep='<?php echo json_encode(array_keys($tags_entry)) ?>'>
-				<label for="<?php echo $this->get_field_id('entry_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('entry_class'), 'name' => $this->get_field_name('entry_class')),
-					'current' => $instance['entry_class']
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( $instance['entry_wrapper'] != 'div' || $instance['entry_class'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Entry wrapper', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('entry_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('entry_wrapper'),
+							'name'       => $this->get_field_name('entry_wrapper'),
+							'class'      => 'hasdep',
+							'data-child' => '.chEntry',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['entry_wrapper'],
+						'options' => $tags_entry
+					)) ?>
+				</li>
+				<li class="chEntry" data-dep='<?php echo json_encode(array_keys($tags_entry)) ?>'>
+					<label for="<?php echo $this->get_field_id('entry_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('entry_class'), 'name' => $this->get_field_name('entry_class')),
+						'current' => $instance['entry_class']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Entry title', 'kc-essentials') ?></h5>
-		<?php
-			$hide_class = (
-				$instance['title_src'] == 'default'
-				&& $instance['title_tag'] == 'h4'
-				&& $instance['title_class'] == 'title'
-				&& $instance['title_link'] == 'default'
-			) ? ' hide-if-js': '';
-		?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('title_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('title_src'),
-						'name'       => $this->get_field_name('title_src'),
-						'class'      => 'hasdep',
-						'data-child' => '.chTitle',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['title_src'],
-					'options' => $src_common
-				)) ?>
-			</li>
-			<li class="chTitle" data-dep='meta'>
-				<label for="<?php echo $this->get_field_id('title_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('title_meta'), 'name' => $this->get_field_name('title_meta')),
-					'current' => $instance['title_meta']
-				)) ?>
-			</li>
-			<li class="chTitle" data-dep='<?php echo json_encode(array_keys($src_common) )?>'>
-				<label for="<?php echo $this->get_field_id('title_tag') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('title_tag'),
-						'name'       => $this->get_field_name('title_tag'),
-						'class'      => 'hasdep',
-						'data-child' => '.chTitleTag',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['title_tag'],
-					'options' => $tags_title
-				)) ?>
-			</li>
-			<li class="chTitleTag" data-dep='<?php echo json_encode(array_keys($tags_title)) ?>'>
-				<label for="<?php echo $this->get_field_id('title_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('title_class'), 'name' => $this->get_field_name('title_class')),
-					'current' => $instance['title_class']
-				)) ?>
-			</li>
-			<li class="chTitle" data-dep='<?php echo json_encode(array_keys($src_common) )?>'>
-				<label for="<?php echo $this->get_field_id('title_link') ?>"><?php _e('Link', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('title_link'),
-						'name'       => $this->get_field_name('title_link'),
-						'class'      => 'hasdep',
-						'data-child' => '.chTitleLink',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['title_link'],
-					'options' => $src_common
-				)) ?>
-			</li>
-			<li class="chTitleLink" data-dep='meta'>
-				<label for="<?php echo $this->get_field_id('title_link_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('title_link_meta'), 'name' => $this->get_field_name('title_link_meta')),
-					'current' => $instance['title_link_meta']
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( !$this->value_is_default( array('title_src', 'title_tag', 'title_class', 'title_link'), $instance) ) echo ' open="true"' ?>>
+			<summary><?php _e('Entry title', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('title_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('title_src'),
+							'name'       => $this->get_field_name('title_src'),
+							'class'      => 'hasdep',
+							'data-child' => '.chTitle',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['title_src'],
+						'options' => $src_common
+					)) ?>
+				</li>
+				<li class="chTitle" data-dep='meta'>
+					<label for="<?php echo $this->get_field_id('title_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('title_meta'), 'name' => $this->get_field_name('title_meta')),
+						'current' => $instance['title_meta']
+					)) ?>
+				</li>
+				<li class="chTitle" data-dep='<?php echo json_encode(array_keys($src_common) )?>'>
+					<label for="<?php echo $this->get_field_id('title_tag') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('title_tag'),
+							'name'       => $this->get_field_name('title_tag'),
+							'class'      => 'hasdep',
+							'data-child' => '.chTitleTag',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['title_tag'],
+						'options' => $tags_title
+					)) ?>
+				</li>
+				<li class="chTitleTag" data-dep='<?php echo json_encode(array_keys($tags_title)) ?>'>
+					<label for="<?php echo $this->get_field_id('title_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('title_class'), 'name' => $this->get_field_name('title_class')),
+						'current' => $instance['title_class']
+					)) ?>
+				</li>
+				<li class="chTitle" data-dep='<?php echo json_encode(array_keys($src_common) )?>'>
+					<label for="<?php echo $this->get_field_id('title_link') ?>"><?php _e('Link', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('title_link'),
+							'name'       => $this->get_field_name('title_link'),
+							'class'      => 'hasdep',
+							'data-child' => '.chTitleLink',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['title_link'],
+						'options' => $src_common
+					)) ?>
+				</li>
+				<li class="chTitleLink" data-dep='meta'>
+					<label for="<?php echo $this->get_field_id('title_link_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('title_link_meta'), 'name' => $this->get_field_name('title_link_meta')),
+						'current' => $instance['title_link_meta']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Entry content', 'kc-essentials') ?></h5>
-		<?php
-			$hide_class = (
-				$instance['content_src'] == 'excerpt'
-				&& $instance['content_wrapper'] == ''
-				&& $instance['more_link'] == ''
-			) ? ' hide-if-js': '';
-		?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('content_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('content_src'),
-						'name'       => $this->get_field_name('content_src'),
-						'class'      => 'hasdep',
-						'data-child' => '.contentSrc',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['content_src'],
-					'options' => $src_content
-				)) ?>
-			</li>
-			<li class="contentSrc" data-dep='<?php echo json_encode(array('excerpt', 'content', 'meta')) ?>'>
-				<label for="<?php echo $this->get_field_id('content_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('content_wrapper'),
-						'name'       => $this->get_field_name('content_wrapper'),
-						'class'      => 'hasdep',
-						'data-child' => '.contentClass',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['content_wrapper'],
-					'options' => $tags_content
-				)) ?>
-			</li>
-			<li class="contentClass" data-dep='<?php echo json_encode(array('div', 'article', 'blockquote')) ?>'>
-				<label for="<?php echo $this->get_field_id('content_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('content_class'), 'name' => $this->get_field_name('content_class')),
-					'current' => $instance['content_class']
-				)) ?>
-			</li>
-			<li class="contentSrc" data-dep='meta'>
-				<label for="<?php echo $this->get_field_id('content_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('content_meta'), 'name' => $this->get_field_name('content_meta')),
-					'current' => $instance['content_meta']
-				)) ?>
-			</li>
-			<li class="contentSrc" data-dep='<?php echo json_encode(array('excerpt', 'content', 'meta')) ?>'>
-				<label for="<?php echo $this->get_field_id('more_link') ?>" title="<?php _e("Fill this with some text if you want to have a 'more link' on each post", 'kc-essentials') ?>"><?php _e('More link', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('more_link'), 'name' => $this->get_field_name('more_link')),
-					'current' => $instance['more_link']
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( !$this->value_is_default( array('content_src', 'content_wrapper', 'more_link'), $instance ) ) echo ' open="true"' ?>>
+			<summary><?php _e('Entry content', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('content_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('content_src'),
+							'name'       => $this->get_field_name('content_src'),
+							'class'      => 'hasdep',
+							'data-child' => '.contentSrc',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['content_src'],
+						'options' => $src_content
+					)) ?>
+				</li>
+				<li class="contentSrc" data-dep='<?php echo json_encode(array('excerpt', 'content', 'meta')) ?>'>
+					<label for="<?php echo $this->get_field_id('content_wrapper') ?>"><?php _e('Tag', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('content_wrapper'),
+							'name'       => $this->get_field_name('content_wrapper'),
+							'class'      => 'hasdep',
+							'data-child' => '.contentClass',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['content_wrapper'],
+						'options' => $tags_content
+					)) ?>
+				</li>
+				<li class="contentClass" data-dep='<?php echo json_encode(array('div', 'article', 'blockquote')) ?>'>
+					<label for="<?php echo $this->get_field_id('content_class') ?>"><?php _e('Class', 'kc-essentials') ?></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('content_class'), 'name' => $this->get_field_name('content_class')),
+						'current' => $instance['content_class']
+					)) ?>
+				</li>
+				<li class="contentSrc" data-dep='meta'>
+					<label for="<?php echo $this->get_field_id('content_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('content_meta'), 'name' => $this->get_field_name('content_meta')),
+						'current' => $instance['content_meta']
+					)) ?>
+				</li>
+				<li class="contentSrc" data-dep='<?php echo json_encode(array('excerpt', 'content', 'meta')) ?>'>
+					<label for="<?php echo $this->get_field_id('more_link') ?>" title="<?php _e("Fill this with some text if you want to have a 'more link' on each post", 'kc-essentials') ?>"><?php _e('More link', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('more_link'), 'name' => $this->get_field_name('more_link')),
+						'current' => $instance['more_link']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
 		<?php if ( !empty($image_sizes) ) { ?>
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Thumbnail', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( $instance['thumb_size'] == '' ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('thumb_size') ?>"><?php _e('Size', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('thumb_size'),
-						'name'       => $this->get_field_name('thumb_size'),
-						'class'      => 'hasdep',
-						'data-child' => '.chThumb',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['thumb_size'],
-					'options' => $image_sizes
-				)) ?>
-			</li>
-			<li class="chThumb" data-dep='<?php echo json_encode(array_keys($image_sizes)) ?>'>
-				<label for="<?php echo $this->get_field_id('thumb_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('thumb_src'),
-						'name'       => $this->get_field_name('thumb_src'),
-						'class'      => 'hasdep',
-						'data-child' => '#p-'.$this->get_field_id('thumb_meta')
-					),
-					'current' => $instance['thumb_src'],
-					'options' => array( '' => __('Default', 'kc-essentials'), 'meta' => __('Custom field', 'kc-settings') ),
-					'none'    => false
-				)) ?>
-			</li>
-			<li id='p-<?php echo $this->get_field_id('thumb_meta') ?>' data-dep="meta">
-				<label for="<?php echo $this->get_field_id('thumb_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('thumb_meta'), 'name' => $this->get_field_name('thumb_meta')),
-					'current' => $instance['thumb_meta']
-				)) ?>
-			</li>
-			<li class="chThumb" data-dep='<?php echo json_encode(array_keys($image_sizes)) ?>'>
-				<label for="<?php echo $this->get_field_id('thumb_link') ?>"><?php _e('Link', 'kc-essentials') ?></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array(
-						'id'         => $this->get_field_id('thumb_link'),
-						'name'       => $this->get_field_name('thumb_link'),
-						'class'      => 'hasdep',
-						'data-child' => '.chThumbLink',
-						'data-scope' => 'ul'
-					),
-					'current' => $instance['thumb_link'],
-					'options' => $src_thumb_link,
-				)) ?>
-			</li>
-			<li class="chThumbLink" data-dep='["meta-post", "meta-att"]'>
-				<label for="<?php echo $this->get_field_id('thumb_link_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('thumb_link_meta'), 'name' => $this->get_field_name('thumb_link_meta')),
-					'current' => $instance['thumb_link_meta']
-				)) ?>
-			</li>
-			<li class="chThumbLink" data-dep='custom'>
-				<label for="<?php echo $this->get_field_id('thumb_link_custom') ?>" title="<?php _e("Fill this if you select 'Custom URL' above. ALL thumbnails will link to this URL.", 'kc-essentials') ?>"><?php _e('URL', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('thumb_link_custom'), 'name' => $this->get_field_name('thumb_link_custom')),
-					'current' => $instance['thumb_link_custom']
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( $instance['thumb_size'] != '' ) echo ' open="true"' ?>>
+			<summary><?php _e('Thumbnail', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('thumb_size') ?>"><?php _e('Size', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('thumb_size'),
+							'name'       => $this->get_field_name('thumb_size'),
+							'class'      => 'hasdep',
+							'data-child' => '.chThumb',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['thumb_size'],
+						'options' => $image_sizes
+					)) ?>
+				</li>
+				<li class="chThumb" data-dep='<?php echo json_encode(array_keys($image_sizes)) ?>'>
+					<label for="<?php echo $this->get_field_id('thumb_src') ?>"><?php _e('Source', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('thumb_src'),
+							'name'       => $this->get_field_name('thumb_src'),
+							'class'      => 'hasdep',
+							'data-child' => '#p-'.$this->get_field_id('thumb_meta')
+						),
+						'current' => $instance['thumb_src'],
+						'options' => array( '' => __('Default', 'kc-essentials'), 'meta' => __('Custom field', 'kc-settings') ),
+						'none'    => false
+					)) ?>
+				</li>
+				<li id='p-<?php echo $this->get_field_id('thumb_meta') ?>' data-dep="meta">
+					<label for="<?php echo $this->get_field_id('thumb_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('thumb_meta'), 'name' => $this->get_field_name('thumb_meta')),
+						'current' => $instance['thumb_meta']
+					)) ?>
+				</li>
+				<li class="chThumb" data-dep='<?php echo json_encode(array_keys($image_sizes)) ?>'>
+					<label for="<?php echo $this->get_field_id('thumb_link') ?>"><?php _e('Link', 'kc-essentials') ?></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array(
+							'id'         => $this->get_field_id('thumb_link'),
+							'name'       => $this->get_field_name('thumb_link'),
+							'class'      => 'hasdep',
+							'data-child' => '.chThumbLink',
+							'data-scope' => 'ul'
+						),
+						'current' => $instance['thumb_link'],
+						'options' => $src_thumb_link,
+					)) ?>
+				</li>
+				<li class="chThumbLink" data-dep='["meta-post", "meta-att"]'>
+					<label for="<?php echo $this->get_field_id('thumb_link_meta') ?>" title="<?php _e("Fill this if you select 'Custom field' above", 'kc-essentials') ?>"><?php _e('Meta key', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('thumb_link_meta'), 'name' => $this->get_field_name('thumb_link_meta')),
+						'current' => $instance['thumb_link_meta']
+					)) ?>
+				</li>
+				<li class="chThumbLink" data-dep='custom'>
+					<label for="<?php echo $this->get_field_id('thumb_link_custom') ?>" title="<?php _e("Fill this if you select 'Custom URL' above. ALL thumbnails will link to this URL.", 'kc-essentials') ?>"><?php _e('URL', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('thumb_link_custom'), 'name' => $this->get_field_name('thumb_link_custom')),
+						'current' => $instance['thumb_link_custom']
+					)) ?>
+				</li>
+			</ul>
+		</details>
 		<?php } ?>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Additional texts', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( $instance['txt_before_loop'] == '' && $instance['txt_after_loop'] == '' ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('txt_before_loop') ?>"><?php _e('Before loop', 'kc-essentials') ?></label>
-				<?php echo kcForm::textarea(array(
-					'attr'    => array('id' => $this->get_field_id('txt_before_loop'), 'name' => $this->get_field_name('txt_before_loop'), 'class' => 'widefat'),
-					'current' => $instance['txt_before_loop']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('txt_after_loop') ?>"><?php _e('After loop', 'kc-essentials') ?></label>
-				<?php echo kcForm::textarea(array(
-					'attr'    => array('id' => $this->get_field_id('txt_after_loop'), 'name' => $this->get_field_name('txt_after_loop'), 'class' => 'widefat'),
-					'current' => $instance['txt_after_loop']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('txt_autop') ?>" title="<?php _e('Use wpautop() to automatically add paragraphs and new lines', 'kc-essentials') ?>"><?php _e('Format', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array('id' => $this->get_field_id('txt_autop'), 'name' => $this->get_field_name('txt_autop')),
-					'current' => $instance['txt_autop'],
-					'options' => kcSettings_options::$yesno,
-					'none'    => false
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( $instance['txt_before_loop'] || $instance['txt_after_loop'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Additional texts', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('txt_before_loop') ?>"><?php _e('Before loop', 'kc-essentials') ?></label>
+					<?php echo kcForm::textarea(array(
+						'attr'    => array('id' => $this->get_field_id('txt_before_loop'), 'name' => $this->get_field_name('txt_before_loop'), 'class' => 'widefat'),
+						'current' => $instance['txt_before_loop']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('txt_after_loop') ?>"><?php _e('After loop', 'kc-essentials') ?></label>
+					<?php echo kcForm::textarea(array(
+						'attr'    => array('id' => $this->get_field_id('txt_after_loop'), 'name' => $this->get_field_name('txt_after_loop'), 'class' => 'widefat'),
+						'current' => $instance['txt_after_loop']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('txt_autop') ?>" title="<?php _e('Use wpautop() to automatically add paragraphs and new lines', 'kc-essentials') ?>"><?php _e('Format', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array('id' => $this->get_field_id('txt_autop'), 'name' => $this->get_field_name('txt_autop')),
+						'current' => $instance['txt_autop'],
+						'options' => kcSettings_options::$yesno,
+						'none'    => false
+					)) ?>
+				</li>
+			</ul>
+		</details>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Advanced', 'kc-essentials') ?></h5>
-		<?php $hide_class = ( !$instance['action_id'] && !$instance['debug'] ) ? ' hide-if-js': ''; ?>
-		<ul class="kcw-control-block<?php echo $hide_class ?>">
-			<li>
-				<label for="<?php echo $this->get_field_id('action_id') ?>" title="<?php _e('Please refer to the documentation about this', 'kc-essentials') ?>"><?php _e('Identifier', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('action_id'), 'name' => $this->get_field_name('action_id')),
-					'current' => $instance['action_id']
-				)) ?>
-			</li>
-			<li>
-				<label for="<?php echo $this->get_field_id('debug') ?>" title="<?php _e('Select Yes to view the widget options and query parameters on the frontend') ?>"><?php _e('Debug', 'kc-essentials') ?> <small class="impo">(?)</small></label>
-				<?php echo kcForm::field(array(
-					'type'    => 'select',
-					'attr'    => array('id' => $this->get_field_id('debug'), 'name' => $this->get_field_name('debug')),
-					'current' => $instance['debug'],
-					'options' => kcSettings_options::$yesno,
-					'none'    => false
-				)) ?>
-			</li>
-		</ul>
+		<details<?php if ( $instance['action_id'] || $instance['debug'] ) echo ' open="true"' ?>>
+			<summary><?php _e('Advanced', 'kc-essentials') ?></summary>
+			<ul class="kcw-control-block">
+				<li>
+					<label for="<?php echo $this->get_field_id('action_id') ?>" title="<?php _e('Please refer to the documentation about this', 'kc-essentials') ?>"><?php _e('Identifier', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::input(array(
+						'attr'    => array('id' => $this->get_field_id('action_id'), 'name' => $this->get_field_name('action_id')),
+						'current' => $instance['action_id']
+					)) ?>
+				</li>
+				<li>
+					<label for="<?php echo $this->get_field_id('debug') ?>" title="<?php _e('Select Yes to view the widget options and query parameters on the frontend') ?>"><?php _e('Debug', 'kc-essentials') ?> <small class="impo">(?)</small></label>
+					<?php echo kcForm::field(array(
+						'type'    => 'select',
+						'attr'    => array('id' => $this->get_field_id('debug'), 'name' => $this->get_field_name('debug')),
+						'current' => $instance['debug'],
+						'options' => kcSettings_options::$yesno,
+						'none'    => false
+					)) ?>
+				</li>
+			</ul>
+		</details>
 	<?php }
 
 
@@ -856,11 +854,11 @@ class kc_widget_post extends WP_Widget {
 		extract( $args );
 
 		$debug  = "<h4>".__('KC Posts debug', 'kc-essentials')."</h4>\n";
-		$debug .= "<h5>".__('Widget object', 'kc-essentials')."</h5>\n";
+		$debug .= "<h5>".__('Widget object', 'kc-essentials')."</summary>\n";
 		$debug .= "<pre>".var_export($this, true)."</pre>";
-		$debug .= "<h5>".__('Widget options', 'kc-essentials')."</h5>\n";
+		$debug .= "<h5>".__('Widget options', 'kc-essentials')."</summary>\n";
 		$debug .= "<pre>".var_export($instance, true)."</pre>";
-		$debug .= "<h5>".__('Query parameters', 'kc-essentials')."</h5>\n";
+		$debug .= "<h5>".__('Query parameters', 'kc-essentials')."</summary>\n";
 
 		$q_args = array(
 			'posts_per_page' => $instance['posts_per_page'],
@@ -1196,6 +1194,19 @@ class kc_widget_post extends WP_Widget {
 		$output = "<{$wrap_tag}>\n{$output}\n</{$instance['content_wrapper']}>\n";
 
 		return $output;
+	}
+
+
+	private function value_is_default( $fields, $instance ) {
+		$result = true;
+		foreach ( (array) $fields as $field ) {
+			if ( !isset($instance[$field]) || $instance[$field] !== $this->defaults[$field] ) {
+				$result = false;
+				break;
+			}
+		}
+
+		return $result;
 	}
 
 

@@ -32,6 +32,11 @@ class kcEssentials {
 		$settings = kc_get_option( 'kc_essentials' );
 		self::$data['settings'] = $settings;
 
+		# i18n
+		$mo_file = $paths['inc'].'/languages/kc-essentials-'.get_locale().'.mo';
+		if ( is_readable($mo_file) )
+			load_textdomain( 'kc-essentials', $mo_file );
+
 		# Settings
 		require_once "{$paths['inc']}/_options.php";
 
@@ -57,11 +62,16 @@ class kcEssentials {
 
 
 	public static function _sns_register() {
-		wp_register_script( 'kc-essentials', self::$data['paths']['scripts'].'/settings.js', array('kc-settings-base'), self::$data['version'], true );
-		wp_register_script( 'kc-widgets-admin', self::$data['paths']['scripts'].'/widgets.js', array('kc-settings-base', 'media', 'wp-ajax-response'), self::$data['version'], true );
+		if ( !defined('KC_ESSENTIALS_SNS_DEBUG') )
+			define( 'KC_ESSENTIALS_SNS_DEBUG', false );
 
-		wp_register_style(  'kc-widgets-admin', self::$data['paths']['styles'].'/widgets.css', false, self::$data['version'] );
-		wp_register_style(  'kc-essentials', self::$data['paths']['styles'].'/settings.css', false, self::$data['version'] );
+		$suffix = KC_ESSENTIALS_SNS_DEBUG ? '.dev' : '';
+
+		wp_register_script( 'kc-essentials', self::$data['paths']['scripts']."/settings{$suffix}.js", array('kc-settings-base'), self::$data['version'], true );
+		wp_register_script( 'kc-widgets-admin', self::$data['paths']['scripts']."/widgets{$suffix}.js", array('kc-settings-base', 'media', 'wp-ajax-response'), self::$data['version'], true );
+
+		wp_register_style(  'kc-widgets-admin', self::$data['paths']['styles']."/widgets{$suffix}.css", false, self::$data['version'] );
+		wp_register_style(  'kc-essentials', self::$data['paths']['styles']."/settings{$suffix}.css", false, self::$data['version'] );
 	}
 
 

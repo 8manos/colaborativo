@@ -1,0 +1,1202 @@
+# Copyright (C) 2012 KC Essentials
+# This file is distributed under the same license as the KC Essentials package.
+msgid ""
+msgstr ""
+"Project-Id-Version: KC Essentials 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/kc-essentials\n"
+"POT-Creation-Date: 2012-06-20 13:30:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: __temp/misc.php:154
+msgid "All Settings"
+msgstr ""
+
+#: __temp/options.php:7 kc-essentials-inc/_options.php:27
+msgid "General Settings"
+msgstr ""
+
+#: __temp/options.php:11
+msgid "Components"
+msgstr ""
+
+#: __temp/options.php:14 __temp/options.php:51
+#: kc-essentials-inc/_options.php:35 kc-essentials-inc/_options.php:120
+msgid "Unique taxonomies"
+msgstr ""
+
+#: __temp/options.php:15 __temp/options.php:64
+#: kc-essentials-inc/_options.php:36 kc-essentials-inc/_options.php:95
+msgid "Media taxonomies"
+msgstr ""
+
+#: __temp/options.php:16 __temp/options.php:79
+#: kc-essentials-inc/_options.php:47 kc-essentials-inc/_options.php:177
+msgid "Custom widget ID &amp; classes"
+msgstr ""
+
+#: __temp/options.php:17 __temp/options.php:101
+#: kc-essentials-inc/_options.php:44 kc-essentials-inc/_options.php:152
+msgid "Additional widgets"
+msgstr ""
+
+#: __temp/options.php:18 __temp/options.php:117
+msgid "Responsive Images"
+msgstr ""
+
+#: __temp/options.php:19
+msgid "Insert images with custom sizes"
+msgstr ""
+
+#: __temp/options.php:20 kc-essentials-inc/_options.php:64
+msgid "Custom post type archive menu"
+msgstr ""
+
+#: __temp/options.php:25 kc-essentials-inc/_options.php:77
+msgid "Helper functions"
+msgstr ""
+
+#: __temp/options.php:28 kc-essentials-inc/_options.php:80
+msgid "Get adjacent posts"
+msgstr ""
+
+#: __temp/options.php:55 __temp/options.php:68 __temp/y.php:14
+#: kc-essentials-inc/_options.php:32 kc-essentials-inc/_options.php:99
+#: kc-essentials-inc/_options.php:124 kc-essentials-inc/widgets/post.php:418
+msgid "Taxonomies"
+msgstr ""
+
+#: __temp/options.php:83 kc-essentials-inc/_options.php:181
+msgid "Custom widget IDs"
+msgstr ""
+
+#: __temp/options.php:86 kc-essentials-inc/_options.php:184
+msgid "Predefined widget IDs (optional, separate with spaces)"
+msgstr ""
+
+#: __temp/options.php:90 kc-essentials-inc/_options.php:188
+msgid "Custom widget classes"
+msgstr ""
+
+#: __temp/options.php:93 kc-essentials-inc/_options.php:191
+msgid "Predefined widget classes (optional, separate with spaces)"
+msgstr ""
+
+#: __temp/options.php:105 kc-essentials-inc/_options.php:41
+#: kc-essentials-inc/_options.php:156
+msgid "Widgets"
+msgstr ""
+
+#: __temp/options.php:108 kc-essentials-inc/_options.php:159
+msgid "KC Posts"
+msgstr ""
+
+#: __temp/options.php:121
+msgid "General"
+msgstr ""
+
+#: __temp/options.php:124
+msgid "Intercept <b>ALL</b> image requests"
+msgstr ""
+
+#: __temp/options.php:125
+msgid "Cache images"
+msgstr ""
+
+#: __temp/options.php:131 kc-essentials-inc/_options.php:208
+msgid "Image sizes"
+msgstr ""
+
+#: __temp/options.php:134
+msgid "Comma separated list of image sizes to be delivered"
+msgstr ""
+
+#: __temp/options.php:138
+msgid "Cache directory"
+msgstr ""
+
+#: __temp/options.php:140
+msgid ""
+"Relative to your <code>WP_CONTENT</code> directory, default is "
+"<code>kcss_images</code>"
+msgstr ""
+
+#: __temp/options.php:144
+msgid "Cached images expiration time"
+msgstr ""
+
+#: __temp/options.php:146
+msgid "In seconds, default is 7 days (60*60*24*7)"
+msgstr ""
+
+#. #-#-#-#-#  kc-essentials.pot (KC Essentials 0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: __temp/options.php:154
+msgid "KC Essentials"
+msgstr ""
+
+#: __temp/options.php:155 kc-essentials-inc/_options.php:305
+msgid "KC Essentials Settings"
+msgstr ""
+
+#: __temp/taxonomy.php:6
+msgid "Genres"
+msgstr ""
+
+#: __temp/taxonomy.php:7 __temp/taxonomy.php:17
+msgid "Genre"
+msgstr ""
+
+#: __temp/taxonomy.php:8
+msgid "Search Genres"
+msgstr ""
+
+#: __temp/taxonomy.php:9
+msgid "All Genres"
+msgstr ""
+
+#: __temp/taxonomy.php:10
+msgid "Parent Genre"
+msgstr ""
+
+#: __temp/taxonomy.php:11
+msgid "Parent Genre:"
+msgstr ""
+
+#: __temp/taxonomy.php:12
+msgid "Edit Genre"
+msgstr ""
+
+#: __temp/taxonomy.php:13
+msgid "Update Genre"
+msgstr ""
+
+#: __temp/taxonomy.php:14
+msgid "Add New Genre"
+msgstr ""
+
+#: __temp/taxonomy.php:15
+msgid "Add or remove tags"
+msgstr ""
+
+#: __temp/taxonomy.php:16
+msgid "New Genre Name"
+msgstr ""
+
+#: __temp/taxonomy.php:18
+msgid "Choose from the most used tags"
+msgstr ""
+
+#: __temp/y.php:6 kc-essentials-inc/widgets/post.php:376
+#: kc-essentials-inc/widgets/post.php:597
+#: kc-essentials-inc/widgets/post.php:641
+#: kc-essentials-inc/widgets/post.php:691
+#: kc-essentials-inc/widgets/post.php:742
+#: kc-essentials-inc/widgets/post.php:764
+msgid "Meta key"
+msgstr ""
+
+#: __temp/y.php:7
+msgid "Fill this if you select Meta value or Meta value num above"
+msgstr ""
+
+#: __temp/y.php:18 kc-essentials-inc/widgets/post.php:421
+msgid "Relation"
+msgstr ""
+
+#: __temp/y.php:29 kc-essentials-inc/widget_logic.php:127
+#: kc-essentials-inc/widgets/post.php:433
+#: kc-essentials-inc/widgets/term.php:44
+msgid "Taxonomy"
+msgstr ""
+
+#: __temp/y.php:36 kc-essentials-inc/widgets/post.php:445
+msgid "Operator"
+msgstr ""
+
+#: __temp/y.php:43 kc-essentials-inc/widgets/post.php:452
+msgid "Terms"
+msgstr ""
+
+#: __temp/y.php:54 kc-essentials-inc/widgets/post.php:698
+msgid "More link"
+msgstr ""
+
+#: __temp/y.php:55
+msgid "Fill this with some text if you want to have a more link on each post"
+msgstr ""
+
+#: __temp/y.php:62 kc-essentials-inc/widgets/post.php:812
+msgid "Advanced"
+msgstr ""
+
+#: __temp/y.php:65
+msgid "Index page"
+msgstr ""
+
+#: __temp/y.php:70 kc-essentials-inc/widgets/post.php:815
+msgid "Identifier"
+msgstr ""
+
+#: __temp/y.php:71 kc-essentials-inc/widgets/post.php:815
+msgid "Please refer to the documentation about this"
+msgstr ""
+
+#: __temp/y.php:76 kc-essentials-inc/widgets/post.php:822
+msgid "Debug"
+msgstr ""
+
+#: __temp/y.php:77 kc-essentials-inc/widgets/post.php:822
+msgid ""
+"Select Yes to view the widget options and query parameters on the frontend"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:28
+msgid "<b>Please</b> read the <a%s>guide</a> before using this plugin!"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:45
+msgid "Register additional sidebars/widget areas"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:46
+msgid "Conditional widgets, <em>a.k.a.</em> widget logic"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:52
+msgid "Images"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:55
+msgid "Adaptive images"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:56
+msgid "Insert images with custom sizes into post editor"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:61 kc-essentials-inc/widgets/menu.php:82
+msgid "Menu"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:69
+msgid "Enhancements"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:72
+msgid ""
+"Ajaxify the whole site using <a href=\"%s\">history.js</a> and jQuery, <em>"
+"(experimental)</em>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:141
+msgid "Additional sidebars/widget areas"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:160
+msgid "KC Terms"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:161
+msgid "KC Custom Menu"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:162
+msgid "KC Simple Banner"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:163
+msgid "KC Twitter Timeline"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:164
+msgid "KC Shortcode"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:204
+msgid "Adaptive Images"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:211
+msgid ""
+"Comma separated list of image widths. <span class=\"impo\">Don&#39;t forget "
+"to <a href=\"%s\">regenerate the thumbnails</a></span>."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:215
+msgid "Default size"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:226 kc-essentials-inc/_options.php:312
+msgid "History.js"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:227
+msgid ""
+"Leave each field empty for default values. Separate <em>selectors</em> with "
+"commas, and <em>classes</em> with spaces."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:235 kc-essentials-inc/_options.php:314
+msgid "Excluded link selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:238
+msgid "Default: <code>#comment-popup-link</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:242 kc-essentials-inc/_options.php:316
+msgid "Excluded URLs"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:245
+msgid "Default: <code>/wp-admin/, /feed/</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:249 kc-essentials-inc/_options.php:318
+msgid "Content selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:252
+msgid ""
+"Default: <code>#main, #content, article:first, .article:first, .post:first</"
+"code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:256 kc-essentials-inc/_options.php:320
+msgid "Menu selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:259
+msgid "Default: <code>.menu, nav</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:263 kc-essentials-inc/_options.php:322
+msgid "Children menu selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:266
+msgid "Default: <code>.children, .sub-menu</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:270 kc-essentials-inc/_options.php:324
+msgid "Active menu item selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:273
+msgid "Default: <code>.current-menu-item, .current_page_item</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:277 kc-essentials-inc/_options.php:326
+msgid "Active menu item classes"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:280
+msgid "Default: <code>current-menu-item current_page_item</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:284 kc-essentials-inc/_options.php:328
+msgid "Active non-menu link selectors"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:287
+msgid "Default: <code>.current, .active</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:291 kc-essentials-inc/_options.php:330
+msgid "Active non-menu link classes"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:294
+msgid "Default: <code>current active</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:315
+msgid ""
+"Comma separated list of jQuery selectors for link elements that shouldn&#39;"
+"t be ajaxified, default is <code>#comment-popup-link</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:317
+msgid ""
+"Comma separated list of URL parts that shouldn&#39;t be ajaxified, default "
+"is <code>wp-admin, feed</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:319
+msgid ""
+"Comma separated list of jQuery selectors for the content element, default is "
+"<code>#page, #main, #content, article:first, .article:first, .post:first</"
+"code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:321
+msgid ""
+"Comma separated list of jQuery selectors for the menu elements, default is "
+"<code>.menu, nav</code>"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:323
+msgid ""
+"Comma separated list of jQuery selectors for the children menu elements, "
+"default is <code>.sub-menu, .children</code>."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:325
+msgid ""
+"Comma separated list of additional jQuery selectors for active menu item, "
+"default is <code>.current-menu-item</code>."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:327
+msgid ""
+"<b>Space</b> separated list of additional active menu classes. default is "
+"<code>current-menu-item</code>."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:329
+msgid ""
+"Comma separated list of jQuery selectors for active non-menu link elements, "
+"default is <code>.current, .active</code>."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:331
+msgid "<b>Space</b> separated list of active non-menu item classes."
+msgstr ""
+
+#: kc-essentials-inc/_options.php:367 kc-essentials-inc/widgets/post.php:360
+msgid "ID"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:368 kc-essentials-inc/widgets/term.php:58
+msgid "Name"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:369
+msgid "Description"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:370
+msgid "Before widget"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:371
+msgid "After widget"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:372
+msgid "Before title"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:373
+msgid "After title"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:376
+msgid ""
+"<em>ID</em> and <em>Name</em> are mandatory, everything else is optional. "
+"Careful with the before/after args!"
+msgstr ""
+
+#: kc-essentials-inc/_options.php:398 kc-essentials-inc/widgets/post.php:472
+#: kc-essentials-inc/widgets/post.php:516
+msgid "Add"
+msgstr ""
+
+#: kc-essentials-inc/taxonomy_media.php:83
+msgid "Check/uncheck existing %s, or add new one(s), separated by commas."
+msgstr ""
+
+#: kc-essentials-inc/taxonomy_unique.php:49
+msgid "You cannot modify this taxonomy."
+msgstr ""
+
+#: kc-essentials-inc/widget_attr.php:33 kc-essentials-inc/widget_attr.php:34
+msgid "Custom ID"
+msgstr ""
+
+#: kc-essentials-inc/widget_attr.php:37
+msgid "Custom classes"
+msgstr ""
+
+#: kc-essentials-inc/widget_attr.php:38
+msgid "Custom classes, <small>(separate with spaces)</small>"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:40
+msgid "Logic"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:46
+msgid "Disable"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:51
+msgid "Enable"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:58
+msgid "Homepage"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:63
+msgid "Static front page"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:68
+msgid "Singular"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:74
+msgid "Page"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:80
+msgid "Custom page template"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:86
+msgid "Single post"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:92
+msgid "Sticky post"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:98
+#: kc-essentials-inc/widgets/sbanner.php:63
+#: kc-essentials-inc/widgets/sbanner.php:81
+msgid "Attachment"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:104
+msgid "Archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:109
+msgid "Post type archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:115
+msgid "Category"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:121
+#: kc-essentials-inc/widgets/post.php:526
+#: kc-essentials-inc/widgets/post.php:554
+#: kc-essentials-inc/widgets/post.php:604
+#: kc-essentials-inc/widgets/post.php:669
+msgid "Tag"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:132
+#: kc-essentials-inc/widgets/post.php:362
+msgid "Author"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:138
+msgid "404"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:143
+msgid "Search page"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:148
+msgid "Paged archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:153
+msgid "Year archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:158
+msgid "Month archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:163
+msgid "Date archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:168
+msgid "Day archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:173
+msgid "New day"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:178
+msgid "Time archive"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:183
+msgid "Preview page"
+msgstr ""
+
+#: kc-essentials-inc/widget_logic.php:188
+msgid "Logged in user"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:12
+msgid "Configurable custom menu widget"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:68
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:78
+#: kc-essentials-inc/widgets/post.php:282
+#: kc-essentials-inc/widgets/sbanner.php:44
+#: kc-essentials-inc/widgets/shortcode.php:34
+#: kc-essentials-inc/widgets/term.php:38
+#: kc-essentials-inc/widgets/twitter.php:35
+msgid "Title:"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:88
+msgid "Depth"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:93
+msgid "Container tag"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:98
+msgid "None"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:103
+msgid "Container class"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:107
+msgid "Container ID"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:111
+msgid "Menu class"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:116
+msgid "Menu ID"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:120
+#: kc-essentials-inc/widgets/menu.php:164
+msgid "Before link text"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:124
+#: kc-essentials-inc/widgets/menu.php:169
+msgid "After link text"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:128
+#: kc-essentials-inc/widgets/menu.php:174
+msgid "Before link"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:132
+#: kc-essentials-inc/widgets/menu.php:179
+msgid "After link"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:136
+msgid "Items wrap"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:141
+msgid "Walker function"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:145
+msgid "Action ID"
+msgstr ""
+
+#: kc-essentials-inc/widgets/menu.php:159
+#: kc-essentials-inc/widgets/post.php:361
+#: kc-essentials-inc/widgets/post.php:1218
+#: kc-essentials-inc/widgets/sbanner.php:214
+#: kc-essentials-inc/widgets/shortcode.php:69
+#: kc-essentials-inc/widgets/term.php:130
+#: kc-essentials-inc/widgets/twitter.php:242
+msgid "Title"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:14
+msgid "Query posts as you wish"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:237
+#: kc-essentials-inc/widgets/post.php:737
+msgid "Default"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:238
+#: kc-essentials-inc/widgets/post.php:243
+#: kc-essentials-inc/widgets/post.php:737
+msgid "Custom field"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:241
+msgid "Excerpt"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:242
+msgid "Full Content"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:246
+msgid "Post page"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:247
+msgid "Attachment page"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:248
+msgid "Attachment file"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:249
+msgid "Post custom field"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:250
+msgid "Thumb. custom field"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:251
+#: kc-essentials-inc/widgets/sbanner.php:64
+msgid "Custom URL"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:287
+#: kc-essentials-inc/widgets/sbanner.php:49
+msgid "Basic"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:290
+msgid "Use -1 to show all posts"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:290
+#: kc-essentials-inc/widgets/twitter.php:61
+msgid "Count"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:297
+msgid ""
+"Parent post, use %current% to get currently viewed post ID, or double click "
+"to search."
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:297
+#: kc-essentials-inc/widgets/post.php:365
+msgid "Parent"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:308
+#: kc-essentials-inc/widgets/post.php:319
+msgid "Separate post IDs with commas, double click to search."
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:308
+msgid "Incl. IDs"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:319
+msgid "Excl. IDs"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:330
+msgid "Offset"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:337
+#: kc-essentials-inc/widgets/term.php:64
+msgid "Order"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:342
+#: kc-essentials-inc/widgets/term.php:68
+msgid "Descending"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:343
+#: kc-essentials-inc/widgets/term.php:68
+msgid "Ascending"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:349
+#: kc-essentials-inc/widgets/term.php:54
+msgid "Order by"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:359
+msgid "Publish date"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:363
+msgid "Modification date"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:364
+msgid "Menu order"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:366
+msgid "Comment count"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:367
+msgid "Random"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:368
+msgid "Included IDs"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:369
+msgid "Meta value"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:370
+msgid "Meta value num"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:376
+msgid "Fill this if you select 'Meta value' or 'Meta value num' above"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:386
+msgid "Post types"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:398
+msgid "Post status"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:453
+msgid "Please select a taxonomy above to see its terms."
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:464
+msgid "This taxonomy doesn't have any term with posts."
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:468
+#: kc-essentials-inc/widgets/post.php:513
+msgid "Remove this taxonomy query"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:468
+#: kc-essentials-inc/widgets/post.php:513
+msgid "Remove"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:472
+msgid "Add new taxonomy query"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:483
+msgid "Metadata"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:489
+msgid "Key"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:494
+msgid "Value"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:499
+msgid "Compare"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:506
+msgid "Type"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:516
+msgid "Add new meta query"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:523
+msgid "Posts wrapper"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:541
+#: kc-essentials-inc/widgets/post.php:569
+#: kc-essentials-inc/widgets/post.php:619
+#: kc-essentials-inc/widgets/post.php:684
+msgid "Class"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:551
+msgid "Entry wrapper"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:579
+msgid "Entry title"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:582
+#: kc-essentials-inc/widgets/post.php:654
+#: kc-essentials-inc/widgets/post.php:727
+#: kc-essentials-inc/widgets/sbanner.php:52
+msgid "Source"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:597
+#: kc-essentials-inc/widgets/post.php:641
+#: kc-essentials-inc/widgets/post.php:691
+#: kc-essentials-inc/widgets/post.php:742
+#: kc-essentials-inc/widgets/post.php:764
+msgid "Fill this if you select 'Custom field' above"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:626
+#: kc-essentials-inc/widgets/post.php:749
+msgid "Link"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:651
+msgid "Entry content"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:698
+msgid "Fill this with some text if you want to have a 'more link' on each post"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:709
+msgid "Thumbnail"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:712
+msgid "Size"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:771
+msgid ""
+"Fill this if you select 'Custom URL' above. ALL thumbnails will link to this "
+"URL."
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:771
+msgid "URL"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:782
+msgid "Additional texts"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:785
+#: kc-essentials-inc/widgets/post.php:1223
+msgid "Before loop"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:792
+#: kc-essentials-inc/widgets/post.php:1228
+msgid "After loop"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:799
+msgid "Use wpautop() to automatically add paragraphs and new lines"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:799
+msgid "Format"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:856
+msgid "KC Posts debug"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:857
+msgid "Widget object"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:859
+msgid "Widget options"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:861
+msgid "Query parameters"
+msgstr ""
+
+#: kc-essentials-inc/widgets/post.php:885
+msgid "Invalid post parent, aborted."
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:13
+msgid "Simple banner"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:71
+msgid "File URL"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:94
+msgid "Flash?"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:110
+msgid "Width"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:117
+msgid "Height"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:124
+msgid ""
+"You can enter a post ID here to use its permalink, &#xA;double-click the "
+"input field to find posts."
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:124
+#: kc-essentials-inc/widgets/sbanner.php:219
+msgid "Link URL"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:138
+#: kc-essentials-inc/widgets/term.php:74
+msgid "Misc."
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:141
+#: kc-essentials-inc/widgets/sbanner.php:224
+msgid "Text before banner"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:145
+#: kc-essentials-inc/widgets/sbanner.php:230
+msgid "Text after banner"
+msgstr ""
+
+#: kc-essentials-inc/widgets/sbanner.php:149
+msgid "Automatically add paragraphs"
+msgstr ""
+
+#: kc-essentials-inc/widgets/shortcode.php:13
+#: kc-essentials-inc/widgets/shortcode.php:41
+#: kc-essentials-inc/widgets/shortcode.php:74
+msgid "Shortcode"
+msgstr ""
+
+#: kc-essentials-inc/widgets/term.php:13
+msgid "Display a list of taxonomy terms"
+msgstr ""
+
+#: kc-essentials-inc/widgets/term.php:80
+msgid "Hierarchical"
+msgstr ""
+
+#: kc-essentials-inc/widgets/term.php:81
+msgid "Hide empty"
+msgstr ""
+
+#: kc-essentials-inc/widgets/term.php:82
+msgid "Show count"
+msgstr ""
+
+#: kc-essentials-inc/widgets/term.php:83
+msgid "Use desc. for title"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:13
+msgid "Simple Twitter timeline"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:21
+msgid "Follow me"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:41
+#: kc-essentials-inc/widgets/twitter.php:247
+msgid "Username"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:51
+msgid "Cache expiration time in minutes, minimum is 5"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:51
+msgid "Expiration (m)"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:61
+msgid "Number of statuses to show, minimum is 1"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:71
+msgid "Show date"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:86
+msgid "Date format"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:96
+msgid "Relative"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:97
+msgid "Relative if &lt; 30 days"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:98
+msgid "Use global setting"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:99
+msgid "Custom"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:106
+msgid "Use PHP date format"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:106
+msgid "Custom format"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:116
+msgid "Leave empty to disable"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:116
+#: kc-essentials-inc/widgets/twitter.php:252
+msgid "Follow text"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:174
+msgid "%s ago"
+msgstr ""
+
+#: kc-essentials-inc/widgets/twitter.php:176
+msgid "%1$s at %2$s"
+msgstr ""
+
+#. #-#-#-#-#  kc-essentials.pot (KC Essentials 0.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  kc-essentials.pot (KC Essentials 0.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://kucrut.org/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "The essentials"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Dzikri Aziz"
+msgstr ""

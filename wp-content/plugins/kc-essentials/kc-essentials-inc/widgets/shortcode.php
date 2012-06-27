@@ -31,7 +31,7 @@ class kc_widget_shortcode extends WP_Widget {
 		$title    = strip_tags( $instance['title'] );
 	?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'kc-essentials') ?></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
 			<?php echo kcForm::input(array(
 				'attr'    => array('id' => $this->get_field_id('title'), 'name' => $this->get_field_name('title'), 'class' => 'widefat'),
 				'current' => $title

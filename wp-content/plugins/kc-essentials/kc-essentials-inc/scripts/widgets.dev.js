@@ -5,17 +5,11 @@
 		$('.widgets-sortables .hasdep').kcFormDep();
 		$('.widgets-sortables').ajaxSuccess(function() {
 			$('.hasdep', this).kcFormDep();
+			$('details', this).details();
 		});
-
-
-		// Toggler
-		$('h5.kcw-head').live('click', function() {
-			$(this).next('.kcw-control-block').slideToggle('slow');
-		});
-
 
 		// Delete tax/meta query row
-		$('.kcw-control-block .del').live('click', function(e) {
+		$('.kcw-control-block .rm').live('click', function(e) {
 			e.preventDefault();
 
 			var $el    = $(this),

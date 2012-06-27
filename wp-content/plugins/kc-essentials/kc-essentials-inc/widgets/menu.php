@@ -75,9 +75,8 @@ Class kc_widget_menu extends WP_Widget {
 
 		$options = array(
 			'title' => array(
-				'label'   => __('Title', 'kc-essentials'),
-				'type'    => 'text',
-				'heading' => true
+				'label'   => __('Title:'),
+				'type'    => 'text'
 			),
 			'menu' => array(
 				'label'   => __('Menu', 'kc-essentials'),

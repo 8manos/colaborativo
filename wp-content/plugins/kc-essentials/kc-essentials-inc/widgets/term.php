@@ -34,17 +34,11 @@ class kc_widget_term extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
 		$title    = strip_tags( $instance['title'] );
 	?>
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Widget title', 'kc-essentials') ?></label></h5>
-		<ul class="kcw-control-block">
-			<li>
-				<?php echo kcForm::input(array(
-					'attr'    => array('id' => $this->get_field_id('title'), 'name' => $this->get_field_name('title'), 'class' => 'widefat'),
-					'current' => $title
-				)) ?>
-			</li>
-		</ul>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<input type="text" class="widefat" id="<?php echo $this->get_field_id('title') ?>" name="<?php echo $this->get_field_name('title') ?>" value="<?php echo $title ?>" />
+		</p>
 
-		<h5 class="kcw-head" title="<?php _e('Show/hide', 'kc-essentials') ?>"><?php _e('Config', 'kc-essentials') ?></h5>
 		<ul class="kcw-control-block">
 			<li>
 				<label for="<?php echo $this->get_field_id('taxonomy'); ?>"><?php _e('Taxonomy', 'kc-essentials') ?></label>

@@ -3,7 +3,10 @@
 	cursor:pointer;
 	font-size:1em;
 	margin:0 0 .25em}
-.kcw-control-block {padding-bottom:1px}
+.kcw-control-block {
+	padding-bottom:1px;
+	margin-top:0;
+}
 .kcw-control-block li {
 	overflow:hidden;
 	margin:0;
@@ -57,7 +60,7 @@
 	clear:both;
 	font-size:.85em;
 	cursor:pointer}
-.kcw-control-block .del {
+.kcw-control-block .rm {
 	float:right;
 	padding-top:.5em}
 .kcw-control-block .info {
@@ -67,6 +70,7 @@
 .kcw-control-block .kcs-file-single {padding-top:5px;}
 .kcw-control-block .kcs-file-single span {margin:0}
 
+.kcw-control-normal {margin-top:0}
 .kcw-control-normal input,
 .kcw-control-normal select,
 .kcwe select {
