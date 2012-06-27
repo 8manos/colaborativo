@@ -261,6 +261,7 @@ footer .nav li a:hover {
 
 #menu-social label {
   display:inline-block;
+  vertical-align:middle;
 }
 
 #timeline article {
