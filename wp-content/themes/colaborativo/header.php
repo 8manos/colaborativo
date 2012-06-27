@@ -54,15 +54,15 @@
 
 		<div class="row" id="meta-colaborativo">
 			<span class="ir sprite" id="beta">
-				Estamos en beta
+				<?php _e('Estamos en beta', 'colaborativo'); ?>
 			</span>
 
-			<a href="mailto:info@colaborativo.co" class="ir sprite" id="feedback">
-				Bienvenido el feedback
+			<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite" id="feedback">
+				<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
 			</a>
 
 			<a href="#" class="ir sprite" id="colabora">
-				Colabora con nosotros
+				<?php _e('Colabora con nosotros', 'colaborativo'); ?>
 			</a>
 
 			<div class="aright right" id="menu-social">
