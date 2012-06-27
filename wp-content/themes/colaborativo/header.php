@@ -60,4 +60,8 @@
 			<a href="mailto:info@colaborativo.co" class="ir sprite" id="feedback">
 				Bienvenido el feedback
 			</a>
+
+			<a href="#" class="ir sprite" id="colabora">
+				Colabora con nosotros
+			</a>
 		</div>
