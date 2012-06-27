@@ -53,7 +53,7 @@
 	<div class="container">
 
 		<div class="row" id="meta-colaborativo">
-			<span id="beta">
+			<span class="ir sprite" id="beta">
 				Estamos en beta
 			</span>
 		</div>

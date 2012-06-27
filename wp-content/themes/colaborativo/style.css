@@ -55,6 +55,13 @@ footer .nav li a:hover {
   background-color:transparent;
 }
 
+#beta {
+  background-color:red;
+  background-position:0px 0px;
+  height:20px;
+  width:100px;
+}
+
 #branding {
   background-position: 0 -15px;
   width: 110px;
