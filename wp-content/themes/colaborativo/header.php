@@ -70,6 +70,6 @@
 				<a target="_blank" class="sprite ir facebook" href="https://www.facebook.com/pages/Colaborativoco/385044858220704">Facebook</a>
 				<a target="_blank" class="sprite ir twitter" href="http://twitter.com/colaborativo_co">Twitter</a>
 				<a target="_blank" class="sprite ir googleplus" href="https://plus.google.com/u/0/103569849344851752659/">Google+</a>
-				<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativo">YouTube</a>				
+				<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativoco">YouTube</a>				
 			</div>
 		</div>
