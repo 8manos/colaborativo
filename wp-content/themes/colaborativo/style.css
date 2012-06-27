@@ -253,10 +253,15 @@ footer .nav li a:hover {
   word-spacing:0.15em;
 }
 
+#menu-social {
+  padding-top:9px;
+}
+
 #menu-social a {
   background-color:red;
   height:25px;
   width:25px;
+  vertical-align:middle;
 }
 
 #menu-social label {
