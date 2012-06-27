@@ -90,19 +90,20 @@ footer .nav li a:hover {
 }
 
 #filters form {
-  display: inline-block;
+  float:right;
   margin:11px 0 0 0;
 }
 
 #filters form:before {
   background-image: url('img/sprite.png');
-  background-position: -595px -193px;
+  background-position: -595px -196px;
   background-repeat: no-repeat;
   content: "";
   display: inline-block;
+  float: left;
   height: 38px;
   vertical-align: middle;
-  width: 58px;
+  width: 60px;
 }
 
 #filters h3 {
