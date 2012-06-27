@@ -598,7 +598,7 @@ function agregador_cajas(){
     //parametros para wp_query
     $params = array(
         'post_type' => $post_types,
-        'ignore_sticky_posts' = 1
+        'ignore_sticky_posts' => 1
     );
     if($cat){
         $params['cat'] = $cat;
