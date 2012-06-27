@@ -639,6 +639,11 @@ footer .nav li a:hover {
   background-repeat:no-repeat;
 }
 
+.thumbnail {
+  border:none;
+  padding:0;
+}
+
 @media (max-width: 979px) {
   body {
     padding-top: 0;
