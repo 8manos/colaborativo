@@ -82,6 +82,9 @@
 
 		$i++;
 	endwhile;
+
+	// Reset Query
+	wp_reset_query();
 ?>
 
 </section>
