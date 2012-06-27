@@ -26,7 +26,7 @@
 			}else{
 				$('#counter_label').text( 'Actualizando...' );
 				$('#ajax_counter').text( '' );
-				countdown_number = 180;//reinicia el contador
+				countdown_number = 45;//reinicia el contador
 
 				getAjax( $('#load-more'), 'prepend' );//hace la petición ajax
 			}
@@ -158,7 +158,7 @@
 				itemSelector : 'article'
 			});
 
-			countdown_number = 180;
+			countdown_number = 45;
 			count_t = setTimeout(countdownTrigger, 1000);
 
 			notifyArticles();
