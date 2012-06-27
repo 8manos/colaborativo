@@ -244,13 +244,18 @@ footer .nav li a:hover {
   font-size:10px;
 }
 
-#counter_wrapper {
-  border: 1px solid #000000;
+#counter_wrapper, #notify_new {
+  border: 1px solid #000;
   display:none;
   margin: 10px auto;
   padding: 10px;
   text-align: center;
   width: 200px;
+}
+#notify_new {
+  background-color: #FCFCA9;
+  cursor: pointer;
+  display: block;
 }
 
 #hidden_articles { display: none; }
@@ -278,7 +283,7 @@ footer .nav li a:hover {
 
   #menu-social a.facebook {
     background-position:-775px -143px;
-  } 
+  }
 
   #menu-social a.googleplus {
     background-position:-847px -143px;
