@@ -93,6 +93,17 @@ footer .nav li a:hover {
   margin:11px 0 0 0;
 }
 
+#filters form:before {
+  background-image: url('img/sprite.png');
+  background-position: -155px -193px;
+  background-repeat: no-repeat;
+  content: "";
+  display: inline-block;
+  height: 38px;
+  vertical-align: middle;
+  width: 58px;
+}
+
 #filters h3 {
   display:inline-block;
   font-family: 'Oswald';
