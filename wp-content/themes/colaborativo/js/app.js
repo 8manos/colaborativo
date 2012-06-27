@@ -32,13 +32,6 @@
 			}
 		}
 
-		/*function getNewer()
-		{
-			getAjax( $('#load-more'), 'prepend' );
-
-			ajax_t = setTimeout(getNewer, 180000);
-		}*/
-
 		function removeDuplicates($results)
 		{
 			$articles = $results.filter('article');
@@ -52,27 +45,23 @@
 			return $articles;
 		}
 
-		function displayBatch($articles, start, length)
+		function displayNew()
 		{
-			if (start <= 0){
-				length = length + start;//muestra los que hagan falta
-				start = 0;
-			}else{
-				batch_t = setTimeout( function(){ displayBatch($articles, start-length, length) }, 10000 );
-			}
-
-			var $batch = $articles.slice(start, start+length);
-
-			$('#timeline').prepend( $batch ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+			var $articles = $('#hidden_articles article');
+			$('#timeline').prepend( $articles ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+			notifyArticles();
 		}
 
-		function prependArticles($articles)
+		function notifyArticles()
 		{
-			//maximo se tiene 15 tandas cada 10 segundos, lo cual duraría en total 2:30
-			var batch_number = Math.ceil($articles.length / 15);
-			var start = $articles.length - batch_number;
-
-			displayBatch($articles, start, batch_number)
+			var $articles = $('#hidden_articles article');
+			if ($articles.length > 0){
+				$('#notify_new').text('Nuevo contenido ( '+$articles.length+' )');
+				$('#notify_new').addClass('has-new');
+			}else{
+				$('#notify_new').text('-');
+				$('#notify_new').removeClass('has-new');
+			}
 		}
 
 		function insertResults(results, op)
@@ -90,7 +79,8 @@
 						//$('#load-more').attr('data-page', parseInt(tid)+1)
 						$('#load-more').html("Cargar más contenidos");
 					}else{
-						prependArticles($articles);
+						$('#hidden_articles').prepend( $articles );
+						notifyArticles();
 					}
 				}
 			}
@@ -158,6 +148,8 @@
 			}
 		});
 
+		$('#notify_new').on('click', displayNew);
+
 		$(window).load(function(){
 
 			// window ready
@@ -166,12 +158,10 @@
 				itemSelector : 'article'
 			});
 
-			//ajax_t = setTimeout(getNewer, 180000);
-
 			countdown_number = 180;
 			count_t = setTimeout(countdownTrigger, 1000);
 
-			prependArticles( $('#hidden_articles article') );
+			notifyArticles();
 		});
 	});
 })(jQuery);
