@@ -633,7 +633,8 @@ footer .nav li a:hover {
 }
 
 .pp_inline #footer ,
-.pp_inline .navbar-fixed-top {
+.pp_inline .navbar-fixed-top ,
+.pp_inline #meta-colaborativo {
   display: none !important;
 }
 
