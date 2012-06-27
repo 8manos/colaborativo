@@ -259,10 +259,27 @@ footer .nav li a:hover {
 
 #menu-social a {
   background-color:red;
-  height:25px;
-  width:25px;
+  height:31px;
+  width:31px;
   vertical-align:middle;
 }
+
+  #menu-social a.facebook {
+    background-position:-775px -143px;
+  } 
+
+  #menu-social a.googleplus {
+    background-position:-775px -143px;
+  }
+
+  #menu-social a.twitter {
+    background-position:-775px -143px;
+  }
+
+  #menu-social a.youtube {
+    background-position:-775px -143px;
+  }
+
 
 #menu-social label {
   display:inline-block;
