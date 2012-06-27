@@ -258,8 +258,7 @@ footer .nav li a:hover {
 }
 
 #menu-social a {
-  background-color:red;
-  height:31px;
+  height:32px;
   width:31px;
   vertical-align:middle;
 }
@@ -269,15 +268,15 @@ footer .nav li a:hover {
   } 
 
   #menu-social a.googleplus {
-    background-position:-775px -143px;
+    background-position:-847px -143px;
   }
 
   #menu-social a.twitter {
-    background-position:-775px -143px;
+    background-position:-811px -143px;
   }
 
   #menu-social a.youtube {
-    background-position:-775px -143px;
+    background-position:-882px -143px;
   }
 
 
