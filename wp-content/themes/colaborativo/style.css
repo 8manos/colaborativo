@@ -71,6 +71,13 @@ footer .nav li a:hover {
   font-family: 'Oswald';
 }
 
+#feedback {
+  background-position: -619px -112px;
+  height: 20px;
+  margin: 0 0 0 19px;
+  width: 150px;
+}
+
 #filters {
   margin:0 0 1.4em;
 }

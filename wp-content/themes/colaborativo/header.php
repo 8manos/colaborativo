@@ -56,4 +56,8 @@
 			<span class="ir sprite" id="beta">
 				Estamos en beta
 			</span>
+
+			<a href="mailto:info@colaborativo.co" class="ir sprite" id="feedback">
+				Bienvenido el feedback
+			</a>
 		</div>
