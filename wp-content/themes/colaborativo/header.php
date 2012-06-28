@@ -61,7 +61,7 @@
 				<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
 			</a>
 
-			<a href="#" class="ir sprite" id="colabora">
+			<a href="/colabora?ajax=true&width=940&height=90%" rel="prettyPhoto[colabora]" class="ir sprite" id="colabora">
 				<?php _e('Colabora con nosotros', 'colaborativo'); ?>
 			</a>
 
