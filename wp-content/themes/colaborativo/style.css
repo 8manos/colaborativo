@@ -646,6 +646,10 @@ footer .nav li a:hover {
   display: none !important;
 }
 
+.pp_play {
+  display:none !important;
+}
+
 .right {
   float:right;
 }
