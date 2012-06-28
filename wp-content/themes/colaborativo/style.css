@@ -732,6 +732,16 @@ footer .nav li a:hover {
   padding:9px 0;
 }
 
+.wpcf7-submit {
+  background-color: #333;
+  color: #D1D1D1;
+  font-family: 'Oswald';
+  font-size: 14px;
+  padding: 10px 70px;
+  text-transform: uppercase;
+  word-spacing: 0.15em;
+}
+
 @media (max-width: 979px) {
   body {
     padding-top: 0;
