@@ -150,6 +150,10 @@
 
 		$('#notify_new').on('click', displayNew);
 
+		$('.pp_overlay').live('click', function(){
+			$(this).hide();
+		})
+
 		$(window).load(function(){
 
 			// window ready
