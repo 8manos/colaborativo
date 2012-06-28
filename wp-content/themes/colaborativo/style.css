@@ -631,6 +631,10 @@ footer .nav li a:hover {
     display:none;
   }
 
+.pp_gallery ul {
+  display:none !important;
+}
+
 .pp_content {
   overflow-x:hidden;
   overflow-y:auto;
