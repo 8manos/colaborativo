@@ -465,7 +465,17 @@ function display_article_content() {
         </div>
 
         <div class="entry-aside">
-            <div class="autor">
+            <div class="autor clearfix">
+                <?php if( get_post_type() == "tweet" ){ 
+                    $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
+                    $enclosure = apply_filters( 'the_title', $enclosure);
+                    $enclosure_array = explode('
+', $enclosure);
+                ?>
+                    <div class="avatar right">
+                        <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
+                    </div>
+                <?php } ?>
                 <small>POR</small><br />
                 <?php the_author(); ?>
             </div>

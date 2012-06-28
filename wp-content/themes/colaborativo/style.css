@@ -474,6 +474,10 @@ footer .nav li a:hover {
   text-align:right;
 }
 
+.avatar {
+  margin-left:8px;
+}
+
 .chromeframe {
   background: #ccc;
   color: #000;
