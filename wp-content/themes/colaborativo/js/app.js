@@ -120,6 +120,7 @@
 					$(document).ready(function(){
 						$("a[rel^='prettyPhoto']").prettyPhoto({
 								social_tools: '',
+								deeplinking: false,
 								changepicturecallback: function(){
 									addthis.toolbox('.addthis_toolbox');
 									addthis.counter('.addthis_counter');
