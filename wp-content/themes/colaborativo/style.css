@@ -245,7 +245,7 @@ footer .nav li a:hover {
 }
 
 #counter_wrapper, #notify_new {
-  border: 1px solid #000;
+  border: 1px solid #999;
   display:none;
   margin: 10px auto;
   padding: 10px;
@@ -253,7 +253,7 @@ footer .nav li a:hover {
   width: 200px;
 }
 #notify_new {
-  background-color: #FCFCA9;
+  background-color: #eee;
   display: block;
 }
 #notify_new.has-new {
