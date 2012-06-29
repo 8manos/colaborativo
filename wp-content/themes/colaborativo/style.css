@@ -254,9 +254,11 @@ footer .nav li a:hover {
 }
 #notify_new {
   background-color: #eee;
-  display: block;
+  display: none;
 }
+
 #notify_new.has-new {
+  display:block;
   cursor: pointer;
 }
 
