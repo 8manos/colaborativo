@@ -562,9 +562,6 @@ function ucc_pre_get_posts_filter( $query ) {
                 // array( 'post' , 'link' , 'page' ), etc.
                 $post_types = array_merge( $post_types, array( 'post' ,'tweet' ) );
                 $query->set( 'post_type', $post_types );
-            }elseif($my_post_type == 'imagen'){
-                $post_types = array('imagen');
-                $query->set( 'post_type', $post_types );
             }
         }
     }
