@@ -98,7 +98,7 @@ function colaborativo_post_types() {
   );
 
   $labels_video = array(
-    'name' => _x('Videos', 'post type general name'),
+    'name' => __('Videos', 'post type general name'),
     'singular_name' => _x('Video', 'post type singular name'),
     'add_new' => _x('Agregar nuevo', 'book'),
     'add_new_item' => __('Agregar nuevo video'),
