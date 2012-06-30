@@ -355,7 +355,15 @@ footer .nav li a:hover {
 
 #timeline article .categoria {
   padding:3px 8px;
+  position: relative;
   text-transform:uppercase;
+}
+
+#timeline article .categoria em {
+  color:#fff;
+  position:absolute;
+  right:8px;
+  top:4px;
 }
 
 #timeline article .categoria ul {
