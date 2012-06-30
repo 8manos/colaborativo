@@ -66,7 +66,7 @@ class Bootstrapwp_Walker_Nav_Menu extends Walker_Nav_Menu {
  */
 function colaborativo_post_types() {
   $labels_img = array(
-    'name' => _x('Imagenes', 'post type general name'),
+    'name' => __('Imagenes', 'post type general name'),
     'singular_name' => _x('Imagen', 'post type singular name'),
     'add_new' => _x('Agregar nueva', 'book'),
     'add_new_item' => __('Agregar nueva imagen'),
@@ -79,8 +79,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay imagenes en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Imagenes'
-
   );
+
   $args_img = array(
     'labels' => $labels_img,
     'public' => true,
@@ -111,8 +111,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay Videos en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Videos'
-
   );
+
   $args_video = array(
     'labels' => $labels_video,
     'public' => true,
@@ -143,8 +143,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay Tweets en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Tweets'
-
   );
+
   $args_tweet = array(
     'labels' => $labels_tweet,
     'public' => true,
@@ -175,8 +175,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay Sonidos en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Sonidos'
-
   );
+
   $args_sonido = array(
     'labels' => $labels_sonido,
     'public' => true,
@@ -207,8 +207,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay Descargas en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Descargas'
-
   );
+
   $args_descarga = array(
     'labels' => $labels_descarga,
     'public' => true,
@@ -239,8 +239,8 @@ function colaborativo_post_types() {
     'not_found_in_trash' => __('No hay Galerias en la basura'),
     'parent_item_colon' => '',
     'menu_name' => 'Galerias'
-
   );
+
   $args_galeria = array(
     'labels' => $labels_galeria,
     'public' => true,
@@ -257,12 +257,12 @@ function colaborativo_post_types() {
     'taxonomies' => array( 'category' )
   );
 
-  register_post_type('imagen',$args_img);
-  register_post_type('video',$args_video);
-  register_post_type('tweet',$args_tweet);
-  register_post_type('sonido',$args_sonido);
-  register_post_type('descarga',$args_descarga);
-  register_post_type('galeria',$args_galeria);
+  register_post_type( 'imagen', $args_img );
+  register_post_type( 'video', $args_video );
+  register_post_type( 'tweet', $args_tweet );
+  register_post_type( 'sonido', $args_sonido );
+  register_post_type( 'descarga', $args_descarga );
+  register_post_type( 'galeria', $args_galeria );
 
 }
 add_action( 'init', 'colaborativo_post_types' );
