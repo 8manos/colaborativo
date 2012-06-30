@@ -66,8 +66,8 @@ class Bootstrapwp_Walker_Nav_Menu extends Walker_Nav_Menu {
  */
 function colaborativo_post_types() {
   $labels_img = array(
-    'name' => __('Imagenes', 'post type general name'),
-    'singular_name' => _x('Imagen', 'post type singular name'),
+    'name' => __('Imagenes ', 'post type general name'),
+    'singular_name' => _x('Imagen ', 'post type singular name'),
     'add_new' => _x('Agregar nueva', 'book'),
     'add_new_item' => __('Agregar nueva imagen'),
     'edit_item' => __('Editar imagen'),
