@@ -376,7 +376,12 @@ function display_article() {
                <h2><?php the_title(); ?></h2> 
             <?php } ?>
 			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
-			<span class="categoria"><?php the_category(); ?></span>
+			<span class="categoria">
+                <?php the_category(); ?>
+                <em class="right">
+                    <?php the_time('Y-m-d H:i:s'); ?>
+                </em>
+            </span>
 		</footer>
 	</article>
 <?php
