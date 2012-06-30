@@ -378,9 +378,9 @@ function display_article() {
 			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria">
                 <?php the_category(); ?>
-                <em class="right">
+                <!-- <em class="right">
                     <?php the_time('Y-m-d H:i:s'); ?>
-                </em>
+                </em> -->
             </span>
 		</footer>
 	</article>
