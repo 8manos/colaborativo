@@ -2,7 +2,7 @@
 
 /**
  * @package KC_Settings
- * @version 2.7
+ * @version 2.7.6
  */
 
 
@@ -10,7 +10,7 @@
 Plugin name: KC Settings
 Plugin URI: http://kucrut.org/kc-settings/
 Description: Easily create plugin/theme settings page, custom fields metaboxes, term meta and user meta settings.
-Version: 2.7
+Version: 2.7.6
 Author: Dzikri Aziz
 Author URI: http://kucrut.org/
 License: GPL v2
@@ -18,6 +18,7 @@ Text Domain: kc-settings
 */
 
 class kcSettings {
+	const version = '2.7.6';
 	protected static $data = array(
 		'paths'    => '',
 		'pages'    => array('media-upload-popup'),
@@ -26,7 +27,13 @@ class kcSettings {
 		'notices'  => array( 'updated' => array(), 'error' => array() ),
 		'settings' => array(),
 		'defaults' => array(),
-		'kcsb'     => array()
+		'kcsb'     => array(),
+		'kids'     => array(),
+		'customizer_blacklist' => array(
+			'multiinput', 'multiselect', 'special', 'editor', 'checkbox'
+			, 'file', 'image', 'upload'
+			, 'date', 'datetime', 'datetime-local', 'week', 'month', 'time'
+		)
 	);
 
 
@@ -35,8 +42,8 @@ class kcSettings {
 		if ( !is_array($paths) )
 			return false;
 
-		self::$data['status'] = get_option( 'kc_settings' );
 		self::$data['paths'] = $paths;
+		self::$data['standalone'] = current_filter() == 'plugins_loaded';
 
 		require_once "{$paths['inc']}/form.php";
 		require_once "{$paths['inc']}/helper.php";
@@ -56,6 +63,9 @@ class kcSettings {
 
 
 	public static function init() {
+		# Get children (plugins/themes that depend on KC Settings)
+		self::$data['kids'] = apply_filters( 'kc_settings_kids', array() );
+
 		# Setup termmeta table
 		self::_setup_termmeta_table();
 
@@ -67,7 +77,7 @@ class kcSettings {
 		kcSettings_options::init();
 
 		# Include samples (for development)
-		//self::_samples( array('01_plugin') );
+		// self::_samples( array('01_plugin', '02_post', '03_term', '04_user', '05_theme') );
 
 		# Get all settings
 		self::_bootstrap_settings();
@@ -75,6 +85,10 @@ class kcSettings {
 		# Backend-only stuff
 		if ( is_admin() )
 			self::_admin_init();
+
+		# Theme customizer
+		if ( isset(self::$data['settings']['theme']) && !empty(self::$data['settings']) )
+			require_once self::$data['paths']['inc']."/theme.php";
 	}
 
 
@@ -82,11 +96,13 @@ class kcSettings {
 		# Register settings
 		if ( self::$data['settings'] ) {
 			foreach ( array_keys(self::$data['settings']) as $type ) {
-				require_once self::$data['paths']['inc']."/{$type}.php";
+				if ( $type === 'theme' )
+					continue;
 
+				require_once self::$data['paths']['inc']."/{$type}.php";
 				if ( $type == 'plugin' ) {
 					foreach ( self::$data['settings']['plugin'] as $group )
-						$do = new kcSettings_plugin( $group );
+						new kcSettings_plugin( $group );
 				}
 				else {
 					call_user_func( array("kcSettings_{$type}", 'init') );
@@ -100,9 +116,11 @@ class kcSettings {
 		# Admin scripts n styles
 		add_action( 'admin_enqueue_scripts', array(__CLASS__, '_sns_admin') );
 
-		# Builder
-		require_once( self::$data['paths']['inc'].'/builder.php' );
-		kcSettings_builder::init();
+		# Builder: only load if NOT bundled
+		if ( self::$data['standalone'] ) {
+			require_once( self::$data['paths']['inc'].'/builder.php' );
+			kcSettings_builder::init();
+		}
 
 		# Contextual help
 		add_action( 'admin_head', array(__CLASS__, '_register_help') );
@@ -140,7 +158,9 @@ class kcSettings {
 			return false;
 
 		$paths = array();
-		$url = "{$locations[$key][1]}/{$file_info['parent']}";
+		$url = $locations[$key][1];
+		if ( $file_info['parent'] != $key )
+			$url .= "/{$file_info['parent']}";
 		$inc_prefix = "{$file_info['filename']}{$inc_suffix}";
 
 		$paths['file']    = $file;
@@ -173,7 +193,8 @@ class kcSettings {
 			'field_no_title'      => __( "One of your fields doesn't have <b>title</b> set.", 'kc-settings'),
 			'field_no_type'       => __( "One of your fields doesn't have <b>type</b> set.", 'kc-settings'),
 			'field_no_opt'        => __( "One of your fields doesn't have the required <b>options</b> set.", 'kc-settings'),
-			'field_no_cb'         => __( "One of your fields doesn't have the required <b>callback</b> set, or is not callable.", 'kc-settings')
+			'field_no_cb'         => __( "One of your fields doesn't have the required <b>callback</b> set, or is not callable.", 'kc-settings'),
+			'field_nested_multi'  => __( "multiinput fields cannot have a multiinput sub-field.", 'kc-settings')
 		);
 
 		$kcsb = array(
@@ -182,11 +203,13 @@ class kcSettings {
 				'settings' => array(),
 				'sections' => array(),
 				'fields'   => array()
-			)
+			),
+			'items' => array()
 		);
 
 		$settings = array(
 			'plugin' => array(),
+			'theme'  => array(),
 			'post'   => array(),
 			'term'   => array(),
 			'user'   => array()
@@ -194,12 +217,19 @@ class kcSettings {
 
 		# Process settings from the builder
 		if ( is_array($kcsb['settings']) && !empty($kcsb['settings']) ) {
+			$pre_options = get_class_vars( 'kcSettings_options' );
+			$pre_options_cb = get_class_methods( 'kcSettings_options_cb' );
+			$pre_options_cb_args = array( 'tax', 'pt' );
+
 			foreach ( $kcsb['settings'] as $setting ) {
 				$sID = $setting['id'];
 				$kcsb['_ids']['settings'][] = $sID;
+
+				if ( isset($setting['status']) && !$setting['status'] )
+					continue;
+
 				$type = $setting['type'];
 				$sections = array();
-				$pre_options = get_class_vars( 'kcSettings_options' );
 
 				foreach ( $setting['sections'] as $section ) {
 					$kcsb['_ids']['sections'][] = $section['id'];
@@ -209,9 +239,21 @@ class kcSettings {
 						if ( in_array($field['type'], array('checkbox', 'radio', 'select', 'multiselect')) ) {
 							# Predefined options
 							if ( isset($field['option_type']) && $field['option_type'] == 'predefined' ) {
-								$field['options'] = $pre_options[$field['option_predefined']];
+								if ( isset($pre_options[$field['option_predefined']]) ) {
+									$field['options'] = $pre_options[$field['option_predefined']];
+								}
+								elseif ( in_array($field['option_predefined'], $pre_options_cb) ) {
+									$field['options'] = array('kcSettings_options_cb', $field['option_predefined']);
+									foreach ( $pre_options_cb_args as $_cb_arg )
+										if ( isset($field["option_predefined_cb_{$_cb_arg}"]) )
+											$field['args'] = $field["option_predefined_cb_{$_cb_arg}"];
+								}
+
 								unset( $field['option_type'] );
 								unset( $field['option_predefined'] );
+								unset( $field['option_predefined_cb'] );
+								unset( $field['option_predefined_cb_pt'] );
+								unset( $field['option_predefined_cb_tax'] );
 							}
 
 							# Custom options
@@ -223,6 +265,15 @@ class kcSettings {
 								$field['options'] = $options;
 							}
 						}
+						elseif ( $field['type'] === 'editor' ) {
+							if ( !isset($field['editor_settings']) )
+								$field['editor_settings'] = array();
+							$editor_settings = array();
+							foreach ( array('media_buttons', 'tinymce', 'quicktags') as $key )
+								$editor_settings[$key] = in_array($key, $field['editor_settings']);
+							$field['editor_settings'] = $editor_settings;
+						}
+
 						$fields[$field['id']] = $field;
 					}
 					$section['fields'] = $fields;
@@ -232,6 +283,7 @@ class kcSettings {
 				$setting['options'] = $sections;
 				unset ( $setting['sections'] );
 
+				$kcsb['items'][$type][$sID] = $setting;
 				if ( $type == 'plugin' ) {
 					$settings[$type][$sID] = $setting;
 				}
@@ -297,13 +349,17 @@ class kcSettings {
 					if ( empty($group['options']) )
 						$group = null;
 				}
-
 				elseif ( in_array($type, array('post', 'term', 'user')) ) {
 					foreach ( $group as $obj => $sections ) {
 						$group[$obj] = self::_validate_sections( $type, $sections );
 						if ( empty($group[$obj]) )
 							$group = null;
 					}
+				}
+				else { # Theme customizer
+					$group['options'] = self::_validate_sections( $type, $group['options'], $group );
+					if ( empty($group['options']) )
+						$group = null;
 				}
 
 				# Include this group only if it's valid
@@ -362,7 +418,7 @@ class kcSettings {
 					$section['fields'] = $fields['fields'];
 
 					if ( !empty($fields['defaults']) )
-						$defaults['plugin'][$group['prefix']][$section['id']] = $fields['defaults'];
+						$defaults[$type][$group['prefix']][$section['id']] = $fields['defaults'];
 				}
 			}
 
@@ -397,42 +453,68 @@ class kcSettings {
 	}
 
 
-	private static function _validate_fields( $type, $fields ) {
+	private static function _validate_fields( $type, $fields, $sub = false ) {
 		$defaults = array();
 		$need_options = array( 'select', 'radio', 'checkbox' );
 		$file_modes = array('single', 'radio', 'checkbox');
 
 		foreach ( $fields as $idx => $field ) {
 			unset( $fields[$idx] );
+			# Theme customizer blacklist
+			if ( $type == 'theme' && in_array($field['type'], self::$data['customizer_blacklist']) )
+				continue;
+
 			# Field check: id, title & type
 			foreach ( array('id', 'title', 'type') as $c ) {
 				if ( !isset($field[$c]) || empty($field[$c]) ) {
 					trigger_error( self::$data['messages']['bootstrap']["field_no_{$c}"] );
-					unset( $fields[$idx] );
 					continue 2;
 				}
 			}
 			# Field check: need options
 			if ( in_array($field['type'], $need_options) && !isset($field['options']) ) {
 				trigger_error( self::$data['messages']['bootstrap']['field_no_opt'] );
-				unset( $fields[$idx] );
 				continue;
 			}
 			# Field check: file mode
-			if ( $field['type'] == 'file' ) {
+			elseif ( $field['type'] == 'file' ) {
 				if ( !isset($field['mode']) || !in_array($field['mode'], $file_modes) )
-					$fields[$idx]['mode'] = 'radio';
+					$field['mode'] = 'radio';
 			}
 			elseif ( $field['type'] == 'special' ) {
 				if ( !isset($field['cb']) || !is_callable($field['cb']) ) {
 					trigger_error( self::$data['messages']['bootstrap']['field_no_cb'] );
-					unset( $fields[$idx] );
 					continue;
+				}
+			}
+			elseif ( $field['type'] == 'multiinput' ) {
+				if ( $sub ) {
+					trigger_error( self::$data['messages']['bootstrap']['field_nested_multi'] );
+					continue;
+				}
+
+				$subfields = ( isset($field['subfields']) && !empty($field['subfields']) ) ? self::_validate_fields( $type, $field['subfields'], true ) : array( 'fields' => array() );
+				if ( empty($subfields['fields']) ) {
+					$field['subfields'] = array(
+						array(
+							'id'    => 'key',
+							'title' => __('Key', 'kc-settings'),
+							'type'  => 'text'
+						),
+						array(
+							'id'    => 'value',
+							'title' => __('Value', 'kc-settings'),
+							'type'  => 'textarea'
+						)
+					);
+				}
+				else {
+					$field['subfields'] = $subfields['fields'];
 				}
 			}
 
 			# Has default value?
-			if ( $type == 'plugin' && isset($field['default']) )
+			if ( ($type == 'plugin' || $type == 'theme') && isset($field['default']) )
 				$defaults[$field['id']] = $field['default'];
 
 			$fields[$field['id']] = $field;
@@ -489,7 +571,6 @@ class kcSettings {
 
 	public static function _sns_register() {
 		$path = self::$data['paths'];
-		$version = self::$data['status']['version'];
 
 		if ( !defined('KC_SETTINGS_SNS_DEBUG') )
 			define( 'KC_SETTINGS_SNS_DEBUG', false );
@@ -497,39 +578,10 @@ class kcSettings {
 		$suffix = KC_SETTINGS_SNS_DEBUG ? '.dev' : '';
 
 		# Common
-		wp_register_script( 'kc-settings-base', "{$path['scripts']}/kc-settings-base{$suffix}.js", array('jquery'), $version, true );
-		wp_register_script( 'modernizr',        "{$path['scripts']}/modernizr-2.5.3-20120617{$suffix}.js", false, '2.5.3', true );
-		wp_register_script( 'jquery-details',   "{$path['scripts']}/jquery.details-0.0.6{$suffix}.js", array('modernizr', 'jquery'), '0.0.6', true );
-		wp_register_script( 'kc-settings',      "{$path['scripts']}/kc-settings{$suffix}.js", array('modernizr', 'kc-settings-base', 'jquery-ui-sortable', 'jquery-ui-datepicker', 'jquery-details', 'media-upload', 'thickbox'), $version, true );
-		wp_register_style(  'kc-settings',      "{$path['styles']}/kc-settings{$suffix}.css", array('thickbox'), $version );
-
-		# Uploader
-		wp_register_script( 'kc-settings-upload',        "{$path['scripts']}/upload{$suffix}.js", array('jquery'), $version, true );
-		wp_register_script( 'kc-settings-upload-single', "{$path['scripts']}/upload-single{$suffix}.js", array('jquery'), $version, true );
-	}
-
-
-	public static function _sns_admin( $hook_suffix ) {
-		if ( !in_array($hook_suffix, self::$data['pages']) )
-			return;
-
-		wp_enqueue_style( 'kc-settings' );
-		wp_enqueue_script( 'kc-settings' );
-
-		if ( $hook_suffix != 'media-upload-popup' ) {
-			self::_js_globals();
-		}
-		else {
-			if ( (isset($_REQUEST['kcsfs']) && $_REQUEST['kcsfs']) || strpos( wp_get_referer(), 'kcsfs') !== false )
-				wp_enqueue_script( 'kc-settings-upload-single' );
-			elseif ( (isset($_REQUEST['kcsf']) && $_REQUEST['kcsf']) || strpos( wp_get_referer(), 'kcsf') !== false )
-				wp_enqueue_script( 'kc-settings-upload' );
-		}
-	}
-
-
-	private static function _js_globals() {
-		$kcSettings_vars = array(
+		wp_register_script( 'modernizr',        "{$path['scripts']}/modernizr-2.5.3-20120707{$suffix}.js", false, '2.5.3', true );
+		wp_register_script( 'kc-settings-base', "{$path['scripts']}/kc-settings-base{$suffix}.js", array('jquery', 'modernizr', 'media-upload', 'thickbox'), self::version, true );
+		wp_localize_script( 'kc-settings-base', 'kcSettings', array(
+			'paths'  => self::$data['paths'],
 			'upload' => array(
 				'text' => array(
 					'head'     => __( 'KC Settings', 'kc-settings' ),
@@ -542,17 +594,37 @@ class kcSettings {
 					'selFile'  => __( 'Select file', 'kc-settings' )
 				)
 			),
-			'_ids'  => isset( self::$data['kcsb']['_ids'] ) ? self::$data['kcsb']['_ids'] : '',
-			'paths' => self::$data['paths']
-		);
+			'texts' => array(
+				'show' => __('Show', 'kc-settings'),
+				'hide' => __('Hide', 'kc-settings')
+			)
+		) );
+		wp_register_script( 'kc-settings', "{$path['scripts']}/kc-settings{$suffix}.js", array('kc-settings-base', 'jquery-ui-sortable', 'jquery-ui-datepicker'), self::version, true );
+		wp_register_style(  'kc-settings', "{$path['styles']}/kc-settings{$suffix}.css", array('thickbox'), self::version );
 
-		?>
-<script type="text/javascript">
-	//<![CDATA[
-	var kcSettings = <?php echo json_encode( $kcSettings_vars ) ?>;
-	//]]>
-</script>
-	<?php }
+		# Builder
+		wp_register_script( 'kc-settings-builder', "{$path['scripts']}/kc-settings-builder{$suffix}.js", array('kc-settings-base', 'jquery-ui-sortable'), self::version, true );
+
+		# Uploader
+		wp_register_script( 'kc-settings-upload',        "{$path['scripts']}/upload{$suffix}.js", array('jquery'), self::version, true );
+		wp_register_script( 'kc-settings-upload-single', "{$path['scripts']}/upload-single{$suffix}.js", array('jquery'), self::version, true );
+	}
+
+
+	public static function _sns_admin( $hook_suffix ) {
+		if ( !in_array($hook_suffix, self::$data['pages']) )
+			return;
+
+		wp_enqueue_style( 'kc-settings' );
+		wp_enqueue_script( 'kc-settings' );
+
+		if ( $hook_suffix === 'media-upload-popup' ) {
+			if ( (isset($_REQUEST['kcsfs']) && $_REQUEST['kcsfs']) || strpos( wp_get_referer(), 'kcsfs') !== false )
+				wp_enqueue_script( 'kc-settings-upload-single' );
+			elseif ( (isset($_REQUEST['kcsf']) && $_REQUEST['kcsf']) || strpos( wp_get_referer(), 'kcsf') !== false )
+				wp_enqueue_script( 'kc-settings-upload' );
+		}
+	}
 
 
 	private static function _samples( $types ) {
@@ -593,10 +665,11 @@ class kcSettings {
 
 
 	/**
-	 * Lock plugin when there are other plugins/themes using it
+	 * Lock plugin/prevent deactivation when there are other plugins/themes
+	 *   that depend on it.
 	 */
 	public static function _lock( $actions, $plugin_file, $plugin_data, $context ) {
-		if ( $plugin_file == self::$data['paths']['p_file'] && !empty(self::$data['status']['kids']) )
+		if ( $plugin_file == self::$data['paths']['p_file'] && !empty(self::$data['kids']) )
 			unset( $actions['deactivate'] );
 
 		return $actions;
@@ -670,56 +743,12 @@ class kcSettings {
 		if ( version_compare(get_bloginfo('version'), '3.3', '<') )
 			wp_die( 'Please upgrade your WordPress to version 3.3 before using this plugin.' );
 
-		$status = get_option( 'kc_settings' );
-		if ( !$status )
-			$status = array();
-
-		if ( !isset($data['kids']) )
-			$status['kids'] = array();
-
-		$old_version = ( isset($status['version']) ) ? $status['version'] : '2.2';
-		$status['version'] = '2.7';
-
-		update_option( 'kc_settings', $status );
-
-		if ( version_compare($old_version, '2.5', '<') )
-			self::_upgrade( array('kcsb', 'kcsb_metabox') );
-	}
-
-
-	# Upgrade task(s)
-	private static function _upgrade( $parts = array() ) {
-		if ( in_array('kcsb', $parts) ) {
-			$kcsb = get_option( 'kcsb' );
-			if ( is_array($kcsb) ) {
-				foreach ( $kcsb as $id => $item ) {
-					foreach ($item['sections'] as $section_id => $section ) {
-						# Metabox (20111215)
-						if ( in_array('kcsb_metabox', $parts) ) {
-							$mb_prio = isset($section['priority']) ? $section['priority'] : 'default';
-							if ( isset($section['priority'])
-										|| ( $item['type'] == 'plugin' && !isset($item['display']) )
-										|| ( $item['display'] == 'metabox' && !isset($section['metabox']) ) ) {
-								$section['metabox'] = array(
-									'context'  => 'normal',
-									'priority' => $mb_prio
-								);
-								$item['display'] = 'metabox';
-								unset( $section['priority'] );
-							}
-						}
-
-						# Return the section
-						$item['sections'][$section_id] = $section;
-					}
-
-					# Return the item
-					$kcsb[$id] = $item;
-				}
-
-				update_option( 'kcsb', $kcsb );
-			}
-		}
+		/**
+		 * Since 2.7.4
+		 * We're not saving any plugin status to the DB anymore so the plugin
+		 *   can be bundled with a plugin/theme.
+		 */
+		delete_option( 'kc_settings' );
 	}
 
 
@@ -729,7 +758,7 @@ class kcSettings {
 	}
 
 }
-add_action( 'plugins_loaded', array('kcSettings', 'setup'), 7);
+add_action( 'plugins_loaded', array('kcSettings', 'setup'), 7 );
 
 
 # A hack for symlinks

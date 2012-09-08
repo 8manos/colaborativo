@@ -1,10 +1,10 @@
 === KC Settings ===
 Contributors: kucrut
 Donate link: http://kucrut.org/
-Tags: theme-options, plugin-options, settings, options, term-meta, category-meta, post-meta, custom-fields, user-meta, attachment
+Tags: theme-options, plugin-options, settings, options, term-meta, category-meta, post-meta, custom-fields, user-meta, attachment, theme-customizer
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 2.7
+Tested up to: 3.4.1
+Stable tag: 2.7.6
 
 Easily create plugin/theme settings pages, custom fields metaboxes and term/user metadata settings.
 
@@ -20,13 +20,16 @@ Version 2.6 only supports WordPress 3.3+
 
 1. Use standard WordPress plugin installation or upload the `kc-settings` directory to your `wp-content/plugins` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Use the settings builder in Settings &raquo; KC Settings to create a setting or read the documentation (kc-settings-inc/doc/readme.html) on how you can add your options.
+3. Use the settings builder in Settings &raquo; KC Settings to create a setting array or read the documentation (kc-settings-inc/doc/readme.html) on how you can add your options.
+4. For other installation methods (version 2.7.6+), please read the 'Installation' section of the documentation.
 
 == Frequently Asked Questions ==
 
 = How do I create my settings? =
 
-Please find the readme.html file inside the plugin directory for the documentation, or [view it online](http://kucrut.github.com/kc-settings/).
+Go to Settings &raquo; KC Settings and create it there. You can also export the settings from there.
+
+For complete howto, please find the readme.html file inside the plugin directory or [view it online](http://kucrut.github.com/kc-settings/).
 
 == Screenshots ==
 
@@ -35,8 +38,31 @@ Please find the readme.html file inside the plugin directory for the documentati
 3. Term settings (add new)
 4. Term settings (edit)
 5. Post settings
+6. Theme customizer
 
 == Changelog ==
+
+= 2.7.6 =
+* Make plugin bundle-able with other plugins/themes
+* Make theme customizer detachable
+
+= 2.7.5 =
+* Finalized theme customizer, now supports realtime preview
+* New feature: KC Settings Builder exporter
+
+= 2.7.4 =
+* New (experimental) feature: Theme customizer
+
+= 2.7.3 =
+* Cleanup JS and Builder
+* New options helper class: kcSettings_options_cb
+* Fields that need options now accept functions/class methods
+
+= 2.7.2 =
+* Fix bug in multiinput fields
+
+= 2.7.1 =
+* Fix JS bug in the Builder
 
 = 2.7 =
 * New field type: 'editor'

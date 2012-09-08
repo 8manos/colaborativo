@@ -24,13 +24,25 @@ class kcForm {
 		$args = wp_parse_args( $args, $defaults );
 
 		$type = ( in_array($args['type'], self::$i_text) ) ? 'input' : $args['type'];
+		if ( $type === 'multiselect' ) {
+			$type = 'select';
+			if ( !isset($args['attr']['multiple']) || !$args['attr']['multiple'] )
+				$args['attr']['multiple'] = true;
+		}
 
 		if ( !method_exists(__CLASS__, $type) )
 			return false;
 
 		if ( in_array($type, array('select', 'radio', 'checkbox')) ) {
-			if ( !isset($args['options']) || !is_array($args['options']) )
+			if ( !isset($args['options']) || empty($args['options']) )
 				return false;
+
+			if ( is_callable($args['options']) )
+				$args['options'] = call_user_func_array( $args['options'], isset($args['args']) ? (array) $args['args'] : array() );
+
+			if ( !is_array($args['options']) || empty($args['options']) )
+				return false;
+
 			elseif ( count($args['options']) == count($args['options'], COUNT_RECURSIVE) )
 				$args['options'] = self::_build_options( $args['options'] );
 		}
@@ -123,11 +135,15 @@ class kcForm {
 		if ( !isset($args['attr']['id']) )
 			$args['attr']['id'] = 'wpeditor';
 
+		$settings = isset($args['editor_settings']) ? $args['editor_settings'] : array( 'media_buttons' => true, 'tinymce' => true, 'quicktags' => true );
+		$settings['textarea_name'] = $args['attr']['name'];
+		unset( $settings['_kc-check'] );
+
 		ob_start();
 		wp_editor(
-			$args['current'],
+			is_string( $args['current'] ) ? $args['current'] : '',
 			strtolower( str_replace(array('-', '_'), '', $args['attr']['id']) ),
-			array( 'textarea_name' => $args['attr']['name'] )
+			$settings
 		);
 		return ob_get_clean();
 	}
@@ -226,7 +242,12 @@ function _kc_field( $args ) {
 			$db_value = get_metadata( 'post', $object_id, "_{$id}", true );
 		break;
 
-		# 2. Others: post, term & user meta
+		# 2. Subfields of multiinput field
+		case 'subfield' :
+			extract( $args['data'], EXTR_OVERWRITE );
+		break;
+
+		# 3. Others: post, term & user meta
 		default :
 			$id = $field['id'];
 			$name = "kc-{$mode}meta[{$section}][{$id}]";
@@ -240,7 +261,7 @@ function _kc_field( $args ) {
 	$desc = ( isset($field['desc']) && !empty($field['desc']) ) ? "<{$desc_tag} class='{$desc_class}'>{$field['desc']}</{$desc_tag}>" : null;
 
 	# Let user filter the output of the setting field
-	$output = apply_filters( 'kc_settings_field_before', '', $section, $field );
+	$output = ( $mode !== 'subfield' ) ? apply_filters( 'kc_settings_field_before', '', $section, $field ) : '';
 
 	# Special option with callback
 	if ( $type == 'special' ) {
@@ -255,33 +276,18 @@ function _kc_field( $args ) {
 
 	# File
 	elseif ( $type == 'file' ) {
-		if ( $mode == 'post' ) {
-			$attachments_parent = $object_id;
-			$up_tab = 'gallery';
-		}
-		else {
-			$attachments_parent = 0;
-			$up_tab = 'library';
-		}
-		$param = ($field['mode'] == 'single') ? 'kcsfs' : 'kcsf';
-
-		$file_field_args = array(
+		$output .= _kc_field_file( array(
+			'parent'    => ( $mode === 'post' ) ? $object_id : 0,
 			'field'     => $field,
 			'id'        => $id,
 			'name'      => $name,
-			'db_value'  => $db_value,
-			'up_url'    => "media-upload.php?{$param}=true&amp;post_id={$attachments_parent}&amp;tab={$up_tab}&amp;TB_iframe=1"
-		);
-		if ( in_array($field['mode'], array('radio', 'checkbox')) )
-			$output .= _kc_field_file_multiple( $file_field_args );
-		else
-			$output .= _kc_field_file_single( $file_field_args );
+			'db_value'  => $db_value
+		) );
 		$output .= "\t{$desc}\n";
 	}
 
 	# Multiinput
 	elseif ( $type == 'multiinput' ) {
-		$output .= "<p class='info'><em>". __('Info: Drag & drop to reorder.', 'kc-settings') ."</em></p>\n";
 		$field['_id'] = $id;
 		$output .= _kc_field_multiinput( $name, $db_value, $field );
 		$output .= "\t{$desc}\n";
@@ -317,17 +323,17 @@ function _kc_field( $args ) {
 			'current' => $db_value
 		);
 
-		if ( isset($field['options']) )
-			$field_args['options'] = $field['options'];
-		if ( isset($field['none']) )
-			$field_args['none'] = $field['none'];
+		foreach ( array('options', 'none', 'editor_settings', 'args') as $key )
+		if ( isset($field[$key]) )
+			$field_args[$key] = $field[$key];
 
 		$output .= "\t" . kcForm::field( $field_args ) . "\n";
 		$output .= "\t{$desc}\n";
 	}
 
 	# Let user filter the output of the setting field
-	$output = apply_filters( 'kc_settings_field_after', $output, $section, $field );
+	if ( $mode !== 'subfield' )
+		$output = apply_filters( 'kc_settings_field_after', $output, $section, $field );
 
 	if ( isset($args['echo']) && $args['echo'] )
 		echo $output;
@@ -337,7 +343,42 @@ function _kc_field( $args ) {
 
 
 /**
- * Pair option row
+ * Field: file (back-end only)
+ *
+ * $args contents:
+ * - parent: Post ID, if this field is used for post metadata, otherwise, set to 0
+ * - field: The field array
+ * - id: HTML `id` attribute
+ * - name: HTML `name` attribute
+ * - db_value: Current value
+ *
+ * @param array $args
+ */
+function _kc_field_file( $args ) {
+	if ( $args['field']['mode'] === 'single' ) {
+		$param = 'kcsfs';
+		$fn = '_kc_field_file_single';
+	}
+	else {
+		$param = 'kcsf';
+		$fn = '_kc_field_file_multiple';
+	}
+
+	if ( isset($args['parent']) && $args['parent'] ) {
+		$tab = 'gallery';
+		$post_id = $args['parent'];
+	}
+	else {
+		$tab = 'library';
+		$post_id = 0;
+	}
+	$args['up_url'] = "media-upload.php?{$param}=true&amp;post_id={$post_id}&amp;tab={$tab}&amp;TB_iframe=1";
+
+	return call_user_func( $fn, $args );
+}
+
+/**
+ * Field: multiinput
  *
  * Generate html multiinput fields
  *
@@ -348,22 +389,7 @@ function _kc_field( $args ) {
  * @return $output string HTML Pair option row, with the required jQuery script
  *
  */
-function _kc_field_multiinput( $name, $db_value, $field ) {
-	if ( !isset($field['subfields']) || empty($field['subfields']) ) {
-		$field['fields'] = array(
-			array(
-				'id'    => 'key',
-				'title' => __('Key', 'kc-settings'),
-				'type'  => 'text'
-			),
-			array(
-				'id'    => 'value',
-				'title' => __('Value', 'kc-settings'),
-				'type'  => 'textarea'
-			)
-		);
-	}
-
+function _kc_field_multiinput( $name, $db_value, $field, $show_info = true ) {
 	# Sanitize subfields
 	foreach ( $field['subfields'] as $idx => $subfield ) {
 		# 0. attributes
@@ -385,7 +411,10 @@ function _kc_field_multiinput( $name, $db_value, $field ) {
 		$db_value = array( $_temp_value );
 	}
 
-	$output = "\n\t<ul class='sortable kc-rows kcs-multiinput'>\n";
+	$output = '';
+	if ( $show_info )
+		$output .= "<p class='info'><em>". __('Info: Drag & drop to reorder.', 'kc-settings') ."</em></p>\n";
+	$output .= "\n\t<ul class='kc-rows kcs-multiinput'>\n";
 
 	foreach ( $db_value as $row_idx => $row_values ) {
 		$output .= "\t\t<li class='row' data-mode='{$field['id']}'>\n";
@@ -393,17 +422,22 @@ function _kc_field_multiinput( $name, $db_value, $field ) {
 		$output .= "\t\t\t\t<tbody>\n";
 		# subfields
 		foreach ( $field['subfields'] as $subfield ) {
+			if ( $subfield['type'] == 'multiinput' )
+				continue;
+
+			$subfield_args = array(
+				'mode' => 'subfield',
+				'data' => array(
+					'db_value' => isset($row_values[$subfield['id']]) ? $row_values[$subfield['id']] : '',
+					'name'     => "{$name}[$row_idx][{$subfield['id']}]",
+					'id'       => "{$field['_id']}-{$row_idx}-{$subfield['id']}"
+				),
+				'field' => $subfield
+			);
+
 			$output .= "\t\t\t\t\t<tr>\n";
 			$output .= "\t\t\t\t\t\t<th><label for='{$field['_id']}-{$row_idx}-{$subfield['id']}'>{$subfield['title']}</label></th>\n";
-			$output .= "\t\t\t\t\t\t<td>" . kcForm::field(array(
-				'type'    => $subfield['type'],
-				'current' => isset($row_values[$subfield['id']]) ? $row_values[$subfield['id']] : '',
-				'attr'    => array_merge( $subfield['attr'], array(
-					'name'  => "{$name}[$row_idx][{$subfield['id']}]",
-					'id'    => "{$field['_id']}-{$row_idx}-{$subfield['id']}",
-					'class' => 'widefat'
-				) )
-			)) . "</td>\n";
+			$output .= "\t\t\t\t\t\t<td>" . _kc_field( $subfield_args ) . "</td>\n";
 			$output .= "\t\t\t</tr>\n";
 		}
 		$output .= "\t\t\t\t</tbody>\n";
