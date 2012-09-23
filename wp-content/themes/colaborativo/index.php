@@ -17,6 +17,11 @@
 			</p>
 		</div>
 	</div>
+
+	<ul class="acenter nav" id="cat-menu">
+		<?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15' ); ?>
+	</ul>
+
 </div>
 <?php } ?>
 
