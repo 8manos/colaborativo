@@ -17,21 +17,27 @@ class Colaborativo {
 
 	public static function metadata_taxonomies( $groups ) {
 
-		$groups[] = array(
-			# Categories
-			'category' => array(
+		$my_group = array(
+			'category' => array( // TODO: Change this to the desired taxonomy name
 				array(
-					'id'	=> 'categoria-colors',
-					'title'	=> 'Metadata',
-					'fields'=> array(
-						'id'	=> 'color-categoria',
-						'title'	=> 'Colores',
-						'type'	=> 'color'
-					)
+					'id'     => 'categoria-settings',
+					'title'  => 'Settings de categoria',
+					'desc'   => '<p>Configuración específica para esta categoria</p>',
+					'role'   => array('administrator', 'editor'),
+					'fields' => array(
+							array(
+								'id'      => 'categoria-color',
+								'title'   => 'Color',
+								'type'    => 'color',
+								'default' => '#000000',
+								'desc'    => 'Format: <code>#000000</code>'
+							)
+						)
 				)
 			)
 		);
 
+		$groups[] = $my_group;
 		return $groups;
 
 	}
