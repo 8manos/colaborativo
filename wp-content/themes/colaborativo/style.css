@@ -31,7 +31,7 @@ article.video h2:before {
 }
 
 body {
-  background-color:#f6f6f6;
+  background-color: red; /* #f6f6f6; */
   font-family:'Open Sans';
 	padding-top:40px;
 }
@@ -69,7 +69,9 @@ footer .nav li a:hover {
 }
 
 #cat-menu {
+  background-color: #333333;
   font-family: 'Oswald';
+  text-transform: uppercase;
 }
 
 #colabora {
@@ -510,7 +512,8 @@ footer .nav li a:hover {
 
 .hero-unit {
   background-color:#fff;
-  border-radius:0;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
   margin-top:30px;
   overflow: visible;
   padding:20px;
