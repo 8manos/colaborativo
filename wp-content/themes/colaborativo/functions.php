@@ -305,11 +305,12 @@ function theme_settings( $groups ) {
 
     $sections[] = array(
         'id'     => 'front',
-        'title'  => __('Front page', 'cola'),
+        'title'  => __('Settings de plantilla', 'cola'),
         'fields' => array(
             array(
-                'id'    => 'video-url',
-                'title' => __('Video URL', 'cola'),
+                'id'    => 'hashtags',
+                'desc'  => 'Escribe aca los hashtags que se mostrarán en la descripción del evento',
+                'title' => __('Hashtags para cubrimiento', 'cola'),
                 'type'  => 'text'
             )
         )
