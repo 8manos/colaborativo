@@ -81,6 +81,17 @@ footer .nav li a:hover {
   width: 140px;
 }
 
+#featured {
+  background-color: #fff;
+}
+
+#featured h3 {
+  color: #6D6D6D;
+  font-family: 'Oswald';
+  padding: 8px 0 0 1.6em;
+  text-transform: uppercase;
+}
+
 #feedback {
   background-position: -619px -112px;
   height: 20px;
@@ -312,16 +323,16 @@ footer .nav li a:hover {
   vertical-align:middle;
 }
 
-#timeline article {
+.boxes article {
   background-color:#fff;
   margin-bottom:1.8em;
 }
 
-#timeline article:nth-child(4n+1) {
+.boxes article:nth-child(4n+1) {
   clear:left;
 }
 
-#timeline article h2 {
+.boxes article h2 {
   font-family: 'Oswald';
   font-size:20px;
   font-weight:normal;
@@ -330,61 +341,61 @@ footer .nav li a:hover {
   word-spacing:0.1em;
 }
 
-#timeline article footer {
+.boxes article footer {
   background-color:#fff;
   z-index:5;
 }
 
-#timeline article footer h2 {
+.boxes article footer h2 {
   padding:0 8px;
 }
 
-#timeline article footer span {
+.boxes article footer span {
   display: block;
 }
 
-#timeline article .article-content {
+.boxes article .article-content {
   overflow:hidden;
   padding:3px 8px;
   position:relative;
 }
 
-#timeline article .article-content .overlay {
+.boxes article .article-content .overlay {
   display: none;
 }
 
-#timeline article .autor {
+.boxes article .autor {
   padding:3px 8px;
 }
 
-#timeline article .categoria {
+.boxes article .categoria {
   padding:3px 8px;
   position: relative;
   text-transform:uppercase;
 }
 
-#timeline article .categoria em {
+.boxes article .categoria em {
   color:#fff;
   position:absolute;
   right:8px;
   top:4px;
 }
 
-#timeline article .categoria ul {
+.boxes article .categoria ul {
   list-style-type:none;
   margin:0;
   padding:0;
 }
 
-#timeline article .categoria ul li {
+.boxes article .categoria ul li {
   display:inline;
 }
 
-#timeline article .categoria ul li a {
+.boxes article .categoria ul li a {
   color:#fff;
 }
 
-#timeline article:hover .article-content .overlay {
+.boxes article:hover .article-content .overlay {
   background-position:50% 50%;
   background-repeat:no-repeat;
   background-color:rgba(0, 0, 0, 0.5);
@@ -401,70 +412,70 @@ footer .nav li a:hover {
   z-index:2;
 }
 
-#timeline article.descarga .overlay {
+.boxes article.descarga .overlay {
   background-image:url('img/icon5.png');
 }
 
-#timeline article.descarga .autor:before {
+.boxes article.descarga .autor:before {
   background-position: -224px -109px;
 }
 
-#timeline article.imagen .overlay {
+.boxes article.imagen .overlay {
   background-image:url('img/icon1.png');
 }
 
-#timeline article.imagen .autor:before {
+.boxes article.imagen .autor:before {
   background-position: -16px -109px;
 }
 
-#timeline article.galeria .overlay {
+.boxes article.galeria .overlay {
   background-image:url('img/icon8.png');
 }
 
-#timeline article.imagen.flickr .autor:before {
+.boxes article.imagen.flickr .autor:before {
   background-position: -299px -109px;
 }
 
-#timeline article.post .overlay {
+.boxes article.post .overlay {
   background-image:url('img/icon7.png');
 }
 
-#timeline article.post .autor:before {
+.boxes article.post .autor:before {
   background-position: -185px -109px;
 }
 
-#timeline article.sonido .overlay {
+.boxes article.sonido .overlay {
   background-image:url('img/icon4.png');
 }
 
-#timeline article.sonido .autor:before {
+.boxes article.sonido .autor:before {
   background-position: -270px -109px;
 }
 
-#timeline article.tweet .overlay {
+.boxes article.tweet .overlay {
   background-image:url('img/icon2.png');
 }
 
-#timeline article.tweet h2 {
+.boxes article.tweet h2 {
   font-family:'Open Sans';
   text-transform:none;
   line-height:27px;
   padding:9px;
 }
 
-#timeline article.tweet .article-content {
+.boxes article.tweet .article-content {
   background-color: #fff;
 }
 
-#timeline article.tweet .autor:before {
+.boxes article.tweet .autor:before {
   background-position: -53px -109px;
 }
 
-#timeline article.video .overlay {
+.boxes article.video .overlay {
   background-image:url('img/icon3.png');
 }
 
-#timeline article.video .autor:before {
+.boxes article.video .autor:before {
   background-position: -94px -109px;
 }
 

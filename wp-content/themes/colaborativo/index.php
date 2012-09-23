@@ -40,6 +40,18 @@
 	</p>
 </div>
 
+<div id="featured" class="boxes row">
+	<h3>Cubrimiento</h3>
+	<?php 
+		$featured_query = new WP_Query( "posts_per_page=3&order=ASC" ); 
+		if($featured_query->have_posts()){
+			while ($featured_query->have_posts()) : $featured_query->the_post();
+				display_article();
+			endwhile;
+		}
+	?>
+</div>
+
 <div class="subnav" id="filters">
 	<div class="row">
 		<div class="span3">
@@ -87,7 +99,7 @@
 	if ($hidden_num > 0){//deben existir mas de 10 para que se muestre el div de los escondidos
 		echo '<div id="hidden_articles">';
 	}else{
-		echo '<section class="row" id="timeline">';
+		echo '<section class="row boxes" id="timeline">';
 	}
 
 	$i = 1;
