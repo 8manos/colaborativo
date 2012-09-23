@@ -631,9 +631,13 @@ footer .nav li a:hover {
 
 }
 
-.navbar li a {
-  color:#d1d1d1 !important;
+.navbar .nav > li > a {
+  color:#d1d1d1;
   font-size:12px;
+}
+
+.navbar .nav > li > a:hover {
+  color: #23A1CF;
 }
 
 .navbar li a:after {
