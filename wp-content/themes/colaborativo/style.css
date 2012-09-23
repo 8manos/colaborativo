@@ -58,8 +58,9 @@ footer .nav li a:hover {
 #beta {
   background-position: -507px -112px;
   height: 20px;
-  margin: 0 0 0 19px;
+  margin: 10px 0 0px;
   width: 100px;
+  vertical-align: middle;
 }
 
 #branding {
@@ -81,8 +82,9 @@ footer .nav li a:hover {
 #feedback {
   background-position: -619px -112px;
   height: 20px;
-  margin: 0 0 0 19px;
-  width: 144px;
+  margin: 7px 15px 0 0;
+  width: 145px;
+  vertical-align: middle;
 }
 
 #filters {
@@ -277,7 +279,7 @@ footer .nav li a:hover {
 }
 
 #menu-social {
-  padding-top:9px;
+  padding-top:5px;
 }
 
 #menu-social a {

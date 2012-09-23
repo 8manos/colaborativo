@@ -41,9 +41,21 @@
 			  </div>
 			  
 			  <div class="span10" id="cat-menu">
-			  	<ul class="acenter nav">
-					<?php wp_list_categories('title_li=&hide_empty=0&exclude=15'); ?>
-				</ul>
+				<span class="ir sprite" id="beta">
+					<?php _e('Estamos en beta', 'colaborativo'); ?>
+				</span>
+				
+				<div class="aright right" id="menu-social">
+					<label><?php _e('Síguenos', 'colaborativo'); ?></label>
+					<a target="_blank" class="sprite ir facebook" href="https://www.facebook.com/pages/Colaborativoco/385044858220704">Facebook</a>
+					<a target="_blank" class="sprite ir twitter" href="http://twitter.com/colaborativo_co">Twitter</a>
+					<a target="_blank" class="sprite ir googleplus" href="https://plus.google.com/u/0/103569849344851752659/">Google+</a>
+					<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativoco">YouTube</a>				
+				</div>
+
+				<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite right" id="feedback">
+					<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
+				</a>
 			  </div>
 		    </div>
 	    </div>
@@ -52,24 +64,13 @@
 
 	<div class="container">
 
-		<div class="row" id="meta-colaborativo">
-			<span class="ir sprite" id="beta">
-				<?php _e('Estamos en beta', 'colaborativo'); ?>
-			</span>
+	  	<ul class="acenter nav">
+			<?php wp_list_categories('title_li=&hide_empty=0&exclude=15'); ?>
+		</ul>
 
-			<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite" id="feedback">
-				<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
-			</a>
+		<div class="row" id="meta-colaborativo">
 
 			<a href="/colabora?ajax=true&width=940&height=90%" rel="prettyPhoto[colabora]" class="ir sprite" id="colabora">
 				<?php _e('Colabora con nosotros', 'colaborativo'); ?>
 			</a>
-
-			<div class="aright right" id="menu-social">
-				<label><?php _e('Síguenos', 'colaborativo'); ?></label>
-				<a target="_blank" class="sprite ir facebook" href="https://www.facebook.com/pages/Colaborativoco/385044858220704">Facebook</a>
-				<a target="_blank" class="sprite ir twitter" href="http://twitter.com/colaborativo_co">Twitter</a>
-				<a target="_blank" class="sprite ir googleplus" href="https://plus.google.com/u/0/103569849344851752659/">Google+</a>
-				<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativoco">YouTube</a>				
-			</div>
 		</div>
