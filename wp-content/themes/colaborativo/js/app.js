@@ -161,7 +161,7 @@
 
 			$('#timeline').isotope({
 				itemSelector : 'article'
-			});
+			}).addClass('boxes');
 
 			countdown_number = 45;
 			count_t = setTimeout(countdownTrigger, 1000);
