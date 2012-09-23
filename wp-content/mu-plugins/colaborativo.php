@@ -11,7 +11,7 @@ class Colaborativo {
 	public static function init() {
 
 		#Taxonomies meta
-		// add_filter( 'kc_term_settings', array(__CLASS__, 'metadata_taxonomies') );
+		add_filter( 'kc_term_settings', array(__CLASS__, 'metadata_taxonomies') );
 
 	}
 

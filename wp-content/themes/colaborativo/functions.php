@@ -272,6 +272,62 @@ function colaborativo_rewrite_flush() {
 }
 add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
+function theme_settings( $groups ) {
+    $blog_id = $current_site->blog_id;
+    $sections = array();
+
+    if ( $blog_id == 1 ) {
+        /* $sections[] = array(
+            'id'     => 'general',
+            'title'  => __('General', 'cola'),
+            'fields' => array(
+                array(
+                    'id'    => 'text_footer',
+                    'title' => __('Footer text', 'cola'),
+                    'type'  => 'textarea'
+                )
+            )
+        ); */
+    }
+    else {
+        /* $sections[] = array(
+            'id'     => 'front',
+            'title'  => __('Front page', 'cola'),
+            'fields' => array(
+                array(
+                    'id'    => 'video-url',
+                    'title' => __('Video URL', 'cola'),
+                    'type'  => 'text'
+                )
+            )
+        ); */
+    }
+
+    $sections[] = array(
+        'id'     => 'front',
+        'title'  => __('Front page', 'cola'),
+        'fields' => array(
+            array(
+                'id'    => 'video-url',
+                'title' => __('Video URL', 'cola'),
+                'type'  => 'text'
+            )
+        )
+    );
+
+    if ( $sections ) {
+        $groups[] = array(
+            'prefix'        => "colasite_{$blog_id}",
+            'menu_location' => 'themes.php',
+            'menu_title'    => __('Theme settings', 'cola'),
+            'page_title'    => __('Theme settings', 'cola'),
+            'options'       => $sections
+        );
+    }
+
+    return $groups;
+}   
+add_filter( 'kc_plugin_settings', 'theme_settings' );
 
 // get all of the images attached to the current post
 function cl_get_images($size = 'thumbnail') {
