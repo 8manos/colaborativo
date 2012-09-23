@@ -31,7 +31,7 @@ article.video h2:before {
 }
 
 body {
-  background-color: olive; /* #f6f6f6; */
+  background-color: #f6f6f6; /* olive; */
   font-family:'Open Sans';
 	padding-top:40px;
 }
