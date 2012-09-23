@@ -274,6 +274,7 @@ add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
 function theme_settings( $groups ) {
     $blog_id = $current_site->blog_id;
+    
     $sections = array();
 
     if ( $blog_id == 1 ) {

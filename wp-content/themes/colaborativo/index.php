@@ -1,27 +1,34 @@
 <?php get_header(); ?>
 
 <?php if( is_home() || is_front_page() ){ ?>
-<div class="hero-unit">
-	<div class="row">
-		<div class="span12">
-			<div id="event-logo">
-				<a class="left" href="http://www.campus-party.com.co/" target="_blank"><img class="alignleft" src="<?php bloginfo('stylesheet_directory') ?>/img/campus-party-feed.png" /></a>
-				<h2><?php bloginfo( 'title' ); ?></h2>
-				<h3><?php bloginfo( 'description' ); ?></h3>
-			</div>
-			<!-- <p class="hashtags">
-				<strong>Aporta contenidos usando los #HASHTAGS</strong><br />
-				#CPCO5 | #SOMETHINGBETTER | #CPCO5BLOG | #CPCO5CREA | #CPCO5MOD | #CPCO5DEV | #CPCO5OCIO
-			</p> -->
+<div class="hero-unit row">
+	<div class="span12">
+		<div id="event-logo">
+			<a class="left" href="http://www.campus-party.com.co/" target="_blank"><img class="alignleft" src="<?php bloginfo('stylesheet_directory') ?>/img/campus-party-feed.png" /></a>
+			<h2><?php bloginfo( 'title' ); ?></h2>
+			<h3><?php bloginfo( 'description' ); ?></h3>
 		</div>
 	</div>
 </div>
 <?php } ?>
-<div class="navbar">
+<div class="navbar row">
 	<ul class="acenter nav" id="cat-menu">
 		<?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15' ); ?>
 	</ul>
 </div>
+
+<div class="row">
+	<p class="hashtags span12">
+
+		<?php 
+			$blog_id = $current_site->blog_id;
+			$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
+			if( $hashtags ){
+		?>
+
+				<strong>#HASHTAGS para cubrimiento:</strong> <?php echo ( $hashtags ); ?>
+		<?php } ?>
+</p>
 
 <div class="subnav" id="filters">
 	<div class="row">
