@@ -22,7 +22,7 @@
 			<?php if( $elink ){ ?>
 			</a>
 			<?php } ?>
-			
+
 			<h2><?php bloginfo( 'title' ); ?></h2>
 			<h3><?php bloginfo( 'description' ); ?></h3>
 		</div>
@@ -124,7 +124,7 @@
 
 		if ($i == $hidden_num){//cuando llega al ultimo articulo escondido
 			echo '</div>';
-			echo '<section class="row" id="timeline">';
+			echo '<section class="row boxes" id="timeline">';
 		}
 
 		$i++;
