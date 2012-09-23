@@ -33,14 +33,19 @@
 <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 	<div class="navbar navbar-fixed-top">
+
 	  <div class="navbar-inner">
+
 	    <div class="container">
-		    <div class="row-fluid">	      
+
+		    <div class="row-fluid">	
+
 		      <div class="span2">
 			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
 			  </div>
 			  
 			  <div class="span10">
+
 				<span class="ir sprite" id="beta">
 					<?php _e('Estamos en beta', 'colaborativo'); ?>
 				</span>
@@ -56,18 +61,15 @@
 				<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite right" id="feedback">
 					<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
 				</a>
+
 			  </div>
+
 		    </div>
+
 	    </div>
+
 	  </div>
+
 	</div>
 
 	<div class="container">
-		<?php /* 
-		<div class="row" id="meta-colaborativo">
-
-			<a href="/colabora?ajax=true&width=940&height=90%" rel="prettyPhoto[colabora]" class="ir sprite" id="colabora">
-				<?php _e('Colabora con nosotros', 'colaborativo'); ?>
-			</a>
-		</div>
-		*/ ?>

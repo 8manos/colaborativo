@@ -2,15 +2,24 @@
 
 <?php if( is_home() || is_front_page() ){ ?>
 <div class="hero-unit row">
-	<div class="span12">
+
+	<div class="span8">
 		<div id="event-logo">
 			<a class="left" href="http://www.campus-party.com.co/" target="_blank"><img class="alignleft" src="<?php bloginfo('stylesheet_directory') ?>/img/campus-party-feed.png" /></a>
 			<h2><?php bloginfo( 'title' ); ?></h2>
 			<h3><?php bloginfo( 'description' ); ?></h3>
 		</div>
 	</div>
+
+	<div class="span3">
+		<form action="<?php bloginfo('url'); ?>" class="inline-form" method="get">
+			<input class="input-medium search-query" id="s" name="s" placeholder="<?php _e('Buscar','colaborativo'); ?>" type="text" />
+		</form>
+	</div>
+
 </div>
 <?php } ?>
+
 <div class="navbar row">
 	<ul class="acenter nav" id="cat-menu">
 		<?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15' ); ?>
@@ -28,7 +37,8 @@
 
 				<strong>#HASHTAGS para cubrimiento:</strong> <?php echo ( $hashtags ); ?>
 		<?php } ?>
-</p>
+	</p>
+</div>
 
 <div class="subnav" id="filters">
 	<div class="row">
@@ -57,9 +67,7 @@
 		</div>
 
 		<div class="span3 aright">
-			<form action="<?php bloginfo('url'); ?>" class="inline-form" method="get">
-				<input class="input-medium search-query" id="s" name="s" placeholder="<?php _e('Buscar','colaborativo'); ?>" type="text" />
-			</form>
+
 		</div>
 	</div>
 </div>
