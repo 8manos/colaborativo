@@ -1,11 +1,28 @@
-<?php get_header(); ?>
+<?php 
+	get_header();
+	$blog_id = $current_site->blog_id;
+	$logo = kc_get_option('colasite_', 'front', 'logo');
+	$logo = wp_get_attachment_image_src( $logo[selected][0] ); 
+	$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
+	$elink = kc_get_option('colasite_', 'front', 'evento-link');
+?>
 
 <?php if( is_home() || is_front_page() ){ ?>
 <div class="hero-unit row">
 
 	<div class="span8">
 		<div id="event-logo">
-			<a class="left" href="http://www.campus-party.com.co/" target="_blank"><img class="alignleft" src="<?php bloginfo('stylesheet_directory') ?>/img/campus-party-feed.png" /></a>
+
+			<?php if( $elink ){ ?>
+			<a class="left" href="<?php echo $elink; ?>" target="_blank">
+			<?php } ?>
+				<?php if( $logo ) { ?>
+					<img class="alignleft" src="<?php echo $logo[0];  ?>" />
+				<?php } ?>
+			<?php if( $elink ){ ?>
+			</a>
+			<?php } ?>
+			
 			<h2><?php bloginfo( 'title' ); ?></h2>
 			<h3><?php bloginfo( 'description' ); ?></h3>
 		</div>
@@ -30,8 +47,6 @@
 	<p class="hashtags span12">
 
 		<?php 
-			$blog_id = $current_site->blog_id;
-			$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
 			if( $hashtags ){
 		?>
 

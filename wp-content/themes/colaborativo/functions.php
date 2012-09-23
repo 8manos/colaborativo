@@ -274,7 +274,7 @@ add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
 function theme_settings( $groups ) {
     $blog_id = $current_site->blog_id;
-    
+
     $sections = array();
 
     if ( $blog_id == 1 ) {
@@ -308,6 +308,18 @@ function theme_settings( $groups ) {
         'id'     => 'front',
         'title'  => __('Settings de plantilla', 'cola'),
         'fields' => array(
+            array(
+                'id'    => 'logo',
+                'desc'  => 'Sube el logo del evento',
+                'title' => __('Logo de evento', 'cola'),
+                'type'  => 'file'
+            ),
+            array(
+                'id'    => 'evento-link',
+                'desc'  => '(formato: http://link.com)',
+                'title' => __('Link del evento', 'cola'),
+                'type'  => 'text'
+            ),
             array(
                 'id'    => 'hashtags',
                 'desc'  => 'Escribe aca los hashtags que se mostrarán en la descripción del evento',
