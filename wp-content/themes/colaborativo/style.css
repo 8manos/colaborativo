@@ -510,6 +510,13 @@ footer .nav li a:hover {
   padding: 0.2em 0;
 }
 
+.colaborated {
+  color: #6D6D6D;
+  font-family: 'Oswald';
+  padding: 1.3em 0;
+  text-transform: uppercase;
+}
+
 .has-icon:before {
   background-image:url('img/sprite.png');
   background-position:0px 0px;
@@ -556,13 +563,15 @@ footer .nav li a:hover {
   padding:4px 6px 4px 14px;
 }
 
+.hero-unit #event-logo img {
+  float: left;
+  margin-left: -30px;
+  margin-right: 10px;
+}
+
 .hero-unit #event-logo p {
   font-size:28px;
   margin-bottom:0;
-}
-
-.hero-unit #event-logo p img {
-  margin-left:10px;
 }
 
 .hero-unit #event-logo h2 ,

@@ -67,6 +67,10 @@
 	?>
 </div>
 
+<div class="row colaborated">
+	<h3 class="span12">Contenido generado por los asistentes</h3>
+</div>
+
 <div class="subnav" id="filters">
 	<div class="row">
 		<div class="span3">
