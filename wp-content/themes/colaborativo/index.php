@@ -58,7 +58,14 @@
 <div id="featured" class="boxes row">
 	<h3>Cubrimiento</h3>
 	<?php 
-		$featured_query = new WP_Query( "posts_per_page=3&order=ASC&post__in=".get_option( 'sticky_posts' ) ); 
+		$featured_query = new WP_Query( 
+										array( 
+											'posts_per_page' 	=> 3,
+											'order'				=> 'ASC',
+											'post__in'			=> get_option( 'sticky_posts' )
+										) 
+									);
+
 		if($featured_query->have_posts()){
 			while ($featured_query->have_posts()) : $featured_query->the_post();
 				display_article();
@@ -115,7 +122,7 @@
 		'posts_per_page' => 20 , 
 		'post__not_in' => get_option( 'sticky_posts' ) 
 	) );//esondemos 6 y mostramos 10
-	
+
 	query_posts( $args );
 
 	$hidden_num = $wp_query->post_count - 10;
