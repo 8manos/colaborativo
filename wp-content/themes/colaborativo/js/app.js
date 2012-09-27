@@ -120,6 +120,7 @@
 					$(document).ready(function(){
 						$("a[rel^='prettyPhoto']").prettyPhoto({
 								social_tools: '',
+								show_title: false,
 								deeplinking: false,
 								changepicturecallback: function(){
 									addthis.toolbox('.addthis_toolbox');
@@ -143,6 +144,7 @@
 
 		$("a[rel^='prettyPhoto']").prettyPhoto({
 			social_tools: '',
+			show_title: false,
 			changepicturecallback: function(){
 				addthis.toolbox('.addthis_toolbox');
 				addthis.counter('.addthis_counter');
