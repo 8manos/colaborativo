@@ -340,7 +340,7 @@ function theme_settings( $groups ) {
     }
 
     return $groups;
-}   
+}
 add_filter( 'kc_plugin_settings', 'theme_settings' );
 
 // get all of the images attached to the current post
@@ -383,7 +383,7 @@ function cl_get_images_src($size = 'thumbnail') {
 
 
 /*
- * Mostrar cada publicacion 
+ * Mostrar cada publicacion
  */
 function display_article() {
 ?>
@@ -409,9 +409,9 @@ function display_article() {
                         <?php } ?>
         			</a>
         		<?php } ?>
-            <?php 
-                }elseif(get_post_type() == "video"){ 
-                    $video_link = get_post_meta(get_the_ID(), $key = 'syndication_permalink', $single = true);   
+            <?php
+                }elseif(get_post_type() == "video"){
+                    $video_link = get_post_meta(get_the_ID(), $key = 'syndication_permalink', $single = true);
                     parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
                     $video_id = $video_vars['v'];
             ?>
@@ -443,7 +443,7 @@ function display_article() {
 
 		<footer class="post-meta">
             <?php if(get_post_type() != "tweet"){ ?>
-               <h2><?php the_title(); ?></h2> 
+               <h2><?php the_title(); ?></h2>
             <?php } ?>
 			<span class="autor has-icon"><?php _e('Por: ', 'colaborativo'); the_author(); ?></span>
 			<span class="categoria">
@@ -487,7 +487,7 @@ function display_article_content() {
                         <?php } ?>
                     </a>
                 <?php } ?>
-            <?php 
+            <?php
                 }elseif(get_post_type() == "video"){
                     $video_link = get_post_meta(get_the_ID(), $key = 'syndication_permalink', $single = true);
                     parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
@@ -504,7 +504,7 @@ function display_article_content() {
                 <div class="flexslider-container row">
                     <div class="flexslider">
                         <ul class="slides">
-                        <?php 
+                        <?php
                                 $photos = cl_get_images_src('article-large');
                                 $photos_urls = cl_get_images_src('full');
                                 //print_r($photos);
@@ -519,7 +519,7 @@ function display_article_content() {
                         ?>
                         </ul>
                     </div>
-                </div> 
+                </div>
             <?php
                the_content();
             }elseif(get_post_type() == 'sonido'){
@@ -541,7 +541,7 @@ function display_article_content() {
 
         <div class="entry-aside">
             <div class="autor clearfix">
-                <?php if( get_post_type() == "tweet" ){ 
+                <?php if( get_post_type() == "tweet" ){
                     $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                     $enclosure = apply_filters( 'the_title', $enclosure);
                     $enclosure_array = explode('
@@ -717,7 +717,7 @@ add_action('wp_ajax_agregarboxes', 'agregador_cajas');
 add_action('wp_ajax_nopriv_agregarboxes', 'agregador_cajas');
 
 function load_content_box(){
-    
+
     if(isset($_POST['id'])){
         $cat = $_POST['id'];
     }
@@ -741,9 +741,11 @@ add_action('wp_ajax_nopriv_agregarboxes', 'load_content_box');
 
 function filter_where($where='')
 {
-    global $time_for_filter, $op_for_filter;
-    $where .= " AND wp_posts.post_date ";
+    global $wpdb, $time_for_filter, $op_for_filter;
+
+    $where .= " AND $wpdb->posts.post_date ";
     $where .= $op_for_filter=='append' ? "<= " : ">= ";
     $where .= "'$time_for_filter'";
+
     return $where;
 }
