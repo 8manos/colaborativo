@@ -704,6 +704,10 @@ footer .nav li a:hover {
   overflow-y:auto;
 }
 
+.pp_content .entry-content p {
+  font-size: 14px;
+}
+
 .pp_inline {
   padding:10px;
 }
