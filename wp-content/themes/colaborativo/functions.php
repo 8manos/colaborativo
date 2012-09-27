@@ -281,6 +281,15 @@ register_sidebar(array(
     'after_title'   => '</h3> -->'
 ));
 
+register_sidebar(array(
+    'id'            => 'banners-bottom',
+    'name'          => 'banners bottom',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">'."\n",
+    'after_widget'  => '</aside>'."\n",
+    'before_title'  => '<!-- <h3 class="widget-title">',
+    'after_title'   => '</h3> -->'
+));
+
 function theme_settings( $groups ) {
     $blog_id = $current_site->blog_id;
 
