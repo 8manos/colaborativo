@@ -334,7 +334,16 @@ function theme_settings( $groups ) {
                 'desc'  => 'Escribe aca los hashtags que se mostrarán en la descripción del evento',
                 'title' => __('Hashtags para cubrimiento', 'cola'),
                 'type'  => 'text'
-            )
+            ),
+            array(
+                'id'      => 'autoupdate',
+                'desc'    => 'Selecciona para que los contenidos se actualicen automaticamente',
+                'title'   => __('Autoupdate', 'cola'),
+                'type'    => 'checkbox',
+                'options' => array(
+                    'true' => __('Automatico', 'cola'),
+                ),
+            ),
         )
     );
 
@@ -757,4 +766,19 @@ function filter_where($where='')
     $where .= "'$time_for_filter'";
 
     return $where;
+}
+
+function getAutoUpdate()
+{
+    $get_it = $_GET['autoupdate'];
+    if ($get_it){
+        echo $get_it;
+    }else{
+        $theme_au = kc_get_option('colasite_', 'front', 'autoupdate');
+        if ($theme_au){
+            echo 'true';
+        }else{
+            echo 'false';
+        }
+    }
 }

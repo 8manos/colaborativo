@@ -2,6 +2,8 @@
 {
 	$(function(){
 
+		var autoupdate = true;
+
 		function formatSeconds(time)
 		{
 			var minutes = Math.floor(time / 60);
@@ -49,7 +51,10 @@
 		{
 			var $articles = $('#hidden_articles article');
 			$('#timeline').prepend( $articles ).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-			notifyArticles();
+
+			if ( ! autoupdate ){
+				notifyArticles();
+			}
 		}
 
 		function notifyArticles()
@@ -80,7 +85,11 @@
 						$('#load-more').html("Cargar más contenidos");
 					}else{
 						$('#hidden_articles').prepend( $articles );
-						notifyArticles();
+						if (autoupdate){
+							displayNew();
+						}else{
+							notifyArticles();
+						}
 					}
 				}
 			}
@@ -132,6 +141,8 @@
 			});
 		}
 
+		autoupdate = $('#load-more').attr('data-autoupdate') == 'true' ? true : false;
+
 		// Async load more
 		$('#load-more').click(function(e)
 		{
@@ -168,7 +179,11 @@
 			countdown_number = 45;
 			count_t = setTimeout(countdownTrigger, 1000);
 
-			notifyArticles();
+			if (autoupdate){
+				displayNew();
+			}else{
+				notifyArticles();
+			}
 		});
 	});
 })(jQuery);

@@ -1,14 +1,14 @@
-<?php 
+<?php
 	get_header();
 	$blog_id = $current_site->blog_id;
 	$logo = kc_get_option('colasite_', 'front', 'logo');
-	$logo = wp_get_attachment_image_src( $logo[selected][0] ); 
+	$logo = wp_get_attachment_image_src( $logo[selected][0] );
 	$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
 	$elink = kc_get_option('colasite_', 'front', 'evento-link');
 ?>
 
 <ul class="row" id="top-banners">
-<?php 
+<?php
 	dynamic_sidebar( 'banners-top' );
 ?>
 </ul>
@@ -52,7 +52,7 @@
 <div class="row">
 	<p class="hashtags span12">
 
-		<?php 
+		<?php
 			if( $hashtags ){
 		?>
 
@@ -63,13 +63,13 @@
 
 <div id="featured" class="boxes row">
 	<h3>Cubrimiento</h3>
-	<?php 
-		$featured_query = new WP_Query( 
-										array( 
+	<?php
+		$featured_query = new WP_Query(
+										array(
 											'posts_per_page' 	=> 3,
 											'order'				=> 'ASC',
 											'post__in'			=> get_option( 'sticky_posts' )
-										) 
+										)
 									);
 
 		if($featured_query->have_posts()){
@@ -124,10 +124,10 @@
 <div id="notify_new">-</div>
 <?php
 	global $wp_query;
-	$args = array_merge( $wp_query->query, array( 
-		'posts_per_page' => 20 , 
-		'post__not_in' => get_option( 'sticky_posts' ) 
-	) );//esondemos 6 y mostramos 10
+	$args = array_merge( $wp_query->query, array(
+		'posts_per_page' => 20 ,
+		'post__not_in' => get_option( 'sticky_posts' )
+	) );//escondemos 10 y mostramos 10
 
 	query_posts( $args );
 
@@ -165,7 +165,7 @@
 	$current_cat = $wp_query->queried_object_id;
 	$current_type = $wp_query->query['post_type'];
 	?>
-	<a href="#" class="" id="load-more" data-type="<? echo $current_type; ?>" data-cat="<? echo $current_cat; ?>">
+	<a href="#" class="" id="load-more" data-type="<? echo $current_type; ?>" data-cat="<? echo $current_cat; ?>" data-autoupdate="<?php getAutoUpdate(); ?>">
 		<?php _e('Cargar más contenidos','colaborativo'); ?>
 	</a>
 </div>
