@@ -169,4 +169,11 @@
 		<?php _e('Cargar más contenidos','colaborativo'); ?>
 	</a>
 </div>
+
+<ul class="row" id="bottom-banners">
+<?php 
+	dynamic_sidebar( 'banners-bottom' );
+?>
+</ul>
+
 <?php get_footer(); ?>
