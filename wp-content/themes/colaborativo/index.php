@@ -7,7 +7,7 @@
 	$elink = kc_get_option('colasite_', 'front', 'evento-link');
 ?>
 
-<ul id="sidebar">
+<ul class="row" id="top-banners">
 <?php 
 	dynamic_sidebar( 'banners-top' );
 ?>
