@@ -415,22 +415,22 @@ function display_article() {
                     parse_str( parse_url( $video_link, PHP_URL_QUERY ), $video_vars );
                     $video_id = $video_vars['v'];
             ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>">
                         <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=http://img.youtube.com/vi/<?php echo $video_id ?>/hqdefault.jpg&w=280&h=280" />
                     </a>
             <?php }elseif(get_post_type() == "sonido"){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-audio.png" />
                     </a>
             <?php }elseif(get_post_type() == "descarga"){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>">
                         <img width="281" height="144" src="<?php bloginfo('template_directory'); ?>/img/thumb-descarga.png" />
                     </a>
             <?php }elseif(get_post_type() == "tweet"){ ?>
                 <h2><?php echo(make_clickable(get_the_title())); ?></h2>
             <?php }elseif(get_post_type() == "post" || get_post_type() == "galeria"){
                 if(has_post_thumbnail()){ ?>
-                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+                    <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>">
                     <?php
                         the_post_thumbnail('article-thumb');
                     ?>
@@ -438,7 +438,7 @@ function display_article() {
                 <?php }
             } ?>
 
-            <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>"><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
 
 		<footer class="post-meta">
