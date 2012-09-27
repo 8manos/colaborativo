@@ -704,8 +704,9 @@ footer .nav li a:hover {
   overflow-y:auto;
 }
 
-.pp_content .entry-content p {
+.pp_content .entry-content {
   font-size: 14px;
+  line-height: 1.4em;
 }
 
 .pp_inline {
