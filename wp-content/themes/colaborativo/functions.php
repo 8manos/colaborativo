@@ -272,6 +272,15 @@ function colaborativo_rewrite_flush() {
 }
 add_action( 'after_switch_theme', 'colaborativo_rewrite_flush' );
 
+register_sidebar(array(
+    'id'            => 'banners-top',
+    'name'          => 'banners top',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">'."\n",
+    'after_widget'  => '</aside>'."\n",
+    'before_title'  => '<!-- <h3 class="widget-title">',
+    'after_title'   => '</h3> -->'
+));
+
 function theme_settings( $groups ) {
     $blog_id = $current_site->blog_id;
 
@@ -736,8 +745,8 @@ function load_content_box(){
     } exit;
 }
 
-add_action('wp_ajax_agregarboxes', 'load_content_box');
-add_action('wp_ajax_nopriv_agregarboxes', 'load_content_box');
+add_action('wp_ajax_agregarbox', 'load_content_box');
+add_action('wp_ajax_nopriv_agregarbox', 'load_content_box');
 
 function filter_where($where='')
 {
