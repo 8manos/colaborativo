@@ -399,7 +399,7 @@ function display_article() {
 
 
         		<?php if(has_post_thumbnail() || $enclosure){ ?>
-        			<a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
+        			<a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" title="<?php the_title(); ?>">
                         <?php
                             if(has_post_thumbnail()) {
                                 the_post_thumbnail('article-thumb');
