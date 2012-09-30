@@ -58,6 +58,14 @@
 					<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativoco">YouTube</a>				
 				</div>
 
+
+				<div id="about-dropdown" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><a href="#">Acerca</a></li>
+						<li><a href="#">Acerca</a></li>
+					</ul>
+				</div>
 				<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite right" id="feedback">
 					<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
 				</a>

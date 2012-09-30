@@ -55,6 +55,16 @@ footer .nav li a:hover {
   background-color:transparent;
 }
 
+#about-dropdown {
+  float: right;
+}
+
+#about-dropdown a {
+  color: #9E9E9E;
+  display: block;
+  padding: 9px 30px;
+}
+
 #beta {
   background-position: -507px -112px;
   height: 20px;
@@ -662,6 +672,15 @@ footer .nav li a:hover {
 
 .navbar li {
 
+}
+
+.navbar .dropdown-menu::after ,
+.navbar .dropdown-menu::before {
+  left: 60px;
+}
+
+.navbar .dropdown-menu li a::after {
+  content:"";
 }
 
 .navbar .nav {
