@@ -13,7 +13,7 @@
 ?>
 </ul>
 
-<?php if( is_home() || is_front_page() ){ ?>
+<?php // if( is_home() || is_front_page() ){ ?>
 <div class="hero-unit row">
 
 	<div class="span8">
@@ -41,7 +41,7 @@
 	</div>
 
 </div>
-<?php } ?>
+<?php // } ?>
 
 <div class="navbar row">
 	<ul class="acenter nav" id="cat-menu">
