@@ -36,6 +36,52 @@ body {
 	padding-top:40px;
 }
 
+body.page .type-page {
+  background-color: white;
+  margin-top: 2.5em;
+  padding: 2.5em 0 2.5em;
+}
+
+body.page .type-page h2 {
+  color: #6C6C6C;
+  font-family: 'Oswald';
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  word-spacing: 3px;
+}
+
+body.page .type-page .page-content {
+  padding: 1.5em 2.5em;
+}
+
+body.page .type-page .page-sidebar {
+  font-family: 'Oswald';
+  padding-top: 8px;
+  text-transform: uppercase;
+}
+
+body.page .type-page .page-sidebar ul {
+  font-size: 18px;
+  list-style-type: none;
+  text-transform: uppercase;
+}
+
+body.page .type-page .page-sidebar ul li {
+  display: block;
+  margin-bottom: 9px;
+  word-spacing: 4px;
+}
+
+body.page .type-page .page-sidebar ul li a {
+  color: #6C6C6C;
+}
+
+body.page .type-page .page-sidebar ul li a:hover {
+  color:#08C;
+  text-decoration: none;
+}
+
 footer .nav ,
 footer .nav li {
   color:#D1D1D1;
