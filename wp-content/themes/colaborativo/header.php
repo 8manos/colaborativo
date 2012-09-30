@@ -62,8 +62,9 @@
 				<div id="about-dropdown" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-						<li><a href="#">Acerca</a></li>
-						<li><a href="#">Acerca</a></li>
+						<li><a href="http://colaborativo.co/que-es/">Que es colaborativo</a></li>
+						<li><a href="http://colaborativo.co/equipo/">Equipo</a></li>
+						<li><a href="http://colaborativo.co/colabora/">Colabora</a></li>
 					</ul>
 				</div>
 				<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite right" id="feedback">
