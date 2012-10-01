@@ -168,6 +168,8 @@
 			$(this).hide();
 		})
 
+		$('.carousel .item:empty').remove(); 
+		
 		$('.carousel').carousel();
 
 		$(window).load(function(){
