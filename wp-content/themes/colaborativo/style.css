@@ -572,6 +572,14 @@ footer .nav li a:hover {
   margin-left:8px;
 }
 
+.carousel-control {
+  left: -30px;
+}
+
+.carousel-control.right {
+  right:-50px;
+}
+
 .chromeframe {
   background: #ccc;
   color: #000;
