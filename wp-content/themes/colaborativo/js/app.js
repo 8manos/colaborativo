@@ -127,7 +127,7 @@
 				success : function(results){
 					insertResults(results, dop);
 					$(document).ready(function(){
-						$("a[rel^='prettyPhoto']").prettyPhoto({
+						/* $("a[rel^='prettyPhoto']").prettyPhoto({
 								social_tools: '',
 								show_title: false,
 								deeplinking: false,
@@ -135,7 +135,7 @@
 									addthis.toolbox('.addthis_toolbox');
 									addthis.counter('.addthis_counter');
 								}
-						});
+						}); */
 					});
 				}
 			});
@@ -153,15 +153,25 @@
 			getAjax( $(this), 'append' );
 		});
 
-		$("a[rel^='prettyPhoto']").prettyPhoto({
+		/* $("a[rel^='prettyPhoto']").prettyPhoto({
 			social_tools: '',
 			show_title: false,
 			changepicturecallback: function(){
 				addthis.toolbox('.addthis_toolbox');
 				addthis.counter('.addthis_counter');
 			}
-		});
+		}); */
 
+		$("a[rel^='prettyPhoto']").on( 'click', function(e) {
+			e.preventDefault();
+			var remotepath = 	$(this).attr('href').replace('http://'+window.location.hostname,'');
+
+			$('#myModal').modal({
+				'remote': remotepath,
+				'show': true
+			});
+		});
+		
 		$('#notify_new').on('click', displayNew);
 
 		$('.pp_overlay').live('click', function(){
