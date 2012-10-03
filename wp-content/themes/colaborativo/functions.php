@@ -15,13 +15,15 @@ add_action( 'after_setup_theme', 'setup_colaborativo' );
 // enqueue scripts
 function colaborativo_scripts_method() {
 
-    wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','','',false);
+    $version = 0.8;
+
+    wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','', $version ,false);
     wp_enqueue_script( 'colaborativo_modernizr' );
 
-    wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','','',true);
+    wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','', $version ,true);
     wp_enqueue_script( 'colaborativo_plugins' );
 
-    wp_register_script('colaborativo_app',get_template_directory_uri() . '/js/app.js','','',true);
+    wp_register_script('colaborativo_app',get_template_directory_uri() . '/js/app.js','', $version ,true);
     wp_enqueue_script( 'colaborativo_app' );
 
     wp_enqueue_script( 'jquery' );
