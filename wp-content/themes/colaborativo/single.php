@@ -1,5 +1,9 @@
-<?php get_header(); ?>
-<?php
+<?php 
+	$is_ajax = $_GET['ajax'];
+	
+	if( !$is_ajax ){
+		get_header(); 
+	}
 
 	while (have_posts()) : the_post();
 
@@ -8,5 +12,8 @@
 		get_template_part('content', $post_type);
 
 	endwhile;
+
+	if( !$is_ajax ){
+		get_footer(); 
+	}
 ?>
-<?php get_footer(); ?>

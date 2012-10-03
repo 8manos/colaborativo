@@ -489,19 +489,19 @@ function display_article() {
  * Mostrar cada publicacion sola
  */
 function display_article_content() {
+
 ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
         <span class="categoria"><?php the_category(); ?></span>
         <h2 class="has-icon"><?php if(get_post_type() != "tweet"){ the_title(); } ?></h2>
         <div class="entry-content">
             <?php
-                if(get_post_type() == "imagen"){
+                if(get_post_type(get_the_ID()) == "imagen"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
                 $enclosure_array = explode('
 ', $enclosure);
             ?>
-
 
                 <?php if(has_post_thumbnail() || $enclosure){ ?>
                     <a href="<?php the_syndication_permalink(); ?>" target="_blank">
@@ -595,6 +595,50 @@ function display_article_content() {
     </article>
 <?php
 }
+
+/*
+ * Mostrar cada publicacion sola
+ */
+function display_article_content_ajax() {
+
+    $cual = $_POST['cual'];
+
+    $args = array(
+                    'public' => true ,
+                    '_builtin' => false
+                );
+    $output = 'names';
+    $operator = 'and';
+
+    $post_types = get_post_types( $args, $output, $operator );
+
+    $post_types = array_merge( $post_types, array( 'post' ,'tweet' ) );
+
+    $q = new WP_Query( 
+                        array( 
+                            'post_type' => $post_types, 
+                            'post__in' => array( $cual )
+                        ) 
+                    );
+
+    if($q->have_posts()){
+
+        while ($q->have_posts()) : $q->the_post();
+
+           display_article_content();
+        
+        endwhile;
+
+    }else{
+        echo "0";
+    }     
+
+    exit;
+    
+}
+
+add_action('wp_ajax_contentajax', 'display_article_content_ajax');
+add_action('wp_ajax_nopriv_contentajax', 'display_article_content_ajax');
 
 function toRGB($Hex){
 

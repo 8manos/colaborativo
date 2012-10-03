@@ -732,6 +732,11 @@ footer .nav li a:hover {
   float: left;
 }
 
+.modal {
+  width:960px;
+  margin-left: -480px;
+}
+
 .navbar {
   text-transform:uppercase;
 }
