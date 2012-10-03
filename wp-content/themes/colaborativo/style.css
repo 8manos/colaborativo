@@ -812,13 +812,13 @@ footer .nav li a:hover {
   line-height: 1.4em;
 }
 
-.pp_inline {
+.modal-body {
   padding:10px;
 }
 
-.pp_inline #footer ,
-.pp_inline .navbar-fixed-top ,
-.pp_inline #meta-colaborativo {
+.modal-body #footer ,
+.modal-body .navbar-fixed-top ,
+.modal-body #meta-colaborativo {
   display: none !important;
 }
 
@@ -832,62 +832,62 @@ footer .nav li a:hover {
 
 .single article {padding-top:30px;}
 
-.single .categoria , .pp_inline .categoria {
+.single .categoria , .modal-body .categoria {
   display:inline-block;
   margin-left:25px;
   text-transform:uppercase;
 }
 
-.single .categoria a, .pp_inline .categoria a {
+.single .categoria a, .modal-body .categoria a {
   color:#fff;
 }
 
-.single .categoria ul, .pp_inline .categoria ul {
+.single .categoria ul, .modal-body .categoria ul {
   list-style-type:none;
   margin:0;
   padding:4px 60px 4px 8px;
 }
 
-.single .entry-content, .pp_inline .entry-content {
+.single .entry-content, .modal-body .entry-content {
   float:left;
   width:65.8%;
 }
 
-.single .entry-content h2, .pp_inline .entry-content h2 {
+.single .entry-content h2, .modal-body .entry-content h2 {
   color:#666666;
   font-family:'Open sans';
   font-size:37px;
   line-height:43px;
 }
 
-.single .entry-content .video-embed, .pp_inline .video-embed {
+.single .entry-content .video-embed, .modal-body .video-embed {
   margin-top:30px;
   text-align:center;
 }
 
-.single .entry-aside, .pp_inline .entry-aside {
+.single .entry-aside, .modal-body .entry-aside {
   float:left;
   margin-left:15px;
   width:28%;
 }
 
-.single .entry-aside .autor, .pp_inline .entry-aside .autor {
+.single .entry-aside .autor, .modal-body .entry-aside .autor {
   color:#fff;
   font-size:18px;
   padding:8px 6px;
   text-align:right;
 }
 
-.single .entry-aside .autor small, .pp_inline .entry-aside .autor small {
+.single .entry-aside .autor small, .modal-body .entry-aside .autor small {
   font-size:12px;
 }
 
-.single .entry-aside .social, .pp_inline .entry-aside .social{
+.single .entry-aside .social, .modal-body .entry-aside .social{
   padding-top:35px;
   text-align:left;
 }
 
-.single .entry-aside .social a, .pp_inline .entry-aside .social a {
+.single .entry-aside .social a, .modal-body .entry-aside .social a {
   clear:both;
   display: block;
   margin:1px 0;
@@ -1067,11 +1067,11 @@ a.pp_expand,a.pp_contract{cursor:pointer;display:none;height:20px;position:absol
 a.pp_close{position:absolute;right:0;top:0;display:block;line-height:22px;text-indent:-10000px}
 .pp_loaderIcon{display:block;height:24px;left:50%;position:absolute;top:50%;width:24px;margin:-12px 0 0 -12px}
 #pp_full_res{line-height:1!important}
-#pp_full_res .pp_inline{text-align:left}
-#pp_full_res .pp_inline p{margin:0 0 15px}
+#pp_full_res .modal-body{text-align:left}
+#pp_full_res .modal-body p{margin:0 0 15px}
 div.ppt{color:#fff;display:none;font-size:17px;z-index:9999;margin:0 0 5px 15px}
 div.pp_default .pp_content,div.light_rounded .pp_content{background-color:#fff}
-div.pp_default #pp_full_res .pp_inline,div.light_rounded .pp_content .ppt,div.light_rounded #pp_full_res .pp_inline,div.light_square .pp_content .ppt,div.light_square #pp_full_res .pp_inline,div.facebook .pp_content .ppt,div.facebook #pp_full_res .pp_inline{color:#000}
+div.pp_default #pp_full_res .modal-body,div.light_rounded .pp_content .ppt,div.light_rounded #pp_full_res .modal-body,div.light_square .pp_content .ppt,div.light_square #pp_full_res .modal-body,div.facebook .pp_content .ppt,div.facebook #pp_full_res .modal-body{color:#000}
 div.pp_default .pp_gallery ul li a:hover,div.pp_default .pp_gallery ul li.selected a,.pp_gallery ul a:hover,.pp_gallery li.selected a{border-color:#fff}
 div.pp_default .pp_details,div.light_rounded .pp_details,div.dark_rounded .pp_details,div.dark_square .pp_details,div.light_square .pp_details,div.facebook .pp_details{position:relative}
 div.light_rounded .pp_top .pp_middle,div.light_rounded .pp_content_container .pp_left,div.light_rounded .pp_content_container .pp_right,div.light_rounded .pp_bottom .pp_middle,div.light_square .pp_left,div.light_square .pp_middle,div.light_square .pp_right,div.light_square .pp_content,div.facebook .pp_content{background:#fff}
@@ -1082,7 +1082,7 @@ div.light_rounded .pp_arrow_next.disabled,div.dark_rounded .pp_arrow_next.disabl
 div.light_rounded .pp_loaderIcon,div.light_square .pp_loaderIcon{background:url(img/prettyPhoto/light_rounded/loader.gif) center center no-repeat}
 div.dark_rounded .pp_top .pp_middle,div.dark_rounded .pp_content,div.dark_rounded .pp_bottom .pp_middle{background:url(img/prettyPhoto/dark_rounded/contentPattern.png) top left repeat}
 div.dark_rounded .currentTextHolder,div.dark_square .currentTextHolder{color:#c4c4c4}
-div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline{color:#fff}
+div.dark_rounded #pp_full_res .modal-body,div.dark_square #pp_full_res .modal-body{color:#fff}
 .pp_top,.pp_bottom{height:20px;position:relative}
 * html .pp_top,* html .pp_bottom{padding:0 20px}
 .pp_top .pp_left,.pp_bottom .pp_left{height:20px;left:0;position:absolute;width:20px}
