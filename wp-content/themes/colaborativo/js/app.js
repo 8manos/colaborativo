@@ -165,17 +165,35 @@
 		/* Modal magic */
 
 		$("a[rel^='prettyPhoto']").on( 'click', function(e) {
-			e.preventDefault();
-			var remotepath = 	$(this).attr('href').replace('http://'+window.location.hostname,'');
-			window.location.hash = $(this).parent().parent().attr( 'id' );
 
-			$('#myModal').modal({
-				'remote': remotepath,
-				'show': true
+			e.preventDefault();
+
+			var remoteid = $(this).parent().parent().attr( 'id' );
+			window.location.hash = remoteid;
+			var id_post = remoteid.match(/\d+/) | 0;
+
+
+			$.ajax({
+				url : '/wp-admin/admin-ajax.php',
+				type : 'POST',
+				async : true,
+				data :
+				{
+					action : 'contentajax',
+					cual : id_post
+				},
+
+				success : function(results){
+					$('#myModal .modal-body').html(results);
+					$('#myModal').modal('show');
+					console.log(results);
+				}
 			});
+
 		});
 
 		if( window.location.hash ){
+
 			console.log(window.location.hash);
 			var id_post = window.location.hash.match(/\d+/) | 0;
 
@@ -190,13 +208,18 @@
 				},
 
 				success : function(results){
+					$('#myModal .modal-body').html(results);
+					$('#myModal').modal('show');
 					console.log(results);
 				}
 			});
 		}
 
 		$('#myModal').on('hidden', function () {
+
 		  window.location.hash = '';
+		  $('#myModal .modal-body').html('<p>un momento…</p>');
+
 		});
 
 		/* Ajax update */
