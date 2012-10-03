@@ -222,6 +222,11 @@
 
 		});
 
+		$('#myModal').on('shown', function(){
+			addthis.toolbox('.addthis_toolbox');
+			addthis.counter('.addthis_counter');
+		})
+
 		/* Ajax update */
 		
 		$('#notify_new').on('click', displayNew);
