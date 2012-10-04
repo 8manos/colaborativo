@@ -148,23 +148,6 @@ class colaborativoShortcodes {
 
 				$output .= '</div>';
 
-			/*
-			<div class="video video-<?php echo $class_number; ?>">
-				<a href="#" data-vid-url="<?php echo $video['url']; ?>" title="<?php echo $video['titulo']; ?>" data-desc="<?php echo $video['descripcion']; ?>">
-					<h3><?php echo $video['titulo']; ?></h3>
-					<span class="video-thumb-wrapper">
-						<?php
-						if ($video['thumb'] ) {
-							echo wp_get_attachment_image( $video['thumb'] );
-						}else{
-							echo '<img src="http://placehold.it/200x200" />';
-						}
-						?>
-						<span class="back"></span>
-					</span>
-				</a>
-			</div>
-			*/
 			$output .= '</div></li>';
 	
 		}
@@ -173,65 +156,52 @@ class colaborativoShortcodes {
 		return $output;
 	}
 
+	public static function respaldo() {
 
-	public static function animalario( $atts ) {
-		extract( shortcode_atts(array('cat' => ''), $atts) );
-		$out = '<img src="'.get_template_directory_uri().'/i/animalario.png" />';
-		return $out;
-	}
-
-	public static function comic() {
 		global $post;
 
-		/* Arguments for get_children(). */
-		$children = array(
-			'post_parent' => $post->ID,
-			'post_status' => 'inherit',
-			'post_type' => 'attachment',
-			'post_mime_type' => 'image',
-			'order' => 'ASC',
-			'orderby' => 'menu_order ID',
-			'exclude' => '',
-			'include' => '',
-			'numberposts' => -1,
-			'offset' => '',
-		);
+		$output = '';
 
-		/* Get image attachments. If none, return. */
-		$attachments = get_children( $children );
+		$equipo = get_post_meta( $post->ID , '_respaldo', true );
 
-		if ( empty( $attachments ) )
-			return '';
+		$output.= '<div class="row-fluid"><h2>Respaldo</h2><ul class="thumbnails">';
 
-		$out = '';
-		/* Loop through each attachment. */
-		foreach ( $attachments as $id => $attachment ) {
-			$vineta = wp_get_attachment_image_src( $id , 'original' );
-			$out .= '<img
-    data-src="'.$vineta[0].'"
-    src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
-    onload=lzld(this) onerror=lzld(this) width="'.$vineta[1].'" height="'.$vineta[2].'" />';
+		foreach($equipo as $miembro) {
+
+			$nombre = $miembro['nombre-respaldo'];
+			$subtitulo = $miembro['subtitulo-respaldo'];
+			$url = $miembro['url-respaldo'];
+			$thumb = wp_get_attachment_image( $miembro['thumb-respaldo'] );
+
+			$output .= '<li class="span4"><div class="thumbnail">';
+
+				$output .= $thumb;
+
+				$output .= '<div class="caption">';
+
+					$output .= '<h3>'.$nombre.'</h3>';
+
+					$output .= '<h4>';
+
+					if( $url ){
+						$output .= '<a href="'.$url.'" target="_blank">';
+					}
+						$output .= $subtitulo;
+
+					if( $url ){
+						$output .= '</a>';
+					}
+
+					$output .= '</h4>';
+
+				$output .= '</div>';
+
+			$output .= '</div></li>';
+	
 		}
+		$output .= '</ul></div>';
 
-		return $out;
-	}
-
-	public static function subpagescuerda() {
-
-		$padre = 1046;
-
-		$sub_query = new WP_Query( 'orderby=menu_order&order=ASC&posts_per_page=-1&post_type=page&post_parent='.$padre );
-			if($sub_query->have_posts()){
-				echo "<div class='subpaginas cruzadas'>";
-				while ($sub_query->have_posts()) : $sub_query->the_post();
-		?>
-					<h2><?php the_title(); ?></h2>
-					<?php the_post_thumbnail( 'medium' ); ?>
-					<?php the_content(); ?>
-		<?php
-				endwhile;
-				echo "</div>";
-		}
+		return $output;
 	}
 
 }
