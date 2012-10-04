@@ -15,7 +15,7 @@ add_action( 'after_setup_theme', 'setup_colaborativo' );
 // enqueue scripts
 function colaborativo_scripts_method() {
 
-    $version = 0.8.1;
+    $version = "0.8.1";
 
     wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','', $version ,false);
     wp_enqueue_script( 'colaborativo_modernizr' );
