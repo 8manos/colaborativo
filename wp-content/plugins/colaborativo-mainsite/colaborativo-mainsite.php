@@ -116,44 +116,52 @@ class colaborativoShortcodes {
 
 		$equipo = get_post_meta( $post->ID , '_equipo', true );
 
-		$output.= '<div class="row-fluid"><ul class="thumbnails">';
+		if( $equipo ) {
 
-		foreach($equipo as $miembro) {
+			$output.= '<div class="row-fluid"><ul class="thumbnails">';
 
-			$nombre = $miembro['nombre'];
-			$subtitulo = $miembro['subtitulo'];
-			$url = $miembro['url'];
-			$thumb = wp_get_attachment_image( $miembro['thumb-equipo'] );
+			foreach($equipo as $miembro) {
 
-			$output .= '<li class="span3"><div class="thumbnail">';
+				$nombre = $miembro['nombre'];
+				$subtitulo = $miembro['subtitulo'];
+				$url = $miembro['url'];
+				$thumb = wp_get_attachment_image( $miembro['thumb-equipo'] );
 
-				$output .= $thumb;
+				$output .= '<li class="span3"><div class="thumbnail">';
 
-				$output .= '<div class="caption">';
+					$output .= $thumb;
 
-					$output .= '<h3>'.$nombre.'</h3>';
+					$output .= '<div class="caption">';
 
-					$output .= '<h4>';
+						$output .= '<h3>'.$nombre.'</h3>';
 
-					if( $url ){
-						$output .= '<a href="'.$url.'" target="_blank">';
-					}
-						$output .= $subtitulo;
+						$output .= '<h4>';
 
-					if( $url ){
-						$output .= '</a>';
-					}
+						if( $url ){
+							$output .= '<a href="'.$url.'" target="_blank">';
+						}
+							$output .= $subtitulo;
 
-					$output .= '</h4>';
+						if( $url ){
+							$output .= '</a>';
+						}
 
-				$output .= '</div>';
+						$output .= '</h4>';
 
-			$output .= '</div></li>';
-	
+					$output .= '</div>';
+
+				$output .= '</div></li>';
+		
+			}
+			$output .= '</ul></div>';
+
+			return $output;
+
+		}else{
+
+			return false;
+
 		}
-		$output .= '</ul></div>';
-
-		return $output;
 	}
 
 	public static function respaldo() {
@@ -162,46 +170,55 @@ class colaborativoShortcodes {
 
 		$output = '';
 
-		$equipo = get_post_meta( $post->ID , '_respaldo', true );
+		$respaldo = get_post_meta( $post->ID , '_respaldo', true );
 
-		$output.= '<div class="row-fluid"><h2>Respaldo</h2><ul class="thumbnails">';
+		if( $respaldo ) {
 
-		foreach($equipo as $miembro) {
+			$output.= '<div class="row-fluid"><h2>Respaldo</h2><ul class="thumbnails">';
 
-			$nombre = $miembro['nombre-respaldo'];
-			$subtitulo = $miembro['subtitulo-respaldo'];
-			$url = $miembro['url-respaldo'];
-			$thumb = wp_get_attachment_image( $miembro['thumb-respaldo'] );
+			foreach($respaldo as $miembro) {
 
-			$output .= '<li class="span4"><div class="thumbnail">';
+				$nombre = $miembro['nombre-respaldo'];
+				$subtitulo = $miembro['subtitulo-respaldo'];
+				$url = $miembro['url-respaldo'];
+				$thumb = wp_get_attachment_image( $miembro['thumb-respaldo'] );
 
-				$output .= $thumb;
+				$output .= '<li class="span4"><div class="thumbnail">';
 
-				$output .= '<div class="caption">';
+					$output .= $thumb;
 
-					$output .= '<h3>'.$nombre.'</h3>';
+					$output .= '<div class="caption">';
 
-					$output .= '<h4>';
+						$output .= '<h3>'.$nombre.'</h3>';
 
-					if( $url ){
-						$output .= '<a href="'.$url.'" target="_blank">';
-					}
-						$output .= $subtitulo;
+						$output .= '<h4>';
 
-					if( $url ){
-						$output .= '</a>';
-					}
+						if( $url ){
+							$output .= '<a href="'.$url.'" target="_blank">';
+						}
+							$output .= $subtitulo;
 
-					$output .= '</h4>';
+						if( $url ){
+							$output .= '</a>';
+						}
 
-				$output .= '</div>';
+						$output .= '</h4>';
 
-			$output .= '</div></li>';
-	
+					$output .= '</div>';
+
+				$output .= '</div></li>';
+		
+			}
+			$output .= '</ul></div>';
+
+			return $output;
+
+		}else{
+
+			return false;
+
 		}
-		$output .= '</ul></div>';
 
-		return $output;
 	}
 
 }
