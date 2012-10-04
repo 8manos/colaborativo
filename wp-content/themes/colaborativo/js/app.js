@@ -126,17 +126,6 @@
 
 				success : function(results){
 					insertResults(results, dop);
-					$(document).ready(function(){
-						/* $("a[rel^='prettyPhoto']").prettyPhoto({
-								social_tools: '',
-								show_title: false,
-								deeplinking: false,
-								changepicturecallback: function(){
-									addthis.toolbox('.addthis_toolbox');
-									addthis.counter('.addthis_counter');
-								}
-						}); */
-					});
 				}
 			});
 		}
@@ -153,30 +142,76 @@
 			getAjax( $(this), 'append' );
 		});
 
-		/* $("a[rel^='prettyPhoto']").prettyPhoto({
-			social_tools: '',
-			show_title: false,
-			changepicturecallback: function(){
-				addthis.toolbox('.addthis_toolbox');
-				addthis.counter('.addthis_counter');
-			}
-		}); */
+		/* Modal magic */
 
 		$("a[rel^='prettyPhoto']").on( 'click', function(e) {
-			e.preventDefault();
-			var remotepath = 	$(this).attr('href').replace('http://'+window.location.hostname,'');
 
-			$('#myModal').modal({
-				'remote': remotepath,
-				'show': true
+			e.preventDefault();
+
+			var remoteid = $(this).parent().parent().attr( 'id' );
+			window.location.hash = remoteid;
+			var id_post = remoteid.match(/\d+/) | 0;
+
+
+			$.ajax({
+				url : '/wp-admin/admin-ajax.php',
+				type : 'POST',
+				async : true,
+				data :
+				{
+					action : 'contentajax',
+					cual : id_post
+				},
+
+				success : function(results){
+					$('#myModal .modal-body').html(results);
+					$('#myModal').modal('show');
+					console.log(results);
+				}
 			});
+
 		});
+
+		if( window.location.hash ){
+
+			console.log(window.location.hash);
+			var id_post = window.location.hash.match(/\d+/) | 0;
+
+			$.ajax({
+				url : '/wp-admin/admin-ajax.php',
+				type : 'POST',
+				async : true,
+				data :
+				{
+					action : 'contentajax',
+					cual : id_post
+				},
+
+				success : function(results){
+					$('#myModal .modal-body').html(results);
+					$('#myModal').modal('show');
+					console.log(results);
+				}
+			});
+		}
+
+		$('#myModal').on('hidden', function () {
+
+		  window.location.hash = '';
+		  $('#myModal .modal-body').html('<p>un momento…</p>');
+
+		});
+
+		$('#myModal').on('shown', function(){
+			addthis.toolbox('.addthis_toolbox');
+			addthis.counter('.addthis_counter');
+		})
+
+		/* Ajax update */
 		
 		$('#notify_new').on('click', displayNew);
 
-		$('.pp_overlay').live('click', function(){
-			$(this).hide();
-		})
+		/* Carousel */
 
 		$('.carousel .item:empty').remove(); 
 		

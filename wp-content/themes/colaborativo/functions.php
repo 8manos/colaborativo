@@ -15,13 +15,15 @@ add_action( 'after_setup_theme', 'setup_colaborativo' );
 // enqueue scripts
 function colaborativo_scripts_method() {
 
-    wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','','',false);
+    $version = 0.8;
+
+    wp_register_script('colaborativo_modernizr',get_template_directory_uri() . '/js/modernizr.js','', $version ,false);
     wp_enqueue_script( 'colaborativo_modernizr' );
 
-    wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','','',true);
+    wp_register_script('colaborativo_plugins',get_template_directory_uri() . '/js/plugins.js','', $version ,true);
     wp_enqueue_script( 'colaborativo_plugins' );
 
-    wp_register_script('colaborativo_app',get_template_directory_uri() . '/js/app.js','','',true);
+    wp_register_script('colaborativo_app',get_template_directory_uri() . '/js/app.js','', $version ,true);
     wp_enqueue_script( 'colaborativo_app' );
 
     wp_enqueue_script( 'jquery' );
@@ -465,7 +467,7 @@ function display_article() {
                 <?php }
             } ?>
 
-            <a class="overlay" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]" ><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <a class="overlay" href="<?php the_permalink(); ?>" rel="prettyPhoto[<?php echo get_post_type() ?>]" ><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
         </div>
 
 		<footer class="post-meta">
@@ -489,19 +491,19 @@ function display_article() {
  * Mostrar cada publicacion sola
  */
 function display_article_content() {
+
 ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>">
         <span class="categoria"><?php the_category(); ?></span>
         <h2 class="has-icon"><?php if(get_post_type() != "tweet"){ the_title(); } ?></h2>
         <div class="entry-content">
             <?php
-                if(get_post_type() == "imagen"){
+                if(get_post_type(get_the_ID()) == "imagen"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
                 $enclosure_array = explode('
 ', $enclosure);
             ?>
-
 
                 <?php if(has_post_thumbnail() || $enclosure){ ?>
                     <a href="<?php the_syndication_permalink(); ?>" target="_blank">
@@ -596,6 +598,50 @@ function display_article_content() {
 <?php
 }
 
+/*
+ * Mostrar cada publicacion sola
+ */
+function display_article_content_ajax() {
+
+    $cual = $_POST['cual'];
+
+    $args = array(
+                    'public' => true ,
+                    '_builtin' => false
+                );
+    $output = 'names';
+    $operator = 'and';
+
+    $post_types = get_post_types( $args, $output, $operator );
+
+    $post_types = array_merge( $post_types, array( 'post' ,'tweet' ) );
+
+    $q = new WP_Query( 
+                        array( 
+                            'post_type' => $post_types, 
+                            'post__in' => array( $cual )
+                        ) 
+                    );
+
+    if($q->have_posts()){
+
+        while ($q->have_posts()) : $q->the_post();
+
+           display_article_content();
+        
+        endwhile;
+
+    }else{
+        echo "0";
+    }     
+
+    exit;
+
+}
+
+add_action('wp_ajax_contentajax', 'display_article_content_ajax');
+add_action('wp_ajax_nopriv_contentajax', 'display_article_content_ajax');
+
 function toRGB($Hex){
 
     if (substr($Hex,0,1) == "#")
@@ -631,7 +677,7 @@ function colores_cats() {
         $colores .= "article.category-".$categoria->slug." .overlay { background-color:rgba(".$color_rgb['R']." ,".$color_rgb['G']." ,".$color_rgb['B']." , 0.75) !important; } ";
         $colores .= "article.category-".$categoria->slug." .categoria { background-color: ".$color." !important; } ";
         $colores .= ".single article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
-        $colores .= ".pp_inline article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
+        $colores .= ".modal-body article.category-".$categoria->slug." .autor { background-color: ".$color."; } ";
         $colores .= "li.cat-item-".$categoria->term_id." a:hover { color: ".$color." !important; } ";
         $colores .= "li.cat-item-".$categoria->term_id.".current-cat a { color: ".$color." !important; } ";
     }
@@ -710,7 +756,8 @@ function agregador_cajas(){
     //parametros para wp_query
     $params = array(
         'post_type' => $post_types,
-        'ignore_sticky_posts' => 1
+        'ignore_sticky_posts' => 1,
+        'post_status' => 'publish'
     );
     if($cat){
         $params['cat'] = $cat;

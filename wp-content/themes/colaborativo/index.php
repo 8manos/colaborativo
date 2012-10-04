@@ -70,6 +70,7 @@
 										array(
 											'posts_per_page' 	=> 3,
 											'order'				=> 'ASC',
+											'post_status' 		=> 'publish',
 											'post__in'			=> get_option( 'sticky_posts' )
 										)
 									);
@@ -148,7 +149,7 @@
 	global $wp_query;
 	$args = array_merge( $wp_query->query, array(
 		'posts_per_page' => 20 ,
-		'post_status' => 'published',
+		'post_status' => 'publish',
 		'post__not_in' => get_option( 'sticky_posts' )
 	) );//escondemos 10 y mostramos 10
 

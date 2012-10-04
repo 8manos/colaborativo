@@ -1,12 +1,4 @@
-<?php get_header(); ?>
-<?php
-
-	while (have_posts()) : the_post();
-
-		$post_type = get_post_type();
-
-		get_template_part('content', $post_type);
-
-	endwhile;
+<?php 
+	$redirect_url = get_bloginfo('url')."#post-".get_the_ID();
+	wp_redirect( $redirect_url , $status = 302)
 ?>
-<?php get_footer(); ?>
