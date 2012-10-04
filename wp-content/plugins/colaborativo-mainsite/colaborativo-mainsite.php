@@ -10,7 +10,7 @@ class Colaborativomainsite {
 
 	public static function init() {
 
-		#Taxonomies meta
+		#Pages meta
 		add_filter( 'kc_post_settings', array(__CLASS__, 'metadata_pages') );
 
 	}
@@ -125,7 +125,7 @@ class colaborativoShortcodes {
 				$nombre = $miembro['nombre'];
 				$subtitulo = $miembro['subtitulo'];
 				$url = $miembro['url'];
-				$thumb = wp_get_attachment_image( $miembro['thumb-equipo'] );
+				$thumb = wp_get_attachment_image( $miembro['thumb-equipo'], array( 145, 145) );
 
 				$output .= '<li class="span3"><div class="thumbnail">';
 
