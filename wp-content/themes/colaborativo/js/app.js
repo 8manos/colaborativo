@@ -215,7 +215,9 @@
 
 		$('.carousel .item:empty').remove(); 
 		
-		$('.carousel').carousel();
+		$('.carousel').carousel({
+			interval: false
+		});
 
 		$(window).load(function(){
 
