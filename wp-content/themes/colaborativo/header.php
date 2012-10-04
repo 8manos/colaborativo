@@ -67,7 +67,7 @@
 						<li><a href="http://colaborativo.co/colabora/">Colabora</a></li>
 					</ul>
 				</div>
-				<a href="/contacto?ajax=true&width=940&height=90%" rel="prettyPhoto[feedback]" class="ir sprite right" id="feedback">
+				<a href="mailto:info@colaborativo.co" class="ir sprite right" id="feedback">
 					<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
 				</a>
 
