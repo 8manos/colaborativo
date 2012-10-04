@@ -129,7 +129,15 @@ class colaborativoShortcodes {
 
 				$output .= '<li class="span3"><div class="thumbnail">';
 
+					if( $url ){
+						$output .= '<a href="'.$url.'" target="_blank">';
+					}
+
 					$output .= $thumb;
+
+					if( $url ){
+						$output .= '</a>';
+					}
 
 					$output .= '<div class="caption">';
 
@@ -184,8 +192,19 @@ class colaborativoShortcodes {
 				$thumb = wp_get_attachment_image( $miembro['thumb-respaldo'] );
 
 				$output .= '<li class="span4"><div class="thumbnail">';
+					if( $url ){
+						$output .= '<a href="'.$url.'" target="_blank">';
+					}
 
+					if( $url ){
+						$output .= '<a href="'.$url.'" target="_blank">';
+					}
+					
 					$output .= $thumb;
+
+					if( $url ){
+						$output .= '</a>';
+					}
 
 					$output .= '<div class="caption">';
 
