@@ -419,6 +419,8 @@ function display_article() {
 	<article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>" data-id="<?php the_ID(); ?>">
         <div class="article-content">
             <?php
+                $link_evento = get_post_meta(get_the_ID(), $key = '_url-evento', $single = true);
+
                 if(get_post_type() == "imagen"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
@@ -467,7 +469,11 @@ function display_article() {
                 <?php }
             } ?>
 
-            <a class="overlay" href="<?php the_permalink(); ?>" rel="prettyPhoto[<?php echo get_post_type() ?>]" ><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <?php if( !$link_evento ) { ?>
+                <a class="overlay" href="<?php the_permalink(); ?>" rel="prettyPhoto[<?php echo get_post_type() ?>]" ><?php _e('ver ', 'colaborativo'); echo get_post_type(); ?></a>
+            <?php }else{ ?>
+                <a class="overlay" href="<?php echo $link_evento; ?>"></a>
+            <?php } ?>
         </div>
 
 		<footer class="post-meta">

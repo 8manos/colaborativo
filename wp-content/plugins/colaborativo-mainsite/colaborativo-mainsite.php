@@ -17,8 +17,26 @@ class Colaborativomainsite {
 
 	public static function metadata_pages( $groups ) {
 
+		$grupo = array(	
+					'post' => array(
+						array(
+							'id'	=> 'post-settings',
+							'title'	=> 'Settings de post',
+							'role'   => array('administrator', 'editor'), 
+							'fields' => array(
+											array(
+												'id'	=> 'url-evento',
+												'title' => 'URL de evento',
+												'desc'	=> 'usado en el home, no olvidar http://',
+												'type'	=> 'text'
+											)
+										) 
+						)
+					)
+		);
+
 		$my_group = array(
-			'page' => array( // TODO: Change this to the desired taxonomy name
+			'page' => array( 
 				array(
 					'id'     => 'page-settings',
 					'title'  => 'Settings de pagina',
@@ -91,6 +109,7 @@ class Colaborativomainsite {
 		);
 
 		$groups[] = $my_group;
+		$groups[] = $grupo;
 		return $groups;
 
 	}
