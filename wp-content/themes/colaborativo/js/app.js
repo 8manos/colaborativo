@@ -175,24 +175,26 @@
 		if( window.location.hash ){
 
 			console.log(window.location.hash);
-			var id_post = window.location.hash.match(/\d+/) | 0;
+			if( window.location.hash.match(/post-/) ){
+				var id_post = window.location.hash.match(/\d+/) | 0;
 
-			$.ajax({
-				url : '/wp-admin/admin-ajax.php',
-				type : 'POST',
-				async : true,
-				data :
-				{
-					action : 'contentajax',
-					cual : id_post
-				},
+				$.ajax({
+					url : '/wp-admin/admin-ajax.php',
+					type : 'POST',
+					async : true,
+					data :
+					{
+						action : 'contentajax',
+						cual : id_post
+					},
 
-				success : function(results){
-					$('#myModal .modal-body').html(results);
-					$('#myModal').modal('show');
-					console.log(results);
-				}
-			});
+					success : function(results){
+						$('#myModal .modal-body').html(results);
+						$('#myModal').modal('show');
+						console.log(results);
+					}
+				});
+			}
 		}
 
 		$('#myModal').on('hidden', function () {
