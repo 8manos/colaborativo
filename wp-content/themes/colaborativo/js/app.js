@@ -144,7 +144,7 @@
 
 		/* Modal magic */
 
-		$("a[rel^='prettyPhoto']").on( 'click', function(e) {
+		$("a[rel^='prettyPhoto']").live( 'click', function(e) {
 
 			e.preventDefault();
 
