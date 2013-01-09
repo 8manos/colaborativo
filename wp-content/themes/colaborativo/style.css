@@ -8,25 +8,25 @@ Version: 0.8
 License: GNU General Public License
 */
 
-article.descarga h2:before {
+article.type-descarga h2:before {
   background-position: -224px -109px;
 }
-article.imagen h2:before {
+article.type-imagen h2:before {
   background-position: -16px -109px;
 }
-article.imagen.flickr h2:before {
+article.type-imagen.flickr h2:before {
   background-position: -299px -109px;
 }
-article.post h2:before {
+article.type-post h2:before {
   background-position: -53px -109px;
 }
-article.sonido h2:before {
+article.type-sonido h2:before {
   background-position: -270px -109px;
 }
-article.tweet h2:before {
+article.type-tweet h2:before {
   background-position: -53px -109px;
 }
-article.video h2:before {
+article.type-video h2:before {
   background-position: -94px -109px;
 }
 
@@ -488,19 +488,19 @@ footer .nav li a:hover {
   z-index:2;
 }
 
-.boxes article.descarga .overlay {
+.boxes article.type-descarga .overlay {
   background-image:url('img/icon5.png');
 }
 
-.boxes article.descarga .autor:before {
+.boxes article.type-descarga .autor:before {
   background-position: -224px -109px;
 }
 
-.boxes article.imagen .overlay {
+.boxes article.type-imagen .overlay {
   background-image:url('img/icon1.png');
 }
 
-.boxes article.imagen .autor:before {
+.boxes article.type-imagen .autor:before {
   background-position: -16px -109px;
 }
 
@@ -508,50 +508,50 @@ footer .nav li a:hover {
   background-image:url('img/icon8.png');
 }
 
-.boxes article.imagen.flickr .autor:before {
+.boxes article.type-imagen.flickr .autor:before {
   background-position: -299px -109px;
 }
 
-.boxes article.post .overlay {
+.boxes article.type-post .overlay {
   background-image:url('img/icon7.png');
 }
 
-.boxes article.post .autor:before {
+.boxes article.type-post .autor:before {
   background-position: -185px -109px;
 }
 
-.boxes article.sonido .overlay {
+.boxes article.type-sonido .overlay {
   background-image:url('img/icon4.png');
 }
 
-.boxes article.sonido .autor:before {
+.boxes article.type-sonido .autor:before {
   background-position: -270px -109px;
 }
 
-.boxes article.tweet .overlay {
+.boxes article.type-tweet .overlay {
   background-image:url('img/icon2.png');
 }
 
-.boxes article.tweet h2 {
+.boxes article.type-tweet h2 {
   font-family:'Open Sans';
   text-transform:none;
   line-height:27px;
   padding:9px;
 }
 
-.boxes article.tweet .article-content {
+.boxes article.type-tweet .article-content {
   background-color: #fff;
 }
 
-.boxes article.tweet .autor:before {
+.boxes article.type-tweet .autor:before {
   background-position: -53px -109px;
 }
 
-.boxes article.video .overlay {
+.boxes article.type-video .overlay {
   background-image:url('img/icon3.png');
 }
 
-.boxes article.video .autor:before {
+.boxes article.type-video .autor:before {
   background-position: -94px -109px;
 }
 
