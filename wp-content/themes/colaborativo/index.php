@@ -5,6 +5,7 @@
 	$logo = wp_get_attachment_image_src( $logo[selected][0] );
 	$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
 	$elink = kc_get_option('colasite_', 'front', 'evento-link');
+	$ocultar_cubrimiento = kc_get_option('colasite_', 'front', 'oculta_cubrimiento');
 ?>
 
 <ul class="row" id="top-banners">
@@ -62,6 +63,7 @@
 	</p>
 </div>
 
+<?php if( !$ocultar_cubrimiento[0] ){ ?>
 <div id="featured" class="boxes row">
 	<h3>Cubrimiento</h3>
 
@@ -100,8 +102,8 @@
 		<a class="carousel-control left" href="#featured_carousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#featured_carousel" data-slide="next">&rsaquo;</a>
 	</div>
-
 </div>
+<?php } ?>
 
 <div class="row colaborated">
 	<h3 class="span12">Contenido generado por los asistentes</h3>

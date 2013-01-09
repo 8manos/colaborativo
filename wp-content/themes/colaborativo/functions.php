@@ -363,6 +363,15 @@ function theme_settings( $groups ) {
                     'true' => __('Automatico', 'cola'),
                 ),
             ),
+            array(
+                'id'      => 'oculta_cubrimiento',
+                'desc'    => 'Selecciona para ocultar la sección de cubrimiento (los post sticky quedarán ocultos)',
+                'title'   => __('Ocultar Cubrimiento', 'cola'),
+                'type'    => 'checkbox',
+                'options' => array(
+                    'true' => __('Ocultar', 'cola'),
+                ),
+            )
         )
     );
 
