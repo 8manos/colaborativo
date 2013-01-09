@@ -9,6 +9,14 @@ function setup_colaborativo(){
 	add_theme_support( 'post-thumbnails' );
     add_image_size( 'article-thumb', 280, 280, true);
     add_image_size( 'article-large', 600, 8000, false);
+
+    /*
+     * This theme supports custom background color and image, and here
+     * we also set up the default background color.
+     */
+    add_theme_support( 'custom-background', array(
+        'default-color' => 'F6F6F6',
+    ) );
 }
 add_action( 'after_setup_theme', 'setup_colaborativo' );
 
