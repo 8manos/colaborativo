@@ -22,13 +22,13 @@
 
 			<?php if( $elink ){ ?>
 			<a class="left" href="<?php echo $elink; ?>" target="_blank">
+			<?php }else{ ?>
+			<a class="left" href="<?php bloginfo('url'); ?>">
 			<?php } ?>
 				<?php if( $logo ) { ?>
 					<img class="alignleft" src="<?php echo $logo[0];  ?>" />
 				<?php } ?>
-			<?php if( $elink ){ ?>
 			</a>
-			<?php } ?>
 
 			<h2><?php bloginfo( 'title' ); ?></h2>
 			<h3><?php bloginfo( 'description' ); ?></h3>
