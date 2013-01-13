@@ -734,7 +734,23 @@ footer .nav li a:hover {
 
 .modal {
   width:960px;
-  margin-left: -480px;
+  margin:0px 0 0 -480px;
+  position: absolute;
+}
+
+.modal.fade.in {
+  top: 40px;
+}
+
+.modal-body {
+  max-height: none;
+  padding:10px;
+}
+
+.modal-body #footer ,
+.modal-body .navbar-fixed-top ,
+.modal-body #meta-colaborativo {
+  display: none !important;
 }
 
 .navbar {
@@ -810,16 +826,6 @@ footer .nav li a:hover {
 .pp_content .entry-content {
   font-size: 14px;
   line-height: 1.4em;
-}
-
-.modal-body {
-  padding:10px;
-}
-
-.modal-body #footer ,
-.modal-body .navbar-fixed-top ,
-.modal-body #meta-colaborativo {
-  display: none !important;
 }
 
 .pp_play {
