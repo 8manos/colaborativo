@@ -176,6 +176,9 @@
 
 			e.preventDefault();
 
+			$('#myModal .modal-body').empty();
+			$('#myModal .modal-body').html('<h2>Un momento...</h2>');
+
 			var remoteid = $(this).attr( 'id' );
 			var id_post = remoteid.match(/\d+/) | 0;
 			window.location.hash = "ver-"+id_post;
