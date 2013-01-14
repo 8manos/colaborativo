@@ -149,8 +149,8 @@
 			e.preventDefault();
 
 			var remoteid = $(this).parent().parent().attr( 'id' );
-			window.location.hash = remoteid;
 			var id_post = remoteid.match(/\d+/) | 0;
+			window.location.hash = "ver-"+id_post;
 
 			$.ajax({
 				url : '/wp-admin/admin-ajax.php',

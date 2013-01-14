@@ -609,10 +609,10 @@ function display_article_content() {
             <div class="social">
                 <!-- AddThis Button BEGIN -->
                 <div class="addthis_toolbox addthis_default_style ">
-                    <a addthis:url="<?php the_permalink(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_facebook_like" fb:like:layout="button_count"></a><br />
-                    <a addthis:url="<?php the_permalink(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_tweet"></a><br />
-                    <a addthis:url="<?php the_permalink(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_google_plusone" g:plusone:size="medium"></a><br />
-                    <a addthis:url="<?php the_permalink(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_counter addthis_pill_style"></a>
+                    <a addthis:url="<?php bloginfo('url'); ?>/?p=<?php the_ID(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_facebook_like" fb:like:layout="button_count"></a><br />
+                    <a addthis:url="<?php bloginfo('url'); ?>/?p=<?php the_ID(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_tweet"></a><br />
+                    <a addthis:url="<?php bloginfo('url'); ?>/?p=<?php the_ID(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_button_google_plusone" g:plusone:size="medium"></a><br />
+                    <a addthis:url="<?php bloginfo('url'); ?>/?p=<?php the_ID(); ?>" addthis:title="<?php the_title(); ?>" class="addthis_counter addthis_pill_style"></a>
                 </div>
                 <!-- AddThis Button END -->
             </div>
