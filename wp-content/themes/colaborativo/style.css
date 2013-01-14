@@ -755,6 +755,10 @@ footer .nav li a:hover {
   display: none !important;
 }
 
+.modal:focus {
+  outline: none;
+}
+
 .modal article {
   position: relative;
 }

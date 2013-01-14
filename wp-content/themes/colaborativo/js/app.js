@@ -152,7 +152,6 @@
 			window.location.hash = remoteid;
 			var id_post = remoteid.match(/\d+/) | 0;
 
-
 			$.ajax({
 				url : '/wp-admin/admin-ajax.php',
 				type : 'POST',
@@ -166,7 +165,39 @@
 				success : function(results){
 					$('#myModal .modal-body').html(results);
 					$('#myModal').modal('show');
-					console.log(results);
+					// console.log(results);
+				}
+			});
+
+		});
+
+
+		$("a[rel^='postPhoto']").live( 'click', function(e) {
+
+			e.preventDefault();
+
+			var remoteid = $(this).attr( 'id' );
+			var id_post = remoteid.match(/\d+/) | 0;
+			window.location.hash = "ver-"+id_post;
+
+			//alert(id_post);
+
+			$.ajax({
+				url : '/wp-admin/admin-ajax.php',
+				type : 'POST',
+				async : true,
+				data :
+				{
+					action : 'contentajax',
+					cual : id_post
+				},
+
+				success : function(results){
+					$('#myModal .modal-body').empty();
+					$('#myModal .modal-body').html(results);
+					addthis.toolbox('.addthis_toolbox');
+					addthis.counter('.addthis_counter');
+					//console.log(results);
 				}
 			});
 
@@ -175,7 +206,7 @@
 		if( window.location.hash ){
 
 			console.log(window.location.hash);
-			if( window.location.hash.match(/post-/) ){
+			if( window.location.hash.match(/post-/) || window.location.hash.match(/ver-/) || window.location.hash.match(/posted-/) ){
 				var id_post = window.location.hash.match(/\d+/) | 0;
 
 				$.ajax({
@@ -191,7 +222,7 @@
 					success : function(results){
 						$('#myModal .modal-body').html(results);
 						$('#myModal').modal('show');
-						console.log(results);
+						// console.log(results);
 					}
 				});
 			}

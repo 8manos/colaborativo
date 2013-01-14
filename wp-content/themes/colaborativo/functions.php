@@ -433,7 +433,7 @@ function cl_get_images_src($size = 'thumbnail') {
  */
 function display_article() {
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>" data-id="<?php the_ID(); ?>">
+	<article id="posted-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>" data-id="<?php the_ID(); ?>">
         <div class="article-content">
             <?php
                 $link_evento = get_post_meta(get_the_ID(), $key = '_url-evento', $single = true);
@@ -627,7 +627,7 @@ function display_article_content() {
                     // print_r( $prev );
                     if( $prev ){
             ?>
-                    <a class="prev" id="prev-<?php echo $prev->ID; ?>" href="<?php echo $prev->guid; ?>"><?php echo $prev->post_title; ?></a>
+                    <a class="prev" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $prev->ID; ?>" href="<?php echo $prev->guid; ?>"><?php echo $prev->post_title; ?></a>
             <?
                     }
                 }
@@ -640,7 +640,7 @@ function display_article_content() {
                     // print_r( $next );
                     if( $next ){
             ?>
-                    <a class="next" id="next-<?php echo $next->ID; ?>" href="<?php echo $next->guid; ?>"><?php echo $next->post_title; ?></a>
+                    <a class="next" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $next->ID; ?>" href="<?php echo $next->guid; ?>"><?php echo $next->post_title; ?></a>
             <?
                     }
                 }
