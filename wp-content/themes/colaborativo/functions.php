@@ -620,11 +620,29 @@ function display_article_content() {
         <nav class="posts_nav">
             <?php 
                 if ( function_exists( 'previous_post_link_plus' ) ) {
-                    previous_post_link_plus( array('post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ') );
+                    $prev = previous_post_link_plus( array(
+                        'post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ',
+                        'return' => 'object'
+                    ) );
+                    // print_r( $prev );
+                    if( $prev ){
+            ?>
+                    <a class="prev" id="prev-<?php echo $prev->ID; ?>" href="<?php echo $prev->guid; ?>"><?php echo $prev->post_title; ?></a>
+            <?
+                    }
                 }
 
                 if ( function_exists( 'next_post_link_plus' ) ) {
-                    next_post_link_plus( array('post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ') );
+                    $next = next_post_link_plus( array(
+                        'post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ',
+                        'return' => 'object'
+                    ) );
+                    // print_r( $next );
+                    if( $next ){
+            ?>
+                    <a class="next" id="next-<?php echo $next->ID; ?>" href="<?php echo $next->guid; ?>"><?php echo $next->post_title; ?></a>
+            <?
+                    }
                 }
            ?>
         </nav>

@@ -735,6 +735,7 @@ footer .nav li a:hover {
 .modal {
   width:960px;
   margin:0px 0 0 -480px;
+  overflow: visible;
   position: absolute;
 }
 
@@ -744,6 +745,7 @@ footer .nav li a:hover {
 
 .modal-body {
   max-height: none;
+  overflow: visible;
   padding:10px;
 }
 
@@ -752,6 +754,38 @@ footer .nav li a:hover {
 .modal-body #meta-colaborativo {
   display: none !important;
 }
+
+.modal article {
+  position: relative;
+}
+
+.modal article .prev ,
+.modal article .next {
+  color:#fff;
+  display: block;
+  font-size: 1.25em;
+  position: absolute;
+  top:80px;
+  width: 150px;
+}
+
+.modal article .prev {
+  left: -170px;
+  text-align: right;
+}
+
+  .modal article .prev:before {
+    content: "< ";
+  }
+
+.modal article .next {
+  right: -170px;
+  text-align: left;
+}
+
+  .modal article .next:after {
+    content: " >";
+  }
 
 .navbar {
   text-transform:uppercase;
