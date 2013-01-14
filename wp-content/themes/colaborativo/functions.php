@@ -505,6 +505,18 @@ function display_article() {
                 </em> -->
             </span>
 		</footer>
+
+        <nav class="posts_nav">
+            <?php 
+                if ( function_exists( 'previous_post_link_plus' ) ) {
+                    previous_post_link_plus( array('post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ') );
+                }
+
+                if ( function_exists( 'next_post_link_plus' ) ) {
+                    next_post_link_plus( array('post_type' => ' "post","tweet","video","imagen","sonido","descarga","galeria" ') );
+                }
+           ?>
+        </nav>
 	</article>
 <?php
 }
