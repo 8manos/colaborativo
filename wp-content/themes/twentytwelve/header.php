@@ -23,11 +23,7 @@
 <meta name="viewport" content="width=device-width" />
 <title>
 	<?php 
-	if( is_home() ){
-		bloginfo( 'name' );
-	}else{
-		wp_title( '|', true, 'right' );
-	} 
+		bloginfo( 'name' ); wp_title( '|', true, 'right' );
 	?>
 </title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
