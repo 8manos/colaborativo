@@ -24,7 +24,7 @@
 <title>
 	<?php 
 	if( is_front_page() ){
-		echo bloginfo('title');
+		bloginfo( 'name' );
 	}else{
 		wp_title( '|', true, 'right' );
 	} 
