@@ -73,7 +73,15 @@
 											'posts_per_page' 	=> 3,
 											'order'				=> 'ASC',
 											'post_status' 		=> 'publish',
-											'post__in'			=> get_option( 'sticky_posts' )
+											'post__in'			=> get_option( 'sticky_posts' ),
+											'post_type' 		=> array(
+																	'post',
+																	'video',
+																	'imagen',
+																	'tweet',
+																	'sonido',
+																	'descarga'
+																)
 										)
 									);
 	?>
