@@ -23,7 +23,7 @@
 <meta name="viewport" content="width=device-width" />
 <title>
 	<?php 
-	if( is_front_page() ){
+	if( is_home() ){
 		bloginfo( 'name' );
 	}else{
 		wp_title( '|', true, 'right' );
