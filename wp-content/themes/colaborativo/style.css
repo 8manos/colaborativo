@@ -755,6 +755,10 @@ footer .nav li a:hover {
   display: none !important;
 }
 
+.modal-body .type-tweet h2 {
+  padding-left: 25px;
+}
+
 .modal:focus {
   outline: none;
 }
