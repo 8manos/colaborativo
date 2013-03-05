@@ -918,9 +918,9 @@ footer .nav li a:hover {
 }
 
 .single .entry-aside, .modal-body .entry-aside {
-  float:left;
-  margin-left:15px;
-  width:28%;
+  float:right;
+  margin-right:25px;
+  width:29%;
 }
 
 .single .entry-aside .autor, .modal-body .entry-aside .autor {
