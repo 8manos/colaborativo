@@ -773,31 +773,79 @@ footer .nav li a:hover {
 
 .modal article .prev ,
 .modal article .next {
-  color:#fff;
+  background-color: #fff;
+  color:#444;
   display: block;
   font-size: 1.25em;
+  min-height: 80px;
+  overflow: hidden;
   position: absolute;
   top:80px;
-  width: 150px;
+  width: 30px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .modal article .prev {
-  left: -170px;
+  left: -40px;
   text-align: right;
 }
 
-  .modal article .prev:before {
-    content: "< ";
-  }
-
 .modal article .next {
-  right: -170px;
+  right: -40px;
   text-align: left;
 }
 
-  .modal article .next:after {
-    content: " >";
+  .modal article .prev:hover ,
+  .modal article .next:hover {
+    width: 210px;
   }
+
+  .modal article .prev:hover {
+    left:-220px;
+  }
+
+  .modal article .next:hover {
+    right: -220px;
+  }
+
+  .modal article .next:hover span {
+    margin-left: 0;
+  }
+
+.modal article .prev span ,
+.modal article .next span {
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 80px;
+  padding-top: 10px;
+  width: 170px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.modal article .prev span {
+  background-image: url('img/back-arrow.png');
+  background-position: left 50%;
+  padding-left: 30px;
+}
+
+.modal article .next span {
+  background-image: url('img/next-arrow.png');
+  background-position: right 50%;
+  margin-left: -170px;
+  padding-right: 30px;
+  padding-left: 5px;
+  position: relative;
+  right: 0;
+  width: 165px;
+}
 
 .navbar {
   text-transform:uppercase;

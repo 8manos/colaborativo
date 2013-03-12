@@ -627,7 +627,7 @@ function display_article_content() {
                     // print_r( $prev );
                     if( $prev ){
             ?>
-                    <a class="prev" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $prev->ID; ?>" href="<?php echo $prev->guid; ?>"><?php echo $prev->post_title; ?></a>
+                    <a class="prev" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $prev->ID; ?>" href="<?php echo $prev->guid; ?>"><span><?php echo limit_text($prev->post_title, 7); ?></span></a>
             <?
                     }
                 }
@@ -640,7 +640,7 @@ function display_article_content() {
                     // print_r( $next );
                     if( $next ){
             ?>
-                    <a class="next" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $next->ID; ?>" href="<?php echo $next->guid; ?>"><?php echo $next->post_title; ?></a>
+                    <a class="next" rel="postPhoto[<?php echo get_post_type( $prev->ID ) ?>]"  id="posted-<?php echo $next->ID; ?>" href="<?php echo $next->guid; ?>"><span><?php echo limit_text($next->post_title, 7) ?></span></a>
             <?
                     }
                 }
@@ -889,4 +889,13 @@ function getAutoUpdate()
             echo 'false';
         }
     }
+}
+
+function limit_text($text, $limit) {
+    if (str_word_count($text, 0) > $limit) {
+        $words = str_word_count($text, 2);
+        $pos = array_keys($words);
+        $text = substr($text, 0, $pos[$limit]) . '...';
+    }
+        return $text;
 }
