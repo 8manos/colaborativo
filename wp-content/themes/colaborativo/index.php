@@ -47,7 +47,7 @@
 <div class="navbar row">
 	<ul class="acenter nav" id="cat-menu">
 		<li><a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('title'); ?>">Inicio</a></li>
-		<?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15' ); ?>
+		<?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15&orderby=term_order' ); ?>
 	</ul>
 </div>
 
