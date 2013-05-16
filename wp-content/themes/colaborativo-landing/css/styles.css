@@ -1,0 +1,694 @@
+
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+
+/*###################################################
+# CLEARFIX                                          #
+###################################################*/
+
+
+/*------ Clearfix ------*/
+.clearfix:before, 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    display: block;
+}
+
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+
+
+
+
+/*·························································
+···························································
+···················· ESTILOS COLABORATIVO.CO ··············
+···························································
+··························································*/
+
+
+body{
+   font-family: 'Quattrocento Sans', sans-serif; 
+   color:#696969;
+}
+
+
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Bitter', serif;
+    color:#353535;
+    font-weight: normal;
+}
+
+.container{
+    margin: 0px auto;
+    width: 60%;
+}
+
+#header{
+    color:#fff;
+    font-size: 0.75em;
+    background-color: #000;
+    border-bottom: 1px solid #444;
+    position: fixed;
+    width: 100%;
+    float: left;
+}
+
+#header ul{
+    float:right;
+
+}
+
+#header ul li{
+    float: left;
+    padding: 23px 10px 20px;
+    text-transform: uppercase;
+    list-style: none;
+}
+
+#header ul li a{
+    color: #fff;
+    text-decoration: none
+}
+
+#header h1{
+    float:left;
+    text-indent: -99999px;
+}
+
+#header h1 a{
+    width: 150px;
+    height: 37px;
+    display:block;
+    background-image: url(../images/logo_colaborativo.jpg);
+    margin-top: 10px;
+}
+
+#header ul li a:hover{
+    color:#c6d935;
+}
+
+#main_pic{
+    margin-top: 55px;
+    float: left;
+    width: 100%;
+    background-color: #050505;
+}
+
+#main_pic img{
+    padding:0px;
+    margin: 0px;
+}
+
+#quote{
+    background-color: #fbfbfb;
+    background-image: url(../images/shadow1.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 27px;
+    margin-top: -4px;
+    border-top: #fff 1px solid;
+}
+
+#quote h1{
+    padding-top:40px;
+}
+
+#quote span{
+    width: 304px;
+    height: 20px;
+    display: block;
+    background-image: url(../images/quote_bg.png);
+    background-repeat: no-repeat;
+    padding: 0px 0px 18px;
+    margin: 14px auto 0px;
+
+}
+
+#about_us{
+    background-image: url(../images/shadow2.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    width: 100%;
+    float: left;
+    margin-top: -4px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+#about_us h2{
+    font-size: 27px;
+    padding: 30px 0px 17px;
+    color:#c6d935;
+}
+
+#about_us p{
+    width: 70%;
+    margin:0px auto;
+    line-height: 135%;
+}
+
+#about_us .second{
+    margin-top: 30px;
+}
+
+#about_us .second img{
+    margin-top: 30px;
+}
+
+#objectives{
+   width: 100%;
+   float: left;
+   margin-top: 30px;
+} 
+
+
+#objectives img{
+    float:left;
+    margin:0px 15px;
+    }
+
+#objectives .container{
+    width: 50%;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+#objectives .container.second img{
+    float: right;
+    margin-top: 4%;
+
+}
+
+#objectives .container.third img{
+    margin-top: 3%;
+}
+
+#objectives p{
+    line-height: 135%;
+    padding-bottom: 90px;
+
+}
+
+#objectives h2{
+    padding: 70px 0 15px;
+    font-size: 30px;
+}
+
+#objectives .fourth{
+    border: 0px;
+}
+
+#objectives .fourth a{
+    background-color: #262626;
+    color:#fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Bitter', serif;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px #fff solid;
+    border-left: 2px #fff solid;
+    border-right: 2px #fff solid;
+    border-top: 2px #fff solid;
+    margin: 20px 35%;
+    text-align: center;
+    display:block;
+}
+
+#objectives .fourth a:hover{
+     background-color: #c6d935;
+     -webkit-box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+#en_linea{
+    float: left;
+    width: 100%;
+    background-color:#fbfbfb;
+    background-image: url(../images/shadow3.jpg);
+    background-repeat: repeat-x;
+    background-position: top;
+    margin-top: 30px;
+
+}
+
+#en_linea .container{
+    width: 60%;
+}
+
+#en_linea img{
+    float: left;
+    margin-right: 15px;
+    margin-left: 10%;
+    padding-top: 30px;
+
+}
+
+#en_linea h2{
+    font-size: 27px;
+    padding-top: 60px;
+
+}
+
+#en_linea p{
+    line-height: 135%;
+    margin-top: 15px;
+    padding-bottom: 60px;
+    width: 90%;
+}
+
+#quien_sirve{
+    float: left;
+    width: 100%;
+    background-image: url(../images/shadow2.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    margin-top: -4px;
+    padding-top: 50px;
+}
+
+#quien_sirve p{
+    line-height: 130%;
+    max-width: 50%;
+    margin: 0px auto;
+    margin-top: 15px;
+}
+
+
+#quien_sirve .container{
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+
+}
+
+#quien_sirve h2{
+    font-size: 27px;
+}
+
+.who_wrapper div{
+    width: 30%;
+    float: left;
+    margin-top: 40px;
+}
+
+.who_wrapper div.first_item{
+    margin-left: 5%;
+}
+
+.who_wrapper li{
+    list-style:none;
+    line-height: 130%;
+}
+
+.who_wrapper h3{
+    font-size: 18px;
+    margin-top: 10px
+}
+
+#nuestra_plataforma{
+    width: 100%;
+    float: left;
+    background-color: #fbfbfb; 
+    background-image: url(../images/shadow1.png);
+    background-position: top;
+    background-repeat: repeat-x;
+    margin-top: 60px;
+    padding-top: 50px;
+    text-align: center;
+}
+
+#nuestra_plataforma h2{
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+#nuestra_plataforma p{
+    line-height: 135%;
+    max-width: 60%;
+    margin: 0px auto;
+}
+
+#nuestra_plataforma img{
+    margin: 20px auto;
+}
+
+#nuestra_plataforma .second_paragraph{
+    padding-bottom: 60px;
+}
+
+#contact{
+    float: left;
+    width: 100%;
+    background-image: url(../images/shadow2.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    margin-top: -4px;
+    padding-top: 50px;
+
+}
+
+#contact .container{
+    width: 50%;
+    margin: 0px auto;
+}
+
+#contact h2{
+    font-size: 27px;
+}
+
+#contact p{
+    line-height: 135%;
+    margin-top: 15px;
+}
+
+strong{
+    color: #454545;
+}
+
+
+input{
+    clear: left;
+    float: left;
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px #aaa solid;
+    font-size: 17px;
+    color:#aaa;
+    font-family: 'Bitter', serif;
+}
+
+label{
+    float: left;
+    font-family: 'Bitter', serif;
+    font-size: 12px;
+    color:#454545;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+textarea{
+    float: left;
+    clear: left;
+    border: #eaeaea 1px solid;
+    background-color: #fbfbfb;
+     -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    height: 120px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#footer{
+    width: 100%;
+    float: left;
+    background-color: #000;
+    border-top: #444 1px solid;
+    margin-top: 50px;
+}
+
+#footer h1{
+    float: left;
+}
+
+#footer p{
+    float: right;
+    font-size: 11px;
+    color:#fff;
+    text-transform: uppercase;
+    padding: 15px 0px;
+}
+
+.left_wrapper{
+    width: 45%;
+    float: left;
+    padding:20px;
+}
+
+.right_wrapper{
+    float: left;
+    width: 45%;
+    margin-left: 5%;
+}
+
+.submit{
+    color:#fff;
+    background-color: #262626;
+    border: 1px solid #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    font-weight: normal;
+    width: 30%;
+    height: 30px;
+    float: right;
+    font-size: 16px;
+
+
+}
+
+#footer h1{
+    text-indent: -9999999px;
+}
+
+#footer h1 a{
+    width: 150px;
+    height: 37px;
+    display:block;
+    background-image: url(../images/logo_colaborativo.jpg);
+    margin-top: 3px;
+}
+
+.submit:hover{
+    background-color: #c6d935;
+}
+
+@media screen and (max-width:1024px){
+    .container{
+        width: 80%;
+    }
+
+    #header .container{
+        width: 90%;
+    }
+
+    #main_pic img{
+        width: 100%;
+    }
+
+    #main_pic .container{
+        width: 100%;
+    }
+
+    #quien_sirve .container{
+        width: 90%;
+    }
+
+
+
+    #en_linea img{
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+
+    #objectives .container{
+        width: 80%;
+    }
+
+    #en_linea .container{
+        width: 90%;
+    }
+
+    #contact .container{
+        width: 80%;
+    }
+
+    .left_wrapper{
+        width: 41%;
+    }
+
+    .right_wrapper{
+        width: 41%;
+    }
+
+    #footer .container{
+        width: 80%;
+    }
+}
+
+
+
+@media screen and (max-width:1280px){
+    #objectives .container{
+        width: 70%;
+    }
+
+    #header .container{
+        width: 80%;
+    }
+
+    #main_pic .container{
+        width: 100%;
+    }
+
+
+    #en_linea .container{
+        width: 80%;
+    }
+
+    #en_linea .container img{
+        margin: 15px 30px;
+    }
+
+    #quien_sirve .container{
+        width: 80%;
+    } 
+
+    #main_pic img {
+        width: 100%;
+    }
+
+    #nuestra_plataforma p{
+        max-width: 90%;
+    }
+
+    #contact .container{
+        width: 70%;
+    }
+
+    #footer .container{
+        width: 80%;
+    }
+
+    #objectives .fourth a{
+        margin: 20px 30%;
+    } 
+}
+
+
+
