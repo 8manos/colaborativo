@@ -554,7 +554,8 @@ textarea{
     margin-left: 5%;
 }
 
-.submit{
+.submit,
+.wpcf7-submit {
     color:#fff;
     background-color: #262626;
     border: 1px solid #fff;
@@ -568,8 +569,10 @@ textarea{
     height: 30px;
     float: right;
     font-size: 16px;
+}
 
-
+.div.wpcf7-response-output {
+    clear: both;
 }
 
 #footer h1{
