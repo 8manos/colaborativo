@@ -7,7 +7,7 @@
 		<link rel=stylesheet href="<?php bloginfo('stylesheet_directory'); ?>/css/styles.css" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<?php wp_head(); ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script>
 			$(document).ready(function() {
@@ -158,6 +158,8 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 					</div>
 
 				</form>
+
+				<?php // echo do_shortcode( '[contact-form-7 id="1234" title="Contact form 1"]' ); ?>
 			</div>
 		</div>
 		<div id="footer">
@@ -165,7 +167,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				<h1>
 					<a href="#header">Colaborativo.co</a>
 				</h1>
-				<p>Todos los derechos reservados. Colaborativo.co © 2013</p>
+				<p>Todos los derechos reservados. Colaborativo.co &copy; <?php date('Y'); ?></p>
 			</div>
 		</div>
 
@@ -184,7 +186,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 
     </script>
     
-
+	<?php wp_footer(); ?>
 	</body>
 
 </html>
