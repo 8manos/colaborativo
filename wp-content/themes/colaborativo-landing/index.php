@@ -144,7 +144,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				<p>Actualmente colaborativo se encuentra disponible únicamente por pedidos o requerimientos especiales.<br> Por favor comuniquese con nosotros en Bogotá al 2354008.<br><br>
 
 				<strong>¿Quiere ser de los primeros en usar Colaborativo?</strong><br>Complete el formulario y cuéntenos para que quiere usarlo</p>
-				<form>
+				<!-- <form>
 					<div class="left_wrapper">
 							<label>Nombre</label><input name="nombre"></input>
 							
@@ -157,9 +157,9 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 						<input type="submit" class="submit" value="ENVIAR"></input>
 					</div>
 
-				</form>
+				</form> -->
 
-				<?php // echo do_shortcode( '[contact-form-7 id="1234" title="Contact form 1"]' ); ?>
+				<?php echo do_shortcode( '[contact-form-7 id="784" title="Contact form 1"]' ); ?>
 			</div>
 		</div>
 		<div id="footer">
