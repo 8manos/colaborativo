@@ -7,6 +7,7 @@
 		<link rel=stylesheet href="<?php bloginfo('stylesheet_directory'); ?>/css/styles.css" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<?php wp_head(); ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<script>
@@ -18,7 +19,25 @@
 				});
 			});
 		</script>
-
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".casos li.logo_1 a").hover(function(){
+					$(".casos li.logo_1 a").animate({opacity:'1'}, "fast");
+				});
+				$(".casos li.logo_2 a").hover(function(){
+					$(".casos li.logo_2 a").animate({opacity:'1'}, "fast");
+				});
+				$(".casos li.logo_3 a").hover(function(){
+					$(".casos li.logo_3 a").animate({opacity:'1'}, "fast");
+				});
+				$(".casos li.logo_4 a").hover(function(){
+					$(".casos li.logo_4 a").animate({opacity:'1'}, "fast");
+				});
+				$(".casos li a").mouseout(function(){
+					$(".casos li a").animate({opacity:'0'}, "fast");
+				});
+			});			
+		</script>
 	</head>
 	<body>
 		<div id="header" class="clearfix">
@@ -29,8 +48,8 @@
 				<ul id="main_nav">
 					<li><a href="#quote" class="scroll">Qué es colaborativo</a></li>
 					<li><a href="#about_us" class="scroll">Cómo funciona</a></li>
-					<li><a href="#en_linea p" class="scroll">A quién le sirve</a></li>
-					<li><a href="#quien_sirve li" class="scroll">Plataforma</a></li>
+					<li><a href="#en_linea" class="scroll">A quién le sirve</a></li>
+					<li><a href="#quien_sirve" class="scroll">Plataforma</a></li>
 					<li><a href="#contact" class="scroll">Contáctenos</a></li>
 				</ul>
 			</div>
@@ -53,8 +72,18 @@
 				<p>Agrupamos los hashtags usados en twitter, instagram, youtube, flickr y otras redes sociales y publicamos todos los contenidos en un solo lugar para facilitar el acceso a la información.</p>
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/screen_captures.jpg" alt="Capturas de pantalla">
 			</div>
+			<div class="container second">
+				<h2>Conozca algunos casos de éxito</h2>
+				<p>Hemos usado Colaborativo en grandes eventos en Colombia. Conozca aquí algunos ejemplos:</p>
+				<ul class="casos clearfix">
+					<li class="logo_1"><a href=""></a></li>
+					<li class="logo_2"><a href=""></a></li>
+					<li class="logo_3"><a href=""></a></li>
+					<li class="logo_4"><a href=""></a></li>
+				</ul>
+			</div>
 		</div>
-		<div id="objectives">
+		<div id="objectives" class="clearfix">
 			<div class="container first">
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/pic1.jpg" alt="fotografia">
 				<h2>Colaborativo.co en eventos</h2>
@@ -70,10 +99,15 @@
 				<h2>Colaborativo.co para personas</h2>
 				<p>Agrupa los momentos más importantes en tu vida, cumpleaños, matrimonios, celebrabaciones con amigos y reuniones familiares. Define un hashtags, usalo en tus redes sociales y comparte el tablero con tus amigos.</p>
 			</div>
-			<div class="container fourth">
-				<a href="#contact" class="scroll">solicitar una prueba</a>
-			</div>
+
 		</div>
+		<div id="fourth_wrapper">
+		<div class="container fourth">
+			<div class="cta_uno"><h2>¿Quiere usar Colaborativo?</h2><p>Solicite ahora una prueba de Colaborativo y agrupe todo lo que la gente hablan en las redes sociales. <br>Nuestro equipo evaluará su solicitud y pronto le responderemos</p></div>
+			<a href="#contact" class="scroll">solicitar una prueba</a>
+		</div>
+		</div>
+
 		<div id="en_linea">
 			<div class="container">
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/pic4.jpg" alt="fotografia">
@@ -135,7 +169,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				</h2>
 				<p>Colaborativo se conecta con las principales redes sociales como Twitter, Instagram, Youtube, SoundCloud, Flickr y llama automáticamente los contenidos asociados a un Hashtag y los almacena en nuestra plataforma.</p>
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/diagrama_redes.png" alt="Diagrama redes">
-				<p class="second_paragraph">La plataforma de cubrimiento permite crear categorías y asociar #hashtags para agrupar los contenidos generados por los usuarios y seguir @usuarios específicos para registrar su actividad</p>
+				<p class="second_paragraph">La plataforma de cubrimiento permite crear categorías y asociar #hashtags para agrupar los contenidos generados por los usuarios y seguir @usuarios específicos para registrar su actividad</p>
 			</div>
 		</div>
 		<div id="contact">
@@ -158,7 +192,6 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 					</div>
 
 				</form> -->
-
 				<?php echo do_shortcode( '[contact-form-7 id="784" title="Contact form 1"]' ); ?>
 			</div>
 		</div>
@@ -167,9 +200,10 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				<h1>
 					<a href="#header">Colaborativo.co</a>
 				</h1>
-				<p>Todos los derechos reservados. Colaborativo.co &copy; <?php date('Y'); ?></p>
+				<p>Todos los derechos reservados. Colaborativo.co &copy; 2013</p>
 			</div>
 		</div>
+
 
     <script type="text/javascript">
 

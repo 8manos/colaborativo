@@ -291,10 +291,19 @@ h1, h2, h3, h4, h5, h6{
     border-bottom: 1px solid #e8e8e8;
 }
 
+#objectives .container.first{
+    border-top: 1px solid #e8e8e8;
+    padding-top: 30px;
+}
+
 #objectives .container.second img{
     float: right;
     margin-top: 4%;
 
+}
+
+#objectives .container.third{
+    border: 0px;
 }
 
 #objectives .container.third img{
@@ -312,14 +321,15 @@ h1, h2, h3, h4, h5, h6{
     font-size: 30px;
 }
 
-#objectives .fourth{
+.fourth{
     border: 0px;
+
 }
 
-#objectives .fourth a{
-    background-color: #262626;
+.fourth a{
+    background-color: #c6d935;
     color:#fff;
-    padding: 10px 20px;
+    padding: 10px 30px;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Bitter', serif;
@@ -332,15 +342,31 @@ h1, h2, h3, h4, h5, h6{
     border-left: 2px #fff solid;
     border-right: 2px #fff solid;
     border-top: 2px #fff solid;
-    margin: 20px 35%;
+    margin: 20px 30%;
     text-align: center;
-    display:block;
+    margin-top: 40px;
+  
 }
 
-#objectives .fourth a:hover{
+.fourth a:hover{
      background-color: #c6d935;
      -webkit-box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.fourth h2{
+    color: #C6D935;
+    font-size: 27px;
+}
+
+.fourth p{
+    margin: 20px auto;
+    margin-bottom: 30px;
+    width: 80%;
+    font-size: 100%; 
+    line-height: 135%;
+    color:#ccc;
 }
 
 #en_linea{
@@ -350,7 +376,7 @@ h1, h2, h3, h4, h5, h6{
     background-image: url(../images/shadow3.jpg);
     background-repeat: repeat-x;
     background-position: top;
-    margin-top: 30px;
+    padding-top: 30px;
 
 }
 
@@ -522,6 +548,18 @@ textarea{
     margin-bottom: 20px;
 }
 
+#fourth_wrapper {
+    background-color: #222;
+    float: left;
+    margin-top: 45px;
+    padding: 60px 0 60px;
+    text-align: center;
+    width: 100%;
+    -moz-box-shadow: inset 0 0 6px -1px #444;
+    -webkit-box-shadow: inset 0 0 6px -1px #444;
+    box-shadow: inset 0 0 6px -1px #444;
+}
+
 #footer{
     width: 100%;
     float: left;
@@ -554,8 +592,7 @@ textarea{
     margin-left: 5%;
 }
 
-.submit,
-.wpcf7-submit {
+.submit{
     color:#fff;
     background-color: #262626;
     border: 1px solid #fff;
@@ -569,11 +606,8 @@ textarea{
     height: 30px;
     float: right;
     font-size: 16px;
-    margin-bottom: 2em;
-}
 
-div.wpcf7-response-output {
-    clear: both;
+
 }
 
 #footer h1{
@@ -591,6 +625,73 @@ div.wpcf7-response-output {
 .submit:hover{
     background-color: #c6d935;
 }
+
+.casos{
+    margin-left:170px;
+}
+
+.casos li{
+    float: left;
+    background-image: url(../images/logos_casos.jpg);
+    width: 145px;
+    height: 145px;
+    margin: 20px;
+    background-repeat: no-repeat;
+    list-style: none;
+
+}
+
+.casos li a{
+    width: 145px;
+    height: 145px;
+    display: block;
+    background-image: url(../images/logos_casos.jpg);
+    opacity: 0;
+}
+
+.casos li.logo_1{
+    background-position: -120px -87px;
+}
+
+.casos li.logo_2{
+    background-position: -306px -75px;
+}
+
+
+.casos li.logo_3{
+    background-position: -505px -75px;
+}
+
+.casos li.logo_4{
+    background-position: -705px -75px;
+}
+
+
+.casos li.logo_1 a{
+    background-position: -120px -387px;
+}
+
+.casos li.logo_2 a{
+    background-position: -306px -375px;
+}
+
+
+.casos li.logo_3 a{
+    background-position: -505px -375px;
+}
+
+.casos li.logo_4 a{
+    background-position: -705px -375px;
+}
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width:1024px){
     .container{
@@ -693,6 +794,8 @@ div.wpcf7-response-output {
         margin: 20px 30%;
     } 
 }
+
+
 
 
 
