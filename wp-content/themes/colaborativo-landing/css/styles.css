@@ -592,7 +592,7 @@ textarea{
     margin-left: 5%;
 }
 
-.submit{
+.wpcf7-submit{
     color:#fff;
     background-color: #262626;
     border: 1px solid #fff;
@@ -606,8 +606,14 @@ textarea{
     height: 30px;
     float: right;
     font-size: 16px;
+}
 
+.wpcf7-response-output {
+    clear: both;
+}
 
+span.wpcf7-not-valid-tip{
+    position: relative !important;
 }
 
 #footer h1{
