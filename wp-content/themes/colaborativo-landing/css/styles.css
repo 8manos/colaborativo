@@ -142,8 +142,11 @@ input, select {
 
 
 body{
-   font-family: 'Quattrocento Sans', sans-serif; 
-   color:#696969;
+   -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    font-family: 'Quattrocento Sans', sans-serif;
+    color:#696969;
 }
 
 
