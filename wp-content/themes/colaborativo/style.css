@@ -7,6 +7,11 @@ Description: Tema desarrollado para el cubrimiento de eventos de forma colaborat
 Version: 0.8
 License: GNU General Public License
 */
+body{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
 
 article.type-descarga h2:before {
   background-position: -224px -109px;
