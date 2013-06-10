@@ -142,6 +142,35 @@
 			getAjax( $(this), 'append' );
 		});
 
+		// Hide post if authorized
+		$('.hide-button').live( 'click', function(e){
+			e.preventDefault();
+
+			var this_id = $(this).data('hide');
+			var confirmar = confirm( "Realmente deseas ocultar este box: "+this_id );
+
+			if( confirmar ){
+				$.ajax({
+					url : '/wp-admin/admin-ajax.php',
+					type : 'POST',
+					async : true,
+					data :
+					{
+						action : 'hidebox',
+						id : this_id
+					},
+
+					success : function(results){
+						// alert( results );
+						var $removable = $('#timeline').find( $('#posted-'+this_id) );
+	        			$('#timeline').isotope( 'remove', $removable );
+					}
+				});
+			}else{
+				return false;
+			}
+		});
+
 		/* Modal magic */
 
 		$("a[rel^='prettyPhoto']").live( 'click', function(e) {

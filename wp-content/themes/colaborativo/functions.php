@@ -505,6 +505,17 @@ function display_article() {
                 </em> -->
             </span>
 		</footer>
+
+        <?php 
+            if ( current_user_can( 'edit_post', get_the_ID() ) ) {
+        ?>
+            <div class="admin-tools">
+                <a class="hide-button" data-hide="<?php the_ID(); ?>" href="#" id="hide-<?php the_ID(); ?>">Hide</a>
+            </div>
+        <?php
+            }
+        ?>
+
 	</article>
 <?php
 }
@@ -864,6 +875,29 @@ function load_content_box(){
 
 add_action('wp_ajax_agregarbox', 'load_content_box');
 add_action('wp_ajax_nopriv_agregarbox', 'load_content_box');
+
+// Admin helper
+function hide_box( $id ){
+    $id = $_POST['id'];
+    
+    if($id){
+        if ( current_user_can('edit_post', $id) ) {
+            $current_post = get_post( $id, 'ARRAY_A' );
+            $current_post['post_status'] = 'draft';
+            wp_update_post($current_post);
+
+            echo "hidden";
+        }else{
+            _e( "No tienes permiso para ocultar este box", 'colabora' );
+        }
+    }else{
+        echo "No post defined";
+    }
+    exit;
+}
+
+add_action('wp_ajax_hidebox', 'hide_box');
+add_action('wp_ajax_nopriv_hidebox', 'hide_box');
 
 function filter_where($where='')
 {

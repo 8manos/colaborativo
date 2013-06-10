@@ -402,6 +402,8 @@ footer .nav li a:hover {
 .boxes article {
   background-color:#fff;
   margin-bottom:1.8em;
+  overflow: hidden;
+  position: relative;
 }
 
 .boxes article:nth-child(4n+1) {
@@ -428,6 +430,27 @@ footer .nav li a:hover {
 
 .boxes article footer span {
   display: block;
+}
+
+.boxes article .admin-tools {
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+}
+
+.boxes article .admin-tools .hide-button{
+  background-color: #eee;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 4px 2px;
+  padding: 1px 8px;
+  text-decoration: none;
+}
+
+.boxes article:hover .admin-tools {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .boxes article .article-content {
