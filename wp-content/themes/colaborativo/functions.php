@@ -621,10 +621,10 @@ function display_article_content() {
 ', $enclosure);
                 ?>
                     <div class="avatar right">
-                        <?php if( $enclosure_array[0] ){ ?>
-                            <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
-                        <?php }elseif( $media_thumb ){ ?>
+                        <?php if( $media_thumb ){ ?>
                             <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $media_thumb; ?>" /></a>
+                        <?php }elseif( $enclosure_array[0] ){ ?>
+                            <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
                         <?php } ?>
                     </div>
                 <?php } ?>
