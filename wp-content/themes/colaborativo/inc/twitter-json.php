@@ -955,5 +955,14 @@ $params = array(
 $data = (array) $cb->$api($params);
 
 //Output result in JSON, getting it ready for jQuery to process
+//print_r($data);
+
+if( $data['statuses'] ){
+	// generar permalinks
+	foreach ($data['statuses'] as $status) {
+		$status->permalink = "http://twitter.com/".$status->user->screen_name."/statuses/".$status->id;
+	}
+}
+
 echo json_encode($data);
 ?>
