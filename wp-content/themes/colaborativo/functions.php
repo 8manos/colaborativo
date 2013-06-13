@@ -559,8 +559,17 @@ function display_article_content() {
                 <div class="video-embed">
                     <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
                 </div>
-            <?php }elseif(get_post_type() == "tweet"){ ?>
-                <h2><?php echo(make_clickable(get_the_title())); ?></h2>
+            <?php 
+                }elseif(get_post_type() == "tweet"){ 
+
+                    $media_content = get_post_meta( get_the_ID(), 'media_content', true );
+            ?>
+                    <h2><?php echo(make_clickable(get_the_title())); ?></h2>
+
+                    <?php if( $media_content ){ ?>
+                             <img width="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($media_content); ?>&w=600" />
+                    <?php } ?>
+
             <?php }elseif(get_post_type() == "post"){
                 the_content();
             }elseif(get_post_type() == "galeria"){ ?>
@@ -606,12 +615,17 @@ function display_article_content() {
             <div class="autor clearfix">
                 <?php if( get_post_type() == "tweet" ){
                     $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
+                    $media_thumb = get_post_meta( get_the_ID(), 'media_thumbnail', true ); 
                     $enclosure = apply_filters( 'the_title', $enclosure);
                     $enclosure_array = explode('
 ', $enclosure);
                 ?>
                     <div class="avatar right">
-                        <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
+                        <?php if( $enclosure_array[0] ){ ?>
+                            <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
+                        <?php elseif( $media_thumb ){ ?>
+                            <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $media_thumb; ?>" /></a>
+                        <?php } ?>
                     </div>
                 <?php } ?>
                 <small>POR</small><br />
