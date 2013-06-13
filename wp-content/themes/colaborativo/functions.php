@@ -623,7 +623,7 @@ function display_article_content() {
                     <div class="avatar right">
                         <?php if( $enclosure_array[0] ){ ?>
                             <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $enclosure_array[0]; ?>" /></a>
-                        <?php elseif( $media_thumb ){ ?>
+                        <?php }elseif( $media_thumb ){ ?>
                             <a href="<?php the_syndication_permalink(); ?>" target="_blank"><img src="<?php echo $media_thumb; ?>" /></a>
                         <?php } ?>
                     </div>
