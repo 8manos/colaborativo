@@ -36,9 +36,101 @@ function colaborativo_scripts_method() {
 
     wp_enqueue_script( 'jquery' );
 
+    /* Obtener personalizaciones de plantilla */
+    $fuente_titular = kc_get_option('colasite_', 'front', 'fuente-titular');
+    $fuente_contenidos = kc_get_option('colasite_', 'front', 'fuente-contenidos');
+
+    if( !$fuente_titular ){ $fuente_titular = "Oswald:400,700"; }
+    if( !$fuente_contenidos ){ $fuente_contenidos = "Open+Sans:400,600"; }
+
+    if( $fuente_titular || $fuente_contenidos ){
+
+        if( $fuente_titular ){
+            if( $fuente_titular == "Museo500"){
+                wp_enqueue_style( "colaborativo_fuentes_museo500", get_template_directory_uri() . '/font/museo500.css', false, null, 'all' ); 
+            }else{
+                $fuentes_google = $fuente_titular;
+            }
+        }
+
+        if( $fuente_contenidos == "Museo300" ){
+            wp_enqueue_style( "colaborativo_fuentes_museo300", get_template_directory_uri() . '/font/museo300.css', false, null, 'all' ); 
+        }elseif( $fuente_contenidos && $fuentes_google ){
+            $fuentes_google .= "|".$fuente_contenidos;
+        }elseif( $fuente_contenidos ){
+            $fuentes_google = $fuente_contenidos;
+        }
+
+        if( $fuentes_google ){
+            wp_enqueue_style( "colaborativo_fuentes_google", "http://fonts.googleapis.com/css?family=$fuentes_google", false, null, 'all' );
+        }
+
+    }
 }
 
 add_action('wp_enqueue_scripts', 'colaborativo_scripts_method');
+
+function colaborativo_print_fonts() {
+    /* Obtener personalizaciones de plantilla */
+    $fuente_titular = kc_get_option('colasite_', 'front', 'fuente-titular');
+    $fuente_contenidos = kc_get_option('colasite_', 'front', 'fuente-contenidos');
+
+    /* Selectores para cada fuente */
+    $titulares = "
+        body.page .type-page h2 ,
+        body.page .type-page .page-sidebar,
+        footer .nav ,
+        footer .nav li ,
+        #cat-menu ,
+        #featured h3 ,
+        #filters h3 ,
+        #filters-buttons a ,
+        #load-more ,
+        .boxes article h2 ,
+        .colaborated ,
+        .colaborated h3 ,
+        .hero-unit h3 ,
+        .hero-unit p.hashtags strong ,
+        .hero-unit #event-logo ,
+        .wpcf7-submit ";
+
+    $contenidos ="
+        body ,
+        .boxes article.type-tweet h2 ,
+        .single .entry-content h2, 
+        .modal-body .entry-content h2 ";
+
+    if( $fuente_titular || $fuente_contenidos ){
+        $output_css = "<style> ";
+
+        if( $fuente_titular ){
+            if( $fuente_titular == "Museo500"){
+                $titular_family = "Museo500Regular";
+            }else{
+                $titular_family = restore_font_name( $fuente_titular );
+            }
+        }
+
+        if( $fuente_contenidos == "Museo300" ){
+            $contenidos_family = "Museo300Regular";
+        }elseif( $fuente_contenidos ){
+            $contenidos_family = restore_font_name( $fuente_contenidos );
+        }
+
+        if( $titular_family ){
+            $output_css .= "$titulares { font-family: '$titular_family'; } ";
+        }
+
+        if( $contenidos_family ){
+            $output_css .= "$contenidos { font-family: '$contenidos_family'; } ";
+        }
+
+        $output_css .= " </style>";
+        echo $output_css;
+    }
+}
+
+add_action('wp_head', 'colaborativo_print_fonts');
 
 /*
 | -------------------------------------------------------------------
@@ -340,7 +432,8 @@ function theme_settings( $groups ) {
                 'id'    => 'logo',
                 'desc'  => 'Sube el logo del evento',
                 'title' => __('Logo de evento', 'cola'),
-                'type'  => 'file'
+                'type'  => 'file',
+                'mode'  => 'single'
             ),
             array(
                 'id'    => 'evento-link',
@@ -353,6 +446,46 @@ function theme_settings( $groups ) {
                 'desc'  => 'Escribe aca los hashtags que se mostrarán en la descripción del evento',
                 'title' => __('Hashtags para cubrimiento', 'cola'),
                 'type'  => 'text'
+            ),
+            array(
+                'id'      => 'plantilla',
+                'title'   => 'Plantilla a usar',
+                'desc'    => 'Escoje el tipo de layout que deseas',
+                'type'    => 'select',
+                'options' => array(
+                    'select1' => 'Plantilla básica'
+                ),
+                'default' => 'Oswald:400,700'
+            ),
+            array(
+                'id'      => 'fuente-titular',
+                'title'   => 'Fuente titular',
+                'desc'    => 'Usada en menu de categorias, titulos, y similar',
+                'type'    => 'select',
+                'options' => array(
+                    'Oswald:400,700' => 'Oswald',
+                    'Happy+Monkey' => 'Happy Monkey',
+                    'Pompiere' => 'Pompiere',
+                    'Rambla:400,700' => 'Rambla',
+                    'Antic+Slab' => 'Antic Slab',
+                    'Museo500' => 'Museo'
+                ),
+                'default' => 'Oswald:400,700'
+            ),
+            array(
+                'id'      => 'fuente-contenidos',
+                'title'   => 'Fuente contenidos',
+                'desc'    => 'Usada en autores y contenidos',
+                'type'    => 'select',
+                'options' => array(
+                    'Open+Sans:400,600' => 'Open Sans',
+                    'Muli' => 'Muli',
+                    'Quattrocento+Sans:400,700' => 'Quattrocento Sans',
+                    'Noto+Sans:400,700' => 'Noto Sans',
+                    'Karla:400,700' => 'Karla',
+                    'Museo300' => 'Museo 300'
+                ),
+                'default' => 'Open+Sans:400,600'
             ),
             array(
                 'id'      => 'autoupdate',
@@ -388,6 +521,16 @@ function theme_settings( $groups ) {
     return $groups;
 }
 add_filter( 'kc_plugin_settings', 'theme_settings' );
+
+function restore_font_name( $font ){
+    $parts = explode(":",$font); 
+    if( $parts ){
+        $font = $parts['0'];
+    }
+
+    $font = str_replace("+", " ", $font);
+    return $font;
+}
 
 // get all of the images attached to the current post
 function cl_get_images($size = 'thumbnail') {
