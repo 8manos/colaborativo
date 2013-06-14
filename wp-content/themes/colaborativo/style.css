@@ -38,7 +38,7 @@ article.type-video h2:before {
 body {
   background-color: #f6f6f6; /*  olive; */
   font-family:'Open Sans';
-	padding-top:40px;
+	padding-top:0px;
 }
 
 body.page .type-page {
@@ -117,17 +117,23 @@ footer .nav li a:hover {
   padding: 9px 30px;
 }
 
+#about-dropdown a:hover {
+  color: #ffffff;
+}
+
 #beta {
   background-position: -507px -112px;
   height: 20px;
-  margin: 10px 0 0px;
+  margin: 0 0 0 5px;
+  vertical-align: bottom;
   width: 100px;
-  vertical-align: middle;
 }
 
 #branding {
-  background-position: 0 -15px;
-  width: 110px;
+  background-position: -17px -23px;
+  height: 25px;
+  vertical-align: top;
+  width: 135px;
 }
 
 #cat-menu {
@@ -159,7 +165,7 @@ footer .nav li a:hover {
 #feedback {
   background-position: -619px -112px;
   height: 20px;
-  margin: 7px 15px 0 0;
+  margin: 6px 5px 0 0;
   width: 145px;
   vertical-align: middle;
 }
@@ -277,7 +283,7 @@ footer .nav li a:hover {
   background-color:#19171A;
   color:#999;
   margin-top:5em;
-  padding:1.5em 0 2em;
+  padding:1.5em 0 3em;
 }
 
 #footer p {
@@ -287,6 +293,7 @@ footer .nav li a:hover {
 #footer #activa {
   background-position: -16px -148px;
   height: 11px;
+  margin-left: 12px;
   margin-right: 10px;
   vertical-align:bottom;
   width: 69px;
@@ -316,7 +323,7 @@ footer .nav li a:hover {
 }
 
 #footer-inner .row:first-child {
-  margin-bottom:30px;
+  margin-bottom:10px;
 }
 
 #footer-inner .row:last-child {
@@ -361,6 +368,7 @@ footer .nav li a:hover {
 
 #menu-social label {
   font-size: 11px;
+  margin-right: 4px;
 }
 
 #menu-social a {
@@ -875,17 +883,33 @@ footer .nav li a:hover {
   width: 165px;
 }
 
-.navbar {
-  text-transform:uppercase;
-}
-
-.navbar li {
-
+.navbar .dropdown-menu {
+  bottom: 100%;
+  top: auto;
 }
 
 .navbar .dropdown-menu::after ,
 .navbar .dropdown-menu::before {
   left: 60px;
+}
+
+.navbar .dropdown-menu::after {
+  border-bottom: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #ffffff;
+  bottom: -6px;
+  top: auto;
+}
+
+.navbar .dropdown-menu::before {
+  border-bottom: none;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-top: 7px solid #ccc;
+  bottom: -7px;
+  top: auto;
 }
 
 .navbar .dropdown-menu li a::after {
@@ -914,6 +938,10 @@ footer .nav li a:hover {
 
 .navbar li:last-child a:after {
   content:"";
+}
+
+.navbar-fixed-top {
+  display: none;
 }
 
 .paging {

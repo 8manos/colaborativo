@@ -40,36 +40,11 @@
 
 		    <div class="row-fluid">	
 
-		      <div class="span2">
-			      <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
-			  </div>
-			  
 			  <div class="span10">
 
 				<span class="ir sprite" id="beta">
 					<?php _e('Estamos en beta', 'colaborativo'); ?>
 				</span>
-
-				<div class="aright right" id="menu-social">
-					<label><?php _e('Síguenos', 'colaborativo'); ?></label>
-					<a target="_blank" class="sprite ir facebook" href="https://www.facebook.com/pages/Colaborativoco/385044858220704">Facebook</a>
-					<a target="_blank" class="sprite ir twitter" href="http://twitter.com/colaborativo_co">Twitter</a>
-					<a target="_blank" class="sprite ir googleplus" href="https://plus.google.com/u/0/103569849344851752659/">Google+</a>
-					<a target="_blank" class="sprite ir youtube" href="http://youtube.com/colaborativoco">YouTube</a>				
-				</div>
-
-
-				<div id="about-dropdown" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-						<li><a href="http://colaborativo.co/que-es/">Que es colaborativo</a></li>
-						<li><a href="http://colaborativo.co/equipo/">Equipo</a></li>
-						<li><a href="http://colaborativo.co/colabora/">Colabora</a></li>
-					</ul>
-				</div>
-				<a href="mailto:info@colaborativo.co" class="ir sprite right" id="feedback">
-					<?php _e('Bienvenido el feedback', 'colaborativo'); ?>
-				</a>
 
 			  </div>
 
