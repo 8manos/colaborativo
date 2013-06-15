@@ -1,3 +1,7 @@
+<?php 
+	$logo = kc_get_option('colasite_', 'front', 'logo');
+	$logo = wp_get_attachment_image_src( $logo );
+?>
 <div class="aright row" id="hero-header">
 	<div class="span12">
 		<h1><?php bloginfo( 'title' ); ?></h1>
