@@ -37,11 +37,21 @@ function colaborativo_scripts_method() {
     wp_enqueue_script( 'jquery' );
 
     /* Obtener personalizaciones de plantilla */
+    $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
     $fuente_titular = kc_get_option('colasite_', 'front', 'fuente-titular');
     $fuente_contenidos = kc_get_option('colasite_', 'front', 'fuente-contenidos');
 
-    if( !$fuente_titular ){ $fuente_titular = "Oswald:400,700"; }
-    if( !$fuente_contenidos ){ $fuente_contenidos = "Open+Sans:400,600"; }
+    if( $plantilla == "plantilla0" || !$plantilla ){
+
+        if( !$fuente_titular ){ $fuente_titular = "Oswald:400,700"; }
+        if( !$fuente_contenidos ){ $fuente_contenidos = "Open+Sans:400,600"; }
+
+    }elseif( $plantilla == "plantilla1" ){
+
+        if( !$fuente_titular ){ $fuente_titular = "Museo500"; }
+        if( !$fuente_contenidos ){ $fuente_contenidos = "Museo300"; }  
+             
+    }
 
     if( $fuente_titular || $fuente_contenidos ){
 
@@ -72,8 +82,16 @@ add_action('wp_enqueue_scripts', 'colaborativo_scripts_method');
 
 function colaborativo_print_fonts() {
     /* Obtener personalizaciones de plantilla */
+    $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
     $fuente_titular = kc_get_option('colasite_', 'front', 'fuente-titular');
     $fuente_contenidos = kc_get_option('colasite_', 'front', 'fuente-contenidos');
+
+    if( $plantilla == "plantilla1" ){
+
+        if( !$fuente_titular ){ $fuente_titular = "Museo500"; }
+        if( !$fuente_contenidos ){ $fuente_contenidos = "Museo300"; }  
+             
+    }
 
     /* Selectores para cada fuente */
     $titulares = "
@@ -92,6 +110,7 @@ function colaborativo_print_fonts() {
         .hero-unit h3 ,
         .hero-unit p.hashtags strong ,
         .hero-unit #event-logo ,
+        .navbar-fixed-top ,
         .wpcf7-submit ";
 
     $contenidos ="
@@ -453,9 +472,15 @@ function theme_settings( $groups ) {
                 'desc'    => 'Escoje el tipo de layout que deseas',
                 'type'    => 'select',
                 'options' => array(
-                    'select1' => 'Plantilla básica'
+                    'plantilla0' => 'Plantilla básica',
+                    'plantilla1' => 'Plantilla evento rock',
+                    'plantilla2' => 'Plantilla en desarrollo',
+                    'plantilla3' => 'Plantilla en desarrollo',
+                    'plantilla4' => 'Plantilla en desarrollo',
+                    'plantilla5' => 'Plantilla en desarrollo',
+                    'plantilla6' => 'Plantilla en desarrollo'
                 ),
-                'default' => 'Oswald:400,700'
+                'default' => 'plantilla0'
             ),
             array(
                 'id'      => 'fuente-titular',

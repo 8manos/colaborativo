@@ -25,10 +25,12 @@
     <?php 
     	wp_head(); 
     	colores_cats();
+        $hashtags = kc_get_option('colasite_', 'front', 'hashtags');
+        $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
     ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( $plantilla ); ?>>
 <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 	<div class="navbar navbar-fixed-top">
@@ -39,13 +41,26 @@
 
 		    <div class="row-fluid">	
 
-			  <div class="span10">
-
-				<span class="ir sprite" id="beta">
-					<?php _e('Estamos en beta', 'colaborativo'); ?>
-				</span>
-
+			  <div class="span3">
+                <?php
+                    if( $hashtags ){
+                ?>
+                        <p id="hashtags-header-container"><?php echo ( $hashtags ); ?></p>
+                <?php 
+                    }
+                ?>
 			  </div>
+
+              <div class="span9">
+
+                <div class="navbar" id="header-catnav">
+                    <ul class="aright nav" id="header-cat-menu">
+                        <li><a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('title'); ?>">Inicio</a></li>
+                        <?php wp_list_categories( 'title_li=&hide_empty=0&exclude=15' ); ?>
+                    </ul>
+                </div>
+
+              </div>
 
 		    </div>
 

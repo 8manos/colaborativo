@@ -36,10 +36,15 @@ article.type-video h2:before {
 }
 
 body {
-  background-color: #f6f6f6; /*  olive; */
+  background-color: #f6f6f6;
   font-family:'Open Sans';
 	padding-top:0px;
 }
+
+  body.plantilla1 {
+    background-color: #B1206D;
+    padding-top: 150px;
+  }
 
 body.page .type-page {
   background-color: white;
@@ -129,6 +134,14 @@ footer .nav li a:hover {
   width: 100px;
 }
 
+#bottom-banners {
+
+}
+
+  .plantilla1 #bottom-banners {
+    display: none;
+  }
+
 #branding {
   background-position: -17px -23px;
   height: 25px;
@@ -153,6 +166,10 @@ footer .nav li a:hover {
   background-color: #fff;
 }
 
+  .plantilla1 #featured {
+    background-color: #F5F5F5;
+  }
+
 #featured h3 {
   color: #6D6D6D;
   font-family: 'Oswald';
@@ -160,6 +177,11 @@ footer .nav li a:hover {
   font-weight: normal;
   padding: 8px 0 0 1.4em;
   text-transform: uppercase;
+}
+
+#featured [class*="span"] {
+  float: left;
+  margin-left: 15px;
 }
 
 #feedback {
@@ -170,25 +192,9 @@ footer .nav li a:hover {
   vertical-align: middle;
 }
 
-#filters {
-  margin:0 0 1.4em;
-}
-
 #filters form {
   float:right;
   margin:11px 0 0 0;
-}
-
-#filters form:before {
-  background-image: url('img/sprite.png');
-  background-position: -595px -196px;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
-  float: left;
-  height: 38px;
-  vertical-align: middle;
-  width: 60px;
 }
 
 #filters h3 {
@@ -199,17 +205,6 @@ footer .nav li a:hover {
   line-height:50px;
   text-transform:uppercase;
   word-spacing:0.1em;
-}
-
-#filters h3:after {
-  background-image: url('img/sprite.png');
-  background-position: -155px -193px;
-  background-repeat: no-repeat;
-  content: "";
-  display: inline-block;
-  height: 38px;
-  vertical-align: middle;
-  width: 58px;
 }
 
 #filters-buttons {
@@ -282,7 +277,7 @@ footer .nav li a:hover {
 #footer {
   background-color:#19171A;
   color:#999;
-  margin-top:5em;
+  margin-top:0em;
   padding:1.5em 0 3em;
 }
 
@@ -343,11 +338,36 @@ footer .nav li a:hover {
   display: none;
 }
 
+  .plantilla1 #notify_new {
+    margin: -75px 10px 0 auto;
+  }
+
 #notify_new.has-new {
   display:block;
   cursor: pointer;
 }
 
+#hashtags-container {
+
+}
+
+  .plantilla1 #hashtags-container {
+    display: none;
+  }
+
+#hashtags-header-container {
+  display: none;
+}
+
+  .plantilla1 #hashtags-header-container {
+    display: inline-block;
+    margin: 0 0 0 -10px;
+    padding: 11px 0;
+  }
+
+#header-catnav {
+  margin-bottom: 0;
+}
 
 #hidden_articles { display: none; }
 
@@ -398,6 +418,14 @@ footer .nav li a:hover {
   display:inline-block;
   vertical-align:middle;
 }
+
+#subheader-nav {
+
+}
+
+  .plantilla1 #subheader-nav {
+    display: none;
+  }
 
 #top-banners {
   margin-top: 20px;
@@ -616,11 +644,12 @@ footer .nav li a:hover {
 }
 
 .carousel-control {
-  left: -30px;
+  left: -50px;
+  line-height: 37px;
 }
 
 .carousel-control.right {
-  right:-31px;
+  right:-50px;
 }
 
 .chromeframe {
@@ -636,6 +665,10 @@ footer .nav li a:hover {
   padding: 1.3em 0;
   text-transform: uppercase;
 }
+
+  .plantilla1 .colaborated {
+    background-color: #F5F5F5;
+  }
 
 .colaborated h3 {
   font-family: 'Oswald';
@@ -667,6 +700,10 @@ footer .nav li a:hover {
   padding:20px;
   position:relative;
 }
+
+  .plantilla1 .hero-unit {
+    background-color: #F5F5F5;
+  }
 
 .hero-unit h3 {
   font-family:'Oswald';
@@ -762,6 +799,16 @@ footer .nav li a:hover {
       -ms-transition-duration: 0s;
        -o-transition-duration: 0s;
           transition-duration: 0s;
+}
+
+  .plantilla1 .isotope {
+    background-color: #F5F5F5;
+    padding-top: 15px;
+  }
+
+.isotope [class*="span"] {
+  float: left;
+  margin-left: 10px;
 }
 
 .left {
@@ -944,9 +991,27 @@ footer .nav li a:hover {
   display: none;
 }
 
-.paging {
-  margin-top:3em;
+.navbar-fixed-top .container {
+  width: 960px;
 }
+
+  .plantilla1 .navbar-fixed-top {
+    display: block;
+    font-size: 17px;
+  }
+
+  .plantilla1 .navbar .nav > li > a {
+    font-size: 17px;
+  }
+
+.paging {
+  padding-bottom: 5em;
+  padding-top:3em;
+}
+
+  .plantilla1 .paging {
+    background-color: #f5f5f5;
+  }
 
 .paging #load-more {
   display:none;
@@ -1054,6 +1119,15 @@ footer .nav li a:hover {
   background-position:0px 0px;
   background-repeat:no-repeat;
 }
+
+.subnav {
+
+}
+
+  .plantilla1 .subnav {
+    background-color: #F5F5F5;
+    padding-bottom: 30px;
+  }
 
 .thumbnail {
   border:none;
