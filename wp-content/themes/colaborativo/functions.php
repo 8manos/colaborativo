@@ -103,6 +103,7 @@ function colaborativo_print_fonts() {
         #featured h3 ,
         #filters h3 ,
         #filters-buttons a ,
+        #hero-header h1 ,
         #load-more ,
         .boxes article h2 ,
         .colaborated ,
@@ -458,6 +459,19 @@ function theme_settings( $groups ) {
                 'id'    => 'evento-link',
                 'desc'  => '(formato: http://link.com)',
                 'title' => __('Link del evento', 'cola'),
+                'type'  => 'text'
+            ),
+            array(
+                'id'    => 'logo2',
+                'desc'  => 'Sube la imagen secundaria del evento',
+                'title' => __('Imagen secundaria', 'cola'),
+                'type'  => 'file',
+                'mode'  => 'single'
+            ),
+            array(
+                'id'    => 'evento-linke',
+                'desc'  => '(formato: http://link.com)',
+                'title' => __('Link secundario', 'cola'),
                 'type'  => 'text'
             ),
             array(

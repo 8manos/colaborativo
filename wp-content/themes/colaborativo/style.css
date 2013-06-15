@@ -369,6 +369,13 @@ footer .nav li a:hover {
   margin-bottom: 0;
 }
 
+#hero-header h1 {
+  color: #fff;
+  font-size: 65px;
+  font-weight: normal;
+  text-shadow: 1px 1px 7px black;
+}
+
 #hidden_articles { display: none; }
 
 #load-more {
@@ -417,6 +424,10 @@ footer .nav li a:hover {
 #menu-social label {
   display:inline-block;
   vertical-align:middle;
+}
+
+#plantilla1-search {
+  padding-top: 2em;
 }
 
 #subheader-nav {

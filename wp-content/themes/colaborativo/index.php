@@ -6,6 +6,7 @@
 	$hashtags = kc_get_option('colasite_', 'front', 'hashtags');
 	$elink = kc_get_option('colasite_', 'front', 'evento-link');
 	$ocultar_cubrimiento = kc_get_option('colasite_', 'front', 'oculta_cubrimiento');
+	$plantilla = kc_get_option('colasite_', 'front', 'plantilla');
 ?>
 
 <ul class="row" id="top-banners">
@@ -14,35 +15,7 @@
 ?>
 </ul>
 
-<?php // if( is_home() || is_front_page() ){ ?>
-<div class="hero-unit row">
-
-	<div class="span8">
-		<div id="event-logo">
-
-			<?php if( $elink ){ ?>
-			<a class="left" href="<?php echo $elink; ?>" target="_blank">
-			<?php }else{ ?>
-			<a class="left" href="<?php bloginfo('url'); ?>">
-			<?php } ?>
-				<?php if( $logo ) { ?>
-					<img class="alignleft" src="<?php echo $logo[0];  ?>" />
-				<?php } ?>
-			</a>
-
-			<h2><?php bloginfo( 'title' ); ?></h2>
-			<h3><?php bloginfo( 'description' ); ?></h3>
-		</div>
-	</div>
-
-	<div class="span3">
-		<form action="<?php bloginfo('url'); ?>" class="inline-form" method="get">
-			<input class="input-medium search-query" id="s" name="s" placeholder="<?php _e('Buscar','colaborativo'); ?>" type="text" />
-		</form>
-	</div>
-
-</div>
-<?php // } ?>
+<?php get_template_part( 'hero', $plantilla ); ?>
 
 <div class="navbar row" id="subheader-nav">
 	<ul class="acenter nav" id="cat-menu">
