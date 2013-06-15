@@ -1,6 +1,8 @@
 <?php 
 	$logo = kc_get_option('colasite_', 'front', 'logo');
 	$logo = wp_get_attachment_image_src( $logo );
+	$logo2 = kc_get_option('colasite_', 'front', 'logo2');
+	$logo2 = wp_get_attachment_image_src( $logo2 );
 ?>
 <div class="aright row" id="hero-header">
 	<div class="span12">
@@ -31,7 +33,9 @@
 		</div>
 
 		<div class="aright span3">
-			Logo
+			<?php if( $logo2 ) { ?>
+				<img class="alignleft" src="<?php echo $logo2[0];  ?>" />
+			<?php } ?>
 		</div>
 	</div>
 
