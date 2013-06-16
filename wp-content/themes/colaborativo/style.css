@@ -142,6 +142,16 @@ footer .nav li a:hover {
     display: none;
   }
 
+#boxes_outer {
+  margin-left: -20px;
+  padding-left: 10px;
+  width: 950px;
+}
+
+  .plantilla1 #boxes_outer {
+    background: #f5f5f5;
+  }
+
 #branding {
   background-position: -17px -23px;
   height: 25px;
@@ -868,13 +878,11 @@ footer .nav li a:hover {
 }
 
   .plantilla1 .isotope {
-    background-color: #F5F5F5;
     padding-top: 15px;
   }
 
 .isotope [class*="span"] {
   float: left;
-  margin-left: 10px;
 }
 
 .left {
