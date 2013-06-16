@@ -192,6 +192,14 @@ footer .nav li a:hover {
   vertical-align: middle;
 }
 
+#filters {
+
+}
+
+  .plantilla2 #filters {
+    padding: 0 0 30px 0;
+  }
+
 #filters form {
   float:right;
   margin:11px 0 0 0;
@@ -372,18 +380,18 @@ footer .nav li a:hover {
 }
 
 #hero-footer {
-  padding: 4px 0 4px 235px;
+  padding: 4px 0 30px 235px;
 }
 
   #hero-footer h2 {
-    font-size: 60px;
+    font-size: 55px;
     line-height: 1em;
   }
 
   #hero-footer h3 {
     font-size: 25px;
     line-height: 1em;
-    margin-top: -5px;
+    margin-top: 0px;
     margin: 0;
   }
 
