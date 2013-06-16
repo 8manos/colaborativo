@@ -373,6 +373,8 @@ footer .nav li a:hover {
   color: #fff;
   font-size: 65px;
   font-weight: normal;
+  line-height: 1em;
+  max-width: 500px;
   text-shadow: 1px 1px 7px black;
 }
 
@@ -678,7 +680,7 @@ footer .nav li a:hover {
 }
 
   .plantilla1 .colaborated {
-    background-color: #F5F5F5;
+    display: none;
   }
 
 .colaborated h3 {

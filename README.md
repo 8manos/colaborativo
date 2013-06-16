@@ -2,21 +2,20 @@ colaborativo
 ============
 
 Agregador para cubrir eventos creado por 8manos S.A.S y Activa MC.
-Actualmente en fase beta para el cubrimiento de Campus Party Colombia 2012.
+Actualmente en fase beta y participando en el programa de consolidación de Apps.co
 
 ## Quick start
 
 Se debe instalar en un servidor junto con WordPress como base. PHP5, SimplePie y MySQL son requeridos.
-Configura los feeds que alimentaran la plataforma usando esta base en pipes: http://8links.co/pipes
-
 
 ## Features
 
-* HTML5 ready.
-* Near real-time updates.
+* HTML5
+* Real-time updates.
 * Responsive layout.
 * Colored categories
 * Minimal css and html
+* Multiple themes
 * YouTube, Vimeo, Flickr, Instagram, Twitter and Soundcloud support. 
 * Google analytics support
 * Keyboard navigation

@@ -6,7 +6,7 @@
 ?>
 <div class="aright row" id="hero-header">
 	<div class="span12">
-		<h1><?php bloginfo( 'title' ); ?></h1>
+		<h1 class="right"><?php bloginfo( 'title' ); ?></h1>
 	</div>
 </div>
 
