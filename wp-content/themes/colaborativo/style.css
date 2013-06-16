@@ -798,6 +798,7 @@ footer .nav li a:hover {
 }
 
   .plantilla2 #event-logo img {
+    background-color: #fff;
     border: 5px solid #fff;
     bottom: -20%;
     box-shadow: 0 0 5px #444;
