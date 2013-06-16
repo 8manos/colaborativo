@@ -728,7 +728,7 @@ function display_article_content() {
                                 the_post_thumbnail();
                             }else{
                         ?>
-                            <img width="600" height="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=600&h=600" />
+                            <img width="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=600" />
                         <?php } ?>
                     </a>
                 <?php } ?>
