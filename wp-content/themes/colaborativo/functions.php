@@ -486,9 +486,9 @@ function theme_settings( $groups ) {
                 'desc'    => 'Escoje el tipo de layout que deseas',
                 'type'    => 'select',
                 'options' => array(
-                    'plantilla0' => 'Plantilla básica',
-                    'plantilla1' => 'Plantilla evento rock',
-                    'plantilla2' => 'Plantilla en desarrollo',
+                    'plantilla0' => 'Plantilla básica', // Default
+                    'plantilla1' => 'Plantilla evento rock', // Rock al Parque 2013 (Virgin1)
+                    'plantilla2' => 'Plantilla marca personal', // Colombia (Mariana Pajon)
                     'plantilla3' => 'Plantilla en desarrollo',
                     'plantilla4' => 'Plantilla en desarrollo',
                     'plantilla5' => 'Plantilla en desarrollo',

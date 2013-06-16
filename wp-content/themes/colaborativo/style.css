@@ -351,7 +351,8 @@ footer .nav li a:hover {
 
 }
 
-  .plantilla1 #hashtags-container {
+  .plantilla1 #hashtags-container ,
+  .plantilla2 #hashtags-container {
     display: none;
   }
 
@@ -359,7 +360,8 @@ footer .nav li a:hover {
   display: none;
 }
 
-  .plantilla1 #hashtags-header-container {
+  .plantilla1 #hashtags-header-container,
+  .plantilla2 #hashtags-header-container {
     display: inline-block;
     margin: 0 0 0 -10px;
     padding: 11px 0;
@@ -368,6 +370,22 @@ footer .nav li a:hover {
 #header-catnav {
   margin-bottom: 0;
 }
+
+#hero-footer {
+  padding: 4px 0 4px 235px;
+}
+
+  #hero-footer h2 {
+    font-size: 60px;
+    line-height: 1em;
+  }
+
+  #hero-footer h3 {
+    font-size: 25px;
+    line-height: 1em;
+    margin-top: -5px;
+    margin: 0;
+  }
 
 #hero-header h1 {
   color: #fff;
@@ -436,7 +454,8 @@ footer .nav li a:hover {
 
 }
 
-  .plantilla1 #subheader-nav {
+  .plantilla1 #subheader-nav ,
+  .plantilla2 #subheader-nav {
     display: none;
   }
 
@@ -444,6 +463,10 @@ footer .nav li a:hover {
   margin-top: 20px;
   padding: 0;
 }
+
+  .plantilla2 #top-banners {
+    display: none;
+  }
 
 #top-banners .kcw_sbanner {
   float: left;
@@ -679,7 +702,8 @@ footer .nav li a:hover {
   text-transform: uppercase;
 }
 
-  .plantilla1 .colaborated {
+  .plantilla1 .colaborated ,
+  .plantilla2 .colaborated {
     display: none;
   }
 
@@ -718,6 +742,17 @@ footer .nav li a:hover {
     background-color: #F5F5F5;
   }
 
+  .plantilla2 .hero-unit {
+    -webkit-box-shadow: 0 5px 7px #bbb;
+    box-shadow: 0 5px 7px #bbb;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    border-radius: 0;
+    height: 220px;
+    margin-top: 35px;
+  }
+
 .hero-unit h3 {
   font-family:'Oswald';
   font-size:28px;
@@ -743,6 +778,16 @@ footer .nav li a:hover {
   margin-left: -30px;
   margin-right: 10px;
 }
+
+  .plantilla2 #event-logo img {
+    border: 5px solid #fff;
+    bottom: -20%;
+    box-shadow: 0 0 5px #444;
+    float: none;
+    left: 40px;
+    margin: 0;
+    position: absolute;
+  }
 
 .hero-unit #event-logo p {
   font-size:28px;
@@ -1008,12 +1053,14 @@ footer .nav li a:hover {
   width: 960px;
 }
 
-  .plantilla1 .navbar-fixed-top {
+  .plantilla1 .navbar-fixed-top ,
+  .plantilla2 .navbar-fixed-top {
     display: block;
     font-size: 17px;
   }
 
-  .plantilla1 .navbar .nav > li > a {
+  .plantilla1 .navbar .nav > li > a ,
+  .plantilla2 .navbar .nav > li > a {
     font-size: 17px;
   }
 
