@@ -1232,6 +1232,20 @@ footer .nav li a:hover {
     width: auto;
   }
 
+  #feedback {
+    display: none;
+  }
+
+  #footer {
+    margin: 0em -20px 0 -20px;
+    padding: 1.5em 20px 3em;
+    text-align: center;
+  }
+
+    #footer .aright {
+      text-align: center;
+    }
+
   #header-cat-menu {
     text-align: center;
   }
