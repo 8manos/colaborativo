@@ -1226,3 +1226,33 @@ footer .nav li a:hover {
     padding-top: 0;
   }
 }
+
+@media (max-width: 767px) {
+  #boxes_outer {
+    width: auto;
+  }
+
+  #header-cat-menu {
+    text-align: center;
+  }
+
+  #hero-footer {
+    padding: 20px 0 20px 0;
+  }
+
+  [class*="span4"], .row-fluid [class*="span4"] {
+    width: 300px;
+  }
+
+  .navbar-fixed-top .container {
+    width: auto;
+    text-align: center;
+  }
+
+  .plantilla2 #event-logo img {
+    bottom: 50%;
+    left: 50%;
+    margin: 0 0 -80px -80px;
+  }
+
+}
