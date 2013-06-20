@@ -351,6 +351,17 @@ footer .nav li a:hover {
   text-align: center;
   width: 200px;
 }
+
+  .plantilla1 #counter_wrapper {
+    border: 1px solid #999;
+    display: block;
+    margin: -75px 10px 10px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    float: right;
+    border-radius: 20px;
+  }
 #notify_new {
   background-color: #eee;
   display: none;
