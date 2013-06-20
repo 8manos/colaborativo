@@ -383,6 +383,27 @@ footer .nav li a:hover {
     display: inline-block;
     margin: 0 0 0 -10px;
     padding: 11px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .plantilla1 #hashtags-header-container {
+    color: #961D82;
+    padding: 22px 0 0 0;
+    position: absolute;
+    font-size: 25px;
+  }
+
+  .plantilla1 #hashtags-header-container:before {
+    background-image: url('img/rock/recuadro.png');
+    content: " ";
+    display: block;
+    height: 77px;
+    left: -40px;
+    position: absolute;
+    top: 0;
+    width: 244px;
+    z-index: -1;
   }
 
 #header-catnav {
