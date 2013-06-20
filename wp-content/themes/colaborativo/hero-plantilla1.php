@@ -6,7 +6,7 @@
 ?>
 <div class="aright row" id="hero-header">
 	<div class="span12">
-		<h1 class="right"><?php bloginfo( 'title' ); ?></h1>
+		<h1 class="right"><?php echo span_tags( get_bloginfo( 'title' ) ); ?></h1>
 	</div>
 </div>
 
@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="acenter span6">
-			<h3><?php bloginfo( 'description' ); ?></h3>
+			<h3><?php echo span_tags( get_bloginfo( 'description' ) ); ?></h3>
 		</div>
 
 		<div class="aright span3">

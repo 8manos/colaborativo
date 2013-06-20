@@ -1129,3 +1129,13 @@ function limit_text($text, $limit) {
     }
         return $text;
 }
+
+function span_tags( $string ) {
+    global $wp_current_filter;
+    $filter = end($wp_current_filter);
+    $search = array('#span#', '#/span#');
+    $replace = ( in_array($filter, array('wp_title', 'the_title_rss')) || ($filter == 'the_title' && (is_admin() || in_array('wp_head', $wp_current_filter))) ) ? '' : array('<span>', '</span>');
+    $string = str_replace( $search, $replace, $string );
+
+    return $string;
+}
