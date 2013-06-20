@@ -411,7 +411,9 @@ footer .nav li a:hover {
   font-weight: normal;
   line-height: 1em;
   max-width: 500px;
+  position: relative;
   text-shadow: 1px 1px 7px black;
+  top: -35px;
 }
 
 #hidden_articles { display: none; }
@@ -760,6 +762,32 @@ footer .nav li a:hover {
     background-color: #F5F5F5;
   }
 
+    .plantilla1 .hero-unit:after ,
+    .plantilla1 .hero-unit:before {
+      background-image: url('img/rock/esquinas.png');
+      content:" ";
+      display: block;
+      height: 100px;
+      position: absolute;
+      top: -67px;
+      width: 511px;
+      z-index: -1;
+    }
+
+      .plantilla1 .hero-unit:after {
+        background-position: right top;
+        right: -32px;
+      }
+
+      .plantilla1 .hero-unit:before {
+        background-position: left top;
+        left: -30px;
+      }
+
+      .plantilla1 .hero-unit > .row-fluid {
+        margin-top: -50px;
+      }
+
   .plantilla2 .hero-unit {
     -webkit-box-shadow: 0 5px 7px #bbb;
     box-shadow: 0 5px 7px #bbb;
@@ -798,7 +826,7 @@ footer .nav li a:hover {
 }
 
   .plantilla1 #event-logo #logo {
-    margin: -180px 0 0 -50px;
+    margin: -180px 0 0 -30px;
     max-width: none;
   }
 
