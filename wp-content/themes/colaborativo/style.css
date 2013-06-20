@@ -428,14 +428,20 @@ footer .nav li a:hover {
 
 #hero-header h1 {
   color: #fff;
-  font-size: 65px;
+  font-size: 46px;
   font-weight: normal;
   line-height: 1em;
-  max-width: 500px;
+  max-width: 575px;
   position: relative;
   text-shadow: 1px 1px 7px black;
   top: -35px;
 }
+
+  #hero-header h1 span {
+    display: block;
+    font-size: 65px;
+    padding: 10px 0 0;
+  }
 
 #hidden_articles { display: none; }
 
