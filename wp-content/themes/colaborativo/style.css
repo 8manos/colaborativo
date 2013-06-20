@@ -493,9 +493,13 @@ footer .nav li a:hover {
   vertical-align:middle;
 }
 
-#plantilla1-search {
-  padding-top: 2em;
-}
+  #plantilla1-search {
+    padding-top: 0em;
+  }
+
+  #plantilla1-search > div {
+    margin-top: -75px;
+  }
 
 #subheader-nav {
 
@@ -787,6 +791,7 @@ footer .nav li a:hover {
 
   .plantilla1 .hero-unit {
     background-color: #F5F5F5;
+    padding-bottom: 0;
   }
 
     .plantilla1 .hero-unit:after ,
