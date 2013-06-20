@@ -1139,3 +1139,13 @@ function span_tags( $string ) {
 
     return $string;
 }
+
+function clear_span_tags( $string ) {
+    global $wp_current_filter;
+    $filter = end($wp_current_filter);
+    $search = array('#span#', '#/span#');
+    $replace = ( in_array($filter, array('wp_title', 'the_title_rss')) || ($filter == 'the_title' && (is_admin() || in_array('wp_head', $wp_current_filter))) ) ? '' : array('', '<');
+    $string = str_replace( $search, $replace, $string );
+
+    return $string;
+}

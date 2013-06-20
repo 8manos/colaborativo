@@ -6,7 +6,7 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
 
-    <title><?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?></title>
+    <title><?php wp_title( '|', true, 'right' ); echo clear_span_tags ( get_bloginfo( 'name' ) ); ?></title>
 
     <meta name="description" content="<?php bloginfo('description'); ?>">
 
