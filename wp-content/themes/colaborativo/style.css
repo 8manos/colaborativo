@@ -434,7 +434,7 @@ footer .nav li a:hover {
   max-width: 575px;
   position: relative;
   text-shadow: 1px 1px 7px black;
-  top: -35px;
+  top: -55px;
 }
 
   #hero-header h1 span {
@@ -833,6 +833,17 @@ footer .nav li a:hover {
   text-transform:uppercase;
 }
 
+  .plantilla1 .hero-unit h3 {
+    color: #9B1E88;
+    text-transform: none;
+    padding-top: 20px;
+    padding-left: 32px;
+  }
+
+  .plantilla1 .hero-unit h3 span {
+    font-weight: bold;
+  }
+
 .hero-unit p.hashtags strong {
   font-family:'Oswald';
   font-size:17px;
@@ -866,6 +877,10 @@ footer .nav li a:hover {
     left: 40px;
     margin: 0;
     position: absolute;
+  }
+
+  .plantilla1 #logo2 {
+    margin-right: 10px;
   }
 
 .hero-unit #event-logo p {
