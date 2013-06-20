@@ -25,12 +25,14 @@
     <?php 
     	wp_head(); 
     	colores_cats();
+        global $blog_id;
         $hashtags = kc_get_option('colasite_', 'front', 'hashtags');
         $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
+        $clase_body = $plantilla . " sitio-" . $blog_id;
     ?>
 </head>
 
-<body <?php body_class( $plantilla ); ?>>
+<body <?php body_class( $clase_body ); ?>>
 <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 	<div class="navbar navbar-fixed-top">

@@ -1,6 +1,6 @@
 <?php 
 	$logo = kc_get_option('colasite_', 'front', 'logo');
-	$logo = wp_get_attachment_image_src( $logo );
+	$logo = wp_get_attachment_image_src( $logo , 'full' );
 	$logo2 = kc_get_option('colasite_', 'front', 'logo2');
 	$logo2 = wp_get_attachment_image_src( $logo2 );
 ?>
@@ -21,7 +21,7 @@
 				<a class="left" href="<?php bloginfo('url'); ?>">
 				<?php } ?>
 					<?php if( $logo ) { ?>
-						<img class="alignleft" src="<?php echo $logo[0];  ?>" />
+						<img class="alignleft" id="logo" src="<?php echo $logo[0];  ?>" />
 					<?php } ?>
 				</a>
 
@@ -34,7 +34,7 @@
 
 		<div class="aright span3">
 			<?php if( $logo2 ) { ?>
-				<img class="alignleft" src="<?php echo $logo2[0];  ?>" />
+				<img class="alignleft" id="logo2" src="<?php echo $logo2[0];  ?>" />
 			<?php } ?>
 		</div>
 	</div>

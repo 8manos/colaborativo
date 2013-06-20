@@ -1,6 +1,6 @@
 <?php
 	get_header();
-	$blog_id = $current_site->blog_id;
+	global $blog_id;
 	$logo = kc_get_option('colasite_', 'front', 'logo');
 	$logo = wp_get_attachment_image_src( $logo );
 	$hashtags = kc_get_option('colasite_', 'front', 'hashtags');

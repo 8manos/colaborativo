@@ -797,6 +797,11 @@ footer .nav li a:hover {
   margin-right: 10px;
 }
 
+  .plantilla1 #event-logo #logo {
+    margin: -180px 0 0 -50px;
+    max-width: none;
+  }
+
   .plantilla2 #event-logo img {
     background-color: #fff;
     border: 5px solid #fff;
