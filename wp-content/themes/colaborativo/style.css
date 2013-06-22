@@ -1436,4 +1436,8 @@ footer .nav li a:hover {
     margin: 0 0 -80px -80px;
   }
 
+  #load-more {
+    padding: 14px 15px;
+  }
+
 }
