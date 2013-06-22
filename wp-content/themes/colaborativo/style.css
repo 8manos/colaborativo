@@ -1340,6 +1340,10 @@ footer .nav li a:hover {
       padding-top: 0;
     }
 
+    .plantilla1 #event-logo #logo {
+      margin: -348px 0 0 -30px;
+    }
+
     .plantilla1 .container > .row-fluid {
       position: relative;
     }
@@ -1364,7 +1368,7 @@ footer .nav li a:hover {
     }
 
     .plantilla1 #hero-header {
-      margin-bottom: 200px;
+      margin-bottom: 380px;
     }
 
     .plantilla1 #hero-header h1 {
