@@ -1335,6 +1335,62 @@ footer .nav li a:hover {
 }
 
 @media (max-width: 767px) {
+
+    body.plantilla1 {
+      padding-top: 0;
+    }
+
+    .plantilla1 .container > .row-fluid {
+      position: relative;
+    }
+
+    .plantilla1 #boxes_outer {
+      margin-left: 0px;
+      padding-left: 20px;
+    }
+
+    .plantilla1 #counter_wrapper {
+      display: none;
+    }
+
+    .plantilla1 #filters h3 {
+      text-align: center;
+      width: auto;
+      display: block;
+    }
+
+    .plantilla1 #hashtags-header-container {
+      bottom: -45px;
+    }
+
+    .plantilla1 #hero-header {
+      margin-bottom: 200px;
+    }
+
+    .plantilla1 #hero-header h1 {
+      font-size: 26px;
+      margin-top: 55px;
+      top: 0;
+    }
+
+    .plantilla1 #hero-header h1 span {
+      font-size: 35px;
+    }
+
+    .plantilla1 .hero-unit:before ,
+    .plantilla1 .hero-unit:after {
+      display: none;
+    }
+
+      .plantilla1 .hero-unit > .row-fluid .aright {
+        float: none;
+        text-align: center;
+      }
+
+    #plantilla1-search > div {
+      margin-top: 10px;
+    }
+
   #boxes_outer {
     width: auto;
   }
