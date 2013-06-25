@@ -242,7 +242,7 @@ footer .nav li a:hover {
     background-position:-535px -190px;
 }
 
-#filters-buttons a.tipo-galeria {
+#filters-buttons .tipo-galeria {
   display:none;
 }
 
@@ -291,6 +291,84 @@ footer .nav li a:hover {
   .post-type-archive-video #filters-buttons a.tipo-video {
       background-position:-345px -243px;
 }
+
+  .plantilla1 #s {
+    height: 26px;
+    line-height: 30px;
+    margin-right: -305px;
+    width: 185px;
+  }
+
+  .plantilla1 #filters {
+    position: relative;
+  }
+
+  .plantilla1 #filters-buttons {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    left: 50%;
+    margin-left: -200px;
+    position: absolute;
+    text-align: left;
+    top: -75px;
+    width: 240px;
+    z-index: 100;
+  }
+
+  .plantilla1 #filters-buttons h3 {
+    line-height: 34px;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .plantilla1 #filters-buttons ul {
+    display: none;
+    list-style: none;
+  }
+
+  .plantilla1 #filters-buttons:after {
+    border-bottom: 1px solid #ccc;
+    color: #ccc;
+    content: "\003e";
+    height: 28px;
+    line-height: 28px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 3px;
+    width: 28px;
+
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+  }
+
+  .plantilla1 #filters-buttons:hover ul {
+    display: block;
+    margin: 0;
+    padding: 0 0 8px;
+  }
+
+  .plantilla1 #filters-buttons ul a {
+    color: #333;
+    display: block;
+    height: auto;
+    margin: 0;
+    padding: 3px 20px;
+    text-align: left;
+    text-transform: uppercase;
+    width: auto;
+  }
+
+  .plantilla1 #filters-buttons ul a:hover {
+    background-color: #efefef;
+    color: #000;
+    text-decoration: none;
+  }
 
 #footer {
   background-color:#19171A;
