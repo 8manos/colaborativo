@@ -736,6 +736,10 @@ footer .nav li a:hover {
   background-position: -224px -109px;
 }
 
+.boxes article.type-facebook .overlay {
+  background-image:url('img/facebook-icon.png');
+}
+
 .boxes article.type-imagen .overlay {
   background-image:url('img/icon1.png');
 }
@@ -1438,7 +1442,7 @@ footer .nav li a:hover {
     .plantilla1 #s {
       margin-right: auto;
     }
-    
+
     .plantilla1 #filters h3 {
       text-align: left;
       width: auto;
