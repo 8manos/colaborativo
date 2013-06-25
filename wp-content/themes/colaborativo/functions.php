@@ -653,7 +653,7 @@ function display_article() {
             <?php
                 $link_evento = get_post_meta(get_the_ID(), $key = '_url-evento', $single = true);
 
-                if(get_post_type() == "imagen"){
+                if( get_post_type() == "imagen" || get_post_type() == "facebook" ){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
                 $enclosure_array = explode('
