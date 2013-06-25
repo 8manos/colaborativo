@@ -1435,10 +1435,20 @@ footer .nav li a:hover {
       display: none;
     }
 
+    .plantilla1 #s {
+      margin-right: auto;
+    }
+    
     .plantilla1 #filters h3 {
-      text-align: center;
+      text-align: left;
       width: auto;
       display: block;
+    }
+
+    .plantilla1 #filters-buttons {    
+      margin-left: -120px;
+      text-align: left;
+      top: -20px;
     }
 
     .plantilla1 #hashtags-header-container {
