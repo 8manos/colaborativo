@@ -347,6 +347,38 @@ function colaborativo_post_types() {
     'taxonomies' => array( 'category' )
   );
 
+  $labels_facebook = array(
+    'name' => _x('FB Post', 'post type general name'),
+    'singular_name' => _x('fb post', 'post type singular name'),
+    'add_new' => _x('Agregar nuevo', 'fbpost'),
+    'add_new_item' => __('Agregar nuevo FB Post'),
+    'edit_item' => __('Editar FB Post'),
+    'new_item' => __('Nuevo FB post'),
+    'all_items' => __('Todos los FB posts'),
+    'view_item' => __('Ver FB Post'),
+    'search_items' => __('Buscar FB Post'),
+    'not_found' =>  __('No se encontraron FB posts'),
+    'not_found_in_trash' => __('No hay FB posts en la basura'),
+    'parent_item_colon' => '',
+    'menu_name' => 'FB Posts'
+  );
+
+  $args_facebook = array(
+    'labels' => $labels_facebook,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'hierarchical' => false,
+    'menu_position' => 8,
+    'supports' => array( 'title', 'editor', 'author', 'excerpt', 'comments', 'custom-fields', 'thumbnail' ),
+    'taxonomies' => array( 'category' )
+  );
+
   $labels_galeria = array(
     'name' => _x('Galerias', 'post type general name'),
     'singular_name' => _x('galeria', 'post type singular name'),
@@ -384,6 +416,7 @@ function colaborativo_post_types() {
   register_post_type( 'tweet', $args_tweet );
   register_post_type( 'sonido', $args_sonido );
   register_post_type( 'descarga', $args_descarga );
+  register_post_type( 'facebook', $args_facebook );
   register_post_type( 'galeria', $args_galeria );
 
 }
