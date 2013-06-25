@@ -747,7 +747,7 @@ function display_article_content() {
         <h2 class="has-icon"><?php if(get_post_type() != "tweet"){ the_title(); } ?></h2>
         <div class="entry-content">
             <?php
-                if(get_post_type(get_the_ID()) == "imagen"){
+                if(get_post_type(get_the_ID()) == "imagen" || get_post_type(get_the_ID()) == "facebook"){
                 $enclosure = get_post_meta(get_the_ID(), $key = 'enclosure', $single = true);
                 $enclosure = apply_filters( 'the_title', $enclosure);
                 $enclosure_array = explode('
