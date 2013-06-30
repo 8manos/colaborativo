@@ -101,6 +101,9 @@
 			}
 		}
 
+		var addthis_config = addthis_config||{};
+		addthis_config.data_track_addressbar = false;
+
 		function getAjax($button, dop)
 		{
 			var cid = $button.attr('data-cat');
