@@ -46,7 +46,7 @@
  				</div>
  				<div class="span7 aright">
  					<p>
- 						<?php bloginfo('title'); ?> fue creado por: <a class="ir sprite" id="activa" href="http://activamc.com" target="_blank">Activa MC</a> <a class="ir sprite" id="manos" href="http://8manos.com" target="_blank">&infin;manos</a>
+ 						<?php echo span_tags( get_bloginfo( 'title' ) ); ?> fue creado por: <a class="ir sprite" id="activa" href="http://activamc.com" target="_blank">Activa MC</a> <a class="ir sprite" id="manos" href="http://8manos.com" target="_blank">&infin;manos</a>
  						Cubrimiento: <a class="ir sprite" id="rey" href="http://contenidoselrey.com/" target="_blank">Contenidos El rey</a>
  					</p>
  				</div>
