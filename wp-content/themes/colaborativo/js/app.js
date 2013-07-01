@@ -28,7 +28,7 @@
 			}else{
 				$('#counter_label').text( 'Actualizando...' );
 				$('#ajax_counter').text( '' );
-				countdown_number = 45;//reinicia el contador
+				countdown_number = 30;//reinicia el contador
 
 				getAjax( $('#load-more'), 'prepend' );//hace la petición ajax
 			}
@@ -295,7 +295,7 @@
 				itemSelector : 'article'
 			}).addClass('boxes');
 
-			countdown_number = 45;
+			countdown_number = 30;
 			count_t = setTimeout(countdownTrigger, 1000);
 
 			if (autoupdate){
