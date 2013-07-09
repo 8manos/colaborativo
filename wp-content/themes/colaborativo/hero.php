@@ -1,3 +1,9 @@
+<?php 
+	$logo = kc_get_option('colasite_', 'front', 'logo');
+	$logo = wp_get_attachment_image_src( $logo , 'full' );
+	$logo2 = kc_get_option('colasite_', 'front', 'logo2');
+	$logo2 = wp_get_attachment_image_src( $logo2 );
+?>
 <div class="hero-unit row">
 
 	<div class="span8">
