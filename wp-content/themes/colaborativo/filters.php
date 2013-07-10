@@ -2,7 +2,7 @@
 		<h3>Filtre el contenido por:</h3>
 	</div>
 
-	<div class="span6">
+	<div class="span9">
 		<div class="btn-group" id="filters-buttons">
 		<?php
 		$args=array(
@@ -20,8 +20,4 @@
 			  }
 		?>
 		</div>
-	</div>
-
-	<div class="span3 aright">
-
 	</div>
