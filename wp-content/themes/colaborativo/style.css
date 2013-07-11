@@ -242,7 +242,10 @@ footer .nav li a:hover {
     background-position:-535px -190px;
 }
 
-#filters-buttons .tipo-galeria {
+#filters-buttons .tipo-galeria ,
+#filters-buttons .tipo-descarga ,
+#filters-buttons .tipo-descarga ,
+#filters-buttons .tipo-post {
   display:none;
 }
 
