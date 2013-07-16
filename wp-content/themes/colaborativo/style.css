@@ -13,6 +13,12 @@ body{
   background-size: cover;
 }
 
+  body.plantilla3 {
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    background-size: auto;
+  }
+
 article.type-descarga h2:before {
   background-position: -224px -109px;
 }
@@ -312,11 +318,13 @@ footer .nav li a:hover {
     width: 185px;
   }
 
-  .plantilla1 #filters {
+  .plantilla1 #filters ,
+  .plantilla3 #filters {
     position: relative;
   }
 
-  .plantilla1 #filters-buttons {
+  .plantilla1 #filters-buttons ,
+  .plantilla3 #filters-buttons {
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #ccc;
@@ -330,18 +338,21 @@ footer .nav li a:hover {
     z-index: 100;
   }
 
-  .plantilla1 #filters-buttons h3 {
+  .plantilla1 #filters-buttons h3 ,
+  .plantilla3 #filters-buttons h3 {
     line-height: 34px;
     padding-left: 20px;
     text-align: left;
   }
 
-  .plantilla1 #filters-buttons ul {
+  .plantilla1 #filters-buttons ul ,
+  .plantilla3 #filters-buttons ul {
     display: none;
     list-style: none;
   }
 
-  .plantilla1 #filters-buttons:after {
+  .plantilla1 #filters-buttons:after ,
+  .plantilla3 #filters-buttons:after {
     border-bottom: 1px solid #ccc;
     color: #ccc;
     content: "\003e";
@@ -360,13 +371,15 @@ footer .nav li a:hover {
     transform:rotate(90deg);
   }
 
-  .plantilla1 #filters-buttons:hover ul {
+  .plantilla1 #filters-buttons:hover ul ,
+  .plantilla3 #filters-buttons:hover ul {
     display: block;
     margin: 0;
     padding: 0 0 8px;
   }
 
-  .plantilla1 #filters-buttons ul a {
+  .plantilla1 #filters-buttons ul a ,
+  .plantilla3 #filters-buttons ul a {
     color: #333;
     display: block;
     height: auto;
@@ -377,7 +390,8 @@ footer .nav li a:hover {
     width: auto;
   }
 
-  .plantilla1 #filters-buttons ul a:hover {
+  .plantilla1 #filters-buttons ul a:hover ,
+  .plantilla3 #filters-buttons ul a:hover {
     background-color: #efefef;
     color: #000;
     text-decoration: none;
@@ -472,7 +486,8 @@ footer .nav li a:hover {
 }
 
   .plantilla1 #hashtags-container ,
-  .plantilla2 #hashtags-container {
+  .plantilla2 #hashtags-container ,
+  .plantilla3 #hashtags-container {
     display: none;
   }
 
@@ -608,7 +623,8 @@ footer .nav li a:hover {
 }
 
   .plantilla1 #subheader-nav ,
-  .plantilla2 #subheader-nav {
+  .plantilla2 #subheader-nav ,
+  .plantilla3 #subheader-nav {
     display: none;
   }
 
@@ -1257,7 +1273,8 @@ footer .nav li a:hover {
 }
 
   .plantilla1 .navbar-fixed-top ,
-  .plantilla2 .navbar-fixed-top {
+  .plantilla2 .navbar-fixed-top ,
+  .plantilla3 .navbar-fixed-top {
     display: block;
     font-size: 17px;
   }
@@ -1328,6 +1345,10 @@ footer .nav li a:hover {
 
 .right {
   float:right;
+}
+
+.thumbnail > img {
+  height: auto;
 }
 
 .single article {padding-top:30px;}
