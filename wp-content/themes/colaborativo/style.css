@@ -185,6 +185,11 @@ footer .nav li a:hover {
     background-color: #F5F5F5;
   }
 
+  .plantilla3 #featured {
+    float: right;
+    width: 230px;
+  }
+
 #featured h3 {
   color: #6D6D6D;
   font-family: 'Oswald';

@@ -74,7 +74,7 @@
 	if ($hidden_num > 0){//deben existir mas de 10 para que se muestre el div de los escondidos
 		echo '<div id="hidden_articles">';
 	}else{
-		echo '<div id="boxes_outer"><section class="row boxes" id="timeline">';
+		echo '<div id="boxes_outer" class="clearfix"><section class="row boxes" id="timeline">';
 	}
 
 	$i = 1;
@@ -84,7 +84,7 @@
 
 		if ($i == $hidden_num){//cuando llega al ultimo articulo escondido
 			echo '</div>';
-			echo '<div id="boxes_outer"><section class="row boxes" id="timeline">';
+			echo '<div id="boxes_outer" class="clearfix"><section class="row boxes" id="timeline">';
 		}
 
 		$i++;
