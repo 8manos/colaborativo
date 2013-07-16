@@ -148,6 +148,17 @@ footer .nav li a:hover {
     display: none;
   }
 
+#boxes_container {
+
+}
+
+  .plantilla3 #boxes_container {
+    background-color: #FFF;
+    margin-left: -20px;
+    padding-left: 10px;
+    width: 950px;
+  }
+
 #boxes_outer {
   margin-left: -20px;
   padding-left: 10px;
@@ -160,7 +171,7 @@ footer .nav li a:hover {
 
   .plantilla3.cubrimiento #boxes_outer {
     float: left;
-    width: 740px;
+    width: 705px;
   }
 
 #branding {
@@ -193,7 +204,7 @@ footer .nav li a:hover {
 
   .plantilla3 #featured {
     float: right;
-    width: 230px;
+    width: 245px;
   }
 
 #featured h3 {
@@ -1348,8 +1359,12 @@ footer .nav li a:hover {
 }
 
 .thumbnail > img {
-  height: auto;
+
 }
+
+  .plantilla3 .thumbnail > img {
+    height: 204px;
+  }
 
 .single article {padding-top:30px;}
 
