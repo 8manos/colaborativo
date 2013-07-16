@@ -41,7 +41,7 @@
 <?php } ?>
 
 <?php 
-	if( !$ocultar_cubrimiento[0] && !is_search() ){  
+	if( !$ocultar_cubrimiento[0] && !is_search() && $plantilla != 'plantilla3' ){  
 		get_template_part( 'featured', 'boxes' );
 	} 
 ?>
@@ -95,6 +95,13 @@
 ?>
 
 </section></div>
+
+<?php
+	// Featured al lado de boxes outer para plantilla de 4 columnas 
+	if( !$ocultar_cubrimiento[0] && $plantilla == 'plantilla3' ){  
+		get_template_part( 'featured', 'boxes' );
+	} 
+?>
 
 <div class="paging acenter row">
 	<?php colaborativo_content_nav(); ?>

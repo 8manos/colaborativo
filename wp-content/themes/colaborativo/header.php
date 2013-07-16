@@ -29,6 +29,12 @@
         $hashtags = kc_get_option('colasite_', 'front', 'hashtags');
         $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
         $clase_body = $plantilla . " sitio-" . $blog_id;
+
+        $ocultar_cubrimiento = kc_get_option('colasite_', 'front', 'oculta_cubrimiento');
+        
+        if( !$ocultar_cubrimiento[0] ) {
+            $clase_body .= " cubrimiento";
+        }
     ?>
 </head>
 

@@ -152,6 +152,11 @@ footer .nav li a:hover {
     background: #f5f5f5;
   }
 
+  .plantilla3.cubrimiento #boxes_outer {
+    float: left;
+    width: 740px;
+  }
+
 #branding {
   background-position: -17px -23px;
   height: 25px;

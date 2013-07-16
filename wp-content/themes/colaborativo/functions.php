@@ -522,7 +522,7 @@ function theme_settings( $groups ) {
                     'plantilla0' => 'Plantilla básica', // Default
                     'plantilla1' => 'Plantilla evento rock', // Rock al Parque 2013 (Virgin1)
                     'plantilla2' => 'Plantilla marca personal', // Colombia (Mariana Pajon)
-                    'plantilla3' => 'Plantilla en desarrollo',
+                    'plantilla3' => 'Plantilla 4 columnas',
                     'plantilla4' => 'Plantilla en desarrollo',
                     'plantilla5' => 'Plantilla en desarrollo',
                     'plantilla6' => 'Plantilla en desarrollo'
@@ -647,8 +647,15 @@ function cl_get_images_src($size = 'thumbnail') {
  * Mostrar cada publicacion
  */
 function display_article() {
+    $plantilla = kc_get_option('colasite_', 'front', 'plantilla');
+
+    if( $plantilla == 'plantilla3' ){
+        $post_class = 'span3';
+    }else{
+        $post_class = 'span4';
+    }
 ?>
-	<article id="posted-<?php the_ID(); ?>" <?php post_class('span4'); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>" data-id="<?php the_ID(); ?>">
+	<article id="posted-<?php the_ID(); ?>" <?php post_class( $post_class ); ?> data-date="<?php the_time('Y-m-d H:i:s'); ?>" data-id="<?php the_ID(); ?>">
         <div class="article-content">
             <?php
                 $link_evento = get_post_meta(get_the_ID(), $key = '_url-evento', $single = true);
