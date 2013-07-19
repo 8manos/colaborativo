@@ -729,7 +729,7 @@ footer .nav li a:hover {
 }
 
   .plantilla3 .boxes article h2 {
-    font-size: 17px;
+    font-size: 15px;
     line-height: 21px;
   }
 
@@ -792,6 +792,8 @@ footer .nav li a:hover {
 }
 
   .plantilla3 .boxes article .categoria {
+    display: block;
+    float: right;
     font-size: 12px;
   }
 
