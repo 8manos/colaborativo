@@ -5,7 +5,7 @@
  			<div class="row">
  				<div class="span5">
 
-          <a class="brand ir sprite" href="<?php bloginfo('url'); ?>" id="branding"><?php bloginfo('title'); ?></a>
+          <a class="brand ir sprite" href="http://colaborativo.co" id="branding" target="_blank">Colaborativo.co</a>
 
           <span class="ir sprite" id="beta">
             <?php _e('Estamos en beta', 'colaborativo'); ?>
