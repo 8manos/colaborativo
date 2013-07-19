@@ -1,4 +1,6 @@
 <?php 
+	$elink = kc_get_option('colasite_', 'front', 'evento-link');
+	$olink = kc_get_option('colasite_', 'front', 'evento-linke');
 	$logo = kc_get_option('colasite_', 'front', 'logo');
 	$logo = wp_get_attachment_image_src( $logo , 'full' );
 	$logo2 = kc_get_option('colasite_', 'front', 'logo2');
@@ -34,7 +36,15 @@
 
 		<div class="aright span2">
 			<?php if( $logo2 ) { ?>
+				<?php if( $olink ){ ?>
+					<a class="left" href="<?php echo $olink; ?>" target="_blank">
+				<?php } ?>
+				
 				<img class="alignleft" id="logo2" src="<?php echo $logo2[0];  ?>" />
+				
+				<?php if( $olink ){ ?>
+					</a>
+				<?php } ?>
 			<?php } ?>
 		</div>
 	</div>

@@ -333,6 +333,12 @@ footer .nav li a:hover {
       background-position:-345px -243px;
 }
 
+    #plantilla3-search input#s ,
+    #plantilla3-search input#s:focus {
+      height: 26px !important;
+      width: 180px;
+    }
+
   .plantilla1 #s {
     height: 26px;
     line-height: 30px;
@@ -359,6 +365,10 @@ footer .nav li a:hover {
     width: 240px;
     z-index: 100;
   }
+
+    .plantilla3 #filters-buttons {
+      margin-left: -115px;
+    }
 
   .plantilla1 #filters-buttons h3 ,
   .plantilla3 #filters-buttons h3 {
@@ -610,6 +620,12 @@ footer .nav li a:hover {
   word-spacing:0.15em;
 }
 
+  .plantilla3 #load-more {
+    background-color: #E4222A;
+    color: #fff;
+    font-weight: bold;
+  }
+
 #menu-social {
   padding-top:5px;
 }
@@ -656,8 +672,8 @@ footer .nav li a:hover {
   }
 
   #plantilla3-search > div {
-    margin-bottom: -45px;
-    margin-left: 155px;
+    margin-bottom: -53px;
+    margin-left: 260px;
   }
 
 #subheader-nav {
@@ -1597,12 +1613,6 @@ footer .nav li a:hover {
         float: none;
         text-align: center;
       }
-
-    .plantilla3 #s ,
-    .plantilla3 #s:focus {
-      height: 26px !important;
-      width: 250px;
-    }
 
     #plantilla1-search > div {
       margin-top: 10px;
