@@ -723,6 +723,11 @@ footer .nav li a:hover {
   word-spacing:0.1em;
 }
 
+  .plantilla3 .boxes article h2 {
+    font-size: 17px;
+    line-height: 21px;
+  }
+
 .boxes article footer {
   background-color:#fff;
   z-index:5;
@@ -771,11 +776,19 @@ footer .nav li a:hover {
   padding:3px 8px;
 }
 
+  .plantilla3 .boxes article .autor {
+    font-size: 11px;
+  }
+
 .boxes article .categoria {
   padding:3px 8px;
   position: relative;
   text-transform:uppercase;
 }
+
+  .plantilla3 .boxes article .categoria {
+    font-size: 12px;
+  }
 
 .boxes article .categoria em {
   color:#fff;

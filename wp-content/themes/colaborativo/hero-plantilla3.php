@@ -37,11 +37,11 @@
 		<div class="aright span2">
 			<?php if( $logo2 ) { ?>
 				<?php if( $olink ){ ?>
-					<a class="left" href="<?php echo $olink; ?>" target="_blank">
+					<a href="<?php echo $olink; ?>" target="_blank">
 				<?php } ?>
-				
+
 				<img class="alignleft" id="logo2" src="<?php echo $logo2[0];  ?>" />
-				
+
 				<?php if( $olink ){ ?>
 					</a>
 				<?php } ?>
