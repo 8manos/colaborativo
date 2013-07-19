@@ -540,7 +540,8 @@ function theme_settings( $groups ) {
                     'Pompiere' => 'Pompiere',
                     'Rambla:400,700' => 'Rambla',
                     'Antic+Slab' => 'Antic Slab',
-                    'Museo500' => 'Museo'
+                    'Museo500' => 'Museo',
+                    'Open+Sans:400,700' => 'Open Sans'
                 ),
                 'default' => 'Oswald:400,700'
             ),

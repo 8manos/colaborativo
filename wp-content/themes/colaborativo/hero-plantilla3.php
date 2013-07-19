@@ -12,7 +12,7 @@
 
 <div class="hero-unit row">
 	<div class="row-fluid">
-		<div class="span3 acenter">
+		<div class="span5 acenter">
 			<div id="event-logo">
 
 				<?php if( $elink ){ ?>
@@ -28,18 +28,18 @@
 			</div>
 		</div>
 
-		<div class="acenter span6">
+		<div class="acenter span5">
 			<h3><?php echo span_tags( get_bloginfo( 'description' ) ); ?></h3>
 		</div>
 
-		<div class="aright span3">
+		<div class="aright span2">
 			<?php if( $logo2 ) { ?>
 				<img class="alignleft" id="logo2" src="<?php echo $logo2[0];  ?>" />
 			<?php } ?>
 		</div>
 	</div>
 
-	<div id="plantilla1-search" class="row">
+	<div id="plantilla3-search" class="row">
 		<div class="acenter span12">
 			<form action="<?php bloginfo('url'); ?>" class="inline-form" method="get">
 				<input class="input-medium search-query" id="s" name="s" placeholder="<?php _e('Buscar','colaborativo'); ?>" type="text" />

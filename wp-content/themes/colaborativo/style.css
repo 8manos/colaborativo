@@ -14,6 +14,9 @@ body{
 }
 
   body.plantilla3 {
+    background-image: url(http://20dejulio.colaborativo.co/files/2013/07/fondo-colombia.jpg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
     -webkit-background-size: auto;
     -moz-background-size: auto;
     background-size: auto;
@@ -204,6 +207,7 @@ footer .nav li a:hover {
 
   .plantilla3 #featured {
     float: right;
+    margin-top: -35px;
     width: 245px;
   }
 
@@ -215,6 +219,13 @@ footer .nav li a:hover {
   padding: 8px 0 0 1.4em;
   text-transform: uppercase;
 }
+
+  .plantilla3 #featured h3 {
+    margin-bottom: 0px;
+    text-transform: none;
+    margin-left: -10px;
+    font-weight: bold;
+  }
 
 #featured [class*="span"] {
   float: left;
@@ -408,6 +419,10 @@ footer .nav li a:hover {
     text-decoration: none;
   }
 
+  .plantilla3 #filters {
+    margin-top: -67px;
+  }
+
 #footer {
   background-color:#19171A;
   color:#999;
@@ -507,7 +522,8 @@ footer .nav li a:hover {
 }
 
   .plantilla1 #hashtags-header-container,
-  .plantilla2 #hashtags-header-container {
+  .plantilla2 #hashtags-header-container,
+  .plantilla3 #hashtags-header-container {
     display: inline-block;
     margin: 0 0 0 -10px;
     padding: 11px 0;
@@ -571,6 +587,16 @@ footer .nav li a:hover {
     padding: 10px 0 0;
   }
 
+  .plantilla3 #hero-header h1 {
+    top: 20px;
+    right: -25px;
+  }
+
+    .plantilla3 #hero-header h1 span {
+      font-size: 31px;
+      padding: 2px 0 0;
+    }
+
 #hidden_articles { display: none; }
 
 #load-more {
@@ -627,6 +653,11 @@ footer .nav li a:hover {
 
   #plantilla1-search > div {
     margin-top: -75px;
+  }
+
+  #plantilla3-search > div {
+    margin-bottom: -45px;
+    margin-left: 155px;
   }
 
 #subheader-nav {
@@ -891,11 +922,20 @@ footer .nav li a:hover {
     display: none;
   }
 
+  .plantilla3 .colaborated {
+    text-transform: none;
+  }
+
 .colaborated h3 {
   font-family: 'Oswald';
   font-size: 20px;
   font-weight: normal;
 }
+
+  .plantilla3 .colaborated h3 {
+    font-weight: bold;
+    margin-left: 10px;
+  }
 
 .has-icon:before {
   background-image:url('img/sprite.png');
@@ -964,6 +1004,11 @@ footer .nav li a:hover {
     margin-top: 35px;
   }
 
+  .plantilla3 .hero-unit {
+    background-color: transparent;
+    padding: 101px 20px 71px;
+  }
+
 .hero-unit h3 {
   font-family:'Oswald';
   font-size:28px;
@@ -980,6 +1025,18 @@ footer .nav li a:hover {
 
   .plantilla1 .hero-unit h3 span {
     font-weight: bold;
+  }
+
+  .plantilla3 #logo2 {
+    margin-right: -20px;
+  }
+
+  .plantilla3 .hero-unit h3 {
+    color: #807E7F;
+    font-size: 24px;
+    margin-left: -45px;
+    text-align: left;
+    text-transform: none;
   }
 
 .hero-unit p.hashtags strong {
@@ -1019,6 +1076,15 @@ footer .nav li a:hover {
 
   .plantilla1 #logo2 {
     margin-right: 10px;
+  }
+
+  .plantilla3 .hero-unit #event-logo {
+    margin-left: -40px;
+    margin-top: -20px;
+  }
+
+  .plantilla3 .hero-unit #event-logo img {
+    max-width: none;
   }
 
 .hero-unit #event-logo p {
@@ -1531,6 +1597,12 @@ footer .nav li a:hover {
         float: none;
         text-align: center;
       }
+
+    .plantilla3 #s ,
+    .plantilla3 #s:focus {
+      height: 26px !important;
+      width: 250px;
+    }
 
     #plantilla1-search > div {
       margin-top: 10px;
