@@ -540,6 +540,11 @@ footer .nav li a:hover {
     position: relative;
     z-index: 2;
   }
+    
+    .plantilla3 #hashtags-header-container {
+      color: #fff;
+      left: -10px;
+    }
 
   .plantilla1 #hashtags-header-container {
     color: #961D82;
@@ -1354,6 +1359,10 @@ footer .nav li a:hover {
   color:#d1d1d1;
   font-size:12px;
 }
+
+  .plantilla3 .navbar .nav > li > a {
+    font-size: 17px;
+  }
 
 .navbar .nav > li > a:hover {
   color: #23A1CF;
