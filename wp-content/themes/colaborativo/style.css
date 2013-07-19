@@ -767,6 +767,11 @@ footer .nav li a:hover {
   right: 0;
 }
 
+  .plantilla3 .boxes article:hover .admin-tools {
+    left: 0;
+    right: auto;
+  }
+
 .boxes article .article-content {
   overflow:hidden;
   padding:3px 8px;
