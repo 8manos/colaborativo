@@ -47,7 +47,13 @@
 ?>
 
 <div class="row colaborated">
-	<h3 class="span12">Contenido generado por los asistentes</h3>
+	<h3 class="span12">
+		<?php if( $plantilla = 'plantilla3' ){ ?>
+			La voz de los colombianos
+		<?php }else{ ?>
+			Contenido generado por los asistentes
+		<?php } ?>
+	</h3>
 </div>
 
 <div class="subnav row" id="filters">

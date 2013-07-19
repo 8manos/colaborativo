@@ -1,5 +1,5 @@
 <div id="featured" class="boxes row">
-	<h3>Cubrimiento</h3>
+	<h3>Hechos de Colombia</h3>
 
 	<?php
 		$featured_query = new WP_Query(
