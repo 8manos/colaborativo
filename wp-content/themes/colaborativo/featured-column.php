@@ -27,7 +27,7 @@
 
 		if ( $featured_query->have_posts() ) : while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-			if($i >= 6){ continue; }
+			if($i >= 6){ $i++; continue; }
 
 			display_article();
 
