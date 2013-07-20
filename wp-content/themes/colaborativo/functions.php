@@ -780,7 +780,7 @@ function display_article_content() {
                     $video_id = $video_vars['v'];
             ?>
                 <div class="video-embed">
-                    <iframe width="480" height="320" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="http://www.youtube.com/embed/<?php echo $video_id; ?>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
                 </div>
             <?php 
                 }elseif(get_post_type() == "tweet"){ 

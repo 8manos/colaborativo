@@ -1516,7 +1516,8 @@ footer .nav li a:hover {
 }
 
 .single .entry-content .video-embed, .modal-body .video-embed {
-  margin-top:30px;
+  margin-left: 20px;
+  margin-top:0px;
   text-align:center;
 }
 
