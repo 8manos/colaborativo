@@ -1062,7 +1062,7 @@ function agregador_cajas(){
     if($cat){
         $params['cat'] = $cat;
     }
-    $params['posts_per_page'] = $operacion=='append' ? 13 : -1;
+    $params['posts_per_page'] = $operacion=='append' ? 13 : 6;
 
     //para poder filtrar por el id se usa un filtro
     //el filtro necesita que le digamos el id y si queremos mas o menos
