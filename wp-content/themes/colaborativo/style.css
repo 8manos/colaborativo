@@ -1541,7 +1541,7 @@ footer .nav li a:hover {
 }
 
 .sitio-16 #header-catnav .cat-item-3 {
-  display: none;
+  display: none !important;
 }
 
 .sprite {
@@ -1584,6 +1584,10 @@ footer .nav li a:hover {
 
     body.plantilla1 {
       padding-top: 0;
+    }
+
+    body.plantilla3 {
+      background-position: -235px 70px;
     }
 
     .plantilla1 #event-logo #logo {
@@ -1651,8 +1655,37 @@ footer .nav li a:hover {
       margin-top: 10px;
     }
 
-  #boxes_outer {
-    width: auto;
+    .plantilla3 #hero-header h1 {
+      top: 20px;
+      left: 0;
+      right: auto;
+      text-align: left;
+      float: none;
+      margin-top: 145px;
+      margin-bottom: -70px;
+    }
+
+    .plantilla3 .hero-unit h3 {
+      margin-left: 0;
+    }
+
+    #plantilla3-search input#s, #plantilla3-search input#s:focus {
+      display: none;
+    }
+
+  #boxes_outer ,
+  .plantilla3.cubrimiento #boxes_outer {
+    width: 100%;
+  }
+
+  .plantilla3 #boxes_container {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .plantilla3 #featured {
+    float: none;
+    width: 100%;
   }
 
   #feedback {
