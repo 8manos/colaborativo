@@ -1062,9 +1062,9 @@ function agregador_cajas(){
     if($cat){
         $params['cat'] = $cat;
     }
-    $params['posts_per_page'] = $operacion=='append' ? 13 : 2;
+    $params['posts_per_page'] = $operacion=='append' ? 13 : 4;
     $params['order'] = $operacion=='append' ? 'DESC' : 'ASC';
-    
+
     //para poder filtrar por el id se usa un filtro
     //el filtro necesita que le digamos el id y si queremos mas o menos
     global $time_for_filter, $op_for_filter;
