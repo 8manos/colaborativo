@@ -1114,7 +1114,8 @@ function agregador_cajas_featured(){
         'offset' => $offset,
         'post__in' => get_option( 'sticky_posts' ),
         'post_type' => $post_types,
-        'post_status' => 'publish'
+        'post_status' => 'publish',
+        'order' => 'ASC'
     );
     if($cat){
         $params['cat'] = $cat;

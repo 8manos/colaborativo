@@ -20,6 +20,7 @@ body{
     -webkit-background-size: auto;
     -moz-background-size: auto;
     background-size: auto;
+    overflow-x: hidden;
   }
 
 article.type-descarga h2:before {
