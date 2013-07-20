@@ -1675,6 +1675,7 @@ footer .nav li a:hover {
 
   #boxes_outer ,
   .plantilla3.cubrimiento #boxes_outer {
+    float: none;
     width: 100%;
   }
 
