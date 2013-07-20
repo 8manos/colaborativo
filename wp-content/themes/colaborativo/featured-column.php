@@ -27,9 +27,9 @@
 
 		if ( $featured_query->have_posts() ) : while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-			display_article();
+			if($i >= 6){ continue; }
 
-		    if($i % 3 == 0) {echo '</div><div class="clearfix item">';}
+			display_article();
 
 		$i++; endwhile; endif;
 
