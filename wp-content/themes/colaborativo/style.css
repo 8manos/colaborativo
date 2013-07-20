@@ -1234,12 +1234,13 @@ footer .nav li a:hover {
   display: none !important;
 }
 
-.modal-body .type-post .entry-content {
-  padding-left: 25px;
+.modal-body .type-post .entry-content ,
+.modal-body .type-imagen .entry-content {
+  padding-left: 23px;
 }
 
 .modal-body h2 {
-  padding-left: 25px;
+  padding-left: 23px;
 }
 
 .modal:focus {
@@ -1280,6 +1281,7 @@ footer .nav li a:hover {
 
   .modal article .prev:hover ,
   .modal article .next:hover {
+    text-decoration: none;
     width: 210px;
   }
 
@@ -1299,6 +1301,7 @@ footer .nav li a:hover {
 .modal article .next span {
   background-repeat: no-repeat;
   display: block;
+  font-size: 12px;
   min-height: 80px;
   padding-top: 10px;
   width: 170px;
@@ -1324,6 +1327,10 @@ footer .nav li a:hover {
   position: relative;
   right: 0;
   width: 165px;
+}
+
+.modal-header {
+  border-bottom: none;
 }
 
 .navbar .dropdown-menu {
