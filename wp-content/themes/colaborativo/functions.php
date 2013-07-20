@@ -1046,7 +1046,7 @@ function agregador_cajas(){
     if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
         $post_types = array( $type );
         if( $type == "imagen" ){
-            $post_types = array_merge( $post_types , "galeria");
+            $post_types = array_merge( $post_types , array( "galeria" ) );
         }
     }else{
         $post_types = get_post_types( array('public' => true, '_builtin' => false), 'names' );
