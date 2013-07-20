@@ -1239,6 +1239,11 @@ footer .nav li a:hover {
   padding-left: 23px;
 }
 
+.modal-body .type-tweet .entry-content img {
+  margin-left: 23px;
+  margin-top: 21px;
+}
+
 .modal-body h2 {
   padding-left: 23px;
 }
