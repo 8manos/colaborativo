@@ -1041,6 +1041,7 @@ function agregador_cajas(){
         $operacion = $_POST['op'];  /* append o prepend, modifica mayor que o menor que el tiempo */
         $time = $_POST['time'];     /* El time del primer o ultimo item en el view del usuario */
         $type = $_POST['type'];     /* Tipos de post */
+        $id_for_filter = $_POST['from'];
     }
 
     if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
@@ -1062,18 +1063,26 @@ function agregador_cajas(){
     if($cat){
         $params['cat'] = $cat;
     }
-    $params['posts_per_page'] = $operacion=='append' ? 13 : 7;
+    $params['posts_per_page'] = $operacion=='append' ? 13 : 4;
     $params['order'] = $operacion=='append' ? 'DESC' : 'ASC';
+    if ( $id_for_filter ){
+        $id_for_filter = $id_for_filter;
+        $params['post__not_in'] = array($id_for_filter);
+    }else{
+        $id_for_filter = 0;
+    }
 
     //para poder filtrar por el id se usa un filtro
     //el filtro necesita que le digamos el id y si queremos mas o menos
-    global $time_for_filter, $op_for_filter;
-    $time_for_filter = $time;
+    global $time_for_filter, $op_for_filter, $id_for_filter;
+    $time_for_filter = $time; 
     $op_for_filter = $operacion;
 
     add_filter( 'posts_where', 'filter_where' );
+    //add_filter( 'posts_where', 'filter_since_id' );
     $q = new WP_Query($params);
     remove_filter( 'posts_where', 'filter_where' );
+    //remove_filter( 'posts_where', 'filter_since_id' );
 
     $i = 1;
 
@@ -1126,7 +1135,7 @@ function agregador_cajas_featured(){
     //el filtro necesita que le digamos el id y si queremos mas o menos
     global $time_for_filter, $op_for_filter;
     $time_for_filter = $time;
-    $op_for_filter = $operacion;
+    $op_for_filter = $operacion; 
 
     add_filter( 'posts_where', 'filter_where' );
     $q = new WP_Query($params);
@@ -1202,6 +1211,12 @@ function filter_where($where='')
     $where .= $op_for_filter=='append' ? "<= " : ">= ";
     $where .= "'$time_for_filter'";
 
+    return $where;
+}
+
+function filter_since_id($where=''){
+    global $wpdb;
+    $where .= " AND ID > '$id_for_filter'";
     return $where;
 }
 

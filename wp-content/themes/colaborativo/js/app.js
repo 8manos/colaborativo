@@ -132,8 +132,15 @@
 				var date_time = $('#timeline article:last-child').attr('data-date');
 			}else{
 				var date_time = $('#timeline article:first-child').attr('data-date');
+				var from = $('#timeline article:first-child').data('id');
 			}
 			var posttype = $button.attr('data-type');
+
+			if( from > 0 ){
+
+			}else{
+				from = 0;
+			}
 
 			$.ajax({
 				url : '/wp-admin/admin-ajax.php',
@@ -145,7 +152,8 @@
 					time : date_time,
 					cat : cid,
 					op : dop,
-					type : posttype
+					type : posttype,
+					from : from
 				},
 
 				success : function(results){
