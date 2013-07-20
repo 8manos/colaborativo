@@ -1540,6 +1540,10 @@ footer .nav li a:hover {
   margin:1px 0;
 }
 
+.sitio-16 #header-catnav .cat-item-3 {
+  display: none;
+}
+
 .sprite {
   background-image:url('img/sprite.png');
   background-position:0px 0px;
