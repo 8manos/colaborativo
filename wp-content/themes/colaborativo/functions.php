@@ -1091,6 +1091,62 @@ function agregador_cajas(){
 add_action('wp_ajax_agregarboxes', 'agregador_cajas');
 add_action('wp_ajax_nopriv_agregarboxes', 'agregador_cajas');
 
+function agregador_cajas_featured(){
+
+    if(isset($_POST['offset'])){
+        $offset = $_POST['offset'];     /* Tipos de post */
+    }else{
+        $offset = 0;
+    }
+
+    if($type){ /* Si tenemos un type en el request, else, todos los tipos. */
+        $post_types = array( $type );
+        if( $type == "imagen" ){
+            $post_types = array_merge( $post_types , array( "galeria" ) );
+        }
+    }else{
+        $post_types = get_post_types( array('public' => true, '_builtin' => false), 'names' );
+        $post_types = array_merge( $post_types, array('post') );
+    }
+
+    //parametros para wp_query
+    $params = array(
+        'offset' => $offset,
+        'post__in' => get_option( 'sticky_posts' ),
+        'post_type' => $post_types,
+        'post_status' => 'publish'
+    );
+    if($cat){
+        $params['cat'] = $cat;
+    }
+    $params['posts_per_page'] = 5;
+
+    //para poder filtrar por el id se usa un filtro
+    //el filtro necesita que le digamos el id y si queremos mas o menos
+    global $time_for_filter, $op_for_filter;
+    $time_for_filter = $time;
+    $op_for_filter = $operacion;
+
+    add_filter( 'posts_where', 'filter_where' );
+    $q = new WP_Query($params);
+    remove_filter( 'posts_where', 'filter_where' );
+
+    $i = 1;
+
+    if($q->have_posts()){
+
+        while ($q->have_posts()) : $q->the_post();
+            display_article();
+        endwhile;
+
+    }else{
+        echo "0";
+    } exit;
+}
+
+add_action('wp_ajax_agregarboxesfeatured', 'agregador_cajas_featured');
+add_action('wp_ajax_nopriv_agregarboxesfeatured', 'agregador_cajas_featured');
+
 function load_content_box(){
 
     if(isset($_POST['id'])){

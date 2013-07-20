@@ -104,6 +104,27 @@
 		var addthis_config = addthis_config||{};
 		addthis_config.data_track_addressbar = false;
 
+		function getAjaxFeatured()
+		{
+			var offset = $( '#featured .clearfix article' ).length;
+			console.log (offset );
+
+			$.ajax({
+				url : '/wp-admin/admin-ajax.php',
+				type : 'POST',
+				async : true,
+				data :
+				{
+					action : 'agregarboxesfeatured',
+					offset : offset
+				},
+
+				success : function(results){
+					$( '#featured .clearfix' ).append( results );
+				}
+			});
+		}
+
 		function getAjax($button, dop)
 		{
 			var cid = $button.attr('data-cat');
@@ -143,6 +164,10 @@
 			$('#load-more').html("Cargando ...");
 
 			getAjax( $(this), 'append' );
+
+			if( $('#boxes_container #featured').length ){
+				getAjaxFeatured();
+			}
 		});
 
 		// Hide post if authorized
