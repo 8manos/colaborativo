@@ -676,7 +676,7 @@ function display_article() {
                                 the_post_thumbnail('article-thumb');
                             }else{
                         ?>
-        				    <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=280&h=280" />
+        				    <img width="280" height="280" src="http://colaborativo.co/wp-content/themes/colaborativo/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=280&h=280" />
                         <?php } ?>
         			</a>
         		<?php } ?>
@@ -687,7 +687,7 @@ function display_article() {
                     $video_id = $video_vars['v'];
             ?>
                     <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
-                        <img width="280" height="280" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=http://img.youtube.com/vi/<?php echo $video_id ?>/hqdefault.jpg&w=280&h=280" />
+                        <img width="280" height="280" src="http://colaborativo.co/wp-content/themes/colaborativo/img/timthumb.php?src=http://img.youtube.com/vi/<?php echo $video_id ?>/hqdefault.jpg&w=280&h=280" />
                     </a>
             <?php }elseif(get_post_type() == "sonido"){ ?>
                     <a class="thumbnail" href="<?php the_permalink(); ?>?ajax=true&width=940&height=90%" rel="prettyPhoto[<?php echo get_post_type() ?>]">
@@ -769,7 +769,7 @@ function display_article_content() {
                                 the_post_thumbnail();
                             }else{
                         ?>
-                            <img width="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=600" />
+                            <img width="600" src="http://colaborativo.co/wp-content/themes/colaborativo/img/timthumb.php?src=<?php echo($enclosure_array[0]); ?>&w=600" />
                         <?php } ?>
                     </a>
                 <?php } ?>
@@ -790,7 +790,7 @@ function display_article_content() {
                     <h2><?php echo(make_clickable(get_the_title())); ?></h2>
 
                     <?php if( $media_content ){ ?>
-                             <img width="600" src="<?php bloginfo('template_directory'); ?>/img/timthumb.php?src=<?php echo($media_content); ?>&w=600" />
+                             <img width="600" src="http://colaborativo.co/wp-content/themes/colaborativo/img/timthumb.php?src=<?php echo($media_content); ?>&w=600" />
                     <?php } ?>
 
             <?php }elseif(get_post_type() == "post"){
