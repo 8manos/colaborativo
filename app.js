@@ -15,7 +15,7 @@ var express = require('express')
 var app = express();
 
 var Mongoose = require('mongoose');
-var db = Mongoose.createConnection( process.env.MONGOLAB_URI, 'colaborativo');
+var db = Mongoose.connect( process.env.MONGOLAB_URI );
 var tmpDir = os.tmpDir();
 
 // all environments
