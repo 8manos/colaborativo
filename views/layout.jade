@@ -1,0 +1,16 @@
+doctype 5
+html(ng-app="colaborativo")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/socket.io/socket.io.js', type='text/javascript')
+    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js",type="application/javascript")	
+
+  body
+    div
+      block content
+
+    script(src="javascripts/app/app.js",type="application/javascript")
+    script(src="javascripts/app/controllers.js",type="application/javascript")
+    script(src="javascripts/app/directives.js",type="application/javascript")
+    script(src="javascripts/app/services.js",type="application/javascript")
