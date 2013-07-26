@@ -8,12 +8,15 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , io = require('socket.io')
-  , path = require('path');
+  , path = require('path')
+  , lessMiddleware = require('less-middleware')
+  , os = require('os');
 
 var app = express();
 
 var Mongoose = require('mongoose');
 // var db = Mongoose.createConnection('localhost', 'mytestapp');
+var tmpDir = os.tmpDir();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -24,6 +27,12 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use(lessMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: tmpDir,
+  compress: true
+}));
+app.use(express.static(tmpDir));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
