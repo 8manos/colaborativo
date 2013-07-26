@@ -2,9 +2,9 @@ section#publicaciones
   span.count {{posts.length}} publicaciones
   article(ng-repeat="post in posts | limitTo:10")
     h2 
-     a(href="http://twitter.com/{{post.user.screen_name}}", target="_blank") 
-      img(src="{{post.user.profile_image_url}}")
-      {{post.user.name}}: 
+     a(href="http://twitter.com/{{post.screen_name}}", target="_blank") 
+      img(src="{{post.profile_img}}")
+      {{post.name}}: 
     p {{post.text}}
     span.time 
-     a(href="http://twitter.com/{{post.user.screen_name}}/status/{{post.id_str}}", target="_blank") {{post.created_at}}
+     a(href="http://twitter.com/{{post.screen_name}}/status/{{post.id}}", target="_blank") {{post.created_at}}

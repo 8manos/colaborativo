@@ -10,11 +10,14 @@ var express = require('express')
   , io = require('socket.io')
   , path = require('path')
   , lessMiddleware = require('less-middleware')
-  , os = require('os');
+  , os = require('os')
+  , Twit = require('twit');
 
 var app = express();
 
-var Mongoose = require('mongoose');
+var Mongoose = require('mongoose')
+    , Schema = Mongoose.Schema;
+
 var db = Mongoose.connect( process.env.MONGOLAB_URI );
 var tmpDir = os.tmpDir();
 
@@ -40,8 +43,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-	var Twit = require('twit');
-
 	var T = new Twit({
 	    consumer_key: process.env.T_CONSUMER_KEY
 	  , consumer_secret: process.env.T_CONSUMER_SECRET
@@ -54,6 +55,33 @@ if ('development' == app.get('env')) {
 	//
 	var stream = T.stream('statuses/filter', { track: '#WifeHerIf' });
 
+	var tweetSchema = new Schema({ 
+		  id: Number,
+		  screen_name: String,
+          name: String,
+          text: String,
+          profile_img: String
+        }, { capped: 12000 })
+
+	var Tweet = Mongoose.model('Tweet', tweetSchema);
+
+	stream.on('tweet', function (tweet) {
+
+		var twitty = new Tweet({ 
+			           id: tweet.id_str,
+			           name: tweet.user.name,
+			           text: tweet.text,
+			           screen_name: tweet.user.screen_name,
+			           profile_img: tweet.user.profile_image_url
+			         });
+
+		twitty.save(function (err) {
+		  if (err) // ...
+		  console.log('pio');
+		});
+
+	});
+
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/users', user.list);
@@ -64,8 +92,25 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
     console.log('A socket connected!');
 
-    stream.on('tweet', function (tweet) {
-        socket.volatile.emit('tweet', tweet);
+    var skip = Tweet.count({}, function(err, c){
+    	skip_count = c-1;
+
+    	last = Tweet.where().skip(skip_count).limit(1).exec(function(err, doc){ 
+    		     
+    		     var last_id = doc[0].id;
+
+    		     	console.log("Last "+last_id);
+
+				    var streamdb = Tweet.find().where('id').gte(last_id).limit(1).tailable().stream();
+
+				    streamdb.on('data', function (doc) {
+				      socket.volatile.emit('tweet', doc);
+				    }).on('error', function (err) {
+				      console.log(err);
+				    }).on('close', function () {
+				      console.log("closed db stream");
+				    });
+    		   });
     });
 });
 
