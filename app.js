@@ -13,7 +13,7 @@ var express = require('express')
 var app = express();
 
 var Mongoose = require('mongoose');
-var db = Mongoose.createConnection('localhost', 'mytestapp');
+// var db = Mongoose.createConnection('localhost', 'mytestapp');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
