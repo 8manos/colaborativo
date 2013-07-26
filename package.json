@@ -10,6 +10,8 @@
     "jade": "*",
     "mongodb": ">=0.9.6-7",
     "mongoose": ">=3.6",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "twit": "~1.1.8",
+    "foreman": "0.0.25"
   }
 }
