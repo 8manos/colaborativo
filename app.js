@@ -43,45 +43,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-	var T = new Twit({
-	    consumer_key: process.env.T_CONSUMER_KEY
-	  , consumer_secret: process.env.T_CONSUMER_SECRET
-	  , access_token: process.env.T_ACCESS_TOKEN
-	  , access_token_secret: process.env.T_ACCESS_SECRET
-	});
-
-	//
-	//  filter the twitter public stream by the word 'mango'. 
-	//
-	var stream = T.stream('statuses/filter', { track: '#WifeHerIf' });
-
-	var tweetSchema = new Schema({ 
-		  id: Number,
-		  screen_name: String,
-          name: String,
-          text: String,
-          profile_img: String
-        }, { capped: 12000 })
-
-	var Tweet = Mongoose.model('Tweet', tweetSchema);
-
-	stream.on('tweet', function (tweet) {
-
-		var twitty = new Tweet({ 
-			           id: tweet.id_str,
-			           name: tweet.user.name,
-			           text: tweet.text,
-			           screen_name: tweet.user.screen_name,
-			           profile_img: tweet.user.profile_image_url
-			         });
-
-		twitty.save(function (err) {
-		  if (err) // ...
-		  console.log('pio');
-		});
-
-	});
-
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/users', user.list);
@@ -89,9 +50,18 @@ app.get('/users', user.list);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var tweetSchema = new Schema({ 
+	  id: Number,
+	  screen_name: String,
+      name: String,
+      text: String,
+      profile_img: String
+    }, { capped: 12000 })
+
+var Tweet = Mongoose.model('Tweet', tweetSchema);
+
 io.sockets.on('connection', function (socket) {
     console.log('A socket connected!');
-
     var skip = Tweet.count({}, function(err, c){
     	skip_count = c-1;
 
