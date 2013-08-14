@@ -268,7 +268,7 @@ footer .nav li a:hover {
   text-align:left;
 }
 
-#filters-buttons a {
+#filters-buttons li a {
   background-position: -225px -190px;
   font-family: 'Oswald';
   height: 50px;
@@ -277,7 +277,7 @@ footer .nav li a:hover {
   width: 50px;
 }
 
-#filters-buttons a.tipo-descarga {
+#filters-buttons li.tipo-descarga a {
     background-position:-535px -190px;
 }
 
@@ -288,49 +288,49 @@ footer .nav li a:hover {
   display:none;
 }
 
-#filters-buttons a.tipo-imagen {
+#filters-buttons li.tipo-imagen a {
   background-position:-285px -190px;
 }
 
-#filters-buttons a.tipo-sonido {
+#filters-buttons li.tipo-sonido a {
     background-position:-470px -190px;
 }
 
-#filters-buttons a.tipo-tweet {
+#filters-buttons li.tipo-tweet a {
     background-position:-410px -190px;
 }
 
-#filters-buttons a.tipo-video {
+#filters-buttons li.tipo-video {
     background-position:-345px -190px;
 }
 
-#filters-buttons a:hover.tipo-descarga ,
-  .post-type-archive-descarga #filters-buttons a.tipo-descarga {
+#filters-buttons li:hover.tipo-descarga a ,
+  .post-type-archive-descarga #filters-buttons li.tipo-descarga a {
       background-position:-535px -243px;
 }
 
-#filters-buttons a:hover.tipo-imagen ,
-  .post-type-archive-imagen #filters-buttons a.tipo-imagen {
+#filters-buttons li:hover.tipo-imagen a ,
+  .post-type-archive-imagen #filters-buttons li.tipo-imagen a {
     background-position:-285px -243px;
 }
 
-#filters-buttons a:hover.tipo-post ,
-  .post-type-archive-post #filters-buttons a.tipo-descarga {
+#filters-buttons li:hover.tipo-post a ,
+  .post-type-archive-post #filters-buttons li.tipo-descarga a {
       background-position:-225px -243px;
 }
 
-#filters-buttons a:hover.tipo-sonido ,
-  .post-type-archive-sonido #filters-buttons a.tipo-sonido {
+#filters-buttons li:hover.tipo-sonido a ,
+  .post-type-archive-sonido #filters-buttons li.tipo-sonido a {
       background-position:-470px -243px;
 }
 
-#filters-buttons a:hover.tipo-tweet ,
-  .post-type-archive-tweet #filters-buttons a.tipo-tweet {
+#filters-buttons li:hover.tipo-tweet a ,
+  .post-type-archive-tweet #filters-buttons li.tipo-tweet a {
       background-position:-410px -243px;
 }
 
-#filters-buttons a:hover.tipo-video ,
-  .post-type-archive-video #filters-buttons a.tipo-video {
+#filters-buttons li:hover.tipo-video a ,
+  .post-type-archive-video #filters-buttons li.tipo-video a {
       background-position:-345px -243px;
 }
 
