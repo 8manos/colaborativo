@@ -268,7 +268,10 @@ footer .nav li a:hover {
   text-align:left;
 }
 
-#filters-buttons ul { list-style-type: none; }
+#filters-buttons ul { 
+  list-style-type: none; 
+  text-align: center;
+}
 
 #filters-buttons li {
   display: inline-block;
@@ -281,11 +284,11 @@ footer .nav li a:hover {
   font-family: 'Oswald';
   height: 50px;
   margin: 0 8px;
-  vertical-align:middle;
-  position: relative;
-  width: 50px;
-  text-indent: -200%;
   overflow: hidden;
+  position: relative;
+  text-indent: -200%;
+  vertical-align:middle;
+  width: 50px;
 }
 
 #filters-buttons li.tipo-descarga a {
