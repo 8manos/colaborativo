@@ -270,6 +270,10 @@ footer .nav li a:hover {
 
 #filters-buttons ul { list-style-type: none; }
 
+#filters-buttons li {
+  display: inline-block;
+}
+
 #filters-buttons li a {
   background-image:url('img/sprite.png');
   background-position: -225px -190px;
@@ -278,7 +282,10 @@ footer .nav li a:hover {
   height: 50px;
   margin: 0 8px;
   vertical-align:middle;
+  position: relative;
   width: 50px;
+  text-indent: -200%;
+  overflow: hidden;
 }
 
 #filters-buttons li.tipo-descarga a {
