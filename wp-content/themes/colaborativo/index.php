@@ -72,7 +72,7 @@
 		'posts_per_page' => 20 ,
 		'post_status' => 'publish',
 		'post__not_in' => get_option( 'sticky_posts' ),
-		'offset' => 6
+		'offset' => 30
 	) );//escondemos 10 y mostramos 10
 
 	query_posts( $args );
