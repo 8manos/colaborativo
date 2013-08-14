@@ -270,6 +270,7 @@ footer .nav li a:hover {
 
 #filters-buttons li a {
   background-position: -225px -190px;
+  display: inline-block;
   font-family: 'Oswald';
   height: 50px;
   margin: 0 8px;
