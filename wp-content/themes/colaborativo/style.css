@@ -268,7 +268,10 @@ footer .nav li a:hover {
   text-align:left;
 }
 
+#filters-buttons ul { list-style-type: none; }
+
 #filters-buttons li a {
+  background-image:url('img/sprite.png');
   background-position: -225px -190px;
   display: inline-block;
   font-family: 'Oswald';
