@@ -1064,7 +1064,6 @@ function agregador_cajas(){
         $params['cat'] = $cat;
     }
     $params['posts_per_page'] = $operacion=='append' ? 13 : -1;
-    $params['order'] = $operacion=='append' ? 'DESC' : 'ASC';
     if ( $id_for_filter ){
         $id_for_filter = $id_for_filter;
         $params['post__not_in'] = array($id_for_filter);
