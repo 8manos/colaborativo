@@ -1631,6 +1631,10 @@ footer .nav li a:hover {
       padding-left: 0px;
     }
 
+      .plantilla1 .hero-unit h3 {
+        padding-left: 0;
+      }
+      
     .plantilla1 #counter_wrapper {
       display: none;
     }
