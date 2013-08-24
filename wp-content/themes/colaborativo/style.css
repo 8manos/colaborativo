@@ -314,7 +314,7 @@ footer .nav li a:hover {
     background-position:-410px -190px;
 }
 
-#filters-buttons li.tipo-video {
+#filters-buttons li.tipo-video a {
     background-position:-345px -190px;
 }
 
