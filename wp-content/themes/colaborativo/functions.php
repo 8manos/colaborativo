@@ -541,7 +541,8 @@ function theme_settings( $groups ) {
                     'Rambla:400,700' => 'Rambla',
                     'Antic+Slab' => 'Antic Slab',
                     'Museo500' => 'Museo',
-                    'Open+Sans:400,700' => 'Open Sans'
+                    'Open+Sans:400,700' => 'Open Sans',
+                    'Raleway:400,700' => 'Raleway'
                 ),
                 'default' => 'Oswald:400,700'
             ),
@@ -556,7 +557,8 @@ function theme_settings( $groups ) {
                     'Quattrocento+Sans:400,700' => 'Quattrocento Sans',
                     'Noto+Sans:400,700' => 'Noto Sans',
                     'Karla:400,700' => 'Karla',
-                    'Museo300' => 'Museo 300'
+                    'Museo300' => 'Museo 300',
+                    'Raleway:400,700' => 'Raleway'
                 ),
                 'default' => 'Open+Sans:400,600'
             ),
