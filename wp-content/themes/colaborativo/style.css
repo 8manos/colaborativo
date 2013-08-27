@@ -1765,7 +1765,8 @@ footer .nav li a:hover {
 @media (max-width: 767px) {
 
   body.sitio-19.plantilla3 {
-  background-position: -245px 20px !important;
+    background-color: #E81C25;
+  background-position: -245px 50px !important;
   }
 
     body.plantilla1 {
