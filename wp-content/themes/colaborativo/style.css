@@ -23,6 +23,10 @@ body{
     overflow-x: hidden;
   }
 
+  body.sitio-19 {
+    background-position: center 20px !important;
+  }
+
 article.type-descarga h2:before {
   background-position: -224px -109px;
 }
@@ -172,6 +176,11 @@ footer .nav li a:hover {
   .plantilla1 #boxes_outer {
     background: #f5f5f5;
   }
+
+    .sitio-19 .plantilla1 #boxes_outer {
+      -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+    }
 
   .plantilla3.cubrimiento #boxes_outer {
     float: left;
@@ -610,6 +619,10 @@ footer .nav li a:hover {
     margin: 0;
   }
 
+  .sitio-19 #hero-header {
+    margin-top: -35px;
+  }
+
 #hero-header h1 {
   color: #fff;
   font-size: 46px;
@@ -1042,6 +1055,9 @@ footer .nav li a:hover {
   }
 
     .sitio-19.plantilla1 .hero-unit {
+      border-radius: 0;
+      -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+      box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
       margin-top: 0px;
     }
 
@@ -1081,8 +1097,11 @@ footer .nav li a:hover {
         }
 
           .sitio-19.plantilla1 .hero-unit:after {
+            background: url('img/iab/corner-iab.jpg') no-repeat top right;
             display: block;
-            background: url('img/iab/corner-iab.jpg') no-repeat;
+            right: -12px;
+            top: -10px;
+            z-index: 2;
           }
 
   .plantilla2 .hero-unit {
@@ -1482,6 +1501,11 @@ footer .nav li a:hover {
     background-color: #f5f5f5;
   }
 
+   .sitio-19 .plantilla1 .paging {
+    -webkit-box-shadow: 0px 8px 7px rgba(0,0,0,0.6);
+     box-shadow: 0px 8px 7px rgba(0,0,0,0.6);
+   }
+
 .paging #load-more {
   display:none;
 }
@@ -1505,6 +1529,12 @@ footer .nav li a:hover {
     color: #fff;
     font-size: 1.5em;
   }
+
+    .js .sitio-19.plantilla1 .paging #load-more {
+      border-radius: 0;
+      background: #E81C25;
+      border-bottom: 4px solid #AF0B14;
+    }
 
 .paging .nav {
 
@@ -1702,6 +1732,10 @@ footer .nav li a:hover {
     .plantilla1 #hero-header {
       margin-bottom: 380px;
     }
+
+     .sitio-19 #hero-header {
+        margin-bottom: 126px;
+     }
 
     .plantilla1 #hero-header h1 {
       font-size: 26px;
