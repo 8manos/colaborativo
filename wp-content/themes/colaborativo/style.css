@@ -1159,6 +1159,10 @@ footer .nav li a:hover {
             right: -12px;
             top: -10px;
             z-index: 2;
+            content:" ";
+            height: 100px;
+            position: absolute;
+            width: 511px;
           }
 
   .plantilla2 .hero-unit {
