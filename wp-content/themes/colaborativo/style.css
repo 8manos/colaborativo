@@ -1730,6 +1730,15 @@ footer .nav li a:hover {
   word-spacing: 0.15em;
 }
 
+@media (max-width: 979px) and (min-width: 768px) {
+  .sitio-19.plantilla3 .container {
+    width: auto;
+    padding-left: 50px;
+    padding-right: 25px;
+  }
+}
+
+
 @media (max-width: 979px) {
   body {
     padding-top: 0;
@@ -1737,6 +1746,10 @@ footer .nav li a:hover {
 }
 
 @media (max-width: 767px) {
+
+  body.sitio-19.plantilla3 {
+  background-position: -245px 20px !important;
+  }
 
     body.plantilla1 {
       padding-top: 0;
@@ -1829,6 +1842,15 @@ footer .nav li a:hover {
       margin-bottom: -70px;
     }
 
+     .sitio-19.plantilla3 #hero-header h1 {
+      margin-top: 15px;
+      margin-bottom: -44px;
+     }
+
+     .sitio-19.plantilla3 #hero-header h1 span {
+      font-size: 33px;
+     }
+
     .plantilla3 .hero-unit h3 {
       margin-left: 0;
     }
@@ -1851,6 +1873,29 @@ footer .nav li a:hover {
   .plantilla3 #featured {
     float: none;
     width: 100%;
+  }
+
+  .sitio-19.plantilla3 .hero-unit #event-logo img {
+    float: none;
+    margin-left: 20px;
+    margin-right: auto;
+  }
+
+  .sitio-19.plantilla3 .hero-unit h3 {
+    margin-left: 0;
+  }
+
+  .sitio-19.plantilla3 .hero-unit .aright {
+    text-align: center;
+  }
+
+  .sitio-19.plantilla3 #logo2 {
+    margin-right: 0;
+  }
+
+  .sitio-19.plantilla3 #filters-buttons {
+    margin-left: -145px;
+    top: -48px;
   }
 
   #feedback {
