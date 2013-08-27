@@ -1041,6 +1041,10 @@ footer .nav li a:hover {
     padding-bottom: 0;
   }
 
+    .sitio-19.plantilla1 .hero-unit {
+      margin-top: 0px;
+    }
+
     .plantilla1 .hero-unit:after ,
     .plantilla1 .hero-unit:before {
       background-image: url('img/rock/esquinas.png');
@@ -1067,10 +1071,19 @@ footer .nav li a:hover {
         margin-top: -50px;
       }
 
+        .sitio-19.plantilla1 .hero-unit > .row-fluid {
+          margin-top: 0px;
+        }
+
         .sitio-19.plantilla1 .hero-unit:after ,
         .sitio-19.plantilla1 .hero-unit:before {
           display: none;
         }
+
+          .sitio-19.plantilla1 .hero-unit:after {
+            display: block;
+            background: url('img/iab/corner-iab.jpg') no-repeat;
+          }
 
   .plantilla2 .hero-unit {
     -webkit-box-shadow: 0 5px 7px #bbb;
