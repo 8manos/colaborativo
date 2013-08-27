@@ -1753,6 +1753,11 @@ footer .nav li a:hover {
     padding-left: 50px;
     padding-right: 25px;
   }
+
+  body.sitio-19.plantilla3 {
+    background-color: #E81C25;
+    background-position: -245px 40px !important;
+  }
 }
 
 
