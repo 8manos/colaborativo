@@ -1768,6 +1768,18 @@ footer .nav li a:hover {
     margin-top: 140px; 
   }
 
+  .sitio-19.plantilla3 #boxes_container {
+    width: auto;
+  }
+
+  .sitio-19.plantilla3.cubrimiento #boxes_outer {
+     width: 660px;
+  }
+
+  .sitio-19 .boxes ..span3 {
+    width: 200px;
+  }
+
 }
 
 
