@@ -152,6 +152,10 @@ footer .nav li a:hover {
 
 }
 
+  .plantilla3 #bottom-banners {
+    display: none;
+  }
+
   .plantilla1 #bottom-banners {
     display: none;
   }
@@ -166,6 +170,10 @@ footer .nav li a:hover {
     padding-left: 10px;
     width: 950px;
   }
+
+    .sitio-19.plantilla3 #boxes_container {
+      background-color: #f5f5f5;
+    }
 
 #boxes_outer {
   margin-left: -20px;
@@ -456,6 +464,10 @@ footer .nav li a:hover {
   .plantilla3 #filters {
     margin-top: -67px;
   }
+
+    .sitio-19.plantilla3 #filters {
+      background-color: #f5f5f5;
+    }
 
 #footer {
   background-color:#19171A;
@@ -1055,6 +1067,7 @@ footer .nav li a:hover {
   }
 
     .sitio-19.plantilla3 .hero-unit {
+      background-color: #f5f5f5;
       border-radius: 0;
       -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
       box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
@@ -1497,7 +1510,8 @@ footer .nav li a:hover {
   padding-top:3em;
 }
 
-  .plantilla1 .paging {
+  .plantilla1 .paging,
+  .sitio-19.plantilla3 {
     background-color: #f5f5f5;
   }
 
