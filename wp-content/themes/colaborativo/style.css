@@ -1186,10 +1186,14 @@ footer .nav li a:hover {
     font-weight: bold;
   }
 
-    .sitio-19 .plantilla3 .hero-unit h3 {
+    .sitio-19.plantilla3 .hero-unit h3 {
       margin-left: -100px;
       text-align: center;
     }
+
+      .sitio-19.plantilla3 .hero-unit h3 span {
+        font-weight: bold;
+      }
 
   .plantilla3 #logo2 {
     margin-right: -20px;

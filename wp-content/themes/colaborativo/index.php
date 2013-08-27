@@ -49,7 +49,7 @@
 <div class="row colaborated">
 	<h3 class="span12">
 		<?php if( $plantilla = 'plantilla3' ){ ?>
-			La voz de los colombianos
+			Actividades
 		<?php }else{ ?>
 			Contenido generado por los asistentes
 		<?php } ?>
