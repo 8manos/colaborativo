@@ -14,7 +14,7 @@
 
 <div class="hero-unit row">
 	<div class="row-fluid">
-		<div class="span5 acenter">
+		<div class="span5 acenter logo-container">
 			<div id="event-logo">
 
 				<?php if( $elink ){ ?>

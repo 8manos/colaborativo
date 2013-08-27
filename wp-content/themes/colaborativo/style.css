@@ -402,6 +402,10 @@ footer .nav li a:hover {
       margin-left: -115px;
     }
 
+      .sitio-19.plantilla3 #filters-buttons {
+        margin-left: -170px;
+      }
+
   .plantilla1 #filters-buttons h3 ,
   .plantilla3 #filters-buttons h3 {
     line-height: 34px;
@@ -576,6 +580,9 @@ footer .nav li a:hover {
     position: relative;
     z-index: 2;
   }
+    .plantilla3 .logo-container {
+      width: 37% !important;
+    }
     
     .plantilla3 #hashtags-header-container {
       color: #fff;
@@ -749,6 +756,10 @@ footer .nav li a:hover {
     margin-bottom: -53px;
     margin-left: 260px;
   }
+
+    .sitio-19 #plantilla3-search > div {
+      margin-left: 200px;
+    }
 
 #subheader-nav {
 
@@ -1144,6 +1155,10 @@ footer .nav li a:hover {
     padding: 101px 20px 71px;
   }
 
+    .sitio-19.plantilla3 .hero-unit {
+      padding: 55px 20px 71px;
+    }
+
 .hero-unit h3 {
   font-family:'Oswald';
   font-size:28px;
@@ -1161,6 +1176,11 @@ footer .nav li a:hover {
   .plantilla1 .hero-unit h3 span {
     font-weight: bold;
   }
+
+    .sitio-19 .plantilla3 .hero-unit h3 {
+      margin-left: -100px;
+      text-align: center;
+    }
 
   .plantilla3 #logo2 {
     margin-right: -20px;

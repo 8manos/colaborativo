@@ -1,5 +1,5 @@
 	<div class="span12">
-		<div class="btn-group" id="filters-buttons">
+		<div class="btn-group dropdown" id="filters-buttons">
 			<h3>Filtrar contenido por:</h3>
 			<ul>
 				<?php
