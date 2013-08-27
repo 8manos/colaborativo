@@ -16,7 +16,7 @@
 		array_reverse($post_types);
 			  foreach ($post_types  as $post_type ) {
 			  	$link = add_query_arg( 'post_type', $post_type );
-			    echo '<a class="ir sprite tipo-'. $post_type .'" href="'.$link.'" class="btn'. $post_type .'">'. $post_type. '</a>';
+				echo '<li class="tipo-'. $post_type .'"><a href="'.$link.'" class="btn'. $post_type .'">'. $post_type. '</a></li>';
 			  }
 		?>
 		</div>
