@@ -302,6 +302,11 @@ footer .nav li a:hover {
   display: inline-block;
 }
 
+  #filters-buttons.dropdown li {
+    display: block;
+    text-align: left;
+  }
+
 #filters-buttons li a {
   background-image:url('img/sprite.png');
   background-position: -225px -190px;
@@ -315,6 +320,14 @@ footer .nav li a:hover {
   vertical-align:middle;
   width: 50px;
 }
+
+  #filters-buttons.dropdown li a {
+    background-image: none;
+    display: block;
+    height: auto;
+    width: auto;
+    text-indent: 0;
+  }
 
 #filters-buttons li.tipo-descarga a {
     background-position:-535px -190px;
