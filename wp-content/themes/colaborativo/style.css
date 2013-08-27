@@ -580,6 +580,10 @@ footer .nav li a:hover {
     z-index: -1;
   }
 
+    .sitio-19.plantilla1 #hashtags-header-container:before {
+      display: none;
+    }
+
 #header-catnav {
   margin-bottom: 0;
 }
@@ -610,6 +614,10 @@ footer .nav li a:hover {
   text-shadow: 1px 1px 7px black;
   top: -55px;
 }
+
+  .sitio-19 #hero-header h1 {
+    font-size: 33px;
+  }
 
   #hero-header h1 span {
     display: block;
@@ -1118,6 +1126,10 @@ footer .nav li a:hover {
     margin: -180px 0 0 -30px;
     max-width: none;
   }
+
+    .sitio-19.plantilla1 #event-logo #logo {
+      margin-top: -15px;
+    }
 
   .plantilla2 #event-logo img {
     background-color: #fff;
@@ -1658,6 +1670,12 @@ footer .nav li a:hover {
     .plantilla1 #hashtags-header-container {
       bottom: -45px;
     }
+
+     .sitio-19.plantilla1 #hashtags-header-container {
+      color: #E81C25;
+      font-weight: bold;
+      padding-top: 10px;
+     }
 
     .plantilla1 #hero-header {
       margin-bottom: 380px;
