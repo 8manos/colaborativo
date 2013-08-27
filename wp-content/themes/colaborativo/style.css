@@ -1758,6 +1758,16 @@ footer .nav li a:hover {
     background-color: #E81C25;
     background-position: -245px 40px !important;
   }
+
+  .sitio-19.plantilla3 #hero-header h1 {
+    top: 77px;
+    margin-right: -140px;
+  }
+
+  .sitio-19.plantilla3 .hero-unit {
+    margin-top: 140px; 
+  }
+
 }
 
 
