@@ -1898,6 +1898,23 @@ footer .nav li a:hover {
     top: -48px;
   }
 
+  .sitio-19.plantilla3 #boxes_container {
+    width: auto;
+  }
+
+  .sitio-19.plantilla3 .isotope [class*="span"] {
+    width: 100%;
+  }
+
+  .sitio-19.plantilla3 #featured {
+    margin-top: 0;
+    margin-left: -20px;
+  }
+
+  .sitio-19.plantilla3 #featured article {
+    width: 100%;
+  }
+
   #feedback {
     display: none;
   }
