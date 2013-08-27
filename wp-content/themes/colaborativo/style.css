@@ -577,7 +577,7 @@ footer .nav li a:hover {
     font-size: 25px;
   }
 
-    .sitio-19.plantilla1 #hashtags-header-container {
+    .sitio-19.plantilla3 #hashtags-header-container {
       color: #E81C25;
       font-weight: bold;
       padding-top: 10px;
@@ -595,7 +595,7 @@ footer .nav li a:hover {
     z-index: -1;
   }
 
-    .sitio-19.plantilla1 #hashtags-header-container:before {
+    .sitio-19.plantilla3 #hashtags-header-container:before {
       display: none;
     }
 
@@ -1054,7 +1054,7 @@ footer .nav li a:hover {
     padding-bottom: 0;
   }
 
-    .sitio-19.plantilla1 .hero-unit {
+    .sitio-19.plantilla3 .hero-unit {
       border-radius: 0;
       -webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
       box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
@@ -1087,16 +1087,16 @@ footer .nav li a:hover {
         margin-top: -50px;
       }
 
-        .sitio-19.plantilla1 .hero-unit > .row-fluid {
+        .sitio-19.plantilla3 .hero-unit > .row-fluid {
           margin-top: 0px;
         }
 
-        .sitio-19.plantilla1 .hero-unit:after ,
-        .sitio-19.plantilla1 .hero-unit:before {
+        .sitio-19.plantilla3 .hero-unit:after ,
+        .sitio-19.plantilla3 .hero-unit:before {
           display: none;
         }
 
-          .sitio-19.plantilla1 .hero-unit:after {
+          .sitio-19.plantilla3 .hero-unit:after {
             background: url('img/iab/corner-iab.jpg') no-repeat top right;
             display: block;
             right: -12px;
@@ -1174,7 +1174,7 @@ footer .nav li a:hover {
     max-width: none;
   }
 
-    .sitio-19.plantilla1 #event-logo #logo {
+    .sitio-19.plantilla3 #event-logo #logo {
       margin-top: -15px;
     }
 
@@ -1530,7 +1530,7 @@ footer .nav li a:hover {
     font-size: 1.5em;
   }
 
-    .js .sitio-19.plantilla1 .paging #load-more {
+    .js .sitio-19.plantilla3 .paging #load-more {
       border-radius: 0;
       background: #E81C25;
       border-bottom: 4px solid #AF0B14;
