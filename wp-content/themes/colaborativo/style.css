@@ -568,6 +568,12 @@ footer .nav li a:hover {
     font-size: 25px;
   }
 
+    .sitio-19.plantilla1 #hashtags-header-container {
+      color: #E81C25;
+      font-weight: bold;
+      padding-top: 10px;
+    }
+
   .plantilla1 #hashtags-header-container:before {
     background-image: url('img/rock/recuadro.png');
     content: " ";
@@ -624,6 +630,10 @@ footer .nav li a:hover {
     font-size: 65px;
     padding: 10px 0 0;
   }
+
+    .sitio-19 #hero-header h1 span {
+      font-size: 50px;
+    }
 
   .plantilla3 #hero-header h1 {
     top: 20px;
@@ -1670,12 +1680,6 @@ footer .nav li a:hover {
     .plantilla1 #hashtags-header-container {
       bottom: -45px;
     }
-
-     .sitio-19.plantilla1 #hashtags-header-container {
-      color: #E81C25;
-      font-weight: bold;
-      padding-top: 10px;
-     }
 
     .plantilla1 #hero-header {
       margin-bottom: 380px;
