@@ -228,7 +228,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 					'type' => '3',
 					'timestamp' => current_time( 'timestamp' ),
 					'host' => '',
-					'user' => '',
+					'user' => 0,
 					'url' => '',
 					'referrer' => '',
 					'data' => serialize( $combined )
@@ -357,6 +357,12 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 			if ( $changes == null ) {
 				return false;
 			}
+
+			//get new max memory
+			$newMax = @memory_get_peak_usage();
+			if ( $newMax > $this->maxMemory ) {
+				$this->maxMemory = $newMax;
+			}
 			
 			$data = maybe_unserialize( $changes[0]['data'] );
 				
@@ -368,7 +374,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 			$report .= '<strong>' . __( 'Files Added:', $this->hook ) . '</strong> ' . sizeof( $added ) . "<br />" . PHP_EOL;
 			$report .= '<strong>' . __( 'Files Deleted:', $this->hook ) . '</strong> ' . sizeof( $removed ) . "<br />" . PHP_EOL;
 			$report .= '<strong>' . __( 'Files Modified:', $this->hook ) . '</strong> ' . sizeof( $changed ) . "<br />" . PHP_EOL;
-			$report .= '<strong>' . __( 'Memory Used:', $this->hook ) . '</strong> ' . round( ( $changes[0]['mem_used'] / 1000000 ), 2 ) . " MB<br />" . PHP_EOL;
+			$report .= '<strong>' . __( 'Memory Used:', $this->hook ) . '</strong> ' . round( ( (  $this->maxMemory - $this->startMem ) / 1000000 ), 2 ) . " MB<br />" . PHP_EOL;
 		
 			if ( $email == true ) {
 					
@@ -379,7 +385,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 				$report .= '<th>' . __( 'Modified', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '<th>' . __( 'File Hash', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '</tr>' . PHP_EOL;
-				if ( sizeof( $added > 0 ) ) {
+				if ( isset( $added ) && is_array( $added ) && sizeof( $added > 0 ) ) {
 					foreach ( $added as $item => $attr ) { 
 						$report .= '<tr>' . PHP_EOL;
 						$report .= '<td>' . $item . '</td>' . PHP_EOL;
@@ -401,7 +407,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 				$report .= '<th>' . __( 'Modified', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '<th>' . __( 'File Hash', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '</tr>' . PHP_EOL;
-				if ( sizeof( $removed > 0 ) ) {
+				if ( isset( $removed ) && is_array( $removed ) && sizeof( $removed > 0 ) ) {
 					foreach ( $removed as $item => $attr ) { 
 						$report .= '<tr>' . PHP_EOL;
 						$report .= '<td>' . $item . '</td>' . PHP_EOL;
@@ -423,7 +429,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 				$report .= '<th>' . __( 'Modified', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '<th>' . __( 'File Hash', $this->hook ) . '</th>' . PHP_EOL;
 				$report .= '</tr>' . PHP_EOL;
-				if ( sizeof( $changed > 0 ) ) {
+				if ( isset( $changed ) && is_array( $changed ) && sizeof( $changed > 0 ) ) {
 					foreach ( $changed as $item => $attr ) { 
 						$report .= '<tr>' . PHP_EOL;
 						$report .= '<td>' . $item . '</td>' . PHP_EOL;
@@ -489,7 +495,7 @@ if ( ! class_exists( 'bwps_filecheck' ) ) {
 						
 						if ( $this->checkFile( $relname ) == true ) { //make sure the user wants this file scanned
 						
-							if ( filetype( $absname ) == 'dir' ) { //if directory scan it
+							if ( is_dir( $absname ) && filetype( $absname ) == 'dir' ) { //if directory scan it
 							
 								$data = array_merge( $data, $this->scanfiles( $relname . '/' ) );
 								

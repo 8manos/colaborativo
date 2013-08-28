@@ -3,13 +3,13 @@
 	Plugin Name: Better WP Security
 	Plugin URI: http://bit51.com/software/better-wp-security/
 	Description: Helps protect your Wordpress installation from attackers. Hardens standard Wordpress security by hiding vital areas of your site, protecting access to important files via htaccess, preventing brute-force login attempts, detecting attack attempts, and more.
-	Version: 3.5.3
+	Version: 3.5.5
 	Text Domain: better-wp-security
 	Domain Path: /languages
 	Author: Bit51
 	Author URI: http://bit51.com
 	License: GPLv2
-	Copyright 2012 Bit51.com  (email : info@bit51.com)
+	Copyright 2013 Bit51.com  (email : info@bit51.com)
 */
 
 //Require common Bit51 library
@@ -19,7 +19,7 @@ if ( ! class_exists( 'bit51_bwps' ) ) {
 
 	class bit51_bwps extends Bit51Foo {
 	
-		public $pluginversion 	= '3062'; //current plugin version
+		public $pluginversion 	= '3063'; //current plugin version
 	
 		//important plugin information
 		public $hook 				= 'better-wp-security';
@@ -89,6 +89,7 @@ if ( ! class_exists( 'bit51_bwps' ) ) {
 					'st_ht_browsing'			=> '0',
 					'st_ht_request'				=> '0',
 					'st_ht_query'				=> '0',
+                    'st_ht_foreign'             => '0',
 					'st_generator'				=> '0',
 					'st_manifest'				=> '0',
 					'st_edituri'				=> '0',
@@ -146,17 +147,17 @@ if ( ! class_exists( 'bit51_bwps' ) ) {
 		
 			//load the text domain
 			load_plugin_textdomain( 'better-wp-security', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-		
-			//require admin pages
-			if ( is_admin() || ( is_multisite() && is_network_admin() ) ) {
-				require_once( BWPS_PP . 'inc/admin/construct.php' );
-			}
-			
+
 			//require setup information
 			require_once( BWPS_PP . 'inc/setup.php' );
 			register_activation_hook( __FILE__, array( 'bwps_setup', 'on_activate' ) );
 			register_deactivation_hook( __FILE__, array( 'bwps_setup', 'on_deactivate' ) );
 			register_uninstall_hook( __FILE__, array( 'bwps_setup', 'on_uninstall' ) );
+		
+			//require admin pages
+			if ( is_admin() || ( is_multisite() && is_network_admin() ) ) {
+				require_once( BWPS_PP . 'inc/admin/construct.php' );
+			}
 			
 			require_once( BWPS_PP . 'inc/auth.php' );
 			require_once( BWPS_PP . 'inc/secure.php' );

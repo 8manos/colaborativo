@@ -42,7 +42,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 		 * Public function to activate
 		 *
 		 **/
-		function on_activate() {
+		static function on_activate() {
 			
 			define( 'BWPS_NEW_INSTALL', true );
 			new bwps_setup( 'activate' );
@@ -53,7 +53,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 		 * Public function to deactivate
 		 *
 		 **/
-		function on_deactivate() {
+		static function on_deactivate() {
 	
 			$devel = false; //set to true to uninstall for development
 		
@@ -70,7 +70,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 		 * Public function to uninstall
 		 *
 		 **/
-		function on_uninstall() {
+		static function on_uninstall() {
 		
 			new bwps_setup( 'uninstall' );
 			
@@ -391,10 +391,10 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 					$bwpsoptions['st_writefiles'] = 1;
 					$bwpsoptions['initial_filewrite'] = 1;
 					
-					$bwpsoptions['ssl_forcelogin'] = $bwpsoptions['st_forceloginssl'];
-					$bwpsoptions['ssl_forceadmin'] = $bwpsoptions['st_forceadminssl'];
+					$bwpsoptions['ssl_forcelogin'] = ( isset( $bwpsoptions['st_forceloginssl'] ) ? $bwpsoptions['st_forceloginssl'] : '0' );
+					$bwpsoptions['ssl_forceadmin'] = ( isset( $bwpsoptions['st_forceadminssl'] ) ? $bwpsoptions['st_forceadminssl'] : '0' );
 					
-					if ( $bwpsoptions['backup_enabled'] == 1 && $bwpsoptions['ll_enabled'] == 1 && $bwpsoptions['id_enabled'] == 1 && $bwpsoptions['st_ht_files'] == 1 && $bwpsoptions['st_ht_browsing'] == 1 && $bwpsoptions['st_generator'] == 1 && $bwpsoptions['st_manifest'] == 1 && $bwpsoptions['st_themenot'] == 1 && $bwpsoptions['st_pluginnot'] == 1 && $bwpsoptions['st_corenot'] == 1 && $bwpsoptions['st_enablepassword'] == 1 && $bwpsoptions['st_loginerror'] == 1 && $bwpsoptions['st_ht_request'] == 1 ) {
+					if ( isset( $bwpsoptions['backup_enabled'] ) && $bwpsoptions['backup_enabled'] == 1 && isset( $bwpsoptions['ll_enabled'] ) && $bwpsoptions['ll_enabled'] == 1 && isset( $bwpsoptions['id_enabled'] ) && $bwpsoptions['id_enabled'] == 1 && isset( $bwpsoptions['st_ht_files'] ) && $bwpsoptions['st_ht_files'] == 1 && isset( $bwpsoptions['st_ht_browsing'] ) && $bwpsoptions['st_ht_browsing'] == 1 && isset( $bwpsoptions['st_generator'] ) && $bwpsoptions['st_generator'] == 1 && isset( $bwpsoptions['st_manifest'] ) && $bwpsoptions['st_manifest'] == 1 && isset( $bwpsoptions['st_themenot'] ) && $bwpsoptions['st_themenot'] == 1 && isset( $bwpsoptions['st_pluginnot'] ) && $bwpsoptions['st_pluginnot'] == 1 && isset( $bwpsoptions['st_corenot'] ) && $bwpsoptions['st_corenot'] == 1 && isset( $bwpsoptions['st_enablepassword'] ) && $bwpsoptions['st_enablepassword'] == 1 && isset( $bwpsoptions['st_loginerror'] ) && $bwpsoptions['st_loginerror'] == 1 && isset( $bwpsoptions['st_ht_request'] ) && $bwpsoptions['st_ht_request'] == 1 ) {
 					
 						$bwpsoptions['id_fileenabled'] = 1;	
 						
@@ -419,7 +419,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 				
 				if ( str_replace( '.', '', $oldversion ) < 3033 ) {
 					
-					$bwpsoptions['ssl_frontend'] = $bwpsoptions['ssl_forcesite'] == 1 ? 2 : 1;	
+					$bwpsoptions['ssl_frontend'] = ( isset( $bwpsoptions['ssl_forcesite'] ) && $bwpsoptions['ssl_forcesite'] == 1 ? 2 : 1 );
 					
 					//Get the right options
 					if ( is_multisite() ) {
@@ -441,7 +441,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 				if ( str_replace( '.', '', $oldversion ) < 3044 ) {
 				
 					//turn on id confirmation for existing users.
-					$idconfirm = $bwpsoptions['id_fileenabled'] == 1 ? true : false;
+					$idconfirm = ( isset( $bwpsoptions['id_fileenabled'] ) && $bwpsoptions['id_fileenabled'] == 1 ? true : false );
 					
 					update_option( 'bwps_filecheck', $idconfirm );
 				
@@ -450,7 +450,7 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 				if ( str_replace( '.', '', $oldversion ) < 3051 ) {
 				
 					//turn on away mode for existing users.
-					$amconfirm = $bwpsoptions['am_enabled'] == 1 ? 1 : 0;
+					$amconfirm = ( isset( $bwpsoptions['am_enabled'] ) && $bwpsoptions['am_enabled'] == 1 ? 1 : 0 );
 					
 					update_option( 'bwps_awaymode', $amconfirm );
 				
@@ -463,18 +463,68 @@ if ( ! class_exists( 'bwps_setup' ) ) {
 				
 				}
 
-				if ( str_replace( '.', '', $oldversion ) < 3059 ) {
+                if ( str_replace( '.', '', $oldversion ) < 3059 ) {
 
 
-					$this->writehtaccess();
-			
-					if ( $bwpsoptions['st_writefiles'] == 1 ) {
-			
-						$this->writewpconfig(); //write appropriate options to wp-config.php
-				
-					}
+                    $this->writehtaccess();
 
-				}
+                    if ( $bwpsoptions['st_writefiles'] == 1 ) {
+
+                        $this->writewpconfig(); //write appropriate options to wp-config.php
+
+                    }
+
+                }
+
+                if ( str_replace( '.', '', $oldversion ) < 3063 ) {
+
+
+                    $this->writehtaccess();
+
+                    if ( isset( $bwpsoptions['st_ht_query'] ) && $bwpsoptions['st_ht_query'] == 1 ) {
+
+                        $bwpsoptions['st_ht_foreign'] = 1;
+
+                        //Get the right options
+                        if ( is_multisite() ) {
+
+                            switch_to_blog( 1 );
+
+                            update_option( $this->primarysettings, $bwpsoptions ); //save new options data
+
+                            restore_current_blog();
+
+                        } else {
+
+                            update_option( $this->primarysettings, $bwpsoptions ); //save new options data
+
+                        }
+
+                        if ( ( strstr( strtolower( filter_var( $_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING ) ), 'apache' ) || strstr( strtolower( filter_var( $_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING ) ), 'litespeed' ) ) && $bwpsoptions['st_writefiles'] == 1 ) { //if they're using apache write to .htaccess
+
+                            $this->writehtaccess();
+
+                        } else { //if they're not using apache let them know to manually update rules
+
+                            if ( is_wp_error( $errorHandler ) ) {
+
+                                $errorHandler = new WP_Error();
+
+                                $errorHandler->add( '2', __( 'Settings Saved. You will have to manually add rewrite rules and wp-config.php code to your configuration. See the Better WP Security Dashboard for a list of the rewrite rules  and wp-config.php code you will need.', $this->hook ) );
+
+                            } else {
+
+                                $errorHandler = new WP_Error();
+
+                                $errorHandler->add( '2', __( 'Settings Saved. You will have to manually add rewrite rules to your configuration. See the Better WP Security Dashboard for a list of the rewrite rules you will need.', $this->hook ) );
+
+                            }
+
+                        }
+
+                    }
+
+                }
 			
 			}
 		
