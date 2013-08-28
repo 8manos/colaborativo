@@ -17,7 +17,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			$data = base64_decode( $HTTP_RAW_POST_DATA );
 
 			if ( $data ) {
-				$unserialized_data = @unserialize( $data );
+				$unserialized_data = @maybe_unserialize( $data );
 				if ( isset( $unserialized_data['iwp_action'] ) ) {
 					$iwp_action = $unserialized_data['iwp_action'];
 				}
@@ -30,7 +30,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			}
 			
 			//Don't redirect any SSL if SSL is turned off.
-			if ( $bwpsoptions['ssl_frontend']  >= 1 ) {
+			if ( isset( $bwpsoptions['ssl_frontend'] ) && $bwpsoptions['ssl_frontend']  >= 1 ) {
 				add_action( 'template_redirect', array( &$this, 'sslredirect' ) );
 			}
 
@@ -41,32 +41,32 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 				add_action( 'init', array( &$this, 'siteinit' ) );
 
 				//execute 404 check
-				if ( $bwpsoptions['id_enabled'] == 1 ) {
+				if ( isset( $bwpsoptions['id_enabled'] ) && $bwpsoptions['id_enabled'] == 1 ) {
 					add_action( 'wp_head', array( &$this,'check404' ) );
 				}
 				
 				//remove wp-generator meta tag
-				if ( $bwpsoptions['st_generator'] == 1 ) { 
+				if ( isset( $bwpsoptions['st_generator'] ) && $bwpsoptions['st_generator'] == 1 ) { 
 					remove_action( 'wp_head', 'wp_generator' );
 				}
 				
 				//remove login error messages if turned on
-				if ( $bwpsoptions['st_loginerror'] == 1 ) {
+				if ( isset( $bwpsoptions['st_loginerror'] ) && $bwpsoptions['st_loginerror'] == 1 ) {
 					add_filter( 'login_errors', create_function( '$a', 'return null;' ) );
 				}
 				
 				//remove wlmanifest link if turned on
-				if ( $bwpsoptions['st_manifest'] == 1 ) {
+				if ( isset( $bwpsoptions['st_manifest'] ) && $bwpsoptions['st_manifest'] == 1 ) {
 					remove_action( 'wp_head', 'wlwmanifest_link' );
 				}
 				
 				//remove rsd link from header if turned on
-				if ( $bwpsoptions['st_edituri'] == 1 ) {
+				if ( isset( $bwpsoptions['st_edituri'] ) && $bwpsoptions['st_edituri'] == 1 ) {
 					remove_action( 'wp_head', 'rsd_link' );
 				}
 				
 				//ban extra-long urls if turned on
-				if ( $bwpsoptions['st_longurl'] == 1 && ! is_admin() ) {
+				if ( isset( $bwpsoptions['st_longurl'] ) && $bwpsoptions['st_longurl'] == 1 && ! is_admin() ) {
 				
 					if ( 
 						! strpos( $_SERVER['REQUEST_URI'], 'infinity=scrolling&action=infinite_scroll' ) &&
@@ -91,7 +91,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 				}
 				
 				//require strong passwords if turned on
-				if ( $bwpsoptions['st_enablepassword'] == 1 ) {
+				if ( isset( $bwpsoptions['st_enablepassword'] ) && $bwpsoptions['st_enablepassword'] == 1 ) {
 					add_action( 'user_profile_update_errors',  array( &$this, 'strongpass' ), 0, 3 );
 					
 					if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'rp' || $_GET['action'] == 'resetpass' ) && isset( $_GET['login'] ) ) {
@@ -101,27 +101,28 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 				}
 				
 				//display random number for wordpress version if turned on
-				if ( $bwpsoptions['st_randomversion'] == 1 ) {
+				if ( isset( $bwpsoptions['st_randomversion'] ) && $bwpsoptions['st_randomversion'] == 1 ) {
 					add_action( 'plugins_loaded', array( &$this, 'randomVersion' ) );
 				}
 				
 				//remove theme update notifications if turned on
-				if ( $bwpsoptions['st_themenot'] == 1 ) {
+				if ( isset( $bwpsoptions['st_themenot'] ) && $bwpsoptions['st_themenot'] == 1 ) {
 					add_action( 'plugins_loaded', array( &$this, 'themeupdates' ) );
 				}
 				
 				//remove plugin update notifications if turned on
-				if ( $bwpsoptions['st_pluginnot'] == 1 ) {
+				if ( isset( $bwpsoptions['st_pluginnot'] ) && $bwpsoptions['st_pluginnot'] == 1 ) {
 					add_action( 'plugins_loaded', array( &$this, 'pluginupdates' ) );
 				}
 				
 				//remove core update notifications if turned on
-				if ( $bwpsoptions['st_corenot'] == 1 ) {
+				if ( isset( $bwpsoptions['st_corenot'] ) && $bwpsoptions['st_corenot'] == 1 ) {
 					add_action( 'plugins_loaded', array( &$this, 'coreupdates' ) );
 				}
 				
 				//load filecheck and backup if needed (if this isn't a 404 page)
 				if ( ! $is_404 ) {
+
 					add_action( 'plugins_loaded', array( &$this, 'backup' ) );
 				
 					add_action( 'plugins_loaded', array( &$this, 'filecheck' ) );
@@ -480,7 +481,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			}
 
 			//Get the forwarded IP if it exists
-			if ( array_key_exists( 'X-Forwarded-For', $headers ) ) {
+			if ( array_key_exists( 'X-Forwarded-For', $headers ) && ( filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) || filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ) ) {
 				
 				$theIP = $headers['X-Forwarded-For'];
                         
@@ -628,7 +629,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 				}
 				
 				//contruct and send email if necessary
-				if ( ( $type == 1 && $bwpsoptions['ll_emailnotify'] == 1 ) || ( $type == 2 && $bwpsoptions['id_emailnotify'] == 1 ) ) {
+				if ( ( isset( $bwpsoptions['ll_emailnotify'] ) && $type === 1 && $bwpsoptions['ll_emailnotify'] === 1 ) || ( isset( $bwpsoptions['id_emailnotify'] ) && $type === 2 && $bwpsoptions['id_emailnotify'] === 1 ) ) {
 				
 					//Get the right email address.
 					if ( $type == 1 ) {
@@ -684,7 +685,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 
 					if ( $permban == false ) {
 
-						$duration = __( 'until', $this->hook ) . " " . date( "l, F jS, Y \a\\t g:i:s a e", $exptime );
+						$duration = __( 'until', $this->hook ) . " " . date( "l, F jS, Y \a\\t g:i a", $exptime );
 
 					} else {
 
@@ -726,11 +727,11 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			
 			if ( $type == 2 ) { //get url and referrer if 404
 			
-				$url = $wpdb->escape( $_SERVER['REQUEST_URI'] );
+				$url = esc_attr( $_SERVER['REQUEST_URI'] );
 				
 				if ( isset( $_SERVER['HTTP_REFERER']  ) ) {
 				
-					$referrer = $wpdb->escape( $_SERVER['HTTP_REFERER'] );
+					$referrer = esc_attr( $_SERVER['HTTP_REFERER'] );
 				
 				} else {
 				
