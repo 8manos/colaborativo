@@ -48,8 +48,8 @@
 				<ul id="main_nav">
 					<li><a href="#quote" class="scroll">Qué es colaborativo</a></li>
 					<li><a href="#about_us" class="scroll">Cómo funciona</a></li>
-					<li><a href="#en_linea" class="scroll">A quién le sirve</a></li>
-					<li><a href="#quien_sirve" class="scroll">Plataforma</a></li>
+					<li><a href="#en_linea p" class="scroll">A quién le sirve</a></li>
+					<li><a href="#quien_sirve li" class="scroll">Plataforma</a></li>
 					<li><a href="#contact" class="scroll">Contáctenos</a></li>
 				</ul>
 			</div>
@@ -59,27 +59,27 @@
 		</div>
 		<div id="quote">
 			<div class="container">
-				<h1>Agrupamos lo que la gente habla en sus redes sociales</h1><span></span>
+				<h1>La forma inteligente de agrupar lo que la gente habla en las redes sociales</h1><span></span>
 			</div>
 		</div>
 		<div id="about_us" class="clearfix">
 			<div class="container first">
 				<h2>¿Qué es colaborativo?</h2>
-				<p>Colaborativo es una plataforma que reúne en un solo lugar los contenidos publicados por los usuarios en sus redes sociales en torno a eventos, marcas o actividades personales.</p>
+				<p>Colaborativo es una plataforma que reúne en un solo lugar los contenidos publicados por los usuarios y las marcas en las redes sociales en torno a eventos, promociones o actividades personales, permitiendo crear Tableros Sociales donde los usuarios interactúan votando, comentando y compartiendo los contenidos preferidos. Así, las marcas con el contenido agrupado pueden medir el impacto de sus estrategias y obtener una valiosa información para su inteligencia de negocio.</p>
 			</div>
 			<div class="container second">
 				<h2>¿Cómo funciona?</h2>
-				<p>Agrupamos los hashtags usados en twitter, instagram, youtube, flickr y otras redes sociales y publicamos todos los contenidos en un solo lugar para facilitar el acceso a la información.</p>
+				<p>Agrupamos los hashtags usados en twitter, instagram, youtube, flickr y otras redes sociales y publicamos todos los contenidos en un solo lugar para facilitar el acceso a la información y el análisis de esta.</p>
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/screen_captures.jpg" alt="Capturas de pantalla">
 			</div>
 			<div class="container second">
 				<h2>Conozca algunos casos de éxito</h2>
 				<p>Hemos usado Colaborativo en grandes eventos en Colombia. Conozca aquí algunos ejemplos:</p>
 				<ul class="casos clearfix">
-					<!-- <li class="logo_1"><a target="_blank" href="http://cpco5.colaborativo.co/"></a></li> -->
-					<li class="logo_2"><a target="_blank" href="http://periodicodelcongreso.colaborativo.co/"></a></li>
-					<li class="logo_3"><a target="_blank" href="http://bogotaconf.colaborativo.co"></a></li>
-					<li class="logo_4"><a target="_blank" href="http://unoicolombia.colaborativo.co/"></a></li>
+					<li class="logo_1"><a href=""></a></li>
+					<li class="logo_2"><a href=""></a></li>
+					<li class="logo_3"><a href=""></a></li>
+					<li class="logo_4"><a href=""></a></li>
 				</ul>
 			</div>
 		</div>
@@ -169,7 +169,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				</h2>
 				<p>Colaborativo se conecta con las principales redes sociales como Twitter, Instagram, Youtube, SoundCloud, Flickr y llama automáticamente los contenidos asociados a un Hashtag y los almacena en nuestra plataforma.</p>
 				<img src="<?php bloginfo('stylesheet_directory'); ?>/images/diagrama_redes.png" alt="Diagrama redes">
-				<p class="second_paragraph">La plataforma de cubrimiento permite crear categorías y asociar #hashtags para agrupar los contenidos generados por los usuarios y seguir @usuarios específicos para registrar su actividad</p>
+				<p class="second_paragraph">La plataforma de cubrimiento permite crear categorías y asociar #hashtags para agrupar los contenidos generados por los usuarios y seguir @usuarios específicos para registrar su actividad</p>
 			</div>
 		</div>
 		<div id="contact">
@@ -193,6 +193,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 
 				</form> -->
 				<?php echo do_shortcode( '[contact-form-7 id="784" title="Contact form 1"]' ); ?>
+	
 			</div>
 		</div>
 		<div id="footer">
@@ -200,7 +201,7 @@ Nuestros periodístas digitales y community managers que se encargarán de gener
 				<h1>
 					<a href="#header">Colaborativo.co</a>
 				</h1>
-				<p>Todos los derechos reservados. Colaborativo.co &copy; 2013</p>
+				<p>Todos los derechos reservados. Colaborativo.co © 2013</p>
 			</div>
 		</div>
 

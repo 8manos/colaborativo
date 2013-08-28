@@ -49,7 +49,7 @@
 <div class="row colaborated">
 	<h3 class="span12">
 		<?php if( $plantilla == 'plantilla3' ){ ?>
-			Actividades
+			Actividades sociales
 		<?php }else{ ?>
 			Contenido generado por los asistentes
 		<?php } ?>
