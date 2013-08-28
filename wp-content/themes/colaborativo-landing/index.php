@@ -48,8 +48,8 @@
 				<ul id="main_nav">
 					<li><a href="#quote" class="scroll">Qué es colaborativo</a></li>
 					<li><a href="#about_us" class="scroll">Cómo funciona</a></li>
-					<li><a href="#en_linea p" class="scroll">A quién le sirve</a></li>
-					<li><a href="#quien_sirve li" class="scroll">Plataforma</a></li>
+					<li><a href="#en_linea" class="scroll">A quién le sirve</a></li>
+					<li><a href="#quien_sirve " class="scroll">Plataforma</a></li>
 					<li><a href="#contact" class="scroll">Contáctenos</a></li>
 				</ul>
 			</div>
@@ -76,10 +76,11 @@
 				<h2>Conozca algunos casos de éxito</h2>
 				<p>Hemos usado Colaborativo en grandes eventos en Colombia. Conozca aquí algunos ejemplos:</p>
 				<ul class="casos clearfix">
-					<li class="logo_1"><a href=""></a></li>
-					<li class="logo_2"><a href=""></a></li>
-					<li class="logo_3"><a href=""></a></li>
-					<li class="logo_4"><a href=""></a></li>
+<!-- <li class="logo_1"><a target="_blank" href="http://cpco5.colaborativo.co/"></a></li> -->
+			        <li class="logo_2"><a target="_blank" href="http://periodicodelcongreso.colaborativo.co/"></a></li>
+			        <li class="logo_3"><a target="_blank" href="http://bogotaconf.colaborativo.co"></a></li>
+			        <li class="logo_4"><a target="_blank" href="http://unoicolombia.colaborativo.co/"></a></li>
+
 				</ul>
 			</div>
 		</div>
