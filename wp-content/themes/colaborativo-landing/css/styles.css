@@ -142,11 +142,8 @@ input, select {
 
 
 body{
-   -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    font-family: 'Quattrocento Sans', sans-serif;
-    color:#696969;
+   font-family: 'Quattrocento Sans', sans-serif; 
+   color:#696969;
 }
 
 
@@ -345,7 +342,7 @@ h1, h2, h3, h4, h5, h6{
     border-left: 2px #fff solid;
     border-right: 2px #fff solid;
     border-top: 2px #fff solid;
-    margin: 20px 30%;
+    margin: 20px 35%;
     text-align: center;
     margin-top: 40px;
   
@@ -595,7 +592,7 @@ textarea{
     margin-left: 5%;
 }
 
-.wpcf7-submit{
+.submit{
     color:#fff;
     background-color: #262626;
     border: 1px solid #fff;
@@ -609,14 +606,8 @@ textarea{
     height: 30px;
     float: right;
     font-size: 16px;
-}
 
-.wpcf7-response-output {
-    clear: both;
-}
 
-span.wpcf7-not-valid-tip{
-    position: relative !important;
 }
 
 #footer h1{
