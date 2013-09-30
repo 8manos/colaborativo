@@ -31,18 +31,18 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			
 			//Don't redirect any SSL if SSL is turned off.
 			if ( isset( $bwpsoptions['ssl_frontend'] ) && $bwpsoptions['ssl_frontend']  >= 1 ) {
-				add_action( 'template_redirect', array( &$this, 'sslredirect' ) );
+				add_action( 'template_redirect', array( $this, 'sslredirect' ) );
 			}
 
 			//don't execute anything but SSL for InfiniteWP
 			if ( $isIWP === false ) {
 			
 				//execute default checks
-				add_action( 'init', array( &$this, 'siteinit' ) );
+				add_action( 'init', array( $this, 'siteinit' ) );
 
 				//execute 404 check
 				if ( isset( $bwpsoptions['id_enabled'] ) && $bwpsoptions['id_enabled'] == 1 ) {
-					add_action( 'wp_head', array( &$this,'check404' ) );
+					add_action( 'wp_head', array( $this,'check404' ) );
 				}
 				
 				//remove wp-generator meta tag
@@ -92,40 +92,40 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 				
 				//require strong passwords if turned on
 				if ( isset( $bwpsoptions['st_enablepassword'] ) && $bwpsoptions['st_enablepassword'] == 1 ) {
-					add_action( 'user_profile_update_errors',  array( &$this, 'strongpass' ), 0, 3 );
+					add_action( 'user_profile_update_errors',  array( $this, 'strongpass' ), 0, 3 );
 					
 					if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'rp' || $_GET['action'] == 'resetpass' ) && isset( $_GET['login'] ) ) {
-						add_action( 'login_head', array( &$this, 'passwordreset' ) );
+						add_action( 'login_head', array( $this, 'passwordreset' ) );
 					}
 
 				}
 				
 				//display random number for wordpress version if turned on
 				if ( isset( $bwpsoptions['st_randomversion'] ) && $bwpsoptions['st_randomversion'] == 1 ) {
-					add_action( 'plugins_loaded', array( &$this, 'randomVersion' ) );
+					add_action( 'plugins_loaded', array( $this, 'randomVersion' ) );
 				}
 				
 				//remove theme update notifications if turned on
 				if ( isset( $bwpsoptions['st_themenot'] ) && $bwpsoptions['st_themenot'] == 1 ) {
-					add_action( 'plugins_loaded', array( &$this, 'themeupdates' ) );
+					add_action( 'plugins_loaded', array( $this, 'themeupdates' ) );
 				}
 				
 				//remove plugin update notifications if turned on
 				if ( isset( $bwpsoptions['st_pluginnot'] ) && $bwpsoptions['st_pluginnot'] == 1 ) {
-					add_action( 'plugins_loaded', array( &$this, 'pluginupdates' ) );
+					add_action( 'plugins_loaded', array( $this, 'pluginupdates' ) );
 				}
 				
 				//remove core update notifications if turned on
 				if ( isset( $bwpsoptions['st_corenot'] ) && $bwpsoptions['st_corenot'] == 1 ) {
-					add_action( 'plugins_loaded', array( &$this, 'coreupdates' ) );
+					add_action( 'plugins_loaded', array( $this, 'coreupdates' ) );
 				}
 				
 				//load filecheck and backup if needed (if this isn't a 404 page)
 				if ( ! $is_404 ) {
 
-					add_action( 'plugins_loaded', array( &$this, 'backup' ) );
+					add_action( 'plugins_loaded', array( $this, 'backup' ) );
 				
-					add_action( 'plugins_loaded', array( &$this, 'filecheck' ) );
+					add_action( 'plugins_loaded', array( $this, 'filecheck' ) );
 				}
 
 			}
@@ -277,7 +277,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			
 			//use current host if host is not provided
 			if ( $rawhost == '' ) {
-				$rawhost = $wpdb->escape( $this->getIp() );
+				$rawhost = esc_sql( $this->getIp() );
 			}
 			
 			$host = ip2long( $rawhost );
@@ -364,7 +364,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			}
 					
 			//see if the host is locked out
-			$hostCheck = $wpdb->get_var( "SELECT `host` FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE `exptime` > " . current_time( 'timestamp' ) . " AND `host` = '" . $wpdb->escape( $this->getIp() ) . "' AND `active` = 1;" );
+			$hostCheck = $wpdb->get_var( "SELECT `host` FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE `exptime` > " . current_time( 'timestamp' ) . " AND `host` = '" . esc_sql( $this->getIp() ) . "' AND `active` = 1;" );
 				
 			//return false if both the user and the host are not locked out	
 			if ( ! $userCheck && ! $hostCheck ) {
@@ -539,22 +539,22 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 					
 				}
 				
-				if ( filter_var( $wpdb->escape( $this->getIp() ), FILTER_VALIDATE_IP ) && ( $bwpsoptions['id_blacklistip'] == 1 || $bwpsoptions['ll_blacklistip'] == 1 ) ) {
+				if ( filter_var( esc_sql( $this->getIp() ), FILTER_VALIDATE_IP ) && ( $bwpsoptions['id_blacklistip'] == 1 || $bwpsoptions['ll_blacklistip'] == 1 ) ) {
 				
 					if ( $bwpsoptions['id_blacklistip'] == 1 && $bwpsoptions['ll_blacklistip'] == 1 ) {
 				
 						$locklimit = min( $bwpsoptions['ll_blacklistipthreshold'], $bwpsoptions['id_blacklistipthreshold'] );
-						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE host='" . $wpdb->escape( $this->getIp() ) . "';" ) + 1;
+						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE host='" . esc_sql( $this->getIp() ) . "';" ) + 1;
 					
 					} elseif ( $bwpsoptions['id_blacklistip'] == 1 && $bwpsoptions['st_writefiles'] == 1 ) {
 						
 						$locklimit = $bwpsoptions['id_blacklistipthreshold'];
-						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE type=2 AND host='" . $wpdb->escape( $this->getIp() ) . "';" ) + 1;
+						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE type=2 AND host='" . esc_sql( $this->getIp() ) . "';" ) + 1;
 				
 					} elseif ( $bwpsoptions['ll_blacklistip'] == 1 && $bwpsoptions['st_writefiles'] == 1 ) {
 						
 						$locklimit = $bwpsoptions['ll_blacklistipthreshold'];
-						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE type =1 AND host='" . $wpdb->escape( $this->getIp() ) . "';" ) + 1;
+						$lockcount = $wpdb->get_var( "SELECT COUNT(*) FROM `" . $wpdb->base_prefix . "bwps_lockouts` WHERE type =1 AND host='" . esc_sql( $this->getIp() ) . "';" ) + 1;
 				
 					} 
 					
@@ -579,11 +579,11 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 						$banlist = array_unique( $banlist, SORT_STRING );
 					}
 
-					if ( ! in_array( $wpdb->escape( $this->getIp() ), $banlist) ) {
+					if ( ! in_array( esc_sql( $this->getIp() ), $banlist) ) {
 
 						$permban = true;
 					
-						$banlist[] = $wpdb->escape( $this->getIp() );
+						$banlist[] = esc_sql( $this->getIp() );
 					
 						$bwpsoptions['bu_banlist'] = implode( PHP_EOL, $banlist );
 					
@@ -621,7 +621,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 							'active' => 1,
 							'starttime' => $currtime,
 							'exptime' => $exptime,
-							'host' => $wpdb->escape( $this->getIp() ),
+							'host' => esc_sql( $this->getIp() ),
 							'user' => 0
 						)
 					);
@@ -675,11 +675,11 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 					if ( $user != '' ) {
 					
 						$username = get_user_by( 'id', $user );
-						$who = __( 'WordPress user', $this->hook ) . ', ' . $username->user_login . ', ' . __( 'at host, ', $this->hook ) . $wpdb->escape( $this->getIp() ) . ', ';
+						$who = __( 'WordPress user', $this->hook ) . ', ' . $username->user_login . ', ' . __( 'at host, ', $this->hook ) . esc_sql( $this->getIp() ) . ', ';
 						
 					} else {
 					
-						$who = __( 'host', $this->hook ) . ', ' . $wpdb->escape( $this->getIp() ) . '(' . __( 'you can check the host at ', $this->hook ) . 'http://ip-adress.com/ip_tracer/' . $wpdb->escape( $this->getIp() ) . ') ';
+						$who = __( 'host', $this->hook ) . ', ' . esc_sql( $this->getIp() ) . '(' . __( 'you can check the host at ', $this->hook ) . 'http://ip-adress.com/ip_tracer/' . esc_sql( $this->getIp() ) . ') ';
 						
 					}
 
@@ -694,8 +694,10 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 					}
 			
 					$mesEmail = __( 'A ', $this->hook ) . $who . __( 'has been locked out of the WordPress site at', $this->hook ) . " " . get_bloginfo( 'url' ) . " " . $duration . ' ' . __( 'due to ', $this->hook ) . $reason . __( ' You may login to the site to manually release the lock if necessary.', $this->hook );
-				
-					$sendMail = wp_mail( $toEmail, $subEmail, $mesEmail, $mailHead );
+
+					if ( function_exists( 'wp_mail' ) ) {
+						$sendMail = wp_mail( $toEmail, $subEmail, $mesEmail, $mailHead );
+					}
 					
 				}
 				
@@ -721,7 +723,7 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			}
 			
 			//get default data
-			$host = $wpdb->escape( $this->getIp() );
+			$host = esc_sql( $this->getIp() );
 			$username = sanitize_user( $username );
 			$user = get_user_by( 'login', $username );
 			
@@ -877,8 +879,8 @@ if ( ! class_exists( 'bwps_secure' ) ) {
 			if ( ! current_user_can( 'manage_options' ) ) {
 			
 				$wp_version = $newVersion;
-				add_filter( 'script_loader_src', array( &$this, 'remove_script_version' ), 15, 1 );
-				add_filter( 'style_loader_src', array( &$this, 	'remove_script_version' ), 15, 1 );
+				add_filter( 'script_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
+				add_filter( 'style_loader_src', array( $this, 	'remove_script_version' ), 15, 1 );
 				
 			}
 			

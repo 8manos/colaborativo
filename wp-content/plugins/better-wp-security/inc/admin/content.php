@@ -2201,7 +2201,7 @@ if ( ! class_exists( 'bwps_admin_content' ) ) {
 							<label for "id_specialfile"><?php _e( 'File/Directory Check List', 'better-wp-security' ); ?></label>
 						</th>
 						<td class="settingfield">
-							<textarea id="id_specialfile" rows="10" cols="50" name="id_specialfile"><?php echo isset( $_POST['id_specialfile'] ) ? $_POST['id_specialfile'] : $bwpsoptions['id_specialfile']; ?></textarea>
+							<textarea id="id_specialfile" rows="10" cols="50" name="id_specialfile"><?php echo isset( $_POST['id_specialfile'] ) ? filter_var($_POST['id_specialfile'], FILTER_SANITIZE_STRING) : $bwpsoptions['id_specialfile']; ?></textarea>
 							<p><?php _e( 'Enter directories or files you do not want to include in the check (i.e. cache folders, etc). Only 1 file or directory per line. You can specify all files of a given type by just entering the extension preceeded by a dot (.) for exampe, .jpg', 'better-wp-security' ); ?></p>
 							<p><?php _e( 'Directories should be entered in the from the root of the WordPress folder. For example, if you wish to enter the uploads directory you would enter it as "wp-content/uploads" (assuming you have not renamed wp-content). For files just enter the filename without directory information.', 'better-wp-security' ); ?></p>
 						</td>
@@ -2546,7 +2546,7 @@ if ( ! class_exists( 'bwps_admin_content' ) ) {
 								<option value="1" <?php selected( $bwpsoptions['ssl_frontend'], '1' ); ?>><?php _e( 'Per Content', 'better-wp-security' ); ?></option>
 								<option value="2" <?php selected( $bwpsoptions['ssl_frontend'], '2' ); ?>><?php _e( 'Whole Site', 'better-wp-security' ); ?></option>
 							</select>
-							<p><?php _e( 'Enables secure SSL connection for the front-end (public parts of your site). Turning this off will disable front-end SSL control, turning this on "Per Content" will place a checkbox on the edit page for all posts and pages (near the publish settings) allowing you turn to on SSL for selected pages or posts, and selecting "Whole Site" will force the whole site to use SSL (not recommended unless you have a really good reason to use it).', 'better-wp-security' ); ?></p>
+							<p><?php _e( 'Enables secure SSL connection for the front-end (public parts of your site). Turning this off will disable front-end SSL control, turning this on "Per Content" will place a checkbox on the edit page for all posts and pages (near the publish settings) allowing you to turn on SSL for selected pages or posts, and selecting "Whole Site" will force the whole site to use SSL (not recommended unless you have a really good reason to use it).', 'better-wp-security' ); ?></p>
 						</td>
 					</tr>
 					<tr valign="top" class="strongwarning">

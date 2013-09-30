@@ -3,9 +3,9 @@
 Contributors: Bit51, ChrisWiegman
 Donate link: http://bit51.com/software/better-wp-security/
 Tags: security, secure, multi-site, network, mu, login, lockdown, htaccess, hack, header, cleanup, ban, restrict, access, protect, protection, disable, images, image, hotlink, admin, username, database, prefix, wp-content, rename, directory, directories, secure, SSL, FooPlugins
-Requires at least: 3.5
+Requires at least: 3.6
 Tested up to: 3.6
-Stable tag: 3.5.5
+Stable tag: 3.5.6
 
 The easiest, most effective way to secure WordPress. Improve the security of any WordPress site in seconds.
 
@@ -82,7 +82,7 @@ Finally, should the worst happen Better WP Security will make regular backups of
 
 = Translations =
 * Brazilian Portuguese by <a href="http://profiles.wordpress.org/rafaelfunchal">Rafael Funchal</a>
-* Bulgarian by <a href="http://arthlete.com/">Nikolay Kolev of Gymnastics and Bodyweight Tutorials</a>
+* Bulgarian by <a href="http://arthlete.com/">Nikolay Kolev of Gymnastics and Bodyweight Tutorials</a> and <a href="http://wordpress.org/support/profile/mhalachev">Martin Halachev</a>
 * Chinese (Traditional) by Toine Cheung
 * French by <a href="http://www.sceric.net/">SCUDELLER Eric</a>
 * German by <a href="http://fluchtsportler.de" title="kniebremser">Rene Wolf</a>
@@ -164,6 +164,16 @@ NOTE: It is possible that something will break due to the complexity of the chan
 4. If you do get stuck help is never more than a few clicks away.
 
 == Changelog ==
+
+= 3.5.6 =
+* Updated Bulgarian translation by <a href="http://wordpress.org/support/profile/mhalachev">Martin Halachev</a>
+* Removed all instances of the deprecated $wpdb->escape
+* Fixed possible XSS issue (Github Issue #64 with patch from i0wn)
+* Wrapped all wp_mail calls in function_exists checks as it no longer seems to be reliably available after plugins_loaded in WordPress 3.6
+* Minor refactoring
+* Added (.*) to Zues in hackrepair.com list to mitigate possible issues
+* Typo correction on SSL options courtesy of <a href="http://karthost.com">Roy Randolph</a>.
+* Changed minimum version to 3.6
 
 = 3.5.5 =
 * Fixed error that prevented manual backups from executing
