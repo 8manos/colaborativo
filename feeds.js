@@ -15,9 +15,9 @@ var T = new Twit({
 });
 
 //
-//  filter the twitter public stream by the word 'mango'. 
+//  filter the twitter public stream
 //
-var stream = T.stream('statuses/filter', { track: '#WifeHerIf' });
+var stream = T.stream('statuses/filter', { track: 'colombia' });
 
 var tweetSchema = new Schema({ 
 	  id: Number,
@@ -27,11 +27,27 @@ var tweetSchema = new Schema({
       profile_img: String
     }, { capped: 12000 })
 
+var tweetSchema_archive = new Schema({ 
+	  id: Number,
+	  screen_name: String,
+      name: String,
+      text: String,
+      profile_img: String
+    })
+
 var Tweet = Mongoose.model('Tweet', tweetSchema);
+var Tweet_archive = Mongoose.model('Tweet_archive', tweetSchema_archive);
 
 stream.on('tweet', function (tweet) {
-
 	var twitty = new Tweet({ 
+		           id: tweet.id_str,
+		           name: tweet.user.name,
+		           text: tweet.text,
+		           screen_name: tweet.user.screen_name,
+		           profile_img: tweet.user.profile_image_url
+		         });
+
+	var twitty_archive = new Tweet_archive({ 
 		           id: tweet.id_str,
 		           name: tweet.user.name,
 		           text: tweet.text,
@@ -45,4 +61,9 @@ stream.on('tweet', function (tweet) {
 	  console.log('pio');
 	});
 
+	twitty_archive.save(function (err) {
+	  if (err)
+	   // ...
+	  console.log('pio archive');
+	});
 });
